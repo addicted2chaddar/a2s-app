@@ -241,7 +241,7 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       </div>
       <div class="tri-locked-wrap">
         <!-- Treasure chest SVG -->
-        <svg width="110" height="92" viewBox="0 0 110 92" role="img">
+        <svg width="110" height="92" viewBox="0 0 110 92" role="img" id="chestTap" onclick="chestTapCount()" style="cursor:default;-webkit-tap-highlight-color:transparent;">
           <title>Locked gold treasure chest</title>
           <rect x="8" y="44" width="94" height="41" rx="6" fill="#EF9F27" stroke="#BA7517" stroke-width="2"/>
           <rect x="11" y="44" width="88" height="9" rx="2" fill="#FAC775"/>
@@ -278,7 +278,7 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
         </div>
 
         <button class="tri-unlock-btn" onclick="navTo('packages')">💎 View packages to unlock ↗</button>
-        <button class="tri-admin-link" onclick="showTriPin()">🔐 Admin access</button>
+        <!-- Admin access: tap the chest 5x fast — invisible to fans -->
       </div>
     </div>
 
@@ -590,7 +590,14 @@ function toggleView(){
 function enableSound(btn){btn.textContent='✅ Sound Enabled — You\'re Ready! 💰';btn.className='sound-btn enabled';}
 function testSound(){enableSound(document.getElementById('soundBtn'));flash('🔊 Sound test activated!');}
 
-// ── TRIANGLE PIN + ADMIN GATE ──
+// ── HIDDEN ADMIN TAP (tap chest 5x fast) ──
+let chestTaps=0,chestTimer=null;
+function chestTapCount(){
+  chestTaps++;
+  clearTimeout(chestTimer);
+  if(chestTaps>=5){chestTaps=0;showTriPin();return;}
+  chestTimer=setTimeout(()=>{chestTaps=0;},1800);
+}
 let pinEntry='';
 const ADMIN_PIN='2025'; // ← Change this in Bot Cake admin settings
 
