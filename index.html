@@ -221,7 +221,7 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
         <span class="pill" id="pickStatus" style="background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);">🔒 LOCKED</span>
       </div>
       <div style="font-size:11px;color:var(--slate);letter-spacing:2px;text-align:center;margin-bottom:6px;">PICKS DROP IN</div>
-      <div class="timer" id="countdown">02:47:33</div>
+      <div class="timer" id="countdown">--:--:--</div>
       <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔔 Picks dropping soon!</div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
@@ -775,7 +775,18 @@ function toggleView(){
       const el=document.getElementById(id);
       if(el)el.style.display=id==='a-picks'?'block':'none';
     });
-    setTimeout(()=>{ buildPickSlots(); },100);
+    setTimeout(()=>{
+      buildPickSlots();
+      // Pre-fill drop time input with saved value
+      const saved = localStorage.getItem('a2s_drop_target');
+      if(saved){
+        const dt = new Date(parseInt(saved)*1000);
+        const pad = n=>String(n).padStart(2,'0');
+        const local = dt.getFullYear()+'-'+pad(dt.getMonth()+1)+'-'+pad(dt.getDate())+'T'+pad(dt.getHours())+':'+pad(dt.getMinutes());
+        const inp = document.getElementById('a-droptime');
+        if(inp) inp.value = local;
+      }
+    },100);
   }
 }
 
@@ -1061,7 +1072,13 @@ function saveDropTime(){
   if(statusEl){statusEl.textContent='🔒 LOCKED';statusEl.style.background='rgba(148,163,184,.1)';statusEl.style.color='var(--slate)';statusEl.style.borderColor='rgba(148,163,184,.25)';}
   const countdownEl=document.getElementById('countdown');
   if(countdownEl){countdownEl.style.color='var(--gold)';}
-  flash('✅ Drop time set: '+new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true}));
+  const label = new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+  flash('✅ Drop time set: '+label);
+  // Show the actual drop time below countdown so fans see it
+  const dropMsg = document.getElementById('dropMsg');
+  if(dropMsg) dropMsg.innerHTML = '🕐 Drops: <strong style="color:var(--gold);">'+label+'</strong>';
+  // Also store the label for display on reload
+  localStorage.setItem('a2s_drop_label', label);
 }
 
 const V={
@@ -1251,7 +1268,7 @@ function chatSend(text){
   },700+Math.random()*500);
 }
 // Init on load
-syncFan();renderAdminPicks();
+syncFan();renderAdminPicks();syncDropDisplay();
 
 function openQuickPick(){
   document.getElementById('quickPickModal').style.display='block';
@@ -1640,6 +1657,27 @@ function checkMerchSize(e){
     return false;
   }
   return true;
+}
+
+function syncDropDisplay(){
+  const target = getDropTarget();
+  if(!target) return;
+  const now = Math.floor(Date.now()/1000);
+  const secs = target - now;
+  const el = document.getElementById('countdown');
+  if(!el) return;
+  if(secs <= 0){
+    unlockPicks();
+  } else {
+    const h = Math.floor(secs/3600);
+    const m = Math.floor((secs%3600)/60);
+    const s = secs % 60;
+    el.textContent = String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    // Restore drop label
+    const label = localStorage.getItem('a2s_drop_label');
+    const dropMsg = document.getElementById('dropMsg');
+    if(dropMsg && label) dropMsg.innerHTML = '🕐 Drops: <strong style="color:var(--gold);">'+label+'</strong>';
+  }
 }
 </script>
 
