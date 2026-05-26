@@ -236,8 +236,8 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       <div id="greenSignal" style="display:none;margin-top:10px;text-align:center;padding:8px 12px;background:rgba(34,197,94,.1);border-radius:8px;border:1px solid rgba(34,197,94,.3);">
         <span style="color:var(--green);font-weight:800;font-size:14px;">🎯 HIGH-VALUE SIGNAL — Pull the Trigger!</span>
       </div>
-    </div>
-    <div class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
+    </div
+    <div id="picks-content"class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <span style="font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;">📅 TODAY'S PICKS</span>
         <span class="pill" id="pickStatus" style="background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);">🔒 LOCKED</span>
@@ -245,7 +245,7 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       <div style="font-size:11px;color:var(--slate);letter-spacing:2px;text-align:center;margin-bottom:6px;">PICKS DROP IN</div>
       <div class="timer" id="countdown">--:--:--</div>
       <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔔 Picks dropping soon!</div>
-    </div>
+    </div><div id="picks-overlay" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(6,9,16,0.85);border-radius:14px;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:10;padding:20px;text-align:center;"><span style="font-size:36px;">🔒</span><div style="font-weight:900;font-size:16px;color:var(--gold);">Picks Locked</div><div style="font-size:12px;color:var(--slate);margin-bottom:8px;">Purchase a package to unlock today's picks</div><button onclick="window.location.hash='packages'" style="background:var(--gold);color:#000;border:none;border-radius:50px;padding:12px 24px;font-weight:900;font-size:14px;cursor:pointer;">💎 View Packages</button><button onclick="a2sUnlock()" style="background:none;border:1px solid rgba(255,255,255,0.1);color:var(--slate);border-radius:50px;padding:8px 20px;font-size:11px;cursor:pointer;margin-top:4px;">🧪 TEST UNLOCK</button></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-size:11px;font-weight:700;color:var(--slate);letter-spacing:2px;">TODAY'S PICKS</span>
       <span id="pickCount" style="font-size:11px;color:var(--cyan);font-weight:700;"></span>
