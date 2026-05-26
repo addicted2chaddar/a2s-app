@@ -1541,6 +1541,12 @@ function pushTierPicks(tier){
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(()=>{ if(document.getElementById('metallica-slots') && document.getElementById('metallica-slots').children.length===0) addPickSlot('metallica',2); },300);
 });
+ // ── UNLOCK VIA LINK ──────────────────────────
+if(window.location.search.includes('unlock=true')){
+  localStorage.setItem('a2s_paid','true');
+  window.history.replaceState({},'',window.location.pathname);
+  alert('🔓 Picks Unlocked! Welcome to Addicted2Sports!');
+} 
 
 
 
