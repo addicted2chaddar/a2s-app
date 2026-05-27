@@ -1,28 +1,15 @@
 F<!DOCTYPE html>
 <html lang="en">
+
+ 
+<head>
 <script>
 function a2sIsPaid(){return localStorage.getItem('a2s_paid')==='true';}
-function a2sLockPicks(){
-  var el=document.getElementById('picks-content');
-  if(!el)return;
-  if(a2sIsPaid()){
-    el.style.filter='none';
-    el.style.pointerEvents='auto';
-    var ov=document.getElementById('picks-overlay');
-    if(ov)ov.style.display='none';
-  } else {F
-    el.style.filter='blur(6px)';
-    el.style.pointerEvents='none';
-    el.style.userSelect='none';
-    var ov=document.getElementById('picks-overlay');
-    if(ov)ov.style.display='flex';
-  }
-}
+function a2sLockPicks(){var el=document.getElementById('picks-content');if(!el)return;if(a2sIsPaid()){el.style.filter='none';el.style.pointerEvents='auto';var ov=document.getElementById('picks-overlay');if(ov)ov.style.display='none';}else{el.style.filter='blur(6px)';el.style.pointerEvents='none';el.style.userSelect='none';var ov=document.getElementById('picks-overlay');if(ov)ov.style.display='flex';}}
 function a2sUnlock(){localStorage.setItem('a2s_paid','true');a2sLockPicks();}
 function a2sLock(){localStorage.removeItem('a2s_paid');a2sLockPicks();}
 document.addEventListener('DOMContentLoaded',function(){a2sLockPicks();});
-</script>
-  <head>
+</script>   </head><head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Addicted2Sports™ — Victory Triangle Edition</title>
