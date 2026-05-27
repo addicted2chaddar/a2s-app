@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+F<!DOCTYPE html>
 <html lang="en">
 <script>
 function a2sIsPaid(){return localStorage.getItem('a2s_paid')==='true';}
@@ -10,7 +10,7 @@ function a2sLockPicks(){
     el.style.pointerEvents='auto';
     var ov=document.getElementById('picks-overlay');
     if(ov)ov.style.display='none';
-  } else {
+  } else {F
     el.style.filter='blur(6px)';
     el.style.pointerEvents='none';
     el.style.userSelect='none';
@@ -1080,14 +1080,14 @@ function syncFan(){
 
   // ── Fan picks section ──────────────────────────────────────────
   const section=document.getElementById('fanPicksSection'),countEl=document.getElementById('pickCount');
-  if(!adminPicks.length){
+  if(!adminPicks.length)adminPicks=JSON.parse(localStorage.getItem('a2s_picks')||'[]');if(!adminPicks.length){
     section.innerHTML='<div class="picks-empty"><div style="font-size:28px;margin-bottom:8px;">⏳</div><div style="font-weight:700;color:var(--slate);">Picks not released yet</div><div style="font-size:12px;margin-top:4px;">Check back when countdown hits zero!</div></div>';
     if(countEl)countEl.textContent='';
   } else {
     const TIER_ORDER=['metallica','gold','purple','allaccess'];
     const fanTierIdx=TIER_ORDER.indexOf(fanTier);
     const visibleTiers=fanTierIdx===-1?[]:TIER_ORDER.slice(0,fanTierIdx+1);
-    const visiblePicks=(fanTier==='allaccess'||a2sIsPaid())?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
+    const visiblePicks=fanTier==='allaccess'?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
     if(countEl)countEl.textContent=visiblePicks.length+' pick'+(visiblePicks.length>1?'s':'')+' today';
     if(!visiblePicks.length && adminPicks.length && !a2sIsPaid()){
       section.innerHTML='<div class="picks-empty"><div style="font-size:32px;margin-bottom:8px;">🔒</div><div style="font-weight:800;color:var(--gold);margin-bottom:6px;">Upgrade to See Picks</div><div style="font-size:12px;color:var(--slate);">Your package doesn\'t include these picks.<br>Go to Packages to upgrade.</div><button onclick="navTo(\'packages\')" style="margin-top:12px;background:linear-gradient(135deg,var(--gold),#b45309);border:none;border-radius:12px;padding:10px 20px;font-weight:800;color:#000;cursor:pointer;font-size:13px;">💎 View Packages</button></div>';
