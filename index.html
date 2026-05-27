@@ -1033,7 +1033,7 @@ function setAdminResult(id,result){adminPicks=adminPicks.map(p=>p.id===id?{...p,
 function deleteAdminPick(id){adminPicks=adminPicks.filter(p=>p.id!==id);renderAdminPicks();syncFan();flash('🗑 Pick deleted');}
 function renderAdminPicks(){
   const el=document.getElementById('adminPickList');
-  if(!adminPicks.length){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--slate);font-size:13px;">No picks yet. Add above 👆</div>';return;}
+ if(!adminPicks.length)adminPicks=JSON.parse(localStorage.getItem('a2s_picks')||'[]');if(!adminPicks.length){ 
   el.innerHTML=adminPicks.map(p=>`
     <div style="background:rgba(10,16,28,.88);border-radius:12px;padding:12px 13px;margin-bottom:9px;border-left:4px solid ${p.result==='WIN'?'var(--green)':p.result==='LOSS'?'var(--red)':'rgba(255,255,255,.1)'};">
       <div style="display:flex;justify-content:space-between;margin-bottom:7px;">
@@ -1611,7 +1611,7 @@ function pushAllPicks(){
   if(!pushed){flash('Enter at least one team name',false);return;}
   // Merge with existing (keep graded picks, replace pending)
   const graded=adminPicks.filter(p=>p.result&&p.result!=='');
-  adminPicks=[...graded,...newPicks];
+  nPicks=[...graded,...newPicks];localStorage.setItem('a2s_picks',JSON.stringify(nPicks));
   syncFan();
   renderAdminPicks();
   flash('✅ '+pushed+' pick'+(pushed>1?'s':'')+' pushed to fans!');
