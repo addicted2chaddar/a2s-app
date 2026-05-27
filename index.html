@@ -1087,7 +1087,7 @@ function syncFan(){
     const TIER_ORDER=['metallica','gold','purple','allaccess'];
     const fanTierIdx=TIER_ORDER.indexOf(fanTier);
     const visibleTiers=fanTierIdx===-1?[]:TIER_ORDER.slice(0,fanTierIdx+1);
-    const visiblePicks=fanTier==='allaccess'?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
+    const visiblePicks=(fanTier==='allaccess'||a2sIsPaid())?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
     if(countEl)countEl.textContent=visiblePicks.length+' pick'+(visiblePicks.length>1?'s':'')+' today';
     if(!visiblePicks.length && adminPicks.length && !a2sIsPaid()){
       section.innerHTML='<div class="picks-empty"><div style="font-size:32px;margin-bottom:8px;">🔒</div><div style="font-weight:800;color:var(--gold);margin-bottom:6px;">Upgrade to See Picks</div><div style="font-size:12px;color:var(--slate);">Your package doesn\'t include these picks.<br>Go to Packages to upgrade.</div><button onclick="navTo(\'packages\')" style="margin-top:12px;background:linear-gradient(135deg,var(--gold),#b45309);border:none;border-radius:12px;padding:10px 20px;font-weight:800;color:#000;cursor:pointer;font-size:13px;">💎 View Packages</button></div>';
