@@ -1,15 +1,6 @@
-F<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
- 
 <head>
-<script>
-function a2sIsPaid(){return localStorage.getItem('a2s_paid')==='true';}
-function a2sLockPicks(){var el=document.getElementById('picks-content');if(!el)return;if(a2sIsPaid()){el.style.filter='none';el.style.pointerEvents='auto';var ov=document.getElementById('picks-overlay');if(ov)ov.style.display='none';}else{el.style.filter='blur(6px)';el.style.pointerEvents='none';el.style.userSelect='none';var ov=document.getElementById('picks-overlay');if(ov)ov.style.display='flex';}}
-function a2sUnlock(){localStorage.setItem('a2s_paid','true');a2sLockPicks();}
-function a2sLock(){localStorage.removeItem('a2s_paid');a2sLockPicks();}
-document.addEventListener('DOMContentLoaded',function(){a2sLockPicks();});
-</script>   </head><head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Addicted2Sports™ — Victory Triangle Edition</title>
@@ -166,6 +157,14 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
 /* keep content above bg */
 .app { position: relative; z-index: 1; }
 </style>
+<script>
+// ── A2S PAYMENT GATE ─────────────────────────
+function a2sIsPaid(){return localStorage.getItem('a2s_paid')==='true';}
+function a2sUnlock(){localStorage.setItem('a2s_paid','true');var b=document.getElementById('picks-overlay');if(b)b.style.display='none';var p=document.createElement('div');p.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;';p.innerHTML='<div style="background:#0d1f38;border:2px solid #facc15;border-radius:16px;padding:28px 24px;text-align:center;max-width:300px;"><div style="font-size:32px;margin-bottom:10px;">🔓</div><div style="color:#facc15;font-size:18px;font-weight:900;margin-bottom:8px;">Picks Unlocked!</div><div style="color:#e8eef7;font-size:13px;margin-bottom:18px;">Welcome to Addicted2Sports!<br>Your picks are ready.</div><button onclick="this.parentElement.parentElement.remove()" style="background:#facc15;color:#000;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:900;cursor:pointer;">Let's Go! 🏆</button></div>';document.body.appendChild(p);}
+function a2sLock(){localStorage.removeItem('a2s_paid');}
+(function(){var u=new URLSearchParams(location.search);if(u.get('unlock')==='true'){a2sUnlock();history.replaceState({},'',location.pathname);}})();
+// ─────────────────────────────────────────────
+</script>
 </head>
 <body>
 <div id="hypno-bg"></div>
@@ -223,8 +222,8 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       <div id="greenSignal" style="display:none;margin-top:10px;text-align:center;padding:8px 12px;background:rgba(34,197,94,.1);border-radius:8px;border:1px solid rgba(34,197,94,.3);">
         <span style="color:var(--green);font-weight:800;font-size:14px;">🎯 HIGH-VALUE SIGNAL — Pull the Trigger!</span>
       </div>
-    </div
-    <div id="picks-content"class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
+    </div>
+    <div class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <span style="font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;">📅 TODAY'S PICKS</span>
         <span class="pill" id="pickStatus" style="background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);">🔒 LOCKED</span>
@@ -232,7 +231,7 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       <div style="font-size:11px;color:var(--slate);letter-spacing:2px;text-align:center;margin-bottom:6px;">PICKS DROP IN</div>
       <div class="timer" id="countdown">--:--:--</div>
       <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔔 Picks dropping soon!</div>
-    </div><div id="picks-overlay" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(6,9,16,0.85);border-radius:14px;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:10;padding:20px;text-align:center;"><span style="font-size:36px;">🔒</span><div style="font-weight:900;font-size:16px;color:var(--gold);">Picks Locked</div><div style="font-size:12px;color:var(--slate);margin-bottom:8px;">Purchase a package to unlock today's picks</div><button onclick="window.location.hash='packages'" style="background:var(--gold);color:#000;border:none;border-radius:50px;padding:12px 24px;font-weight:900;font-size:14px;cursor:pointer;">💎 View Packages</button><button onclick="a2sUnlock()" style="background:none;border:1px solid rgba(255,255,255,0.1);color:var(--slate);border-radius:50px;padding:8px 20px;font-size:11px;cursor:pointer;margin-top:4px;">🧪 TEST UNLOCK</button></div>
+    </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-size:11px;font-weight:700;color:var(--slate);letter-spacing:2px;">TODAY'S PICKS</span>
       <span id="pickCount" style="font-size:11px;color:var(--cyan);font-weight:700;"></span>
@@ -264,14 +263,12 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
       <div class="scr-head-logo">🏆</div>
       <div><div class="t">Today's Results</div><div class="s">Addicted2Sports™ · Win Rate</div></div>
     </div>
-    <!-- Daily record banner — shown when picks are graded -->
-    <div id="dailyRecordBanner" style="display:none;background:linear-gradient(135deg,rgba(250,204,21,.14),rgba(249,115,22,.08));border:1px solid rgba(250,204,21,.3);border-radius:16px;padding:14px 18px;margin-bottom:14px;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;"></div>
     <div class="grid2" style="margin-bottom:16px;">
       <div class="stat-box"><div style="font-size:18px;">✅</div><div class="stat-num" style="color:var(--green);" id="fanWins">0</div><div style="font-size:11px;color:var(--slate);">CASHED</div></div>
       <div class="stat-box"><div style="font-size:18px;">❌</div><div class="stat-num" style="color:var(--red);" id="fanLosses">0</div><div style="font-size:11px;color:var(--slate);">MISSED</div></div>
     </div>
     <div id="fanResultsList">
-      <div class="picks-empty"><div style="font-size:36px;margin-bottom:8px;">📊</div><div style="font-weight:700;color:var(--slate);margin-bottom:4px;">No results yet</div><div style="font-size:12px;color:rgba(255,255,255,.3);">Appears after picks are graded</div></div>
+      <div class="picks-empty"><div style="font-size:28px;margin-bottom:8px;">📊</div><div style="font-weight:700;">No results yet</div><div style="font-size:12px;margin-top:4px;">Appears after picks are graded</div></div>
     </div>
   </div>
 
@@ -677,27 +674,8 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1);}
   </div>
   <div id="a-results" style="display:none;">
     <div class="grid2" style="margin-bottom:14px;">
-      <div class="stat-box"><div style="font-size:18px;">✅</div><div class="stat-num" style="color:var(--green);" id="adminWins">0</div><div style="font-size:11px;color:var(--slate);">CASHED</div></div>
-      <div class="stat-box"><div style="font-size:18px;">❌</div><div class="stat-num" style="color:var(--red);" id="adminLosses">0</div><div style="font-size:11px;color:var(--slate);">MISSED</div></div>
-    </div>
-    <!-- Season record tracker -->
-    <div style="background:rgba(250,204,21,.07);border:1px solid rgba(250,204,21,.22);border-radius:14px;padding:14px;margin-bottom:14px;">
-      <div style="font-size:11px;color:var(--gold);font-weight:800;letter-spacing:1px;margin-bottom:10px;">📈 SEASON RECORD</div>
-      <div style="display:flex;gap:8px;margin-bottom:10px;">
-        <div style="flex:1;text-align:center;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:10px;">
-          <div style="font-size:26px;font-weight:900;color:#4ade80;" id="seasonWDisplay">0</div>
-          <div style="font-size:10px;color:var(--slate);margin-top:2px;">SEASON W</div>
-        </div>
-        <div style="flex:1;text-align:center;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:10px;">
-          <div style="font-size:26px;font-weight:900;color:#f87171;" id="seasonLDisplay">0</div>
-          <div style="font-size:10px;color:var(--slate);margin-top:2px;">SEASON L</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:6px;">
-        <button onclick="addSeasonW()" style="flex:1;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);border-radius:10px;padding:10px;color:#4ade80;font-weight:800;font-size:13px;cursor:pointer;">+ WIN</button>
-        <button onclick="addSeasonL()" style="flex:1;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);border-radius:10px;padding:10px;color:#f87171;font-weight:800;font-size:13px;cursor:pointer;">+ LOSS</button>
-        <button onclick="resetSeason()" style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;color:var(--slate);font-weight:800;font-size:12px;cursor:pointer;">RESET</button>
-      </div>
+      <div class="stat-box"><div style="font-size:18px;">✅</div><div class="stat-num" style="color:var(--green);" id="adminWins">0</div><div style="font-size:11px;color:var(--slate);">WIN</div></div>
+      <div class="stat-box"><div style="font-size:18px;">❌</div><div class="stat-num" style="color:var(--red);" id="adminLosses">0</div><div style="font-size:11px;color:var(--slate);">LOSS</div></div>
     </div>
     <div id="adminResultsList"><div style="text-align:center;padding:20px;color:var(--slate);font-size:13px;">No results yet — mark picks WIN/LOSS in Picks tab</div></div>
   </div>
@@ -1020,7 +998,7 @@ function setAdminResult(id,result){adminPicks=adminPicks.map(p=>p.id===id?{...p,
 function deleteAdminPick(id){adminPicks=adminPicks.filter(p=>p.id!==id);renderAdminPicks();syncFan();flash('🗑 Pick deleted');}
 function renderAdminPicks(){
   const el=document.getElementById('adminPickList');
- if(!adminPicks.length)adminPicks=JSON.parse(localStorage.getItem('a2s_picks')||'[]');if(!adminPicks.length){ 
+  if(!adminPicks.length){el.innerHTML='<div style="text-align:center;padding:20px;color:var(--slate);font-size:13px;">No picks yet. Add above 👆</div>';return;}
   el.innerHTML=adminPicks.map(p=>`
     <div style="background:rgba(10,16,28,.88);border-radius:12px;padding:12px 13px;margin-bottom:9px;border-left:4px solid ${p.result==='WIN'?'var(--green)':p.result==='LOSS'?'var(--red)':'rgba(255,255,255,.1)'};">
       <div style="display:flex;justify-content:space-between;margin-bottom:7px;">
@@ -1035,47 +1013,20 @@ function renderAdminPicks(){
 }
 function syncFan(){
   localStorage.setItem('a2s_picks',JSON.stringify(adminPicks));
-
-  const seasonW=parseInt(localStorage.getItem('a2s_season_w')||'0');
-  const seasonL=parseInt(localStorage.getItem('a2s_season_l')||'0');
-
-  const wins=adminPicks.filter(p=>p.result==='WIN').length;
-  const losses=adminPicks.filter(p=>p.result==='LOSS').length;
-  const done=adminPicks.filter(p=>p.result&&p.result!=='');
-  const total=wins+losses;
-  const pct=total?Math.round(wins/total*100):0;
-
-  // ── Daily record banner ────────────────────────────────────────
-  const bannerEl=document.getElementById('dailyRecordBanner');
-  if(bannerEl){
-    if(total>0){
-      bannerEl.style.display='flex';
-      bannerEl.innerHTML=
-        '<span style="color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1px;">⚡ TODAY</span>'
-        +'<span style="font-weight:900;font-size:22px;color:#fff;line-height:1;">'+wins+'-'+losses+'</span>'
-        +'<span style="color:'+(pct>=60?'#4ade80':'var(--slate)')+';font-size:12px;font-weight:700;">'+pct+'% CASH</span>'
-        +'<span style="color:rgba(255,255,255,.15);font-size:14px;">|</span>'
-        +'<span style="color:var(--slate);font-size:11px;">SEASON <strong style="color:#fff;font-size:13px;">'+seasonW+'-'+seasonL+'</strong></span>';
-    } else {
-      bannerEl.style.display='none';
-    }
-  }
-
-  // ── Fan record badge ───────────────────────────────────────────
-  const fanRecord=document.getElementById('fanRecord');
-  if(fanRecord)fanRecord.textContent=wins+'-'+losses;
-
-  // ── Fan picks section ──────────────────────────────────────────
-  const section=document.getElementById('fanPicksSection'),countEl=document.getElementById('pickCount');
+  const section=document.getElementById('fanPicksSection'),countEl=document.getElementById('pickCount'),fanRecord=document.getElementById('fanRecord');
+  const wins=adminPicks.filter(p=>p.result==='WIN').length,losses=adminPicks.filter(p=>p.result==='LOSS').length;
+  if(fanRecord)fanRecord.textContent=`${wins}-${losses}`;
   if(!adminPicks.length){
     section.innerHTML='<div class="picks-empty"><div style="font-size:28px;margin-bottom:8px;">⏳</div><div style="font-weight:700;color:var(--slate);">Picks not released yet</div><div style="font-size:12px;margin-top:4px;">Check back when countdown hits zero!</div></div>';
     if(countEl)countEl.textContent='';
   } else {
+    // Filter picks based on fan's tier
     const TIER_ORDER=['metallica','gold','purple','allaccess'];
     const fanTierIdx=TIER_ORDER.indexOf(fanTier);
     const visibleTiers=fanTierIdx===-1?[]:TIER_ORDER.slice(0,fanTierIdx+1);
-    const visiblePicks=fanTier==='allaccess'?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
-    if(countEl)countEl.textContent=visiblePicks.length+' pick'+(visiblePicks.length>1?'s':'')+' today';
+    // picks with no tier assigned are visible to all (legacy)
+    const visiblePicks=(fanTier==='allaccess'||a2sIsPaid())?adminPicks:adminPicks.filter(p=>!p.tier||visibleTiers.includes(p.tier));
+    if(countEl)countEl.textContent=`${visiblePicks.length} pick${visiblePicks.length>1?'s':''} today`;
     if(!visiblePicks.length && adminPicks.length){
       section.innerHTML='<div class="picks-empty"><div style="font-size:32px;margin-bottom:8px;">🔒</div><div style="font-weight:800;color:var(--gold);margin-bottom:6px;">Upgrade to See Picks</div><div style="font-size:12px;color:var(--slate);">Your package doesn\'t include these picks.<br>Go to Packages to upgrade.</div><button onclick="navTo(\'packages\')" style="margin-top:12px;background:linear-gradient(135deg,var(--gold),#b45309);border:none;border-radius:12px;padding:10px 20px;font-weight:800;color:#000;cursor:pointer;font-size:13px;">💎 View Packages</button></div>';
       if(countEl)countEl.textContent='';
@@ -1083,107 +1034,37 @@ function syncFan(){
     }
     section.innerHTML=visiblePicks.map(p=>{
       const s=sc(p.sport);
-      const resultBadge=
-        p.result==='WIN' ?'<div style="padding:6px 13px;border-radius:10px;background:rgba(34,197,94,.18);color:#4ade80;border:1.5px solid rgba(34,197,94,.5);font-size:12px;font-weight:900;letter-spacing:.5px;white-space:nowrap;">✅ CASHED</div>':
-        p.result==='LOSS'?'<div style="padding:6px 13px;border-radius:10px;background:rgba(239,68,68,.15);color:#f87171;border:1.5px solid rgba(239,68,68,.4);font-size:12px;font-weight:900;letter-spacing:.5px;white-space:nowrap;">❌ MISSED</div>':
-        p.result==='PUSH'?'<div style="padding:6px 13px;border-radius:10px;background:rgba(148,163,184,.12);color:var(--slate);border:1px solid rgba(148,163,184,.3);font-size:12px;font-weight:900;white-space:nowrap;">↩ PUSH</div>':
-        p.status==='LIVE' ?'<div style="padding:5px 11px;border-radius:9px;background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.3);font-size:11px;font-weight:700;white-space:nowrap;">🔥 LIVE</div>':
-        p.status==='FINAL'?'<div style="padding:5px 11px;border-radius:9px;background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);font-size:11px;font-weight:700;white-space:nowrap;">✅ FINAL</div>':
-        '<div style="padding:5px 11px;border-radius:9px;background:rgba(6,182,212,.08);color:var(--cyan);border:1px solid rgba(6,182,212,.25);font-size:11px;font-weight:700;white-space:nowrap;">🔒 PENDING</div>';
-      const tc2=p.tier?TIER_COLORS[p.tier]:null;
-      const tierBadge=tc2?'<span style="font-size:9px;font-weight:800;color:'+tc2.color+';background:rgba(0,0,0,.3);border:1px solid '+tc2.border+'33;border-radius:6px;padding:2px 6px;margin-left:5px;">'+tc2.label+'</span>':'';
-      const borderCol=p.result==='WIN'?'#22c55e':p.result==='LOSS'?'#ef4444':'rgba(255,255,255,.08)';
-      return '<div class="pick-card" style="border-left:3px solid '+borderCol+';">'
-        +'<div class="pick-card-accent" style="background:linear-gradient(90deg,'+s.ac+',transparent);"></div>'
-        +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:'+(p.note?'8':'0')+'px;">'
-        +'<div><span class="pill" style="background:'+s.bg+';color:'+s.col+';border:1px solid '+s.br+';margin-bottom:5px;">'+p.sport+'</span>'+tierBadge
-        +'<div style="font-weight:900;font-size:17px;margin-top:4px;">'+p.team+'</div>'
-        +'<div style="font-size:12px;color:var(--slate);">'+p.betType+(p.line?' <span style="color:var(--gold);">'+p.line+'</span>':'')+' '+(p.odds?'<span style="opacity:.5;">· '+p.odds+'</span>':'')+'</div>'
-        +'</div>'+resultBadge+'</div>'
-        +(p.note?'<div style="font-size:12px;color:rgba(255,255,255,.4);font-style:italic;padding-top:8px;border-top:1px solid rgba(255,255,255,.06);">"'+p.note+'"</div>':'')
-        +'</div>';
+      const statusEl=p.result==='WIN'?'<div class="pill pill-green">✅ WIN</div>':p.result==='LOSS'?'<div class="pill pill-red">❌ LOSS</div>':p.result==='PUSH'?'<div class="pill" style="background:rgba(148,163,184,.12);color:var(--slate);border:1px solid rgba(148,163,184,.3);">↩ PUSH</div>':(p.status==='LIVE'?'<div style="padding:5px 11px;border-radius:9px;background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.3);font-size:11px;font-weight:700;">🔥 LIVE</div>':(p.status==='FINAL'?'<div style="padding:5px 11px;border-radius:9px;background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);font-size:11px;font-weight:700;">✅ FINAL</div>':'<div style="padding:5px 11px;border-radius:9px;background:rgba(6,182,212,.08);color:var(--cyan);border:1px solid rgba(6,182,212,.25);font-size:11px;font-weight:700;">📅 PRE-GAME</div>'));
+      const tc2=p.tier?TIER_COLORS[p.tier]:null;const tierBadge=tc2?'<span style="font-size:9px;font-weight:800;color:'+tc2.color+';background:rgba(0,0,0,.3);border:1px solid '+tc2.border+'33;border-radius:6px;padding:2px 6px;margin-left:5px;">'+tc2.label+'</span>':'';return '<div class="pick-card"><div class="pick-card-accent" style="background:linear-gradient(90deg,'+s.ac+',transparent);"></div><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:'+(p.note?'8':'0')+'px;"><div><span class="pill" style="background:'+s.bg+';color:'+s.col+';border:1px solid '+s.br+';margin-bottom:5px;">'+p.sport+'</span>'+tierBadge+'<div style="font-weight:900;font-size:17px;margin-top:4px;">'+p.team+'</div><div style="font-size:12px;color:var(--slate);">'+p.betType+(p.line?' <span style="color:var(--gold);">'+p.line+'</span>':'')+' '+(p.odds?'<span style="opacity:.5;">· '+p.odds+'</span>':'')+'</div></div>'+statusEl+'</div>'+(p.note?'<div style="font-size:12px;color:rgba(255,255,255,.4);font-style:italic;padding-top:8px;border-top:1px solid rgba(255,255,255,.06);">"'+p.note+'"</div>':'')+'</div>';
     }).join('');
   }
-
-  // ── Fan W/L counters ───────────────────────────────────────────
   const wEl=document.getElementById('fanWins'),lEl=document.getElementById('fanLosses');
   if(wEl)wEl.textContent=wins;if(lEl)lEl.textContent=losses;
-
-  // ── Fan Results tab ────────────────────────────────────────────
-  const fanRL=document.getElementById('fanResultsList');
+  const fanRL=document.getElementById('fanResultsList'),done=adminPicks.filter(p=>p.result&&p.result!=='');
   if(fanRL){
-    if(!done.length){
-      fanRL.innerHTML='<div class="picks-empty"><div style="font-size:36px;margin-bottom:8px;">📊</div><div style="font-weight:700;color:var(--slate);margin-bottom:4px;">No results yet</div><div style="font-size:12px;color:rgba(255,255,255,.3);">Appears after picks are graded</div></div>';
-    } else {
-      fanRL.innerHTML=
-        '<div style="background:linear-gradient(135deg,rgba(250,204,21,.12),rgba(249,115,22,.08));border:1px solid rgba(250,204,21,.25);border-radius:16px;padding:16px;margin-bottom:16px;text-align:center;">'
-        +'<div style="font-size:11px;color:var(--gold);font-weight:800;letter-spacing:2px;margin-bottom:6px;">⚡ TODAY\'S RECORD</div>'
-        +'<div style="font-size:38px;font-weight:900;color:#fff;line-height:1;">'+wins+'-'+losses+'</div>'
-        +(total>0?'<div style="font-size:13px;color:'+(pct>=60?'#4ade80':'var(--slate)')+';font-weight:700;margin-top:4px;">'+pct+'% Cash Rate</div>':'')
-        +'<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--slate);">SEASON &nbsp;<strong style="color:#fff;font-size:14px;">'+seasonW+'-'+seasonL+'</strong></div>'
+    if(!done.length){fanRL.innerHTML='<div class="picks-empty"><div style="font-size:28px;margin-bottom:8px;">📊</div><div style="font-weight:700;">No results yet</div></div>';}
+    else{fanRL.innerHTML=done.map(p=>{
+      const isWin=p.result==='WIN',isPush=p.result==='PUSH';
+      const badgeBg=isWin?'#16a34a':isPush?'#b45309':'#dc2626';
+      const badgeTxt=isWin?'WIN':isPush?'PUSH':'LOSS';
+      const betInfo=[p.betType,p.line,p.odds].filter(Boolean).join(' ');
+      return '<div style="display:flex;align-items:stretch;border-radius:12px;overflow:hidden;margin-bottom:10px;background:rgba(10,16,28,.92);border:1px solid rgba(255,255,255,.07);">'
+        +'<div style="width:54px;flex-shrink:0;background:rgba(255,255,255,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;border-right:1px solid rgba(255,255,255,.07);">'
+        +'<div style="font-size:9px;font-weight:800;color:var(--slate);letter-spacing:.5px;text-align:center;">'+p.sport+'</div></div>'
+        +'<div style="flex:1;padding:12px;">'
+        +'<div style="font-weight:900;font-size:15px;color:var(--white);letter-spacing:.3px;margin-bottom:3px;">'+p.team.toUpperCase()+'</div>'
+        +'<div style="font-size:12px;color:var(--slate);">'+betInfo+'</div>'
         +'</div>'
-        +done.map(p=>{
-          const isWin=p.result==='WIN',isPush=p.result==='PUSH';
-          const accentColor=isWin?'#22c55e':isPush?'#f59e0b':'#ef4444';
-          const badgeTxt=isWin?'✅ CASHED':isPush?'↩ PUSH':'❌ MISSED';
-          const betInfo=[p.betType,p.line,p.odds].filter(Boolean).join(' ');
-          return '<div style="display:flex;align-items:stretch;border-radius:14px;overflow:hidden;margin-bottom:10px;background:rgba(10,16,28,.92);border:1px solid rgba(255,255,255,.07);border-left:4px solid '+accentColor+';">'
-            +'<div style="flex:1;padding:13px;">'
-            +'<div style="font-weight:900;font-size:15px;color:var(--white);letter-spacing:.3px;margin-bottom:3px;">'+p.team.toUpperCase()+'</div>'
-            +'<div style="font-size:12px;color:var(--slate);">'+p.sport+' · '+betInfo+'</div>'
-            +'</div>'
-            +'<div style="padding:0 16px;display:flex;align-items:center;justify-content:center;background:'+accentColor+'18;">'
-            +'<div style="font-size:12px;font-weight:900;color:'+accentColor+';white-space:nowrap;">'+badgeTxt+'</div>'
-            +'</div>'
-            +'</div>';
-        }).join('');
-    }
+        +'<div style="width:54px;flex-shrink:0;background:'+badgeBg+';display:flex;align-items:center;justify-content:center;">'
+        +'<div style="font-size:11px;font-weight:900;color:#fff;letter-spacing:1px;writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);">'+badgeTxt+'</div>'
+        +'</div>'
+        +'</div>';
+    }).join('');}
   }
-
-  // ── Admin results tab ──────────────────────────────────────────
   const aw=document.getElementById('adminWins'),al=document.getElementById('adminLosses');
   if(aw)aw.textContent=wins;if(al)al.textContent=losses;
   const arl=document.getElementById('adminResultsList');
-  if(arl){
-    if(!done.length){
-      arl.innerHTML='<div style="text-align:center;padding:20px;color:var(--slate);font-size:13px;">No results yet — mark picks WIN/LOSS in Picks tab</div>';
-    } else {
-      arl.innerHTML=
-        '<div style="background:rgba(250,204,21,.08);border:1px solid rgba(250,204,21,.2);border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">'
-        +'<div style="font-size:11px;color:var(--gold);font-weight:800;">TODAY</div>'
-        +'<div style="font-size:24px;font-weight:900;color:#fff;">'+wins+'-'+losses+'</div>'
-        +'<div style="font-size:11px;color:var(--slate);">SEASON <strong style="color:#fff;">'+seasonW+'-'+seasonL+'</strong></div>'
-        +'</div>'
-        +done.map(p=>'<div style="background:rgba(10,16,28,.88);border-radius:0 12px 12px 0;padding:11px 13px;margin-bottom:8px;border-left:5px solid '+(p.result==='WIN'?'var(--green)':p.result==='PUSH'?'var(--gold)':'var(--red)')+';display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:700;">'+p.team+' <span style="color:var(--slate);font-size:11px;font-weight:400;">'+p.betType+' '+p.line+'</span></span><span style="color:'+(p.result==='WIN'?'#4ade80':p.result==='PUSH'?'var(--gold)':'#f87171')+';font-weight:800;font-size:12px;">'+(p.result==='WIN'?'✅ CASHED':p.result==='PUSH'?'↩ PUSH':'❌ MISSED')+'</span></div>').join('');
-    }
-  }
-}
-function addSeasonW(){
-  const w=parseInt(localStorage.getItem('a2s_season_w')||'0')+1;
-  localStorage.setItem('a2s_season_w',w);
-  updateSeasonDisplay();syncFan();
-  flash('✅ Season WIN added — '+w+' total');
-}
-function addSeasonL(){
-  const l=parseInt(localStorage.getItem('a2s_season_l')||'0')+1;
-  localStorage.setItem('a2s_season_l',l);
-  updateSeasonDisplay();syncFan();
-  flash('❌ Season LOSS added — '+l+' total');
-}
-function resetSeason(){
-  if(!confirm('Reset season record to 0-0?'))return;
-  localStorage.setItem('a2s_season_w','0');
-  localStorage.setItem('a2s_season_l','0');
-  updateSeasonDisplay();syncFan();
-  flash('🔄 Season record reset');
-}
-function updateSeasonDisplay(){
-  const w=localStorage.getItem('a2s_season_w')||'0';
-  const l=localStorage.getItem('a2s_season_l')||'0';
-  const wd=document.getElementById('seasonWDisplay');
-  const ld=document.getElementById('seasonLDisplay');
-  if(wd)wd.textContent=w;
-  if(ld)ld.textContent=l;
+  if(arl){if(!done.length){arl.innerHTML='<div style="text-align:center;padding:20px;color:var(--slate);font-size:13px;">No results yet</div>';}else{arl.innerHTML=done.map(p=>'<div style="background:rgba(10,16,28,.88);border-radius:0 12px 12px 0;padding:11px 13px;margin-bottom:8px;border-left:5px solid '+(p.result==='WIN'?'var(--green)':'var(--red)')+';display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:700;">'+p.team+' <span style="color:var(--slate);font-size:11px;font-weight:400;">'+p.betType+' '+p.line+'</span></span><span style="color:'+(p.result==='WIN'?'var(--green)':'var(--red)')+';font-weight:800;font-size:12px;">'+(p.result==='WIN'?'✅ WIN':'❌ LOSS')+'</span></div>').join('');}}
 }
 function saveDropTime(){
   const v=document.getElementById('a-droptime').value;
@@ -1395,7 +1276,7 @@ function chatSend(text){
   },700+Math.random()*500);
 }
 // Init on load
-syncFan();renderAdminPicks();syncDropDisplay();updateSeasonDisplay();
+syncFan();renderAdminPicks();syncDropDisplay();
 
 function openQuickPick(){
   document.getElementById('quickPickModal').style.display='block';
@@ -1528,12 +1409,6 @@ function pushTierPicks(tier){
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(()=>{ if(document.getElementById('metallica-slots') && document.getElementById('metallica-slots').children.length===0) addPickSlot('metallica',2); },300);
 });
- // ── UNLOCK VIA LINK ──────────────────────────
-if(window.location.search.includes('unlock=true')){
-  localStorage.setItem('a2s_paid','true');
-  window.history.replaceState({},'',window.location.pathname);
-  alert('🔓 Picks Unlocked! Welcome to Addicted2Sports!');
-} 
 
 
 
@@ -1598,7 +1473,7 @@ function pushAllPicks(){
   if(!pushed){flash('Enter at least one team name',false);return;}
   // Merge with existing (keep graded picks, replace pending)
   const graded=adminPicks.filter(p=>p.result&&p.result!=='');
-  nPicks=[...graded,...newPicks];localStorage.setItem('a2s_picks',JSON.stringify(nPicks));
+  adminPicks=[...graded,...newPicks];
   syncFan();
   renderAdminPicks();
   flash('✅ '+pushed+' pick'+(pushed>1?'s':'')+' pushed to fans!');
