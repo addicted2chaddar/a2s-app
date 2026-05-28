@@ -501,7 +501,76 @@ function a2sLock(){localStorage.removeItem('a2s_paid');}
     <button class="navbtn" id="nav-merch" onclick="navTo('merch')"><span class="ico">👕</span><span class="lbl">Merch</span></button>
   </div>
 </div>
-
+<!-- ADMIN SCREEN -->
+<div id="screen-admin" class="screen">
+  <div class="scr-head">
+    <div class="scr-head-logo">⚙️</div>
+    <div><div class="t">Admin Panel</div><div class="s">Addiicted2Sports™ Control</div></div>
+  </div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchAdminTab('picks',this)">🎯 Picks</button>
+    <button class="admin-tab" onclick="switchAdminTab('timer',this)">⏱ Timer</button>
+    <button class="admin-tab" onclick="switchAdminTab('settings',this)">🔧 Settings</button>
+  </div>
+  <div id="admin-tab-picks">
+    <div class="card" style="border-color:rgba(148,163,184,0.25);margin-bottom:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="font-size:12px;font-weight:900;color:#94a3b8;">🥈 METALLICA $125 — max 2</span>
+        <button onclick="addPickSlot('metallica',2)" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
+      </div>
+      <div id="metallica-slots"></div>
+    </div>
+    <div class="card" style="border-color:rgba(250,204,21,0.25);margin-bottom:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="font-size:12px;font-weight:900;color:#facc15;">🥇 GOLD $150 — max 4</span>
+        <button onclick="addPickSlot('gold',4)" style="background:rgba(250,204,21,0.12);color:#facc15;border:1px solid rgba(250,204,21,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
+      </div>
+      <div id="gold-slots"></div>
+    </div>
+    <div class="card" style="border-color:rgba(168,85,247,0.25);margin-bottom:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="font-size:12px;font-weight:900;color:#a855f7;">💜 PURPLE $175 — max 5</span>
+        <button onclick="addPickSlot('purple',5)" style="background:rgba(168,85,247,0.12);color:#a855f7;border:1px solid rgba(168,85,247,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
+      </div>
+      <div id="purple-slots"></div>
+    </div>
+    <div class="card" style="border-color:rgba(250,204,21,0.4);margin-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span style="font-size:12px;font-weight:900;color:#facc15;">👑 ALL-ACCESS $275 — max 10</span>
+        <button onclick="addPickSlot('allaccess',10)" style="background:rgba(250,204,21,0.12);color:#facc15;border:1px solid rgba(250,204,21,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
+      </div>
+      <div id="allaccess-slots"></div>
+    </div>
+    <button onclick="pushAllPicks()" style="width:100%;padding:16px 0;border-radius:50px;border:none;background:#facc15;color:#000;font-weight:900;font-size:16px;cursor:pointer;margin-bottom:10px;">📡 PUSH ALL PICKS TO FANS</button>
+    <button onclick="clearAllPicks()" style="width:100%;padding:12px 0;border-radius:50px;border:1.5px solid rgba(239,68,68,0.4);background:rgba(239,68,68,0.07);color:#ef4444;font-weight:800;font-size:13px;cursor:pointer;">🗑 Clear All Picks</button>
+  </div>
+  <div id="admin-tab-timer" style="display:none;">
+    <div class="card">
+      <div style="font-weight:900;font-size:13px;color:#facc15;margin-bottom:12px;">⏱ Drop Timer</div>
+      <label style="font-size:11px;color:#94a3b8;display:block;margin-bottom:4px;">Set Drop Date &amp; Time</label>
+      <input type="datetime-local" class="input-field" id="admin-drop-time" style="margin-bottom:12px;"/>
+      <button onclick="saveDropTime()" style="width:100%;padding:14px 0;border-radius:50px;border:none;background:#facc15;color:#000;font-weight:900;font-size:15px;cursor:pointer;">Set Timer</button>
+      <div id="timer-status" style="margin-top:10px;text-align:center;font-size:12px;color:#94a3b8;"></div>
+    </div>
+  </div>
+  <div id="admin-tab-settings" style="display:none;">
+    <div class="card">
+      <div style="font-weight:900;font-size:13px;color:#facc15;margin-bottom:12px;">🔧 Settings</div>
+      <label style="font-size:11px;color:#94a3b8;display:block;margin-bottom:4px;">Admin PIN (4 digits)</label>
+      <input type="password" maxlength="4" class="input-field" id="admin-pin-change" placeholder="New PIN" style="margin-bottom:8px;"/>
+      <button onclick="saveAdminPin()" style="width:100%;padding:13px 0;border-radius:50px;border:none;background:#22c55e;color:#000;font-weight:900;font-size:14px;cursor:pointer;margin-bottom:14px;">Save PIN</button>
+      <label style="font-size:11px;color:#94a3b8;display:block;margin-bottom:4px;">PayPal.me Link</label>
+      <input type="text" class="input-field" id="admin-paypal-link" placeholder="https://paypal.me/yourlink" style="margin-bottom:8px;"/>
+      <button onclick="savePayPalLink()" style="width:100%;padding:13px 0;border-radius:50px;border:none;background:#facc15;color:#000;font-weight:900;font-size:14px;cursor:pointer;">Save PayPal Link</button>
+    </div>
+    <div class="card">
+      <div style="font-weight:900;font-size:13px;color:#ef4444;margin-bottom:10px;">⚠️ Danger Zone</div>
+      <button onclick="adminLogout()" style="width:100%;padding:12px 0;border-radius:50px;border:1.5px solid rgba(239,68,68,0.4);background:rgba(239,68,68,0.07);color:#ef4444;font-weight:800;font-size:13px;cursor:pointer;">🔒 Lock Admin Panel</button>
+    </div>
+  </div>
+</div>
+<!-- END ADMIN SCREEN -->
+  
   <!-- MERCH SCREEN -->
   <div class="screen" id="s-merch">
     <div class="scr-head">
@@ -763,6 +832,16 @@ function navTo(s){
     }, 400);
   }
 }
+ let _lt=0,_ltimer=null;
+document.querySelector('.logo-badge').addEventListener('click',function(){
+  _lt++;
+  if(_lt===1) _ltimer=setTimeout(()=>{_lt=0;},600);
+  if(_lt>=2){clearTimeout(_ltimer);_lt=0;toggleView();}
+});
+document.getElementById('navLockDot').addEventListener('click',function(e){
+  e.stopPropagation();
+  toggleView();
+}); 
 
 let isAdmin=false;
 function toggleView(){
