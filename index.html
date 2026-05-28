@@ -1848,7 +1848,7 @@ function syncDropDisplay(){
   50%      { text-shadow: 0 0 60px rgba(250,204,21,1), 0 0 100px rgba(249,115,22,.8); }
 }
 </style><script>
-const TIER_CFG={metallica:{color:'#94a3b8'},gold:{color:'#facc15'},purple:{color:'#a855f7'},allaccess:{color:'#facc15'}};
+const TIER_CFG={metallica:{color:'#94a3b8',max:2},gold:{color:'#facc15',max:4},purple:{color:'#a855f7',max:5},allaccess:{color:'#facc15',max:10}};
 function addPickSlot(tier,max){
   var container=document.getElementById(tier+'-slots');
   if(!container)return;
