@@ -1847,6 +1847,45 @@ function syncDropDisplay(){
   0%,100% { text-shadow: 0 0 20px rgba(250,204,21,.6); }
   50%      { text-shadow: 0 0 60px rgba(250,204,21,1), 0 0 100px rgba(249,115,22,.8); }
 }
-</style>
+</style><script>
+const TIER_CFG={metallica:{color:'#94a3b8'},gold:{color:'#facc15'},purple:{color:'#a855f7'},allaccess:{color:'#facc15'}};
+function addPickSlot(tier,max){
+  var container=document.getElementById(tier+'-slots');
+  if(!container)return;
+  var current=container.querySelectorAll('.pick-slot').length;
+  if(current>=max){alert('Max '+max+' picks for this tier');return;}
+  var idx=current+1;
+  var tc=TIER_CFG[tier].color;
+  var slot=document.createElement('div');
+  slot.className='pick-slot';
+  slot.style.cssText='background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;';
+  slot.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span style="font-size:12px;font-weight:900;color:'+tc+';">PICK #'+idx+'</span><button onclick="this.closest(\'.pick-slot\').remove()" style="background:rgba(239,68,68,.15);border:none;color:#f87171;border-radius:8px;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button></div><input class="input-field" placeholder="Team name *" data-field="team" style="margin-bottom:8px;"/><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;"><select class="input-field" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>NCAAB</option><option>Soccer</option><option>MMA</option></select><select class="input-field" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;"><input class="input-field" placeholder="Odds (-124)" data-field="odds" style="margin-bottom:0;"/><input class="input-field" placeholder="Time (04:41 PM PT)" data-field="time" style="margin-bottom:0;"/></div><input class="input-field" placeholder="Signal (e.g. SHARP SIGNAL)" data-field="signal" style="margin-bottom:8px;"/><select class="input-field" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Push">Push</option><option value="Live">Live</option></select>';
+  container.appendChild(slot);
+}
+function pushAllPicks(){
+  var tiers=['metallica','gold','purple','allaccess'];
+  var all={};var total=0;
+  tiers.forEach(function(tier){
+    all[tier]=[];
+    document.querySelectorAll('#'+tier+'-slots .pick-slot').forEach(function(slot){
+      var p={};
+      slot.querySelectorAll('[data-field]').forEach(function(el){p[el.dataset.field]=el.value.trim();});
+      if(p.team){all[tier].push(p);total++;}
+    });
+  });
+  if(!total){alert('Add at least one pick first!');return;}
+  localStorage.setItem('a2s_picks',JSON.stringify(all));
+  localStorage.setItem('a2s_picks_date',new Date().toISOString());
+  alert('Picks pushed to fans!');
+}
+function clearAllPicks(){
+  if(!confirm('Clear ALL picks?'))return;
+  localStorage.removeItem('a2s_picks');
+  ['metallica','gold','purple','allaccess'].forEach(function(t){
+    var el=document.getElementById(t+'-slots');
+    if(el)el.innerHTML='';
+  });
+}
+</script>
 </body>
 </html>
