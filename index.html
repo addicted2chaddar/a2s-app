@@ -843,7 +843,7 @@ function a2sLock(){localStorage.removeItem('a2s_paid');}
 </div>
 </div>
 
-<script>f
+  
 function pushAllPicks(){const tiers=['metallica','gold','purple','allaccess'];const all={};let total=0;tiers.forEach(tier=>{all[tier]=[];document.querySelectorAll('#'+tier+'-slots .pick-slot').forEach(slot=>{const p={};slot.querySelectorAll('[data-field]').forEach(el=>{p[el.dataset.field]=el.value.trim();});if(p.team){all[tier].push(p);total++;}});});if(!total){alert('Add at least one pick first!');return;}localStorage.setItem('a2s_picks',JSON.stringify(all));localStorage.setItem('a2s_picks_date',new Date().toISOString());alert('📡 Picks pushed to fans!');}
 function clearAllPicks(){if(!confirm('Clear ALL picks?'))return;localStorage.removeItem('a2s_picks');['metallica','gold','purple','allaccess'].forEach(t=>{const el=document.getElementById(t+'-slots');if(el)el.innerHTML='';});} 
 const SC={NBA:{bg:'rgba(201,170,113,.15)',col:'#c9aa71',br:'rgba(201,170,113,.3)',ac:'#c9aa71'},NFL:{bg:'rgba(1,51,105,.3)',col:'#6b9fd4',br:'rgba(1,51,105,.5)',ac:'#013369'},MLB:{bg:'rgba(188,0,33,.15)',col:'#f87171',br:'rgba(188,0,33,.3)',ac:'#bc0021'},NHL:{bg:'rgba(0,100,200,.15)',col:'#60a5fa',br:'rgba(0,100,200,.3)',ac:'#0064c8'},NCAAB:{bg:'rgba(250,204,21,.12)',col:'#facc15',br:'rgba(250,204,21,.3)',ac:'#facc15'},Soccer:{bg:'rgba(34,197,94,.12)',col:'#22c55e',br:'rgba(34,197,94,.3)',ac:'#22c55e'},Boxing:{bg:'rgba(239,68,68,.12)',col:'#ef4444',br:'rgba(239,68,68,.3)',ac:'#ef4444'}};
