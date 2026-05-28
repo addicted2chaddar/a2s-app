@@ -518,28 +518,126 @@ function a2sLock(){localStorage.removeItem('a2s_paid');}
         <span style="font-size:12px;font-weight:900;color:#94a3b8;">🥈 METALLICA $125 — max 2</span>
         <button onclick="addPickSlot('metallica',2)" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
       </div>
-      <div id="metallica-slots"></div>
+<div id="metallica-slots">
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#94a3b8;margin-bottom:10px;">PICK #1</div>
+    <input class="input-field" placeholder="Team name" data-tier="metallica" data-num="1" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="metallica" data-num="1" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="metallica" data-num="1" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
     </div>
-    <div class="card" style="border-color:rgba(250,204,21,0.25);margin-bottom:10px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:12px;font-weight:900;color:#facc15;">🥇 GOLD $150 — max 4</span>
-        <button onclick="addPickSlot('gold',4)" style="background:rgba(250,204,21,0.12);color:#facc15;border:1px solid rgba(250,204,21,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
-      </div>
-      <div id="gold-slots"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="metallica" data-num="1" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="metallica" data-num="1" data-field="time" style="margin-bottom:0;"/>
     </div>
-    <div class="card" style="border-color:rgba(168,85,247,0.25);margin-bottom:10px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:12px;font-weight:900;color:#a855f7;">💜 PURPLE $175 — max 5</span>
-        <button onclick="addPickSlot('purple',5)" style="background:rgba(168,85,247,0.12);color:#a855f7;border:1px solid rgba(168,85,247,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
-      </div>
-      <div id="purple-slots"></div>
+    <input class="input-field" placeholder="Signal (e.g. SHARP SIGNAL)" data-tier="metallica" data-num="1" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="metallica" data-num="1" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#94a3b8;margin-bottom:10px;">PICK #2</div>
+    <input class="input-field" placeholder="Team name" data-tier="metallica" data-num="2" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="metallica" data-num="2" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="metallica" data-num="2" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
     </div>
-    <div class="card" style="border-color:rgba(250,204,21,0.4);margin-bottom:14px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:12px;font-weight:900;color:#facc15;">👑 ALL-ACCESS $275 — max 10</span>
-        <button onclick="addPickSlot('allaccess',10)" style="background:rgba(250,204,21,0.12);color:#facc15;border:1px solid rgba(250,204,21,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;">+ Add Pick</button>
-      </div>
-      <div id="allaccess-slots"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="metallica" data-num="2" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="metallica" data-num="2" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal (e.g. SHARP SIGNAL)" data-tier="metallica" data-num="2" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="metallica" data-num="2" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+</div>
+<div id="gold-slots">
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#facc15;margin-bottom:10px;">PICK #1</div>
+    <input class="input-field" placeholder="Team name" data-tier="gold" data-num="1" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="gold" data-num="1" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="gold" data-num="1" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="gold" data-num="1" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="gold" data-num="1" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="gold" data-num="1" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="gold" data-num="1" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#facc15;margin-bottom:10px;">PICK #2</div>
+    <input class="input-field" placeholder="Team name" data-tier="gold" data-num="2" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="gold" data-num="2" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="gold" data-num="2" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="gold" data-num="2" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="gold" data-num="2" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="gold" data-num="2" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="gold" data-num="2" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#facc15;margin-bottom:10px;">PICK #3</div>
+    <input class="input-field" placeholder="Team name" data-tier="gold" data-num="3" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="gold" data-num="3" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="gold" data-num="3" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="gold" data-num="3" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="gold" data-num="3" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="gold" data-num="3" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="gold" data-num="3" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#facc15;margin-bottom:10px;">PICK #4</div>
+    <input class="input-field" placeholder="Team name" data-tier="gold" data-num="4" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="gold" data-num="4" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="gold" data-num="4" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="gold" data-num="4" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="gold" data-num="4" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="gold" data-num="4" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="gold" data-num="4" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+</div>
+<div id="purple-slots">
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#a855f7;margin-bottom:10px;">PICK #1</div>
+    <input class="input-field" placeholder="Team name" data-tier="purple" data-num="1" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="purple" data-num="1" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="purple" data-num="1" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="purple" data-num="1" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="purple" data-num="1" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="purple" data-num="1" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="purple" data-num="1" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+</div>
+<div id="allaccess-slots">
+  <div class="pick-slot" style="background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;">
+    <div style="font-size:12px;font-weight:900;color:#facc15;margin-bottom:10px;">PICK #1</div>
+    <input class="input-field" placeholder="Team name" data-tier="allaccess" data-num="1" data-field="team" style="margin-bottom:8px;"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <select class="input-field" data-tier="allaccess" data-num="1" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>Soccer</option><option>MMA</option></select>
+      <select class="input-field" data-tier="allaccess" data-num="1" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+      <input class="input-field" placeholder="Odds (-124)" data-tier="allaccess" data-num="1" data-field="odds" style="margin-bottom:0;"/>
+      <input class="input-field" placeholder="Time (04:41 PM PT)" data-tier="allaccess" data-num="1" data-field="time" style="margin-bottom:0;"/>
+    </div>
+    <input class="input-field" placeholder="Signal" data-tier="allaccess" data-num="1" data-field="signal" style="margin-bottom:8px;"/>
+    <select class="input-field" data-tier="allaccess" data-num="1" data-field="status" style="margin-bottom:0;"><option value="Pending">Pending</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Live">Live</option></select>
+  </div>
+</div>
     </div>
     <button onclick="pushAllPicks()" style="width:100%;padding:16px 0;border-radius:50px;border:none;background:#facc15;color:#000;font-weight:900;font-size:16px;cursor:pointer;margin-bottom:10px;">📡 PUSH ALL PICKS TO FANS</button>
     <button onclick="clearAllPicks()" style="width:100%;padding:12px 0;border-radius:50px;border:1.5px solid rgba(239,68,68,0.4);background:rgba(239,68,68,0.07);color:#ef4444;font-weight:800;font-size:13px;cursor:pointer;">🗑 Clear All Picks</button>
