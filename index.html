@@ -747,7 +747,7 @@ function a2sLock(){localStorage.removeItem('a2s_paid');}
 
 <script>
 
-function addPickSlot(tier,max){const container=document.getElementById(tier+'-slots');if(!container)return;const current=container.querySelectorAll('.pick-slot').length;if(current>=max){alert('Max '+max+' picks for this tier');return;}const idx=current+1;const tc=TIER_CFG[tier].color;const slot=document.createElement('div');slot.className='pick-slot';slot.style.cssText='background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;';slot.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span style="font-size:12px;font-weight:900;color:${tc};">PICK #${idx}</span><button onclick="this.closest('.pick-slot').remove()" style="background:rgba(239,68,68,.15);border:none;color:#f87171;border-radius:8px;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button></div><input class="input-field" placeholder="Team name *" data-field="team" style="margin-bottom:8px;"/><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;"><select class="input-field" data-field="sport" style="margin-bottom:0;"><option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>NCAAB</option><option>Soccer</option><option>MMA</option></select><select class="input-field" data-field="bettype" style="margin-bottom:0;"><option>MONEYLINE</option><option>SPREAD</option><option>OVER</option><option>UNDER</option><option>PARLAY</option><option>PROP</option></select></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;"><input class="input-field" placeholder="Odds (-124)" data-field="odds" style="margin-bottom:0;"/><input class="input-field" placeholder="Time (04:41 PM PT)" data-field="time" style="margin-bottom:0;"/></div><input class="input-field" placeholder="Signal (e.g. SHARP SIGNAL)" data-field="signal" style="margin-bottom:8px;"/><select class="input-field" data-field="status" style="margin-bottom:0;"><option value="Pending">🟡 Pending</option><option value="Win">✅ Win</option><option value="Loss">❌ Loss</option><option value="Push">⬜ Push</option><option value="Live">🔴 Live</option></select>`;container.appendChild(slot);}
+
 function pushAllPicks(){const tiers=['metallica','gold','purple','allaccess'];const all={};let total=0;tiers.forEach(tier=>{all[tier]=[];document.querySelectorAll('#'+tier+'-slots .pick-slot').forEach(slot=>{const p={};slot.querySelectorAll('[data-field]').forEach(el=>{p[el.dataset.field]=el.value.trim();});if(p.team){all[tier].push(p);total++;}});});if(!total){alert('Add at least one pick first!');return;}localStorage.setItem('a2s_picks',JSON.stringify(all));localStorage.setItem('a2s_picks_date',new Date().toISOString());alert('📡 Picks pushed to fans!');}
 function clearAllPicks(){if(!confirm('Clear ALL picks?'))return;localStorage.removeItem('a2s_picks');['metallica','gold','purple','allaccess'].forEach(t=>{const el=document.getElementById(t+'-slots');if(el)el.innerHTML='';});} 
 const SC={NBA:{bg:'rgba(201,170,113,.15)',col:'#c9aa71',br:'rgba(201,170,113,.3)',ac:'#c9aa71'},NFL:{bg:'rgba(1,51,105,.3)',col:'#6b9fd4',br:'rgba(1,51,105,.5)',ac:'#013369'},MLB:{bg:'rgba(188,0,33,.15)',col:'#f87171',br:'rgba(188,0,33,.3)',ac:'#bc0021'},NHL:{bg:'rgba(0,100,200,.15)',col:'#60a5fa',br:'rgba(0,100,200,.3)',ac:'#0064c8'},NCAAB:{bg:'rgba(250,204,21,.12)',col:'#facc15',br:'rgba(250,204,21,.3)',ac:'#facc15'},Soccer:{bg:'rgba(34,197,94,.12)',col:'#22c55e',br:'rgba(34,197,94,.3)',ac:'#22c55e'},Boxing:{bg:'rgba(239,68,68,.12)',col:'#ef4444',br:'rgba(239,68,68,.3)',ac:'#ef4444'}};
@@ -1411,43 +1411,6 @@ function switchTier(tier){
   // Auto-populate slot if empty
   const slots = document.getElementById(tier+'-slots');
   if(slots && slots.children.length===0) addPickSlot(tier, {metallica:2,gold:4,purple:5,allaccess:8}[tier]);
-}
-
-function addPickSlot(tier, max){
-  const container = document.getElementById(tier+'-slots');
-  if(!container) return;
-  const current = container.querySelectorAll('.pick-slot').length;
-  const tierMax = {metallica:2,gold:4,purple:5,allaccess:10}[tier];
-  if(current >= tierMax){ flash('Max '+tierMax+' picks for this tier',false); return; }
-  const idx = current + 1;
-  const tc = TIER_COLORS[tier];
-  const slot = document.createElement('div');
-  slot.className='pick-slot';
-  slot.style.cssText='background:rgba(10,16,28,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;margin-bottom:10px;position:relative;';
-  slot.innerHTML=`
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-      <span style="font-size:12px;font-weight:800;color:${tc.color};">PICK #${idx}</span>
-      <button onclick="this.closest('.pick-slot').remove()" style="background:rgba(239,68,68,.15);border:none;color:#f87171;border-radius:8px;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button>
-    </div>
-    <input class="input-field" placeholder="Team name *" style="margin-bottom:8px;" data-field="team"/>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
-      <select class="input-field" style="margin-bottom:0;" data-field="sport">
-        <option>NBA</option><option>NFL</option><option>MLB</option><option>NHL</option><option>WNBA</option><option>NCAAB</option><option>NCAAW</option><option>NCAAF</option><option>NCAAM</option><option>Soccer</option><option>Tennis</option><option>Golf</option><option>MMA</option><option>Boxing</option><option>PGA Tour</option>
-      </select>
-      <select class="input-field" style="margin-bottom:0;" data-field="bettype">
-        <option>SPREAD</option><option>OVER</option><option>UNDER</option><option>MONEYLINE</option><option>PARLAY</option><option>PROP</option>
-      </select>
-      <input class="input-field" placeholder="Line (-1.5)" style="margin-bottom:0;" data-field="line"/>
-      <input class="input-field" placeholder="Odds (-110)" style="margin-bottom:0;" data-field="odds"/>
-    </div>
-    <select class="input-field" style="margin-bottom:8px;" data-field="status">
-      <option value="PRE-GAME">📅 PRE-GAME</option>
-      <option value="LIVE">🔥 LIVE</option>
-      <option value="FINAL">✅ FINAL</option>
-    </select>
-    <input class="input-field" placeholder="Note to fans (optional)" data-field="note"/>
-  `;
-  container.appendChild(slot);
 }
 
 function pushTierPicks(tier){
