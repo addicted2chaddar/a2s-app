@@ -842,7 +842,7 @@ let isAdmin=false;
 function toggleView(){
   isAdmin=!isAdmin;
   document.getElementById('fanView').style.display=isAdmin?'none':'block';
-  const av=document.getElementById('adminView');
+  const av=document.getElementById('screen-admin');
   av.style.display=isAdmin?'block':'none';
   const fab=document.getElementById('fabQuickPick');
   if(fab)fab.style.display=isAdmin?'flex':'none';
