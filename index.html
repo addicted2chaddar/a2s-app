@@ -3,196 +3,353 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-<title>Addicted2Sports™ — Victory Triangle Edition</title>
+<title>Addicted2Sports™ — Expert Picks</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--navy:#060c14;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
-body{background:var(--navy);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
-.app{max-width:420px;margin:0 auto;background:var(--navy);min-height:100vh;position:relative;}
-.topbar{background:rgba(6,9,16,0.97);border-bottom:2px solid rgba(250,204,21,0.22);padding:0 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;height:58px;}
-.topbar-brand{display:flex;align-items:center;gap:9px;}
-.logo-badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1e3a5f,#0d1f38);border:1.5px solid rgba(250,204,21,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;}
-.topbar-wordmark{display:flex;flex-direction:column;}
-.topbar-title{font-weight:900;font-size:11px;letter-spacing:1.5px;color:var(--white);}
-.topbar-sub{font-size:9px;color:var(--gold);letter-spacing:0.5px;}
-.screen{padding:14px 14px 92px;display:none;}
-.screen.active{display:block;}
-.card{background:rgba(10,16,28,0.92);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);margin-bottom:12px;}
-.pick-card{background:rgba(10,16,28,0.92);border-radius:14px;padding:16px;border:1px solid rgba(250,204,21,0.2);margin-bottom:12px;}
-.pick-team{font-size:16px;font-weight:900;color:var(--white);margin-bottom:8px;}
-.pick-details{font-size:12px;color:var(--slate);line-height:1.6;}
-.picks-empty{text-align:center;padding:28px 16px;color:var(--slate);font-size:13px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#0a0e1c;--dark:#0f1419;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
+body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
+
+.header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:20px;text-align:center;position:sticky;top:0;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
+
+.logo-image-container{margin-bottom:14px;}
+.logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);transition:all 0.3s ease;}
+.logo-image:hover{transform:scale(1.02);box-shadow:0 10px 40px rgba(250,204,21,0.4);}
+
+.brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:8px;text-transform:uppercase;}
+
+.header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;margin-top:12px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
+.info-item{display:flex;flex-direction:column;align-items:center;}
+.info-label{font-size:9px;color:var(--slate);letter-spacing:0.8px;margin-bottom:3px;text-transform:uppercase;}
+.info-value{font-weight:900;color:var(--gold);font-size:14px;}
+
+.container{max-width:520px;margin:0 auto;padding:16px;}
+
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
+
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:12px;font-weight:900;color:var(--gold);margin-bottom:8px;letter-spacing:0.8px;text-transform:uppercase;}
+.form-input,.form-textarea,.form-select{width:100%;padding:13px 14px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;transition:all 0.3s ease;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);background:rgba(10,16,28,0.95);box-shadow:0 0 20px rgba(250,204,21,0.15);}
+.form-textarea{resize:vertical;min-height:90px;}
+
+.tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.tier-btn{padding:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(10,16,28,0.8);color:var(--white);border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
+.tier-btn.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));color:var(--gold);box-shadow:0 0 20px rgba(250,204,21,0.2);}
+.tier-btn:hover{border-color:var(--gold);transform:translateY(-2px);}
+
+.btn{padding:14px 20px;border:none;border-radius:11px;font-weight:900;font-size:13px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;width:100%;box-shadow:0 4px 20px rgba(250,204,21,0.3);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 6px 30px rgba(250,204,21,0.4);}
+.btn-secondary{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);width:100%;margin-top:8px;}
+.btn-secondary:hover{background:rgba(255,255,255,0.15);}
+
+.picks-list{display:none;}
+.picks-list.active{display:block;}
+.pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;}
+.pick-item:hover{border-color:var(--gold);background:rgba(10,16,28,0.95);box-shadow:0 0 20px rgba(250,204,21,0.1);}
+.pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.pick-team{font-weight:900;color:var(--white);font-size:15px;}
+.pick-tier{font-size:11px;background:linear-gradient(135deg,rgba(250,204,21,0.2),rgba(250,204,21,0.1));color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;border:1px solid rgba(250,204,21,0.3);}
+.pick-details{font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
+.pick-actions{display:flex;gap:8px;margin-top:10px;}
+.btn-sm{padding:8px 12px;font-size:12px;flex:1;}
+
+.fan-view{display:block;}
+.fan-view.hidden{display:none;}
+.picks-section{margin-top:24px;margin-bottom:60px;}
+.tier-section{margin-bottom:28px;}
+.tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);box-shadow:0 4px 12px rgba(250,204,21,0.1);text-transform:uppercase;}
+.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;backdrop-filter:blur(5px);}
+.pick-card:hover{border-color:var(--gold);background:rgba(10,16,28,0.95);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
+.pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;}
+.pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
+.pick-card-note{font-size:13px;color:var(--cyan);line-height:1.6;}
+
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
+.modal.active{display:flex;}
+.modal-content{background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:3px solid var(--gold);border-radius:16px;padding:32px 28px;max-width:320px;text-align:center;box-shadow:0 0 40px rgba(250,204,21,0.3);}
+.modal-title{font-size:18px;font-weight:900;color:var(--gold);margin-bottom:14px;letter-spacing:1px;text-transform:uppercase;}
+.modal-input{width:100%;padding:13px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:10px;color:var(--white);font-size:13px;margin-bottom:14px;transition:all 0.3s ease;}
+.modal-input:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,0.12);}
+.modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;transition:all 0.3s ease;text-transform:uppercase;}
+.modal-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(250,204,21,0.3);}
+
+.footer-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 6px 25px rgba(250,204,21,0.4);transition:all 0.3s ease;z-index:500;}
+.footer-btn:hover{transform:scale(1.12);box-shadow:0 8px 35px rgba(250,204,21,0.5);}
 </style>
 </head>
 <body>
 
-<div class="app" id="appRoot">
-  <div class="topbar">
-    <div class="topbar-brand">
-      <div class="logo-badge">🏆</div>
-      <div class="topbar-wordmark">
-        <div class="topbar-title">ADDICTED2SPORTS™</div>
-        <div class="topbar-sub">Victory Triangle</div>
+<div class="header-hero">
+  <div class="logo-image-container">
+    <img src="https://via.placeholder.com/300x120/0a1628/facc15?text=ADDICTED2SPORTS" alt="ADDICTED2SPORTS" class="logo-image" id="logoImg">
+  </div>
+  
+  <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
+  
+  <div class="header-info">
+    <div class="info-item">
+      <div class="info-label">📅</div>
+      <div class="info-value" id="dateDisplay">Today</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">🕐</div>
+      <div class="info-value" id="timeDisplay">--:--</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">📊</div>
+      <div class="info-value" id="statusDisplay">🟢 LIVE</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="admin-panel" id="adminPanel">
+    <div style="margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);">
+      <div style="font-size:12px;color:var(--gold);font-weight:900;letter-spacing:0.5px;text-transform:uppercase;">⚙️ Admin Mode</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Logo URL (Optional)</label>
+      <input type="text" class="form-input" id="logoUrl" placeholder="https://your-logo-url.com/logo.png">
+      <button class="btn btn-secondary" onclick="updateLogo()" style="margin-top:6px;">🖼 Update Logo</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Select Tier</label>
+      <div class="tier-selector">
+        <button class="tier-btn active" data-tier="metallica">⚡ Metallica $125</button>
+        <button class="tier-btn" data-tier="gold">🥇 Gold $150</button>
+        <button class="tier-btn" data-tier="purple">💜 Purple $175</button>
+        <button class="tier-btn" data-tier="allaccess">👑 All-Access $275</button>
       </div>
     </div>
-    <button id="topbarBtn" onclick="if(currentUser.email){a2sLock();}else{showLoginModal();}" style="background:none;border:none;color:var(--gold);font-size:13px;font-weight:800;cursor:pointer;padding:8px 12px;">🔐 Login</button>
+
+    <div class="form-group">
+      <label class="form-label">Team / Matchup</label>
+      <input type="text" class="form-input" id="pickTeam" placeholder="Houston Astros vs Seattle Mariners">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Bet Type</label>
+      <select class="form-select" id="pickBetType">
+        <option>MONEYLINE</option>
+        <option>SPREAD</option>
+        <option>OVER/UNDER</option>
+        <option>PARLAY</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Odds</label>
+      <input type="text" class="form-input" id="pickOdds" placeholder="-150 or +100">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Time (Optional)</label>
+      <input type="text" class="form-input" id="pickTime" placeholder="7:00 PM ET">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Analysis For Fans</label>
+      <textarea class="form-textarea" id="pickNote" placeholder="Sharp action on this side • Injury report • Trend is strong..."></textarea>
+    </div>
+
+    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
+
+    <div class="picks-list active" id="picksList">
+      <div style="margin-top:28px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
+        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">⚡ Metallica (2 max)</div>
+        <div id="picksList-metallica"></div>
+      </div>
+      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
+        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">🥇 Gold (4 max)</div>
+        <div id="picksList-gold"></div>
+      </div>
+      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
+        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">💜 Purple (5 max)</div>
+        <div id="picksList-purple"></div>
+      </div>
+      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
+        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">👑 All-Access (8 max)</div>
+        <div id="picksList-allaccess"></div>
+      </div>
+      <button class="btn btn-primary" onclick="pushAllPicksToFans()" style="margin-top:20px;">🚀 Push All Picks To Fans</button>
+    </div>
   </div>
 
-  <div id="s-home" class="screen active">
-    <div style="padding:10px 0 14px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;">
-      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1e3a5f,#0d1f38);border:1.5px solid rgba(250,204,21,0.28);display:flex;align-items:center;justify-content:center;font-size:20px;">🎯</div>
-      <div>
-        <div style="font-weight:900;font-size:15px;" id="tierName">Today's Picks</div>
-        <div style="font-size:11px;color:var(--cyan);" id="tierStatus">Tap to login</div>
-      </div>
-    </div>
+  <div class="fan-view" id="fanView">
+    <div class="picks-section" id="fanPicksSection"></div>
+  </div>
+</div>
 
-    <div class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <span style="font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;">📅 TODAY'S PICKS</span>
-        <span id="pickStatus" style="background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3);padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;">🟢 LIVE</span>
-      </div>
-      <div style="font-size:11px;color:var(--slate);letter-spacing:2px;text-align:center;margin-bottom:6px;">PICKS DROP IN</div>
-      <div style="font-size:36px;font-weight:900;color:var(--gold);letter-spacing:2px;text-align:center;text-shadow:0 0 20px rgba(250,204,21,.4);" id="countdown">00:00:00</div>
-      <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔥 Picks are LIVE!</div>
-    </div>
+<button class="footer-btn" id="toggleBtn" title="Toggle Admin">🔧</button>
 
-    <div id="picksContainer"></div>
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <div style="font-size:40px;margin-bottom:14px;">🔐</div>
+    <div class="modal-title">Admin Access</div>
+    <input type="password" class="modal-input" id="pinInput" placeholder="Enter PIN">
+    <button class="modal-btn" onclick="checkPin()">Login</button>
   </div>
 </div>
 
 <script>
-let currentUser={email:null,tier:null,txnId:null,expiresAt:null};
+let picks = {metallica:[], gold:[], purple:[], allaccess:[]};
+let currentTier = 'metallica';
+let adminMode = false;
 
-// YOUR PICKS ARE HERE
-const adminPicks=[
-  {team:'Guardians vs Royals',betType:'MONEYLINE',odds:'-150',note:'G. Williams · 3:40 PM'},
-  {team:'Phillies vs Braves',betType:'MONEYLINE',odds:'+125',note:'C. Sánchez · Game Time'},
-  {team:'Rays vs Yankees',betType:'MONEYLINE',odds:'-170',note:'N. Martinez · 4:05 PM'},
-  {team:'Yankees vs Rays',betType:'MONEYLINE',odds:'+140',note:'G. Cole · 4:05 PM'},
-  {team:'Pirates vs Reds',betType:'MONEYLINE',odds:'-160',note:'B. Chandler · 4:07 PM'},
-  {team:'Blue Jays vs Orioles',betType:'MONEYLINE',odds:'+135',note:'K. Gausman · 4:07 PM'},
-  {team:'Twins vs White Sox',betType:'MONEYLINE',odds:'-180',note:'C. Prielipp · 4:10 PM'},
-  {team:'Red Sox vs Mariners',betType:'MONEYLINE',odds:'+145',note:'P. Tolle · Game Time'}
-];
-
-function initPaymentSession(){
-  const stored=localStorage.getItem('a2s_payment_session');
-  if(!stored)return false;
-  try{
-    const sess=JSON.parse(stored);
-    if(new Date(sess.expiresAt)>new Date()){
-      currentUser=sess;
-      return true;
-    }else{
-      logoutPayment();
-      return false;
-    }
-  }catch(e){
-    logoutPayment();
-    return false;
-  }
+function loadPicks(){
+  const stored = localStorage.getItem('a2s_picks_final');
+  if(stored) picks = JSON.parse(stored);
+  const logoUrl = localStorage.getItem('a2s_logo_url');
+  if(logoUrl) document.getElementById('logoImg').src = logoUrl;
+  renderPicksList();
+  renderFanView();
 }
 
-function setPaymentSession(email,tier,txnId,durationHours){
-  const expiresAt=new Date(Date.now()+durationHours*3600000).toISOString();
-  currentUser={email,tier,txnId,expiresAt};
-  localStorage.setItem('a2s_payment_session',JSON.stringify(currentUser));
+function savePicks(){
+  localStorage.setItem('a2s_picks_final', JSON.stringify(picks));
 }
 
-function logoutPayment(){
-  currentUser={email:null,tier:null,txnId:null,expiresAt:null};
-  localStorage.removeItem('a2s_payment_session');
-  renderPicks();
+function updateLogo(){
+  const url = document.getElementById('logoUrl').value.trim();
+  if(!url) { alert('Enter a logo URL'); return; }
+  document.getElementById('logoImg').src = url;
+  localStorage.setItem('a2s_logo_url', url);
+  alert('✅ Logo updated!');
 }
 
-function isUserPaid(){
-  if(!currentUser.email)return false;
-  if(!currentUser.expiresAt)return false;
-  return new Date(currentUser.expiresAt)>new Date();
+function updateDateTime(){
+  const now = new Date();
+  document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+  document.getElementById('timeDisplay').textContent = now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
 }
 
-function verifyPayPalReceipt(email,txnId){
-  const mockDB={
-    'test@example.com|I-123ABC':{tier:'gold',hours:24},
-    'demo@a2s.com|I-456DEF':{tier:'allaccess',hours:168},
-    'fan@a2s.com|I-789GHI':{tier:'metallica',hours:24}
-  };
-  const key=email+'|'+txnId;
-  const result=mockDB[key];
-  if(result){
-    setPaymentSession(email,result.tier,txnId,result.hours);
-    showPaymentModal('✅ Access Verified!','Welcome to Addicted2Sports! Your picks are ready.');
-    return true;
-  }else{
-    alert('❌ Receipt not found.\n\nTest: test@example.com / I-123ABC');
-    return false;
-  }
-}
-
-function showLoginModal(){
-  const modal=document.createElement('div');
-  modal.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;';
-  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;"><div style="font-size:28px;margin-bottom:12px;">🔐</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">Login Required</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Enter your email and PayPal receipt.</div><input id="paymentEmail" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e8eef7;font-size:13px;margin-bottom:8px;"/><input id="paymentTxnId" type="text" placeholder="PayPal Txn ID (I-...)" style="width:100%;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e8eef7;font-size:13px;margin-bottom:12px;"/><div style="display:flex;gap:8px;"><button onclick="attemptLoginPayment()" style="flex:1;padding:10px;background:#facc15;color:#000;border:none;border-radius:50px;font-weight:900;font-size:13px;cursor:pointer;">Login</button><button onclick="this.closest('[style*=z-index]').remove()" style="flex:1;padding:10px;background:rgba(255,255,255,0.1);color:#e8eef7;border:1px solid rgba(255,255,255,0.2);border-radius:50px;font-weight:800;font-size:13px;cursor:pointer;">Cancel</button></div></div>`;
-  document.body.appendChild(modal);
-  document.getElementById('paymentEmail').focus();
-}
-
-function attemptLoginPayment(){
-  const email=document.getElementById('paymentEmail').value.trim().toLowerCase();
-  const txnId=document.getElementById('paymentTxnId').value.trim();
-  if(!email||!email.includes('@')){alert('⚠️ Enter valid email');return;}
-  if(!txnId||txnId.length<3){alert('⚠️ Enter PayPal Txn ID');return;}
-  const modal=event.target.closest('[style*=z-index]');
-  if(verifyPayPalReceipt(email,txnId)){
-    setTimeout(()=>modal.remove(),1500);
-    setTimeout(()=>renderPicks(),1600);
-  }
-}
-
-function showPaymentModal(title,body){
-  const modal=document.createElement('div');
-  modal.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;';
-  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;"><div style="font-size:28px;margin-bottom:12px;">🔓</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">${title}</div><div style="color:#94a3b8;font-size:13px;margin-bottom:18px;line-height:1.6;">${body}</div><button onclick="this.parentElement.parentElement.remove()" style="background:#facc15;color:#000;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:900;cursor:pointer;">Got It 🏆</button></div>`;
-  document.body.appendChild(modal);
-}
-
-function a2sLock(){
-  logoutPayment();
-}
-
-function renderPicks(){
-  const container=document.getElementById('picksContainer');
-  if(!container)return;
-
-  if(!currentUser.email){
-    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">🔒</div><div style="font-weight:800;color:#facc15;margin-bottom:8px;">Login to Unlock</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Sign in with your PayPal receipt to see expert picks.</div><button onclick="showLoginModal()" style="width:100%;padding:14px;background:#facc15;color:#000;border:none;border-radius:50px;font-weight:900;font-size:15px;cursor:pointer;">🔓 Login</button></div>';
-    document.getElementById('tierName').textContent='Today\'s Picks';
-    document.getElementById('tierStatus').textContent='Login to unlock';
-    return;
-  }
-
-  if(!isUserPaid()){
-    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">⏰</div><div style="font-weight:800;color:#ef4444;margin-bottom:8px;">Access Expired</div><div style="font-size:13px;color:#94a3b8;">Your access ended. Login again with a new receipt.</div></div>';
-    return;
-  }
-
-  document.getElementById('tierName').textContent='✅ '+currentUser.tier+' Tier';
-  document.getElementById('tierStatus').textContent='Valid until '+new Date(currentUser.expiresAt).toLocaleDateString();
-
-  let html='<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:12px 14px;margin-bottom:12px;"><strong style="color:#22c55e;font-weight:900;">🟢 LIVE — '+adminPicks.length+' picks</strong></div>';
+function addPick(){
+  const team = document.getElementById('pickTeam').value.trim();
+  const betType = document.getElementById('pickBetType').value;
+  const odds = document.getElementById('pickOdds').value.trim();
+  const time = document.getElementById('pickTime').value.trim();
+  const note = document.getElementById('pickNote').value.trim();
   
-  adminPicks.forEach((p)=>{
-    html+='<div class="pick-card"><div class="pick-team">'+p.team+'</div><div class="pick-details"><strong>'+p.betType+'</strong> · '+p.odds+'<br/>'+p.note+'</div></div>';
+  if(!team || !odds) { alert('⚠️ Fill in Team and Odds'); return; }
+  
+  const tierLimits = {metallica:2, gold:4, purple:5, allaccess:8};
+  if(picks[currentTier].length >= tierLimits[currentTier]){
+    alert(`${currentTier} tier is FULL (${tierLimits[currentTier]} max)`);
+    return;
+  }
+  
+  picks[currentTier].push({team, betType, odds, time, note});
+  savePicks();
+  
+  document.getElementById('pickTeam').value = '';
+  document.getElementById('pickOdds').value = '';
+  document.getElementById('pickTime').value = '';
+  document.getElementById('pickNote').value = '';
+  
+  renderPicksList();
+  renderFanView();
+  alert('✅ Pick added!');
+}
+
+function deletePick(tier, idx){
+  picks[tier].splice(idx, 1);
+  savePicks();
+  renderPicksList();
+  renderFanView();
+}
+
+function renderPicksList(){
+  ['metallica','gold','purple','allaccess'].forEach(tier => {
+    const html = picks[tier].map((p,i) => 
+      `<div class="pick-item">
+        <div class="pick-header">
+          <div class="pick-team">${p.team}</div>
+          <div class="pick-tier">${p.betType}</div>
+        </div>
+        <div class="pick-details"><strong>${p.odds}</strong> ${p.time ? '• ' + p.time : ''}</div>
+        <div class="pick-notes">${p.note}</div>
+        <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})">🗑 Delete</button>
+      </div>`
+    ).join('');
+    document.getElementById(`picksList-${tier}`).innerHTML = html || '<div style="color:var(--slate);font-size:12px;">No picks yet</div>';
+  });
+}
+
+function renderFanView(){
+  const tierNames = {metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
+  let html = '';
+  
+  ['metallica','gold','purple','allaccess'].forEach(tier => {
+    if(picks[tier].length === 0) return;
+    html += `<div class="tier-section">
+      <div class="tier-header">${tierNames[tier]} — ${picks[tier].length} Picks</div>
+      ${picks[tier].map(p => 
+        `<div class="pick-card">
+          <div class="pick-card-team">🎯 ${p.team}</div>
+          <div class="pick-card-bet">
+            <span>${p.betType} ${p.time ? '@ ' + p.time : ''}</span>
+            <span class="pick-card-odds">${p.odds}</span>
+          </div>
+          <div class="pick-card-note">📊 ${p.note}</div>
+        </div>`
+      ).join('')}
+    </div>`;
   });
   
-  container.innerHTML=html;
+  document.getElementById('fanPicksSection').innerHTML = html || '<div style="text-align:center;color:var(--slate);padding:40px 20px;font-size:14px;">⏳ Picks coming soon...</div>';
 }
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  initPaymentSession();
-  renderPicks();
+function pushAllPicksToFans(){
+  if(Object.values(picks).every(t => t.length === 0)){
+    alert('❌ Add picks first!');
+    return;
+  }
+  alert('✅ All picks LIVE for fans!');
+}
+
+function checkPin(){
+  const pin = document.getElementById('pinInput').value;
+  if(pin === '2025'){
+    adminMode = true;
+    document.getElementById('loginModal').classList.remove('active');
+    document.getElementById('adminPanel').classList.add('active');
+    document.getElementById('fanView').classList.add('hidden');
+    document.getElementById('toggleBtn').textContent = '👀';
+  } else {
+    alert('❌ Wrong PIN');
+  }
+}
+
+document.getElementById('toggleBtn').addEventListener('click', () => {
+  if(!adminMode){
+    document.getElementById('loginModal').classList.add('active');
+  } else {
+    adminMode = false;
+    document.getElementById('adminPanel').classList.remove('active');
+    document.getElementById('fanView').classList.remove('hidden');
+    document.getElementById('toggleBtn').textContent = '🔧';
+  }
 });
+
+document.querySelectorAll('.tier-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTier = btn.dataset.tier;
+  });
+});
+
+document.getElementById('addPickBtn').addEventListener('click', addPick);
+
+updateDateTime();
+setInterval(updateDateTime, 30000);
+loadPicks();
 </script>
 
 </body>
