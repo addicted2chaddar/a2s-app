@@ -15,9 +15,14 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);transition:all 0.3s ease;}
 .logo-image:hover{transform:scale(1.02);box-shadow:0 10px 40px rgba(250,204,21,0.4);}
 
-.brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:8px;text-transform:uppercase;}
+.brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
 
-.header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;margin-top:12px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
+.countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;}
+.countdown-label{font-size:11px;color:var(--slate);letter-spacing:1.5px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
+.countdown-timer{font-size:48px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
+.countdown-status{font-size:13px;color:var(--cyan);margin-top:10px;font-weight:800;}
+
+.header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
 .info-item{display:flex;flex-direction:column;align-items:center;}
 .info-label{font-size:9px;color:var(--slate);letter-spacing:0.8px;margin-bottom:3px;text-transform:uppercase;}
 .info-value{font-weight:900;color:var(--gold);font-size:14px;}
@@ -32,6 +37,12 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .form-input,.form-textarea,.form-select{width:100%;padding:13px 14px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;transition:all 0.3s ease;}
 .form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);background:rgba(10,16,28,0.95);box-shadow:0 0 20px rgba(250,204,21,0.15);}
 .form-textarea{resize:vertical;min-height:90px;}
+
+.timer-controls{background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;padding:14px;margin-bottom:16px;}
+.timer-label{font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;text-transform:uppercase;}
+.timer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.timer-btn{padding:10px;background:rgba(250,204,21,0.1);border:2px solid rgba(250,204,21,0.3);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;text-transform:uppercase;}
+.timer-btn:hover{background:rgba(250,204,21,0.2);border-color:var(--gold);}
 
 .tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .tier-btn{padding:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(10,16,28,0.8);color:var(--white);border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
@@ -85,10 +96,16 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 
 <div class="header-hero">
   <div class="logo-image-container">
-    <img src="https://via.placeholder.com/300x120/0a1628/facc15?text=ADDICTED2SPORTS" alt="ADDICTED2SPORTS" class="logo-image" id="logoImg">
+    <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image" id="logoImg">
   </div>
   
   <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
+  
+  <div class="countdown-display" id="countdownDisplay">
+    <div class="countdown-label">⏰ PICKS DROP IN</div>
+    <div class="countdown-timer" id="countdownTimer">00:00:00</div>
+    <div class="countdown-status" id="countdownStatus">🔥 Picks are LIVE!</div>
+  </div>
   
   <div class="header-info">
     <div class="info-item">
@@ -116,6 +133,20 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <label class="form-label">Logo URL (Optional)</label>
       <input type="text" class="form-input" id="logoUrl" placeholder="https://your-logo-url.com/logo.png">
       <button class="btn btn-secondary" onclick="updateLogo()" style="margin-top:6px;">🖼 Update Logo</button>
+    </div>
+
+    <div class="timer-controls">
+      <div class="timer-label">⏰ Set Countdown Timer</div>
+      <div class="timer-buttons">
+        <button class="timer-btn" onclick="setTimerMinutes(5)">5 MIN</button>
+        <button class="timer-btn" onclick="setTimerMinutes(15)">15 MIN</button>
+        <button class="timer-btn" onclick="setTimerMinutes(30)">30 MIN</button>
+        <button class="timer-btn" onclick="setTimerHours(1)">1 HR</button>
+        <button class="timer-btn" onclick="setTimerTime(11, 15)">11:15 AM</button>
+        <button class="timer-btn" onclick="setTimerTime(14, 0)">2:00 PM</button>
+      </div>
+      <input type="text" class="form-input" id="customTime" placeholder="Custom: HH:MM or minutes (e.g., 30 or 14:30)" style="margin-top:10px;">
+      <button class="btn btn-secondary" onclick="setCustomTimer()" style="margin-top:6px;">⏱ Set Custom Time</button>
     </div>
 
     <div class="form-group">
@@ -203,16 +234,17 @@ let currentTier = 'metallica';
 let adminMode = false;
 
 function loadPicks(){
-  const stored = localStorage.getItem('a2s_picks_final');
+  const stored = localStorage.getItem('a2s_picks_timer');
   if(stored) picks = JSON.parse(stored);
   const logoUrl = localStorage.getItem('a2s_logo_url');
   if(logoUrl) document.getElementById('logoImg').src = logoUrl;
   renderPicksList();
   renderFanView();
+  startCountdown();
 }
 
 function savePicks(){
-  localStorage.setItem('a2s_picks_final', JSON.stringify(picks));
+  localStorage.setItem('a2s_picks_timer', JSON.stringify(picks));
 }
 
 function updateLogo(){
@@ -221,6 +253,71 @@ function updateLogo(){
   document.getElementById('logoImg').src = url;
   localStorage.setItem('a2s_logo_url', url);
   alert('✅ Logo updated!');
+}
+
+function setTimerMinutes(mins){
+  const dropTime = new Date(Date.now() + mins * 60000);
+  localStorage.setItem('a2s_drop_target', Math.floor(dropTime.getTime() / 1000));
+  alert(`⏰ Timer set to ${mins} minutes`);
+  startCountdown();
+}
+
+function setTimerHours(hrs){
+  const dropTime = new Date(Date.now() + hrs * 3600000);
+  localStorage.setItem('a2s_drop_target', Math.floor(dropTime.getTime() / 1000));
+  alert(`⏰ Timer set to ${hrs} hour(s)`);
+  startCountdown();
+}
+
+function setTimerTime(hour, min){
+  const dropTime = new Date();
+  dropTime.setHours(hour, min, 0, 0);
+  if(dropTime < new Date()) dropTime.setDate(dropTime.getDate() + 1);
+  localStorage.setItem('a2s_drop_target', Math.floor(dropTime.getTime() / 1000));
+  alert(`⏰ Timer set to ${hour}:${String(min).padStart(2,'0')}`);
+  startCountdown();
+}
+
+function setCustomTimer(){
+  const input = document.getElementById('customTime').value.trim();
+  if(!input) { alert('Enter time'); return; }
+  
+  if(input.includes(':')){
+    const [h, m] = input.split(':');
+    setTimerTime(parseInt(h), parseInt(m));
+  } else {
+    setTimerMinutes(parseInt(input));
+  }
+  document.getElementById('customTime').value = '';
+}
+
+function startCountdown(){
+  setInterval(() => {
+    const target = parseInt(localStorage.getItem('a2s_drop_target') || 0);
+    if(!target) return;
+    
+    const now = Math.floor(Date.now() / 1000);
+    const diff = target - now;
+    
+    if(diff <= 0){
+      document.getElementById('countdownTimer').textContent = '00:00:00';
+      document.getElementById('countdownStatus').textContent = '🔥 Picks are LIVE!';
+      return;
+    }
+    
+    const hrs = Math.floor(diff / 3600);
+    const mins = Math.floor((diff % 3600) / 60);
+    const secs = diff % 60;
+    
+    document.getElementById('countdownTimer').textContent = 
+      `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    
+    if(diff < 60){
+      document.getElementById('countdownStatus').textContent = '⚠️ DROPS SOON!';
+    } else if(diff < 3600){
+      document.getElementById('countdownStatus').textContent = '⏱ Getting Close...';
+    }
+  }, 1000);
 }
 
 function updateDateTime(){
@@ -240,7 +337,7 @@ function addPick(){
   
   const tierLimits = {metallica:2, gold:4, purple:5, allaccess:8};
   if(picks[currentTier].length >= tierLimits[currentTier]){
-    alert(`${currentTier} tier is FULL (${tierLimits[currentTier]} max)`);
+    alert(`${currentTier} tier is FULL`);
     return;
   }
   
@@ -268,10 +365,7 @@ function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier => {
     const html = picks[tier].map((p,i) => 
       `<div class="pick-item">
-        <div class="pick-header">
-          <div class="pick-team">${p.team}</div>
-          <div class="pick-tier">${p.betType}</div>
-        </div>
+        <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier">${p.betType}</div></div>
         <div class="pick-details"><strong>${p.odds}</strong> ${p.time ? '• ' + p.time : ''}</div>
         <div class="pick-notes">${p.note}</div>
         <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})">🗑 Delete</button>
@@ -292,10 +386,7 @@ function renderFanView(){
       ${picks[tier].map(p => 
         `<div class="pick-card">
           <div class="pick-card-team">🎯 ${p.team}</div>
-          <div class="pick-card-bet">
-            <span>${p.betType} ${p.time ? '@ ' + p.time : ''}</span>
-            <span class="pick-card-odds">${p.odds}</span>
-          </div>
+          <div class="pick-card-bet"><span>${p.betType} ${p.time ? '@ ' + p.time : ''}</span><span class="pick-card-odds">${p.odds}</span></div>
           <div class="pick-card-note">📊 ${p.note}</div>
         </div>`
       ).join('')}
