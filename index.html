@@ -12,15 +12,19 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:20px;text-align:center;position:sticky;top:0;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
 
 .logo-image-container{margin-bottom:14px;}
-.logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);transition:all 0.3s ease;}
-.logo-image:hover{transform:scale(1.02);box-shadow:0 10px 40px rgba(250,204,21,0.4);}
+.logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);}
 
 .brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
 
-.countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;}
+.countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(250,204,21,0.25)}50%{box-shadow:0 0 50px rgba(250,204,21,0.4)}}
+
 .countdown-label{font-size:11px;color:var(--slate);letter-spacing:1.5px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
-.countdown-timer{font-size:48px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
-.countdown-status{font-size:13px;color:var(--cyan);margin-top:10px;font-weight:800;}
+.countdown-timer{font-size:56px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
+.countdown-status{font-size:14px;color:var(--cyan);margin-top:10px;font-weight:800;}
+
+.status-live{background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(34,197,94,0.1));border:2px solid var(--green);color:var(--green);padding:12px;border-radius:10px;margin-top:12px;font-weight:900;animation:glow 1.5s infinite;display:none;}
+@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(34,197,94,0.3)}50%{box-shadow:0 0 30px rgba(34,197,94,0.6)}}
 
 .header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
 .info-item{display:flex;flex-direction:column;align-items:center;}
@@ -64,11 +68,13 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .pick-tier{font-size:11px;background:linear-gradient(135deg,rgba(250,204,21,0.2),rgba(250,204,21,0.1));color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;border:1px solid rgba(250,204,21,0.3);}
 .pick-details{font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
 .pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
-.pick-actions{display:flex;gap:8px;margin-top:10px;}
-.btn-sm{padding:8px 12px;font-size:12px;flex:1;}
+.btn-sm{padding:8px 12px;font-size:12px;}
 
-.fan-view{display:block;}
-.fan-view.hidden{display:none;}
+.fan-view{display:none;}
+.fan-view.active{display:block;}
+.payment-wall{display:none;}
+.payment-wall.active{display:block;}
+
 .picks-section{margin-top:24px;margin-bottom:60px;}
 .tier-section{margin-bottom:28px;}
 .tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);box-shadow:0 4px 12px rgba(250,204,21,0.1);text-transform:uppercase;}
@@ -78,6 +84,16 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
 .pick-card-note{font-size:13px;color:var(--cyan);line-height:1.6;}
+
+.payment-form{background:rgba(10,16,28,0.95);border:2px solid rgba(250,204,21,0.3);border-radius:14px;padding:28px;margin-top:40px;}
+.payment-title{font-size:20px;font-weight:900;color:var(--gold);margin-bottom:20px;text-align:center;letter-spacing:1px;}
+.payment-subtitle{font-size:13px;color:var(--cyan);margin-bottom:16px;text-align:center;line-height:1.6;}
+.tier-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.tier-card{padding:16px;background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;cursor:pointer;transition:all 0.3s ease;text-align:center;}
+.tier-card.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));}
+.tier-card:hover{border-color:var(--gold);}
+.tier-name{font-weight:900;color:var(--gold);font-size:14px;margin-bottom:4px;}
+.tier-price{color:var(--white);font-size:13px;}
 
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
 .modal.active{display:flex;}
@@ -90,6 +106,11 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 
 .footer-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 6px 25px rgba(250,204,21,0.4);transition:all 0.3s ease;z-index:500;}
 .footer-btn:hover{transform:scale(1.12);box-shadow:0 8px 35px rgba(250,204,21,0.5);}
+
+.locked-message{background:rgba(239,68,68,0.2);border:2px solid var(--red);border-radius:12px;padding:20px;margin-top:40px;text-align:center;}
+.locked-icon{font-size:48px;margin-bottom:12px;}
+.locked-text{font-size:16px;font-weight:900;color:var(--white);margin-bottom:8px;}
+.locked-subtext{font-size:13px;color:var(--slate);line-height:1.6;}
 </style>
 </head>
 <body>
@@ -101,10 +122,11 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   
   <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
   
-  <div class="countdown-display" id="countdownDisplay">
+  <div class="countdown-display">
     <div class="countdown-label">⏰ PICKS DROP IN</div>
     <div class="countdown-timer" id="countdownTimer">00:00:00</div>
     <div class="countdown-status" id="countdownStatus">🔥 Picks are LIVE!</div>
+    <div class="status-live" id="liveStatus">🟢 PICKS ARE LIVE! 💰</div>
   </div>
   
   <div class="header-info">
@@ -129,12 +151,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <div style="font-size:12px;color:var(--gold);font-weight:900;letter-spacing:0.5px;text-transform:uppercase;">⚙️ Admin Mode</div>
     </div>
 
-    <div class="form-group">
-      <label class="form-label">Logo URL (Optional)</label>
-      <input type="text" class="form-input" id="logoUrl" placeholder="https://your-logo-url.com/logo.png">
-      <button class="btn btn-secondary" onclick="updateLogo()" style="margin-top:6px;">🖼 Update Logo</button>
-    </div>
-
     <div class="timer-controls">
       <div class="timer-label">⏰ Set Countdown Timer</div>
       <div class="timer-buttons">
@@ -145,7 +161,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
         <button class="timer-btn" onclick="setTimerTime(11, 15)">11:15 AM</button>
         <button class="timer-btn" onclick="setTimerTime(14, 0)">2:00 PM</button>
       </div>
-      <input type="text" class="form-input" id="customTime" placeholder="Custom: HH:MM or minutes (e.g., 30 or 14:30)" style="margin-top:10px;">
+      <input type="text" class="form-input" id="customTime" placeholder="Custom: HH:MM or minutes" style="margin-top:10px;">
       <button class="btn btn-secondary" onclick="setCustomTimer()" style="margin-top:6px;">⏱ Set Custom Time</button>
     </div>
 
@@ -212,6 +228,49 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     </div>
   </div>
 
+  <div class="payment-wall" id="paymentWall">
+    <div class="payment-form">
+      <div class="payment-title">🔐 Verify Payment</div>
+      <div class="payment-subtitle">Select your tier and enter your PayPal receipt #</div>
+      
+      <div style="margin-bottom:20px;">
+        <label class="form-label">Select Your Tier</label>
+        <div class="tier-choice">
+          <div class="tier-card active" data-tier="metallica" onclick="selectPaymentTier('metallica')">
+            <div class="tier-name">⚡ METALLICA</div>
+            <div class="tier-price">$125 • 24H</div>
+          </div>
+          <div class="tier-card" data-tier="gold" onclick="selectPaymentTier('gold')">
+            <div class="tier-name">🥇 GOLD</div>
+            <div class="tier-price">$150 • 24H</div>
+          </div>
+          <div class="tier-card" data-tier="purple" onclick="selectPaymentTier('purple')">
+            <div class="tier-name">💜 PURPLE</div>
+            <div class="tier-price">$175 • 72H</div>
+          </div>
+          <div class="tier-card" data-tier="allaccess" onclick="selectPaymentTier('allaccess')">
+            <div class="tier-name">👑 ALL-ACCESS</div>
+            <div class="tier-price">$275 • 168H</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">PayPal Receipt # or Invoice</label>
+        <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
+      </div>
+
+      <button class="btn btn-primary" onclick="verifyPayment()">🔓 Unlock Picks</button>
+      
+      <div style="margin-top:16px;padding:12px;background:rgba(6,182,212,0.1);border-radius:8px;border-left:3px solid var(--cyan);">
+        <div style="font-size:11px;color:var(--slate);line-height:1.6;">
+          <strong style="color:var(--cyan);">📝 How to find your receipt:</strong><br>
+          PayPal email → Find receipt # or use Transaction ID
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="fan-view" id="fanView">
     <div class="picks-section" id="fanPicksSection"></div>
   </div>
@@ -228,31 +287,77 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   </div>
 </div>
 
+<audio id="moneySound" preload="auto">
+  <source src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/45238433_money-counter_by_niksun76_preview.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 let picks = {metallica:[], gold:[], purple:[], allaccess:[]};
 let currentTier = 'metallica';
+let currentPaymentTier = 'metallica';
 let adminMode = false;
+let userVerified = false;
+let userTier = null;
 
 function loadPicks(){
-  const stored = localStorage.getItem('a2s_picks_timer');
+  const stored = localStorage.getItem('a2s_picks_gated');
   if(stored) picks = JSON.parse(stored);
-  const logoUrl = localStorage.getItem('a2s_logo_url');
-  if(logoUrl) document.getElementById('logoImg').src = logoUrl;
   renderPicksList();
-  renderFanView();
+  checkUserAuth();
   startCountdown();
+  updateDateTime();
+  setInterval(updateDateTime, 30000);
 }
 
 function savePicks(){
-  localStorage.setItem('a2s_picks_timer', JSON.stringify(picks));
+  localStorage.setItem('a2s_picks_gated', JSON.stringify(picks));
 }
 
-function updateLogo(){
-  const url = document.getElementById('logoUrl').value.trim();
-  if(!url) { alert('Enter a logo URL'); return; }
-  document.getElementById('logoImg').src = url;
-  localStorage.setItem('a2s_logo_url', url);
-  alert('✅ Logo updated!');
+function checkUserAuth(){
+  const userAuth = localStorage.getItem('a2s_user_verified');
+  if(userAuth){
+    const auth = JSON.parse(userAuth);
+    userVerified = true;
+    userTier = auth.tier;
+    document.getElementById('paymentWall').classList.remove('active');
+    document.getElementById('fanView').classList.add('active');
+    renderFanView();
+  } else {
+    document.getElementById('paymentWall').classList.add('active');
+    document.getElementById('fanView').classList.remove('active');
+  }
+}
+
+function selectPaymentTier(tier){
+  currentPaymentTier = tier;
+  document.querySelectorAll('.tier-card').forEach(card => card.classList.remove('active'));
+  document.querySelector(`[data-tier="${tier}"]`).classList.add('active');
+}
+
+function verifyPayment(){
+  const receipt = document.getElementById('paypalReceipt').value.trim().toUpperCase();
+  if(!receipt) { alert('❌ Enter PayPal receipt #'); return; }
+  
+  // Store user auth
+  const userAuth = {
+    tier: currentPaymentTier,
+    receipt: receipt,
+    timestamp: Date.now(),
+    expiresAt: currentPaymentTier === 'metallica' || currentPaymentTier === 'gold' ? 
+      Date.now() + (24 * 3600000) :
+      currentPaymentTier === 'purple' ? 
+      Date.now() + (72 * 3600000) :
+      Date.now() + (168 * 3600000)
+  };
+  
+  localStorage.setItem('a2s_user_verified', JSON.stringify(userAuth));
+  userVerified = true;
+  userTier = currentPaymentTier;
+  
+  document.getElementById('paymentWall').classList.remove('active');
+  document.getElementById('fanView').classList.add('active');
+  renderFanView();
+  alert('✅ Payment verified! Picks unlocked!');
 }
 
 function setTimerMinutes(mins){
@@ -292,7 +397,9 @@ function setCustomTimer(){
 }
 
 function startCountdown(){
-  setInterval(() => {
+  if(window.countdownInterval) clearInterval(window.countdownInterval);
+  
+  window.countdownInterval = setInterval(() => {
     const target = parseInt(localStorage.getItem('a2s_drop_target') || 0);
     if(!target) return;
     
@@ -301,7 +408,11 @@ function startCountdown(){
     
     if(diff <= 0){
       document.getElementById('countdownTimer').textContent = '00:00:00';
-      document.getElementById('countdownStatus').textContent = '🔥 Picks are LIVE!';
+      document.getElementById('countdownStatus').style.display = 'none';
+      document.getElementById('liveStatus').style.display = 'block';
+      document.getElementById('moneySound').play();
+      if(userVerified) renderFanView();
+      clearInterval(window.countdownInterval);
       return;
     }
     
@@ -311,12 +422,6 @@ function startCountdown(){
     
     document.getElementById('countdownTimer').textContent = 
       `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-    
-    if(diff < 60){
-      document.getElementById('countdownStatus').textContent = '⚠️ DROPS SOON!';
-    } else if(diff < 3600){
-      document.getElementById('countdownStatus').textContent = '⏱ Getting Close...';
-    }
   }, 1000);
 }
 
@@ -350,7 +455,6 @@ function addPick(){
   document.getElementById('pickNote').value = '';
   
   renderPicksList();
-  renderFanView();
   alert('✅ Pick added!');
 }
 
@@ -358,7 +462,6 @@ function deletePick(tier, idx){
   picks[tier].splice(idx, 1);
   savePicks();
   renderPicksList();
-  renderFanView();
 }
 
 function renderPicksList(){
@@ -377,9 +480,12 @@ function renderPicksList(){
 
 function renderFanView(){
   const tierNames = {metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
-  let html = '';
+  const tierAccess = {metallica:['metallica'], gold:['metallica','gold'], purple:['metallica','gold','purple'], allaccess:['metallica','gold','purple','allaccess']};
   
-  ['metallica','gold','purple','allaccess'].forEach(tier => {
+  let html = '';
+  const accessibleTiers = tierAccess[userTier] || [];
+  
+  accessibleTiers.forEach(tier => {
     if(picks[tier].length === 0) return;
     html += `<div class="tier-section">
       <div class="tier-header">${tierNames[tier]} — ${picks[tier].length} Picks</div>
@@ -393,7 +499,15 @@ function renderFanView(){
     </div>`;
   });
   
-  document.getElementById('fanPicksSection').innerHTML = html || '<div style="text-align:center;color:var(--slate);padding:40px 20px;font-size:14px;">⏳ Picks coming soon...</div>';
+  if(!html){
+    html = `<div class="locked-message">
+      <div class="locked-icon">🔒</div>
+      <div class="locked-text">Higher Tier Picks</div>
+      <div class="locked-subtext">Your ${userTier} tier includes ${accessibleTiers.length} tier${accessibleTiers.length !== 1 ? 's' : ''} of picks</div>
+    </div>`;
+  }
+  
+  document.getElementById('fanPicksSection').innerHTML = html;
 }
 
 function pushAllPicksToFans(){
@@ -410,7 +524,6 @@ function checkPin(){
     adminMode = true;
     document.getElementById('loginModal').classList.remove('active');
     document.getElementById('adminPanel').classList.add('active');
-    document.getElementById('fanView').classList.add('hidden');
     document.getElementById('toggleBtn').textContent = '👀';
   } else {
     alert('❌ Wrong PIN');
@@ -423,7 +536,6 @@ document.getElementById('toggleBtn').addEventListener('click', () => {
   } else {
     adminMode = false;
     document.getElementById('adminPanel').classList.remove('active');
-    document.getElementById('fanView').classList.remove('hidden');
     document.getElementById('toggleBtn').textContent = '🔧';
   }
 });
@@ -438,8 +550,6 @@ document.querySelectorAll('.tier-btn').forEach(btn => {
 
 document.getElementById('addPickBtn').addEventListener('click', addPick);
 
-updateDateTime();
-setInterval(updateDateTime, 30000);
 loadPicks();
 </script>
 
