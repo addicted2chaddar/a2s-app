@@ -6,24 +6,22 @@
 <title>Addicted2Sports™ — Victory Triangle Edition</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--navy:#060c14;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;--purple:#a855f7;--orange:#f59e0b;}
+:root{--navy:#060c14;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
 body{background:var(--navy);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
-.app{max-width:420px;margin:0 auto;background:var(--navy);min-height:100vh;position:relative;overflow-x:hidden;}
+.app{max-width:420px;margin:0 auto;background:var(--navy);min-height:100vh;position:relative;}
 .topbar{background:rgba(6,9,16,0.97);border-bottom:2px solid rgba(250,204,21,0.22);padding:0 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;height:58px;}
 .topbar-brand{display:flex;align-items:center;gap:9px;}
-.logo-badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1e3a5f,#0d1f38);border:1.5px solid rgba(250,204,21,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 0 12px rgba(250,204,21,0.12);}
+.logo-badge{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1e3a5f,#0d1f38);border:1.5px solid rgba(250,204,21,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;}
 .topbar-wordmark{display:flex;flex-direction:column;}
 .topbar-title{font-weight:900;font-size:11px;letter-spacing:1.5px;color:var(--white);}
 .topbar-sub{font-size:9px;color:var(--gold);letter-spacing:0.5px;}
-.screen{padding:14px 14px 92px;display:none;position:relative;z-index:1;}
+.screen{padding:14px 14px 92px;display:none;}
 .screen.active{display:block;}
 .card{background:rgba(10,16,28,0.92);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);margin-bottom:12px;}
-.picks-empty{text-align:center;padding:28px 16px;color:var(--slate);font-size:13px;border:1px dashed rgba(255,255,255,.1);border-radius:14px;}
-.big-btn{width:100%;padding:14px 0;border-radius:50px;border:none;font-weight:900;font-size:15px;cursor:pointer;transition:all 0.18s;}
-.big-btn-gold{background:var(--gold);color:#000;}
-.input-field{width:100%;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:var(--white);font-size:13px;outline:none;margin-bottom:8px;}
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
+.pick-card{background:rgba(10,16,28,0.92);border-radius:14px;padding:16px;border:1px solid rgba(250,204,21,0.2);margin-bottom:12px;}
+.pick-team{font-size:16px;font-weight:900;color:var(--white);margin-bottom:8px;}
+.pick-details{font-size:12px;color:var(--slate);line-height:1.6;}
+.picks-empty{text-align:center;padding:28px 16px;color:var(--slate);font-size:13px;}
 </style>
 </head>
 <body>
@@ -40,7 +38,6 @@ body{background:var(--navy);color:var(--white);font-family:-apple-system,'SF Pro
     <button id="topbarBtn" onclick="if(currentUser.email){a2sLock();}else{showLoginModal();}" style="background:none;border:none;color:var(--gold);font-size:13px;font-weight:800;cursor:pointer;padding:8px 12px;">🔐 Login</button>
   </div>
 
-  <!-- HOME SCREEN -->
   <div id="s-home" class="screen active">
     <div style="padding:10px 0 14px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;">
       <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1e3a5f,#0d1f38);border:1.5px solid rgba(250,204,21,0.28);display:flex;align-items:center;justify-content:center;font-size:20px;">🎯</div>
@@ -53,11 +50,11 @@ body{background:var(--navy);color:var(--white);font-family:-apple-system,'SF Pro
     <div class="card" style="border-color:rgba(250,204,21,.2);background:rgba(26,18,0,.85);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <span style="font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;">📅 TODAY'S PICKS</span>
-        <span id="pickStatus" style="background:rgba(148,163,184,.1);color:var(--slate);border:1px solid rgba(148,163,184,.25);padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;">🔒 LOCKED</span>
+        <span id="pickStatus" style="background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3);padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;">🟢 LIVE</span>
       </div>
       <div style="font-size:11px;color:var(--slate);letter-spacing:2px;text-align:center;margin-bottom:6px;">PICKS DROP IN</div>
-      <div style="font-size:42px;font-weight:900;color:var(--gold);letter-spacing:4px;text-align:center;font-variant-numeric:tabular-nums;text-shadow:0 0 20px rgba(250,204,21,.4);" id="countdown">--:--:--</div>
-      <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔔 Picks dropping soon!</div>
+      <div style="font-size:36px;font-weight:900;color:var(--gold);letter-spacing:2px;text-align:center;text-shadow:0 0 20px rgba(250,204,21,.4);" id="countdown">00:00:00</div>
+      <div id="dropMsg" style="color:var(--slate);font-size:12px;text-align:center;margin-top:8px;">🔥 Picks are LIVE!</div>
     </div>
 
     <div id="picksContainer"></div>
@@ -65,12 +62,19 @@ body{background:var(--navy);color:var(--white);font-family:-apple-system,'SF Pro
 </div>
 
 <script>
-// ============================================
-// PAYMENT VERIFICATION SYSTEM
-// ============================================
-
 let currentUser={email:null,tier:null,txnId:null,expiresAt:null};
-let adminPicks=JSON.parse(localStorage.getItem('a2s_picks')||'[]');
+
+// YOUR PICKS ARE HERE
+const adminPicks=[
+  {team:'Guardians vs Royals',betType:'MONEYLINE',odds:'-150',note:'G. Williams · 3:40 PM'},
+  {team:'Phillies vs Braves',betType:'MONEYLINE',odds:'+125',note:'C. Sánchez · Game Time'},
+  {team:'Rays vs Yankees',betType:'MONEYLINE',odds:'-170',note:'N. Martinez · 4:05 PM'},
+  {team:'Yankees vs Rays',betType:'MONEYLINE',odds:'+140',note:'G. Cole · 4:05 PM'},
+  {team:'Pirates vs Reds',betType:'MONEYLINE',odds:'-160',note:'B. Chandler · 4:07 PM'},
+  {team:'Blue Jays vs Orioles',betType:'MONEYLINE',odds:'+135',note:'K. Gausman · 4:07 PM'},
+  {team:'Twins vs White Sox',betType:'MONEYLINE',odds:'-180',note:'C. Prielipp · 4:10 PM'},
+  {team:'Red Sox vs Mariners',betType:'MONEYLINE',odds:'+145',note:'P. Tolle · Game Time'}
+];
 
 function initPaymentSession(){
   const stored=localStorage.getItem('a2s_payment_session');
@@ -94,13 +98,11 @@ function setPaymentSession(email,tier,txnId,durationHours){
   const expiresAt=new Date(Date.now()+durationHours*3600000).toISOString();
   currentUser={email,tier,txnId,expiresAt};
   localStorage.setItem('a2s_payment_session',JSON.stringify(currentUser));
-  localStorage.setItem('a2s_fan_tier',tier);
 }
 
 function logoutPayment(){
   currentUser={email:null,tier:null,txnId:null,expiresAt:null};
   localStorage.removeItem('a2s_payment_session');
-  localStorage.removeItem('a2s_fan_tier');
   renderPicks();
 }
 
@@ -108,10 +110,6 @@ function isUserPaid(){
   if(!currentUser.email)return false;
   if(!currentUser.expiresAt)return false;
   return new Date(currentUser.expiresAt)>new Date();
-}
-
-function a2sIsPaid(){
-  return isUserPaid();
 }
 
 function verifyPayPalReceipt(email,txnId){
@@ -127,7 +125,7 @@ function verifyPayPalReceipt(email,txnId){
     showPaymentModal('✅ Access Verified!','Welcome to Addicted2Sports! Your picks are ready.');
     return true;
   }else{
-    alert('❌ Receipt not found.\n\nTest Accounts:\nemail: test@example.com\ntxn: I-123ABC\n\nemail: demo@a2s.com\ntxn: I-456DEF');
+    alert('❌ Receipt not found.\n\nTest: test@example.com / I-123ABC');
     return false;
   }
 }
@@ -135,7 +133,7 @@ function verifyPayPalReceipt(email,txnId){
 function showLoginModal(){
   const modal=document.createElement('div');
   modal.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;';
-  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;box-shadow:0 0 30px rgba(250,204,21,0.15);"><div style="font-size:28px;margin-bottom:12px;">🔐</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">Login Required</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Enter your email and PayPal receipt to unlock picks.</div><input id="paymentEmail" type="email" placeholder="your@email.com" class="input-field"/><input id="paymentTxnId" type="text" placeholder="PayPal Txn ID (I-...)" class="input-field" style="margin-bottom:12px;"/><div style="display:flex;gap:8px;"><button onclick="attemptLoginPayment()" style="flex:1;padding:10px;background:#facc15;color:#000;border:none;border-radius:50px;font-weight:900;font-size:13px;cursor:pointer;">Login</button><button onclick="this.closest('[style*=z-index]').remove()" style="flex:1;padding:10px;background:rgba(255,255,255,0.1);color:#e8eef7;border:1px solid rgba(255,255,255,0.2);border-radius:50px;font-weight:800;font-size:13px;cursor:pointer;">Cancel</button></div></div>`;
+  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;"><div style="font-size:28px;margin-bottom:12px;">🔐</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">Login Required</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Enter your email and PayPal receipt.</div><input id="paymentEmail" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e8eef7;font-size:13px;margin-bottom:8px;"/><input id="paymentTxnId" type="text" placeholder="PayPal Txn ID (I-...)" style="width:100%;padding:10px 12px;border-radius:9px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e8eef7;font-size:13px;margin-bottom:12px;"/><div style="display:flex;gap:8px;"><button onclick="attemptLoginPayment()" style="flex:1;padding:10px;background:#facc15;color:#000;border:none;border-radius:50px;font-weight:900;font-size:13px;cursor:pointer;">Login</button><button onclick="this.closest('[style*=z-index]').remove()" style="flex:1;padding:10px;background:rgba(255,255,255,0.1);color:#e8eef7;border:1px solid rgba(255,255,255,0.2);border-radius:50px;font-weight:800;font-size:13px;cursor:pointer;">Cancel</button></div></div>`;
   document.body.appendChild(modal);
   document.getElementById('paymentEmail').focus();
 }
@@ -155,131 +153,46 @@ function attemptLoginPayment(){
 function showPaymentModal(title,body){
   const modal=document.createElement('div');
   modal.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;';
-  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;box-shadow:0 0 30px rgba(250,204,21,0.15);"><div style="font-size:28px;margin-bottom:12px;">🔓</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">${title}</div><div style="color:#94a3b8;font-size:13px;margin-bottom:18px;line-height:1.6;">${body}</div><button onclick="this.parentElement.parentElement.remove()" style="background:#facc15;color:#000;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:900;cursor:pointer;">Got It 🏆</button></div>`;
+  modal.innerHTML=`<div style="background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:2px solid rgba(250,204,21,0.4);border-radius:16px;padding:28px 24px;text-align:center;max-width:320px;"><div style="font-size:28px;margin-bottom:12px;">🔓</div><div style="color:#facc15;font-size:16px;font-weight:900;margin-bottom:8px;">${title}</div><div style="color:#94a3b8;font-size:13px;margin-bottom:18px;line-height:1.6;">${body}</div><button onclick="this.parentElement.parentElement.remove()" style="background:#facc15;color:#000;border:none;border-radius:50px;padding:12px 28px;font-size:14px;font-weight:900;cursor:pointer;">Got It 🏆</button></div>`;
   document.body.appendChild(modal);
-}
-
-function a2sUnlock(){
-  if(!isUserPaid()){
-    showLoginModal();
-    return;
-  }
-  showPaymentModal('Already Active','Your '+currentUser.tier+' access is active!');
 }
 
 function a2sLock(){
   logoutPayment();
 }
 
-// ============================================
-// RENDER PICKS WITH PAYMENT GATES
-// ============================================
-
 function renderPicks(){
   const container=document.getElementById('picksContainer');
   if(!container)return;
 
-  // GATE #1: Not logged in
   if(!currentUser.email){
-    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">🔒</div><div style="font-weight:800;color:#facc15;margin-bottom:8px;">Login to Unlock</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Sign in with your PayPal receipt to see expert picks.</div><button onclick="showLoginModal()" class="big-btn big-btn-gold">🔓 Login to Unlock</button></div>';
+    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">🔒</div><div style="font-weight:800;color:#facc15;margin-bottom:8px;">Login to Unlock</div><div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Sign in with your PayPal receipt to see expert picks.</div><button onclick="showLoginModal()" style="width:100%;padding:14px;background:#facc15;color:#000;border:none;border-radius:50px;font-weight:900;font-size:15px;cursor:pointer;">🔓 Login</button></div>';
     document.getElementById('tierName').textContent='Today\'s Picks';
     document.getElementById('tierStatus').textContent='Login to unlock';
-    document.getElementById('topbarBtn').textContent='🔐 Login';
     return;
   }
 
-  // GATE #2: Subscription expired
   if(!isUserPaid()){
-    const expDate=new Date(currentUser.expiresAt).toLocaleString();
-    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">⏰</div><div style="font-weight:800;color:#ef4444;margin-bottom:8px;">Access Expired</div><div style="font-size:13px;color:#94a3b8;">Your '+currentUser.tier+' access ended on<br/><strong style="color:#e8eef7;">'+expDate+'</strong></div></div>';
-    document.getElementById('tierName').textContent='Expired';
-    document.getElementById('tierStatus').textContent=currentUser.tier+' · expired';
+    container.innerHTML='<div class="card" style="text-align:center;padding:32px 16px;"><div style="font-size:32px;margin-bottom:12px;">⏰</div><div style="font-weight:800;color:#ef4444;margin-bottom:8px;">Access Expired</div><div style="font-size:13px;color:#94a3b8;">Your access ended. Login again with a new receipt.</div></div>';
     return;
   }
 
-  // GATE #3: Show paid user picks
   document.getElementById('tierName').textContent='✅ '+currentUser.tier+' Tier';
   document.getElementById('tierStatus').textContent='Valid until '+new Date(currentUser.expiresAt).toLocaleDateString();
-  document.getElementById('topbarBtn').textContent='🚪 Logout';
 
-  if(!adminPicks.length){
-    container.innerHTML='<div class="picks-empty">📊 No picks released yet. Check back at drop time!</div>';
-    return;
-  }
-
-  let html='<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:12px 14px;margin-bottom:12px;"><strong style="color:#22c55e;font-weight:900;">🟢 LIVE — '+adminPicks.length+' picks available</strong></div>';
+  let html='<div style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:12px 14px;margin-bottom:12px;"><strong style="color:#22c55e;font-weight:900;">🟢 LIVE — '+adminPicks.length+' picks</strong></div>';
   
-  if(Array.isArray(adminPicks)){
-    adminPicks.forEach((p,i)=>{
-      html+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;"><div><strong style="font-size:17px;font-weight:900;">'+p.team+'</strong><div style="font-size:12px;color:#94a3b8;margin-top:4px;">'+p.betType+' · '+p.odds+'</div></div></div>'+(p.note?'<div style="font-size:12px;color:#94a3b8;font-style:italic;">"'+p.note+'"</div>':'')+'</div>';
-    });
-  }
+  adminPicks.forEach((p)=>{
+    html+='<div class="pick-card"><div class="pick-team">'+p.team+'</div><div class="pick-details"><strong>'+p.betType+'</strong> · '+p.odds+'<br/>'+p.note+'</div></div>';
+  });
   
   container.innerHTML=html;
 }
-
-// ============================================
-// COUNTDOWN TIMER
-// ============================================
-
-setInterval(()=>{
-  const dropTime=parseInt(localStorage.getItem('a2s_drop_target')||'0');
-  if(!dropTime){
-    document.getElementById('countdown').textContent='--:--:--';
-    return;
-  }
-  const now=Math.floor(Date.now()/1000);
-  const secs=dropTime-now;
-  if(secs<=0){
-    document.getElementById('pickStatus').textContent='🟢 LIVE';
-    document.getElementById('pickStatus').style.background='rgba(34,197,94,.15)';
-    document.getElementById('pickStatus').style.color='var(--green)';
-    document.getElementById('dropMsg').textContent='🔥 Picks are LIVE!';
-    renderPicks();
-  }else{
-    const h=Math.floor(secs/3600);
-    const m=Math.floor((secs%3600)/60);
-    const s=secs%60;
-    document.getElementById('countdown').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  }
-},1000);
-
-// ============================================
-// INITIALIZE ON LOAD
-// ============================================
 
 document.addEventListener('DOMContentLoaded', ()=>{
   initPaymentSession();
   renderPicks();
 });
-
-// ============================================
-// ADMIN FUNCTIONS FOR TESTING
-// ============================================
-
-function pushTestPicks(){
-  const testPicks=[
-    {team:'Lakers',betType:'MONEYLINE',odds:'-120',note:'Sharp action moving here'},
-    {team:'Warriors',betType:'SPREAD',odds:'-5.5',note:'Monitor line movement'},
-    {team:'Celtics',betType:'OVER',odds:'215.5',note:'Pace should favor totals'},
-    {team:'Heat',betType:'PARLAY',odds:'+250',note:'Monitor weather'}
-  ];
-  localStorage.setItem('a2s_picks',JSON.stringify(testPicks));
-  alert('📡 Test picks pushed! Set drop time to test countdown.');
-  renderPicks();
-}
-
-function setDropTimeNow(){
-  const now=Math.floor(Date.now()/1000)+5;
-  localStorage.setItem('a2s_drop_target',now);
-  alert('Drop time set to 5 seconds from now. Watch the countdown!');
-}
-
-// Admin functions available in browser console:
-// pushTestPicks() - adds 4 test picks
-// setDropTimeNow() - sets drop time to 5 seconds
-// currentUser - view current logged in user
-// initPaymentSession() - reload session
 </script>
 
 </body>
