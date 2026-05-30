@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>Addicted2Sports™ — Tier Breakdown</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#0a0e1c;--dark:#0f1419;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
+body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;padding:20px;}
+
+.header{text-align:center;margin-bottom:40px;padding:20px;}
+.logo{font-size:48px;margin-bottom:10px;}
+.title{font-size:32px;font-weight:900;color:var(--gold);margin-bottom:10px;letter-spacing:1px;}
+.subtitle{font-size:16px;color:var(--cyan);letter-spacing:0.5px;}
+
+.container{max-width:1000px;margin:0 auto;}
+
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:40px;}
+
+.tier-card{background:linear-gradient(135deg,rgba(10,16,28,0.95),rgba(15,20,25,0.95));border:3px solid rgba(250,204,21,0.2);border-radius:16px;padding:32px 24px;text-align:center;transition:all 0.3s ease;position:relative;overflow:hidden;}
+
+.tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--cyan));opacity:0;}
+.tier-card:hover{border-color:var(--gold);box-shadow:0 0 30px rgba(250,204,21,0.25);transform:translateY(-8px);}
+.tier-card:hover::before{opacity:1;}
+
+.tier-icon{font-size:56px;margin-bottom:16px;}
+.tier-name{font-size:24px;font-weight:900;color:var(--gold);margin-bottom:12px;letter-spacing:0.5px;text-transform:uppercase;}
+.tier-price{font-size:36px;font-weight:900;color:var(--white);margin-bottom:4px;}
+.tier-price-label{font-size:12px;color:var(--slate);margin-bottom:24px;}
+
+.tier-details{background:rgba(255,255,255,0.05);border-radius:12px;padding:20px;margin-bottom:24px;border:1px solid rgba(250,204,21,0.1);}
+
+.detail-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.detail-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+
+.detail-label{font-size:11px;color:var(--slate);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px;}
+.detail-value{font-size:16px;font-weight:900;color:var(--white);}
+
+.duration{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(34,197,94,0.05));border:2px solid var(--green);border-radius:12px;padding:16px;margin-bottom:20px;}
+.duration-label{font-size:11px;color:var(--green);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;}
+.duration-value{font-size:24px;font-weight:900;color:var(--green);}
+
+.expiration{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.3);border-radius:12px;padding:12px;font-size:12px;}
+.expiration-label{color:var(--slate);margin-bottom:6px;}
+.expiration-time{font-weight:900;color:var(--gold);}
+
+.tier-cta{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;padding:16px;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;transition:all 0.3s ease;text-transform:uppercase;letter-spacing:0.5px;}
+.tier-cta:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(250,204,21,0.3);}
+
+.comparison-section{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:16px;padding:32px;margin-top:40px;}
+.comparison-title{font-size:28px;font-weight:900;color:var(--gold);margin-bottom:28px;text-align:center;}
+
+.comparison-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+.comparison-table th{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));padding:16px;text-align:left;border:1px solid rgba(250,204,21,0.2);font-weight:900;color:var(--gold);font-size:13px;text-transform:uppercase;}
+.comparison-table td{padding:16px;border:1px solid rgba(250,204,21,0.1);font-size:14px;color:var(--white);}
+.comparison-table tr:hover{background:rgba(250,204,21,0.05);}
+
+.feature-check{color:var(--green);font-weight:900;}
+.feature-cross{color:var(--red);font-weight:900;}
+
+.timeline{margin-top:40px;padding:32px;background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(6,182,212,0.05));border-radius:16px;border:2px solid rgba(6,182,212,0.2);}
+.timeline-title{font-size:24px;font-weight:900;color:var(--cyan);margin-bottom:24px;text-align:center;}
+
+.timeline-item{display:flex;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(6,182,212,0.2);}
+.timeline-item:last-child{border-bottom:none;margin-bottom:0;}
+
+.timeline-icon{font-size:32px;min-width:50px;text-align:center;}
+.timeline-content h4{font-size:16px;font-weight:900;color:var(--white);margin-bottom:4px;}
+.timeline-content p{font-size:13px;color:var(--slate);line-height:1.6;}
+.timeline-time{font-size:12px;color:var(--cyan);font-weight:900;margin-top:6px;}
+
+.faq{margin-top:40px;padding:32px;background:rgba(10,16,28,0.9);border-radius:16px;border:2px solid rgba(250,204,21,0.2);}
+.faq-title{font-size:24px;font-weight:900;color:var(--gold);margin-bottom:24px;}
+.faq-item{margin-bottom:20px;}
+.faq-q{font-weight:900;color:var(--white);margin-bottom:8px;font-size:14px;}
+.faq-a{color:var(--slate);font-size:13px;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">⚡</div>
+  <div class="title">ADDICTED2SPORTS™ PICKS</div>
+  <div class="subtitle">How Each Tier Works • Pricing • Duration</div>
+</div>
+
+<div class="container">
+  <div class="tier-grid">
+    <!-- METALLICA -->
+    <div class="tier-card">
+      <div class="tier-icon">⚡</div>
+      <div class="tier-name">METALLICA</div>
+      <div class="tier-price">$125</div>
+      <div class="tier-price-label">One-time payment</div>
+      
+      <div class="duration">
+        <div class="duration-label">⏱ Duration</div>
+        <div class="duration-value">24 Hours</div>
+      </div>
+
+      <div class="tier-details">
+        <div class="detail-item">
+          <div class="detail-label">📊 Picks Included</div>
+          <div class="detail-value">2 Expert Picks</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">🎯 What You Get</div>
+          <div class="detail-value">Metallica picks ONLY</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">📱 Access Type</div>
+          <div class="detail-value">24H Access</div>
+        </div>
+      </div>
+
+      <div class="expiration">
+        <div class="expiration-label">⏰ Expires:</div>
+        <div class="expiration-time">Next day @ Same time</div>
+      </div>
+
+      <button class="tier-cta">💳 Get Metallica</button>
+    </div>
+
+    <!-- GOLD -->
+    <div class="tier-card">
+      <div class="tier-icon">🥇</div>
+      <div class="tier-name">GOLD</div>
+      <div class="tier-price">$150</div>
+      <div class="tier-price-label">One-time payment</div>
+      
+      <div class="duration">
+        <div class="duration-label">⏱ Duration</div>
+        <div class="duration-value">24 Hours</div>
+      </div>
+
+      <div class="tier-details">
+        <div class="detail-item">
+          <div class="detail-label">📊 Picks Included</div>
+          <div class="detail-value">4 Expert Picks</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">🎯 What You Get</div>
+          <div class="detail-value">Metallica + Gold picks</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">📱 Access Type</div>
+          <div class="detail-value">24H Access</div>
+        </div>
+      </div>
+
+      <div class="expiration">
+        <div class="expiration-label">⏰ Expires:</div>
+        <div class="expiration-time">Next day @ Same time</div>
+      </div>
+
+      <button class="tier-cta">💳 Get Gold</button>
+    </div>
+
+    <!-- PURPLE -->
+    <div class="tier-card">
+      <div class="tier-icon">💜</div>
+      <div class="tier-name">PURPLE</div>
+      <div class="tier-price">$175</div>
+      <div class="tier-price-label">One-time payment</div>
+      
+      <div class="duration">
+        <div class="duration-label">⏱ Duration</div>
+        <div class="duration-value">72 Hours</div>
+      </div>
+
+      <div class="tier-details">
+        <div class="detail-item">
+          <div class="detail-label">📊 Picks Included</div>
+          <div class="detail-value">5 Expert Picks</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">🎯 What You Get</div>
+          <div class="detail-value">Metallica + Gold + Purple</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">📱 Access Type</div>
+          <div class="detail-value">3-Day Access</div>
+        </div>
+      </div>
+
+      <div class="expiration">
+        <div class="expiration-label">⏰ Expires:</div>
+        <div class="expiration-time">In 3 days @ Same time</div>
+      </div>
+
+      <button class="tier-cta">💳 Get Purple</button>
+    </div>
+
+    <!-- ALL-ACCESS -->
+    <div class="tier-card">
+      <div class="tier-icon">👑</div>
+      <div class="tier-name">ALL-ACCESS</div>
+      <div class="tier-price">$275</div>
+      <div class="tier-price-label">One-time payment</div>
+      
+      <div class="duration">
+        <div class="duration-label">⏱ Duration</div>
+        <div class="duration-value">168 Hours</div>
+      </div>
+
+      <div class="tier-details">
+        <div class="detail-item">
+          <div class="detail-label">📊 Picks Included</div>
+          <div class="detail-value">8+ Expert Picks</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">🎯 What You Get</div>
+          <div class="detail-value">ALL PICKS (every tier)</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">📱 Access Type</div>
+          <div class="detail-value">7-Day Access</div>
+        </div>
+      </div>
+
+      <div class="expiration">
+        <div class="expiration-label">⏰ Expires:</div>
+        <div class="expiration-time">In 7 days @ Same time</div>
+      </div>
+
+      <button class="tier-cta">💳 Get All-Access</button>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison-section">
+    <div class="comparison-title">📊 Tier Comparison</div>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>⚡ Metallica</th>
+          <th>🥇 Gold</th>
+          <th>💜 Purple</th>
+          <th>👑 All-Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Price</strong></td>
+          <td>$125</td>
+          <td>$150</td>
+          <td>$175</td>
+          <td>$275</td>
+        </tr>
+        <tr>
+          <td><strong>Duration</strong></td>
+          <td>24 Hours</td>
+          <td>24 Hours</td>
+          <td>72 Hours</td>
+          <td>168 Hours (7 days)</td>
+        </tr>
+        <tr>
+          <td><strong>Picks Included</strong></td>
+          <td>2</td>
+          <td>4</td>
+          <td>5</td>
+          <td>8+</td>
+        </tr>
+        <tr>
+          <td><strong>Metallica Picks</strong></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gold Picks</strong></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+        </tr>
+        <tr>
+          <td><strong>Purple Picks</strong></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-check">✓</span></td>
+          <td><span class="feature-check">✓</span></td>
+        </tr>
+        <tr>
+          <td><strong>All-Access Picks</strong></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-cross">✗</span></td>
+          <td><span class="feature-check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIMELINE EXAMPLE -->
+  <div class="timeline">
+    <div class="timeline-title">📅 Example: What Happens After You Pay</div>
+    
+    <div class="timeline-item">
+      <div class="timeline-icon">1️⃣</div>
+      <div class="timeline-content">
+        <h4>You Send Payment</h4>
+        <p>Click PayPal button → Send $125-$275</p>
+        <div class="timeline-time">Instantly</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-icon">2️⃣</div>
+      <div class="timeline-content">
+        <h4>Get Receipt #</h4>
+        <p>PayPal sends you a Transaction ID via email</p>
+        <div class="timeline-time">1-2 minutes</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-icon">3️⃣</div>
+      <div class="timeline-content">
+        <h4>Return to Site</h4>
+        <p>Go back to Addicted2Sports.com, select your tier</p>
+        <div class="timeline-time">Immediately</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-icon">4️⃣</div>
+      <div class="timeline-content">
+        <h4>Enter Receipt #</h4>
+        <p>Paste your PayPal Transaction ID → Click Unlock</p>
+        <div class="timeline-time">30 seconds</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-icon">✅</div>
+      <div class="timeline-content">
+        <h4>Picks Unlock!</h4>
+        <p>See all picks for your tier + countdown to expiration</p>
+        <div class="timeline-time">Instantly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <div class="faq-title">❓ Frequently Asked Questions</div>
+    
+    <div class="faq-item">
+      <div class="faq-q">Q: What happens when my access expires?</div>
+      <div class="faq-a">A: Your picks disappear. New drops require a new purchase. The timer shows exactly when access ends.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q: Can I upgrade mid-session?</div>
+      <div class="faq-a">A: Yes! Buy All-Access and unlock all tiers. Each tier is separate.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q: Why does All-Access cost more?</div>
+      <div class="faq-a">A: 7-day access (vs 24H) + 8+ picks (vs 2-5) + all tier access. Best value for serious bettors.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q: How many picks will I see?</div>
+      <div class="faq-a">A: Minimum guaranteed per tier. Often MORE as games drop throughout the day.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q: When do picks drop?</div>
+      <div class="faq-a">A: Throughout the day as games happen. Big games = biggest drops. Check the countdown timer!</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
