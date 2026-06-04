@@ -8,183 +8,140 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--navy:#0a0e1c;--dark:#0f1419;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
 body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
-
 .header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:20px;text-align:center;position:sticky;top:0;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
-.logo-image-container{margin-bottom:14px;}
 .logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);}
 .brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
-
 .countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(250,204,21,0.25)}50%{box-shadow:0 0 50px rgba(250,204,21,0.4)}}
 .countdown-label{font-size:11px;color:var(--slate);letter-spacing:1.5px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
 .countdown-timer{font-size:56px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
 .countdown-status{font-size:14px;color:var(--cyan);margin-top:10px;font-weight:800;}
-
-.sync-badge{font-size:10px;color:var(--green);margin-top:6px;letter-spacing:0.5px;}
-
+.sync-badge{font-size:10px;color:var(--green);margin-top:6px;}
 .header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
 .info-item{display:flex;flex-direction:column;align-items:center;}
 .info-label{font-size:9px;color:var(--slate);letter-spacing:0.8px;margin-bottom:3px;text-transform:uppercase;}
 .info-value{font-weight:900;color:var(--gold);font-size:14px;}
-
 .container{max-width:520px;margin:0 auto;padding:16px;}
-
 .admin-panel{display:none;}
 .admin-panel.active{display:block;}
-
 .payment-instructions{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(34,197,94,0.05));border:3px solid var(--green);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center;}
 .payment-instructions-title{font-size:20px;font-weight:900;color:var(--green);margin-bottom:12px;text-transform:uppercase;}
 .payment-steps{font-size:13px;color:var(--white);line-height:1.8;margin-bottom:16px;}
 .payment-step{margin-bottom:10px;}
 .step-num{background:var(--green);color:#000;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-right:8px;}
-
-.paypal-button{background:linear-gradient(135deg,#0070ba,#003087);color:var(--white);padding:16px 24px;border-radius:12px;border:none;font-weight:900;font-size:16px;cursor:pointer;width:100%;text-decoration:none;display:inline-block;text-align:center;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,112,186,0.4);}
-.paypal-button:hover{transform:translateY(-3px);box-shadow:0 6px 25px rgba(0,112,186,0.6);}
-
+.paypal-button{background:linear-gradient(135deg,#0070ba,#003087);color:var(--white);padding:16px 24px;border-radius:12px;border:none;font-weight:900;font-size:16px;cursor:pointer;width:100%;text-decoration:none;display:inline-block;text-align:center;transition:all 0.3s ease;}
 .payment-wall{display:block !important;}
 .payment-wall.hidden{display:none !important;}
-
 .form-group{margin-bottom:16px;}
 .form-label{display:block;font-size:12px;font-weight:900;color:var(--gold);margin-bottom:8px;letter-spacing:0.8px;text-transform:uppercase;}
 .form-input,.form-textarea,.form-select{width:100%;padding:13px 14px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;transition:all 0.3s ease;}
-.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);background:rgba(10,16,28,0.95);box-shadow:0 0 20px rgba(250,204,21,0.15);}
+.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);}
 .form-textarea{resize:vertical;min-height:90px;}
-
 .timer-controls{background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;padding:14px;margin-bottom:16px;}
 .timer-label{font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;text-transform:uppercase;}
 .timer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .timer-btn{padding:10px;background:rgba(250,204,21,0.1);border:2px solid rgba(250,204,21,0.3);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;text-transform:uppercase;}
-.timer-btn:hover{background:rgba(250,204,21,0.2);border-color:var(--gold);}
-
 .custom-time-row{display:flex;gap:8px;margin-top:8px;}
 .custom-time-input{flex:1;padding:10px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:8px;color:var(--white);font-size:13px;}
 .custom-time-btn{padding:10px 14px;background:rgba(250,204,21,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;white-space:nowrap;}
-
 .tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .tier-btn{padding:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(10,16,28,0.8);color:var(--white);border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
-.tier-btn.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));color:var(--gold);box-shadow:0 0 20px rgba(250,204,21,0.2);}
-.tier-btn:hover{border-color:var(--gold);transform:translateY(-2px);}
-
+.tier-btn.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));color:var(--gold);}
 .btn{padding:14px 20px;border:none;border-radius:11px;font-weight:900;font-size:13px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
 .btn-primary{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;width:100%;box-shadow:0 4px 20px rgba(250,204,21,0.3);}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 6px 30px rgba(250,204,21,0.4);}
 .btn-secondary{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);width:100%;margin-top:8px;}
-.btn-danger{background:rgba(239,68,68,0.2);color:var(--red);border:1px solid rgba(239,68,68,0.4);width:100%;margin-top:8px;}
-
+.btn-danger{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);width:100%;margin-top:8px;}
 .picks-list{display:none;}
 .picks-list.active{display:block;}
 .pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;}
 .pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .pick-team{font-weight:900;color:var(--white);font-size:15px;}
-.pick-tier{font-size:11px;background:linear-gradient(135deg,rgba(250,204,21,0.2),rgba(250,204,21,0.1));color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;border:1px solid rgba(250,204,21,0.3);}
-.pick-details{font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.pick-tier{font-size:11px;background:rgba(250,204,21,0.1);color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;}
+.pick-details{font-size:13px;color:var(--slate);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
 .pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
 .btn-sm{padding:8px 12px;font-size:12px;}
-
 .fan-view{display:none !important;}
 .fan-view.active{display:block !important;}
-
 .picks-section{margin-top:24px;margin-bottom:60px;}
 .tier-section{margin-bottom:28px;}
-.tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);box-shadow:0 4px 12px rgba(250,204,21,0.1);text-transform:uppercase;}
+.tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);text-transform:uppercase;}
 .pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;}
 .pick-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
 .pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;}
 .pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
 .pick-card-note{font-size:13px;color:var(--cyan);line-height:1.6;}
-
 .tier-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 .tier-card{padding:16px;background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;cursor:pointer;transition:all 0.3s ease;text-align:center;}
-.tier-card:hover{border-color:var(--gold);}
-.tier-card.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));box-shadow:0 0 20px rgba(250,204,21,0.3);}
+.tier-card.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));}
 .tier-name{font-weight:900;color:var(--gold);font-size:14px;margin-bottom:4px;}
 .tier-price{color:var(--white);font-size:13px;}
-
 .payment-form{background:rgba(10,16,28,0.95);border:2px solid rgba(250,204,21,0.3);border-radius:14px;padding:28px;margin-top:40px;margin-bottom:60px;}
-.payment-title{font-size:20px;font-weight:900;color:var(--gold);margin-bottom:20px;text-align:center;letter-spacing:1px;}
+.payment-title{font-size:20px;font-weight:900;color:var(--gold);margin-bottom:20px;text-align:center;}
 .payment-subtitle{font-size:13px;color:var(--cyan);margin-bottom:16px;text-align:center;line-height:1.6;}
-
-.success-message{background:rgba(34,197,94,0.2);border:2px solid var(--green);color:var(--green);padding:12px;border-radius:10px;margin:20px 0;font-weight:900;animation:glow 1.5s infinite;display:none;}
+.success-message{background:rgba(34,197,94,0.2);border:2px solid var(--green);color:var(--green);padding:12px;border-radius:10px;margin:20px 0;font-weight:900;display:none;}
 .success-message.show{display:block !important;}
-@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(34,197,94,0.3)}50%{box-shadow:0 0 30px rgba(34,197,94,0.6)}}
-
-.footer-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 6px 25px rgba(250,204,21,0.4);transition:all 0.3s ease;z-index:500;}
-.footer-btn:hover{transform:scale(1.12);}
-
+.footer-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 6px 25px rgba(250,204,21,0.4);z-index:500;}
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
 .modal.active{display:flex;}
-.modal-content{background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:3px solid var(--gold);border-radius:16px;padding:32px 28px;max-width:320px;text-align:center;box-shadow:0 0 40px rgba(250,204,21,0.3);}
-.modal-title{font-size:18px;font-weight:900;color:var(--gold);margin-bottom:14px;letter-spacing:1px;text-transform:uppercase;}
-.modal-input{width:100%;padding:13px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:10px;color:var(--white);font-size:13px;margin-bottom:14px;transition:all 0.3s ease;}
+.modal-content{background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:3px solid var(--gold);border-radius:16px;padding:32px 28px;max-width:320px;text-align:center;}
+.modal-title{font-size:18px;font-weight:900;color:var(--gold);margin-bottom:14px;text-transform:uppercase;}
+.modal-input{width:100%;padding:13px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:10px;color:var(--white);font-size:13px;margin-bottom:14px;}
 .modal-input:focus{outline:none;border-color:var(--gold);}
-.modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;transition:all 0.3s ease;text-transform:uppercase;}
-.modal-btn:hover{transform:translateY(-2px);}
-
-.cloud-status{font-size:10px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
-.cloud-ok{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3);}
-.cloud-err{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);}
-.cloud-loading{background:rgba(250,204,21,0.15);color:var(--gold);border:1px solid rgba(250,204,21,0.3);}
+.modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;text-transform:uppercase;}
+.admin-bar{margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;}
+.saving{font-size:11px;color:var(--gold);animation:blink 0.8s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 </style>
 </head>
 <body>
 
 <div class="header-hero">
-  <div class="logo-image-container">
+  <div style="margin-bottom:14px;">
     <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image">
   </div>
-  
   <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
-  
   <div class="countdown-display">
     <div class="countdown-label">⏰ PICKS DROP IN</div>
     <div class="countdown-timer" id="countdownTimer">--:--:--</div>
     <div class="countdown-status" id="countdownStatus">⏳ Loading...</div>
-    <div class="sync-badge" id="syncBadge">🔄 Syncing...</div>
+    <div class="sync-badge" id="syncBadge">🔄 Connecting...</div>
   </div>
-  
   <div class="header-info">
-    <div class="info-item">
-      <div class="info-label">📅</div>
-      <div class="info-value" id="dateDisplay">Today</div>
-    </div>
-    <div class="info-item">
-      <div class="info-label">🕐</div>
-      <div class="info-value" id="timeDisplay">--:--</div>
-    </div>
-    <div class="info-item">
-      <div class="info-label">📊</div>
-      <div class="info-value" id="statusDisplay">🟢 LIVE</div>
-    </div>
+    <div class="info-item"><div class="info-label">📅</div><div class="info-value" id="dateDisplay">Today</div></div>
+    <div class="info-item"><div class="info-label">🕐</div><div class="info-value" id="timeDisplay">--:--</div></div>
+    <div class="info-item"><div class="info-label">📊</div><div class="info-value" id="statusDisplay">🟢 LIVE</div></div>
   </div>
 </div>
 
 <div class="container">
+
+  <!-- ADMIN PANEL -->
   <div class="admin-panel" id="adminPanel">
-    <div style="margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;">
-      <div style="font-size:12px;color:var(--gold);font-weight:900;letter-spacing:0.5px;text-transform:uppercase;">⚙️ Admin Mode — Cloud Sync ON</div>
-      <div id="cloudStatus" class="cloud-status cloud-loading">⏳ Loading</div>
+    <div class="admin-bar">
+      <div style="font-size:12px;color:var(--gold);font-weight:900;text-transform:uppercase;">⚙️ Admin — GitHub Sync</div>
+      <span id="saveStatus" style="font-size:11px;color:var(--green);">✅ Ready</span>
     </div>
 
     <div class="timer-controls">
-      <div class="timer-label">⏰ Set Countdown Timer — Syncs to ALL devices</div>
+      <div class="timer-label">⏰ Drop Timer — Syncs to every fan device</div>
       <div class="timer-buttons">
-        <button class="timer-btn" onclick="setTimerMinutes(5)">5 MIN</button>
-        <button class="timer-btn" onclick="setTimerMinutes(15)">15 MIN</button>
-        <button class="timer-btn" onclick="setTimerMinutes(30)">30 MIN</button>
-        <button class="timer-btn" onclick="setTimerHours(1)">1 HR</button>
-        <button class="timer-btn" onclick="setTimerHours(2)">2 HR</button>
-        <button class="timer-btn" onclick="setTimerHours(3)">3 HR</button>
+        <button class="timer-btn" onclick="setTimerMins(5)">5 MIN</button>
+        <button class="timer-btn" onclick="setTimerMins(15)">15 MIN</button>
+        <button class="timer-btn" onclick="setTimerMins(30)">30 MIN</button>
+        <button class="timer-btn" onclick="setTimerHrs(1)">1 HR</button>
+        <button class="timer-btn" onclick="setTimerHrs(2)">2 HR</button>
+        <button class="timer-btn" onclick="setTimerHrs(6)">6 HR</button>
       </div>
       <div class="custom-time-row">
-        <input type="datetime-local" class="custom-time-input" id="customDropTime">
-        <button class="custom-time-btn" onclick="setCustomTime()">⏱ Set Time</button>
+        <input type="datetime-local" class="custom-time-input" id="customTime">
+        <button class="custom-time-btn" onclick="setCustomTime()">⏱ Set Exact Time</button>
       </div>
-      <button class="timer-btn" onclick="clearTimer()" style="margin-top:8px;width:100%;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:var(--red);">🗑 Clear Timer / Show LIVE</button>
+      <button class="timer-btn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:var(--red);">🗑 Clear Timer / Show LIVE Now</button>
     </div>
 
     <div class="form-group">
-      <label class="form-label">Select Tier</label>
+      <label class="form-label">Tier</label>
       <div class="tier-selector">
         <button class="tier-btn active" data-tier="metallica">⚡ Metallica</button>
         <button class="tier-btn" data-tier="gold">🥇 Gold</button>
@@ -197,100 +154,75 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <label class="form-label">Team</label>
       <input type="text" class="form-input" id="pickTeam" placeholder="Houston Astros">
     </div>
-
     <div class="form-group">
       <label class="form-label">Bet Type</label>
       <select class="form-select" id="pickBetType">
-        <option>MONEYLINE</option>
-        <option>SPREAD</option>
-        <option>OVER/UNDER</option>
-        <option>PARLAY</option>
+        <option>MONEYLINE</option><option>SPREAD</option><option>OVER/UNDER</option><option>PARLAY</option>
       </select>
     </div>
-
     <div class="form-group">
       <label class="form-label">Odds</label>
       <input type="text" class="form-input" id="pickOdds" placeholder="-140">
     </div>
-
     <div class="form-group">
-      <label class="form-label">Time</label>
+      <label class="form-label">Game Time</label>
       <input type="text" class="form-input" id="pickTime" placeholder="7:00 PM ET">
     </div>
-
     <div class="form-group">
       <label class="form-label">Analysis</label>
       <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side..."></textarea>
     </div>
 
-    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick to Cloud</button>
+    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
 
-    <div class="picks-list active" id="picksList">
-      <div style="margin-top:28px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
-        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">⚡ Metallica</div>
+    <div class="picks-list active" id="picksList" style="margin-top:20px;">
+      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">⚡ METALLICA</div>
         <div id="picksList-metallica"></div>
       </div>
-      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
-        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">🥇 Gold</div>
+      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">🥇 GOLD</div>
         <div id="picksList-gold"></div>
       </div>
-      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
-        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">💜 Purple</div>
+      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">💜 PURPLE</div>
         <div id="picksList-purple"></div>
       </div>
-      <div style="margin-top:18px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
-        <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">👑 All-Access</div>
+      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">👑 ALL-ACCESS</div>
         <div id="picksList-allaccess"></div>
       </div>
-      <button class="btn btn-primary" onclick="pushAllPicksToCloud()" style="margin-top:20px;">🚀 Push All Picks to ALL Fans</button>
+      <button class="btn btn-primary" onclick="saveToGitHub()">🚀 Push All Picks to Fans</button>
       <button class="btn btn-danger" onclick="clearAllPicks()">🗑 Clear All Picks</button>
     </div>
   </div>
 
+  <!-- FAN PAYMENT WALL -->
   <div class="payment-instructions" id="paymentBanner">
     <div class="payment-instructions-title">💰 How to Get Picks</div>
     <div class="payment-steps">
       <div class="payment-step"><span class="step-num">1</span> Choose your tier below</div>
       <div class="payment-step"><span class="step-num">2</span> Click the PayPal button</div>
       <div class="payment-step"><span class="step-num">3</span> Send payment</div>
-      <div class="payment-step"><span class="step-num">4</span> Copy receipt # and unlock</div>
+      <div class="payment-step"><span class="step-num">4</span> Enter receipt # to unlock</div>
     </div>
-    <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button">
-      💳 Go to PayPal Payment
-    </a>
+    <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button">💳 Go to PayPal Payment</a>
   </div>
 
   <div class="payment-wall" id="paymentWall">
     <div class="payment-form">
       <div class="payment-title">🔐 Verify Payment</div>
       <div class="payment-subtitle">Select your tier and enter your PayPal receipt #</div>
-      
-      <div style="margin-bottom:20px;">
-        <label class="form-label">Select Your Tier</label>
-        <div class="tier-choice">
-          <div class="tier-card active" onclick="selectTier('metallica',this)">
-            <div class="tier-name">⚡ METALLICA</div>
-            <div class="tier-price">$125 • 24H</div>
-          </div>
-          <div class="tier-card" onclick="selectTier('gold',this)">
-            <div class="tier-name">🥇 GOLD</div>
-            <div class="tier-price">$150 • 24H</div>
-          </div>
-          <div class="tier-card" onclick="selectTier('purple',this)">
-            <div class="tier-name">💜 PURPLE</div>
-            <div class="tier-price">$175 • 72H</div>
-          </div>
-          <div class="tier-card" onclick="selectTier('allaccess',this)">
-            <div class="tier-name">👑 ALL-ACCESS</div>
-            <div class="tier-price">$275 • 168H</div>
-          </div>
-        </div>
+      <label class="form-label">Select Your Tier</label>
+      <div class="tier-choice">
+        <div class="tier-card active" onclick="selectTier('metallica',this)"><div class="tier-name">⚡ METALLICA</div><div class="tier-price">$125 • 24H</div></div>
+        <div class="tier-card" onclick="selectTier('gold',this)"><div class="tier-name">🥇 GOLD</div><div class="tier-price">$150 • 24H</div></div>
+        <div class="tier-card" onclick="selectTier('purple',this)"><div class="tier-name">💜 PURPLE</div><div class="tier-price">$175 • 72H</div></div>
+        <div class="tier-card" onclick="selectTier('allaccess',this)"><div class="tier-name">👑 ALL-ACCESS</div><div class="tier-price">$275 • 168H</div></div>
       </div>
-
       <label class="form-label">PayPal Receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
       <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">🔓 Unlock Picks</button>
-      
       <div class="success-message" id="successMessage">✅ Payment verified! Picks unlocked!</div>
     </div>
   </div>
@@ -316,250 +248,232 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 </audio>
 
 <script>
-// ── JSONBIN CONFIG ─────────────────────────────────────────────────
-const BIN_ID   = '6a21b951f5f4af5e29b97883';
-const MASTER_KEY = '$2a$10$5AWT/YQxZqHhmnTt4UjS5.pYnv9QYXhp0S60tAiQV/S4Gsl/sntk';
-const BIN_URL  = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+// ── CONFIG ─────────────────────────────────────────────────────────
+const GH_TOKEN  = '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';
+const GH_REPO   = 'addicted2chaddar/a2s-app';
+const DATA_FILE = 'data.json';
+const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
+const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
 
 // ── STATE ──────────────────────────────────────────────────────────
-let picks = {metallica:[], gold:[], purple:[], allaccess:[]};
-let dropTarget = 0; // unix seconds
+let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
+let dropTarget = 0;
 let currentTier = 'metallica';
 let selectedTier = 'metallica';
 let adminMode = false;
 let userVerified = false;
 let userTier = null;
-let cloudData = null;
+let fileSHA = '';
 
-// ── CLOUD READ ─────────────────────────────────────────────────────
-async function cloudRead(){
+// ── GITHUB READ ────────────────────────────────────────────────────
+async function ghRead(){
   try{
-    const r = await fetch(BIN_URL+'/latest', {
-      headers:{'X-Master-Key': MASTER_KEY}
-    });
-    const j = await r.json();
-    cloudData = j.record;
-    picks = cloudData.picks || {metallica:[],gold:[],purple:[],allaccess:[]};
-    dropTarget = cloudData.drop || 0;
-    setCloudStatus('ok');
+    // Add cache-busting so fans always get latest data
+    const r = await fetch(RAW_URL + '?t=' + Date.now());
+    if(!r.ok) throw new Error('read fail');
+    const data = await r.json();
+    picks = data.picks || {metallica:[],gold:[],purple:[],allaccess:[]};
+    dropTarget = data.drop || 0;
+    setSyncBadge('✅ Live — synced across all devices');
     return true;
   }catch(e){
-    setCloudStatus('err');
+    setSyncBadge('⚠️ Offline mode');
     return false;
   }
 }
 
-// ── CLOUD WRITE ────────────────────────────────────────────────────
-async function cloudWrite(newData){
+// ── GITHUB WRITE (admin only) ──────────────────────────────────────
+async function ghWrite(data){
+  setSaveStatus('saving');
   try{
-    setCloudStatus('loading');
-    const r = await fetch(BIN_URL, {
+    // Get current SHA
+    const metaR = await fetch(API_URL, {
+      headers:{
+        'Authorization':'token '+GH_TOKEN,
+        'Accept':'application/vnd.github.v3+json'
+      }
+    });
+    const meta = await metaR.json();
+    const sha = meta.sha;
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const r = await fetch(API_URL, {
       method:'PUT',
       headers:{
-        'Content-Type':'application/json',
-        'X-Master-Key': MASTER_KEY
+        'Authorization':'token '+GH_TOKEN,
+        'Accept':'application/vnd.github.v3+json',
+        'Content-Type':'application/json'
       },
-      body: JSON.stringify(newData)
+      body: JSON.stringify({
+        message: 'update picks/timer',
+        content: content,
+        sha: sha
+      })
     });
-    if(!r.ok) throw new Error('write failed');
-    setCloudStatus('ok');
+    if(!r.ok) throw new Error('write fail');
+    setSaveStatus('ok');
     return true;
   }catch(e){
-    setCloudStatus('err');
+    setSaveStatus('err');
     return false;
   }
 }
 
-function setCloudStatus(state){
-  const el = document.getElementById('cloudStatus');
-  const badge = document.getElementById('syncBadge');
+function setSyncBadge(msg){ const el=document.getElementById('syncBadge'); if(el) el.textContent=msg; }
+function setSaveStatus(s){
+  const el=document.getElementById('saveStatus');
   if(!el) return;
-  if(state==='ok'){
-    el.className='cloud-status cloud-ok';
-    el.textContent='✅ Cloud Synced';
-    if(badge) badge.textContent='✅ Live across all devices';
-  } else if(state==='err'){
-    el.className='cloud-status cloud-err';
-    el.textContent='❌ Sync Error';
-    if(badge) badge.textContent='⚠️ Sync error — retry';
-  } else {
-    el.className='cloud-status cloud-loading';
-    el.textContent='⏳ Syncing...';
-    if(badge) badge.textContent='🔄 Syncing...';
-  }
+  if(s==='saving'){el.textContent='⏳ Saving...';el.style.color='var(--gold)';}
+  else if(s==='ok'){el.textContent='✅ Saved & Synced';el.style.color='var(--green)';}
+  else{el.textContent='❌ Error — retry';el.style.color='var(--red)';}
 }
 
-// ── TIMER FUNCTIONS ────────────────────────────────────────────────
-async function setTimerMinutes(mins){
-  dropTarget = Math.floor(Date.now()/1000) + mins*60;
-  await cloudWrite({picks, drop: dropTarget});
-  alert(`⏰ Timer set: ${mins} min — synced to ALL devices!`);
+// ── TIMER ──────────────────────────────────────────────────────────
+async function setTimerMins(m){
+  dropTarget = Math.floor(Date.now()/1000) + m*60;
+  const ok = await ghWrite({picks, drop:dropTarget});
+  if(ok) alert(`✅ Timer set: ${m} min\nSynced to ALL fans on ALL devices!`);
 }
-
-async function setTimerHours(hrs){
-  dropTarget = Math.floor(Date.now()/1000) + hrs*3600;
-  await cloudWrite({picks, drop: dropTarget});
-  alert(`⏰ Timer set: ${hrs} hr — synced to ALL devices!`);
+async function setTimerHrs(h){
+  dropTarget = Math.floor(Date.now()/1000) + h*3600;
+  const ok = await ghWrite({picks, drop:dropTarget});
+  if(ok) alert(`✅ Timer set: ${h} hr\nSynced to ALL fans on ALL devices!`);
 }
-
 async function setCustomTime(){
-  const v = document.getElementById('customDropTime').value;
+  const v = document.getElementById('customTime').value;
   if(!v){ alert('Pick a date/time first'); return; }
   dropTarget = Math.floor(new Date(v).getTime()/1000);
-  await cloudWrite({picks, drop: dropTarget});
+  const ok = await ghWrite({picks, drop:dropTarget});
   const label = new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
-  alert(`✅ Drop time set: ${label}\nSynced to ALL devices!`);
+  if(ok) alert(`✅ Drop time: ${label}\nSynced to ALL devices!`);
 }
-
-async function clearTimer(){
+async function clearDropTimer(){
   dropTarget = 0;
-  await cloudWrite({picks, drop: 0});
-  document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
-  document.getElementById('countdownTimer').textContent = '00:00:00';
+  await ghWrite({picks, drop:0});
   alert('Timer cleared — fans see LIVE status');
 }
 
 // ── COUNTDOWN TICK ─────────────────────────────────────────────────
-function tickCountdown(){
+setInterval(()=>{
   if(!dropTarget){
-    document.getElementById('countdownTimer').textContent = '00:00:00';
-    document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
+    document.getElementById('countdownTimer').textContent='00:00:00';
+    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
     return;
   }
   const diff = dropTarget - Math.floor(Date.now()/1000);
-  if(diff <= 0){
-    document.getElementById('countdownTimer').textContent = '00:00:00';
-    document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
-    try{ document.getElementById('moneySound').play(); }catch(e){}
+  if(diff<=0){
+    document.getElementById('countdownTimer').textContent='00:00:00';
+    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
+    try{document.getElementById('moneySound').play();}catch(e){}
     if(userVerified) renderFanView();
     return;
   }
-  const h = Math.floor(diff/3600);
-  const m = Math.floor((diff%3600)/60);
-  const s = diff%60;
-  document.getElementById('countdownTimer').textContent =
+  const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+  document.getElementById('countdownTimer').textContent=
     `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  document.getElementById('countdownStatus').textContent = '⏳ Picks dropping soon...';
-}
+  document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
+},1000);
 
-// Poll cloud every 30s so fans get updates automatically
-async function pollCloud(){
-  await cloudRead();
-  renderPicksList();
+// Poll every 30s so fans auto-get new picks/timer
+setInterval(async()=>{
+  await ghRead();
   if(userVerified) renderFanView();
-}
+  if(adminMode) renderPicksList();
+},30000);
 
-// ── PICKS FUNCTIONS ────────────────────────────────────────────────
+// ── PICKS ──────────────────────────────────────────────────────────
 async function addPick(){
-  const team = document.getElementById('pickTeam').value.trim();
-  const betType = document.getElementById('pickBetType').value;
-  const odds = document.getElementById('pickOdds').value.trim();
-  const time = document.getElementById('pickTime').value.trim();
-  const note = document.getElementById('pickNote').value.trim();
-  if(!team || !odds){ alert('⚠️ Fill in Team and Odds'); return; }
-  picks[currentTier].push({team, betType, odds, time, note, id: Date.now()});
-  const ok = await cloudWrite({picks, drop: dropTarget});
-  if(ok){
-    document.getElementById('pickTeam').value='';
-    document.getElementById('pickOdds').value='';
-    document.getElementById('pickTime').value='';
-    document.getElementById('pickNote').value='';
-    renderPicksList();
-    alert('✅ Pick added & synced to ALL fans!');
-  }
-}
-
-async function deletePick(tier, idx){
-  picks[tier].splice(idx,1);
-  await cloudWrite({picks, drop: dropTarget});
+  const team=document.getElementById('pickTeam').value.trim();
+  const odds=document.getElementById('pickOdds').value.trim();
+  if(!team||!odds){alert('⚠️ Team and Odds required');return;}
+  picks[currentTier].push({
+    team,
+    betType:document.getElementById('pickBetType').value,
+    odds,
+    time:document.getElementById('pickTime').value.trim(),
+    note:document.getElementById('pickNote').value.trim(),
+    id:Date.now()
+  });
+  ['pickTeam','pickOdds','pickTime','pickNote'].forEach(id=>document.getElementById(id).value='');
   renderPicksList();
+  alert('✅ Pick added!\nClick "Push All Picks to Fans" when ready.');
 }
 
-async function pushAllPicksToCloud(){
-  if(Object.values(picks).every(t=>t.length===0)){
-    alert('❌ Add picks first!');
-    return;
-  }
-  const ok = await cloudWrite({picks, drop: dropTarget});
-  if(ok) alert('🚀 All picks LIVE for ALL fans on ALL devices!');
+async function saveToGitHub(){
+  if(Object.values(picks).every(t=>t.length===0)){alert('❌ Add picks first!');return;}
+  const ok = await ghWrite({picks, drop:dropTarget});
+  if(ok) alert('🚀 Picks LIVE on ALL devices!\nFans will see them within 30 seconds.');
 }
 
 async function clearAllPicks(){
-  if(!confirm('Clear ALL picks from cloud?')) return;
-  picks = {metallica:[],gold:[],purple:[],allaccess:[]};
-  await cloudWrite({picks, drop: dropTarget});
+  if(!confirm('Clear ALL picks from all devices?')) return;
+  picks={metallica:[],gold:[],purple:[],allaccess:[]};
+  await ghWrite({picks, drop:dropTarget});
   renderPicksList();
   alert('🗑 All picks cleared');
 }
 
+async function deletePick(tier,idx){
+  picks[tier].splice(idx,1);
+  renderPicksList();
+  alert('Deleted. Click "Push All Picks to Fans" to sync.');
+}
+
 function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier=>{
-    const html = picks[tier].map((p,i)=>
-      `<div class="pick-item">
-        <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier">${p.betType}</div></div>
-        <div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div>
-        <div class="pick-notes">${p.note}</div>
-        <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Delete</button>
-      </div>`
-    ).join('');
-    const el = document.getElementById(`picksList-${tier}`);
-    if(el) el.innerHTML = html || '<div style="color:var(--slate);font-size:12px;">No picks yet</div>';
+    const el=document.getElementById('picksList-'+tier);
+    if(!el) return;
+    el.innerHTML = picks[tier].length
+      ? picks[tier].map((p,i)=>
+          `<div class="pick-item">
+            <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier">${p.betType}</div></div>
+            <div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div>
+            <div class="pick-notes">${p.note||'No notes'}</div>
+            <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button>
+          </div>`).join('')
+      : '<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
 }
 
 function renderFanView(){
-  const tierNames = {metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
-  const tierAccess = {metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  let html = '';
-  const accessible = tierAccess[userTier]||[];
-  accessible.forEach(tier=>{
-    if(!picks[tier]||picks[tier].length===0) return;
-    html += `<div class="tier-section">
-      <div class="tier-header">${tierNames[tier]} — ${picks[tier].length} Pick${picks[tier].length>1?'s':''}</div>
-      ${picks[tier].map(p=>
-        `<div class="pick-card">
-          <div class="pick-card-team">🎯 ${p.team}</div>
-          <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
-          <div class="pick-card-note">📊 ${p.note}</div>
-        </div>`
-      ).join('')}
+  const names={metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
+  const access={metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
+  let html='';
+  (access[userTier]||[]).forEach(tier=>{
+    if(!picks[tier]||!picks[tier].length) return;
+    html+=`<div class="tier-section">
+      <div class="tier-header">${names[tier]} — ${picks[tier].length} Pick${picks[tier].length>1?'s':''}</div>
+      ${picks[tier].map(p=>`<div class="pick-card">
+        <div class="pick-card-team">🎯 ${p.team}</div>
+        <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
+        <div class="pick-card-note">📊 ${p.note||''}</div>
+      </div>`).join('')}
     </div>`;
   });
-  document.getElementById('fanPicksSection').innerHTML = html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
+  document.getElementById('fanPicksSection').innerHTML = html||
+    '<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
 }
 
 // ── AUTH ───────────────────────────────────────────────────────────
-function selectTier(tier, el){
-  selectedTier = tier;
+function selectTier(tier,el){
+  selectedTier=tier;
   document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));
   if(el) el.classList.add('active');
 }
-
 function verifyAndUnlock(){
-  const receipt = document.getElementById('paypalReceipt').value.trim().toUpperCase();
-  if(!receipt){ alert('❌ Enter PayPal receipt #'); return; }
-  localStorage.setItem('a2s_user_verified', JSON.stringify({tier:selectedTier, receipt}));
-  userVerified=true; userTier=selectedTier;
+  const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
+  if(!receipt){alert('❌ Enter PayPal receipt #');return;}
+  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt}));
+  userVerified=true;userTier=selectedTier;
   document.getElementById('successMessage').classList.add('show');
-  setTimeout(()=>showFanView(),1000);
+  setTimeout(showFanView,1000);
 }
-
-function checkUserAuth(){
-  const auth = localStorage.getItem('a2s_user_verified');
-  if(auth){
-    const u = JSON.parse(auth);
-    userVerified=true; userTier=u.tier;
-    showFanView();
-  }
-}
-
 function showFanView(){
   document.getElementById('paymentWall').classList.add('hidden');
   document.getElementById('paymentBanner').style.display='none';
   document.getElementById('fanView').classList.add('active');
   renderFanView();
 }
-
 function checkPin(){
   if(document.getElementById('pinInput').value==='2025'){
     adminMode=true;
@@ -568,15 +482,12 @@ function checkPin(){
     document.getElementById('paymentWall').classList.add('hidden');
     document.getElementById('paymentBanner').style.display='none';
     document.getElementById('toggleBtn').textContent='👀';
-  } else {
-    alert('❌ Wrong PIN');
-  }
+    renderPicksList();
+  }else{alert('❌ Wrong PIN');}
 }
-
 document.getElementById('toggleBtn').addEventListener('click',()=>{
-  if(!adminMode){
-    document.getElementById('loginModal').classList.add('active');
-  } else {
+  if(!adminMode){document.getElementById('loginModal').classList.add('active');}
+  else{
     adminMode=false;
     document.getElementById('adminPanel').classList.remove('active');
     if(!userVerified){
@@ -586,7 +497,6 @@ document.getElementById('toggleBtn').addEventListener('click',()=>{
     document.getElementById('toggleBtn').textContent='🔧';
   }
 });
-
 document.querySelectorAll('.tier-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));
@@ -594,8 +504,7 @@ document.querySelectorAll('.tier-btn').forEach(btn=>{
     currentTier=btn.dataset.tier;
   });
 });
-
-document.getElementById('addPickBtn').addEventListener('click', addPick);
+document.getElementById('addPickBtn').addEventListener('click',addPick);
 
 function updateDateTime(){
   const now=new Date();
@@ -607,16 +516,12 @@ function updateDateTime(){
 async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
-  await cloudRead();
+  await ghRead();
   renderPicksList();
-  checkUserAuth();
-  setInterval(tickCountdown,1000);
-  // Poll cloud every 30 seconds so fans auto-refresh
-  setInterval(pollCloud, 30000);
+  const auth=localStorage.getItem('a2s_user_verified');
+  if(auth){const u=JSON.parse(auth);userVerified=true;userTier=u.tier;showFanView();}
 }
-
 init();
 </script>
-
 </body>
 </html>
