@@ -10,9 +10,18 @@
         "id": 1780603103130
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "Dodgers VS DBACKS",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 9",
+        "time": "6:40 PM MLB.TV",
+        "note": "",
+        "id": 1780614179862
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1780615800
+  "drop": 1780610129
 }
