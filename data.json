@@ -1,6 +1,15 @@
 {
   "picks": {
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "Blue Jays",
+        "betType": "MONEYLINE",
+        "odds": "-218",
+        "time": "4 PM PT",
+        "note": "",
+        "id": 1780603103130
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
