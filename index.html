@@ -10,18 +10,17 @@
 body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
 
 .header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:20px;text-align:center;position:sticky;top:0;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
-
 .logo-image-container{margin-bottom:14px;}
 .logo-image{max-width:100%;height:auto;max-height:200px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);}
-
 .brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
 
 .countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(250,204,21,0.25)}50%{box-shadow:0 0 50px rgba(250,204,21,0.4)}}
-
 .countdown-label{font-size:11px;color:var(--slate);letter-spacing:1.5px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
 .countdown-timer{font-size:56px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
 .countdown-status{font-size:14px;color:var(--cyan);margin-top:10px;font-weight:800;}
+
+.sync-badge{font-size:10px;color:var(--green);margin-top:6px;letter-spacing:0.5px;}
 
 .header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:14px 16px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
 .info-item{display:flex;flex-direction:column;align-items:center;}
@@ -57,6 +56,10 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .timer-btn{padding:10px;background:rgba(250,204,21,0.1);border:2px solid rgba(250,204,21,0.3);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;text-transform:uppercase;}
 .timer-btn:hover{background:rgba(250,204,21,0.2);border-color:var(--gold);}
 
+.custom-time-row{display:flex;gap:8px;margin-top:8px;}
+.custom-time-input{flex:1;padding:10px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:8px;color:var(--white);font-size:13px;}
+.custom-time-btn{padding:10px 14px;background:rgba(250,204,21,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;white-space:nowrap;}
+
 .tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .tier-btn{padding:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(10,16,28,0.8);color:var(--white);border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
 .tier-btn.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));color:var(--gold);box-shadow:0 0 20px rgba(250,204,21,0.2);}
@@ -66,11 +69,11 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .btn-primary{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;width:100%;box-shadow:0 4px 20px rgba(250,204,21,0.3);}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 6px 30px rgba(250,204,21,0.4);}
 .btn-secondary{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);width:100%;margin-top:8px;}
+.btn-danger{background:rgba(239,68,68,0.2);color:var(--red);border:1px solid rgba(239,68,68,0.4);width:100%;margin-top:8px;}
 
 .picks-list{display:none;}
 .picks-list.active{display:block;}
-.pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;}
-.pick-item:hover{border-color:var(--gold);background:rgba(10,16,28,0.95);box-shadow:0 0 20px rgba(250,204,21,0.1);}
+.pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;}
 .pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .pick-team{font-weight:900;color:var(--white);font-size:15px;}
 .pick-tier{font-size:11px;background:linear-gradient(135deg,rgba(250,204,21,0.2),rgba(250,204,21,0.1));color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;border:1px solid rgba(250,204,21,0.3);}
@@ -84,8 +87,8 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .picks-section{margin-top:24px;margin-bottom:60px;}
 .tier-section{margin-bottom:28px;}
 .tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);box-shadow:0 4px 12px rgba(250,204,21,0.1);text-transform:uppercase;}
-.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;backdrop-filter:blur(5px);}
-.pick-card:hover{border-color:var(--gold);background:rgba(10,16,28,0.95);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
+.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;}
+.pick-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
 .pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;}
 .pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
@@ -117,6 +120,11 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .modal-input:focus{outline:none;border-color:var(--gold);}
 .modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;transition:all 0.3s ease;text-transform:uppercase;}
 .modal-btn:hover{transform:translateY(-2px);}
+
+.cloud-status{font-size:10px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.cloud-ok{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3);}
+.cloud-err{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);}
+.cloud-loading{background:rgba(250,204,21,0.15);color:var(--gold);border:1px solid rgba(250,204,21,0.3);}
 </style>
 </head>
 <body>
@@ -130,8 +138,9 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   
   <div class="countdown-display">
     <div class="countdown-label">⏰ PICKS DROP IN</div>
-    <div class="countdown-timer" id="countdownTimer">00:00:00</div>
-    <div class="countdown-status" id="countdownStatus">🔥 Picks are LIVE!</div>
+    <div class="countdown-timer" id="countdownTimer">--:--:--</div>
+    <div class="countdown-status" id="countdownStatus">⏳ Loading...</div>
+    <div class="sync-badge" id="syncBadge">🔄 Syncing...</div>
   </div>
   
   <div class="header-info">
@@ -152,18 +161,26 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 
 <div class="container">
   <div class="admin-panel" id="adminPanel">
-    <div style="margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);">
-      <div style="font-size:12px;color:var(--gold);font-weight:900;letter-spacing:0.5px;text-transform:uppercase;">⚙️ Admin Mode</div>
+    <div style="margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-size:12px;color:var(--gold);font-weight:900;letter-spacing:0.5px;text-transform:uppercase;">⚙️ Admin Mode — Cloud Sync ON</div>
+      <div id="cloudStatus" class="cloud-status cloud-loading">⏳ Loading</div>
     </div>
 
     <div class="timer-controls">
-      <div class="timer-label">⏰ Set Countdown Timer</div>
+      <div class="timer-label">⏰ Set Countdown Timer — Syncs to ALL devices</div>
       <div class="timer-buttons">
         <button class="timer-btn" onclick="setTimerMinutes(5)">5 MIN</button>
         <button class="timer-btn" onclick="setTimerMinutes(15)">15 MIN</button>
         <button class="timer-btn" onclick="setTimerMinutes(30)">30 MIN</button>
         <button class="timer-btn" onclick="setTimerHours(1)">1 HR</button>
+        <button class="timer-btn" onclick="setTimerHours(2)">2 HR</button>
+        <button class="timer-btn" onclick="setTimerHours(3)">3 HR</button>
       </div>
+      <div class="custom-time-row">
+        <input type="datetime-local" class="custom-time-input" id="customDropTime">
+        <button class="custom-time-btn" onclick="setCustomTime()">⏱ Set Time</button>
+      </div>
+      <button class="timer-btn" onclick="clearTimer()" style="margin-top:8px;width:100%;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:var(--red);">🗑 Clear Timer / Show LIVE</button>
     </div>
 
     <div class="form-group">
@@ -206,7 +223,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side..."></textarea>
     </div>
 
-    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
+    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick to Cloud</button>
 
     <div class="picks-list active" id="picksList">
       <div style="margin-top:28px;padding:16px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);">
@@ -225,7 +242,8 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
         <div style="font-size:13px;font-weight:900;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">👑 All-Access</div>
         <div id="picksList-allaccess"></div>
       </div>
-      <button class="btn btn-primary" onclick="pushAllPicksToFans()" style="margin-top:20px;">🚀 Push All Picks To Fans</button>
+      <button class="btn btn-primary" onclick="pushAllPicksToCloud()" style="margin-top:20px;">🚀 Push All Picks to ALL Fans</button>
+      <button class="btn btn-danger" onclick="clearAllPicks()">🗑 Clear All Picks</button>
     </div>
   </div>
 
@@ -250,19 +268,19 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <div style="margin-bottom:20px;">
         <label class="form-label">Select Your Tier</label>
         <div class="tier-choice">
-          <div class="tier-card active" onclick="selectTier('metallica')">
+          <div class="tier-card active" onclick="selectTier('metallica',this)">
             <div class="tier-name">⚡ METALLICA</div>
             <div class="tier-price">$125 • 24H</div>
           </div>
-          <div class="tier-card" onclick="selectTier('gold')">
+          <div class="tier-card" onclick="selectTier('gold',this)">
             <div class="tier-name">🥇 GOLD</div>
             <div class="tier-price">$150 • 24H</div>
           </div>
-          <div class="tier-card" onclick="selectTier('purple')">
+          <div class="tier-card" onclick="selectTier('purple',this)">
             <div class="tier-name">💜 PURPLE</div>
             <div class="tier-price">$175 • 72H</div>
           </div>
-          <div class="tier-card" onclick="selectTier('allaccess')">
+          <div class="tier-card" onclick="selectTier('allaccess',this)">
             <div class="tier-name">👑 ALL-ACCESS</div>
             <div class="tier-price">$275 • 168H</div>
           </div>
@@ -271,7 +289,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 
       <label class="form-label">PayPal Receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
-      <button class="btn btn-primary" onclick="unlockPicks()" style="margin-top:16px;">🔓 Unlock Picks</button>
+      <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">🔓 Unlock Picks</button>
       
       <div class="success-message" id="successMessage">✅ Payment verified! Picks unlocked!</div>
     </div>
@@ -298,228 +316,306 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 </audio>
 
 <script>
+// ── JSONBIN CONFIG ─────────────────────────────────────────────────
+const BIN_ID   = '6a21b951f5f4af5e29b97883';
+const MASTER_KEY = '$2a$10$5AWT/YQxZqHhmnTt4UjS5.pYnv9QYXhp0S60tAiQV/S4Gsl/sntk';
+const BIN_URL  = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+// ── STATE ──────────────────────────────────────────────────────────
 let picks = {metallica:[], gold:[], purple:[], allaccess:[]};
+let dropTarget = 0; // unix seconds
 let currentTier = 'metallica';
 let selectedTier = 'metallica';
 let adminMode = false;
 let userVerified = false;
 let userTier = null;
+let cloudData = null;
 
-function loadPicks(){
-  const possibleKeys = ['a2s_picks_final', 'a2s_picks_prod', 'a2s_picks_secure', 'a2s_picks_gated', 'a2s_picks_timer', 'a2s_picks_fixed', 'a2s_picks'];
-  
-  for(let key of possibleKeys){
-    const stored = localStorage.getItem(key);
-    if(stored){
-      try{
-        picks = JSON.parse(stored);
-        break;
-      }catch(e){}
-    }
-  }
-  
-  checkUserAuth();
-  renderPicksList();
-  startCountdown();
-  updateDateTime();
-  setInterval(updateDateTime, 30000);
-}
-
-function checkUserAuth(){
-  const auth = localStorage.getItem('a2s_user_verified');
-  if(auth){
-    const userAuth = JSON.parse(auth);
-    userVerified = true;
-    userTier = userAuth.tier;
-    showFanView();
+// ── CLOUD READ ─────────────────────────────────────────────────────
+async function cloudRead(){
+  try{
+    const r = await fetch(BIN_URL+'/latest', {
+      headers:{'X-Master-Key': MASTER_KEY}
+    });
+    const j = await r.json();
+    cloudData = j.record;
+    picks = cloudData.picks || {metallica:[],gold:[],purple:[],allaccess:[]};
+    dropTarget = cloudData.drop || 0;
+    setCloudStatus('ok');
+    return true;
+  }catch(e){
+    setCloudStatus('err');
+    return false;
   }
 }
 
-function selectTier(tier){
-  selectedTier = tier;
-  document.querySelectorAll('.tier-card').forEach(card => card.classList.remove('active'));
-  event.target.closest('.tier-card').classList.add('active');
+// ── CLOUD WRITE ────────────────────────────────────────────────────
+async function cloudWrite(newData){
+  try{
+    setCloudStatus('loading');
+    const r = await fetch(BIN_URL, {
+      method:'PUT',
+      headers:{
+        'Content-Type':'application/json',
+        'X-Master-Key': MASTER_KEY
+      },
+      body: JSON.stringify(newData)
+    });
+    if(!r.ok) throw new Error('write failed');
+    setCloudStatus('ok');
+    return true;
+  }catch(e){
+    setCloudStatus('err');
+    return false;
+  }
 }
 
-function unlockPicks(){
-  const receipt = document.getElementById('paypalReceipt').value.trim().toUpperCase();
-  if(!receipt){
-    alert('❌ Enter PayPal receipt #');
+function setCloudStatus(state){
+  const el = document.getElementById('cloudStatus');
+  const badge = document.getElementById('syncBadge');
+  if(!el) return;
+  if(state==='ok'){
+    el.className='cloud-status cloud-ok';
+    el.textContent='✅ Cloud Synced';
+    if(badge) badge.textContent='✅ Live across all devices';
+  } else if(state==='err'){
+    el.className='cloud-status cloud-err';
+    el.textContent='❌ Sync Error';
+    if(badge) badge.textContent='⚠️ Sync error — retry';
+  } else {
+    el.className='cloud-status cloud-loading';
+    el.textContent='⏳ Syncing...';
+    if(badge) badge.textContent='🔄 Syncing...';
+  }
+}
+
+// ── TIMER FUNCTIONS ────────────────────────────────────────────────
+async function setTimerMinutes(mins){
+  dropTarget = Math.floor(Date.now()/1000) + mins*60;
+  await cloudWrite({picks, drop: dropTarget});
+  alert(`⏰ Timer set: ${mins} min — synced to ALL devices!`);
+}
+
+async function setTimerHours(hrs){
+  dropTarget = Math.floor(Date.now()/1000) + hrs*3600;
+  await cloudWrite({picks, drop: dropTarget});
+  alert(`⏰ Timer set: ${hrs} hr — synced to ALL devices!`);
+}
+
+async function setCustomTime(){
+  const v = document.getElementById('customDropTime').value;
+  if(!v){ alert('Pick a date/time first'); return; }
+  dropTarget = Math.floor(new Date(v).getTime()/1000);
+  await cloudWrite({picks, drop: dropTarget});
+  const label = new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+  alert(`✅ Drop time set: ${label}\nSynced to ALL devices!`);
+}
+
+async function clearTimer(){
+  dropTarget = 0;
+  await cloudWrite({picks, drop: 0});
+  document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
+  document.getElementById('countdownTimer').textContent = '00:00:00';
+  alert('Timer cleared — fans see LIVE status');
+}
+
+// ── COUNTDOWN TICK ─────────────────────────────────────────────────
+function tickCountdown(){
+  if(!dropTarget){
+    document.getElementById('countdownTimer').textContent = '00:00:00';
+    document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
     return;
   }
-  
-  localStorage.setItem('a2s_user_verified', JSON.stringify({tier: selectedTier, receipt}));
-  userVerified = true;
-  userTier = selectedTier;
-  
-  document.getElementById('successMessage').classList.add('show');
-  setTimeout(() => showFanView(), 1000);
+  const diff = dropTarget - Math.floor(Date.now()/1000);
+  if(diff <= 0){
+    document.getElementById('countdownTimer').textContent = '00:00:00';
+    document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
+    try{ document.getElementById('moneySound').play(); }catch(e){}
+    if(userVerified) renderFanView();
+    return;
+  }
+  const h = Math.floor(diff/3600);
+  const m = Math.floor((diff%3600)/60);
+  const s = diff%60;
+  document.getElementById('countdownTimer').textContent =
+    `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('countdownStatus').textContent = '⏳ Picks dropping soon...';
 }
 
-function showFanView(){
-  document.getElementById('paymentWall').classList.add('hidden');
-  document.getElementById('paymentBanner').style.display = 'none';
-  document.getElementById('fanView').classList.add('active');
-  renderFanView();
+// Poll cloud every 30s so fans get updates automatically
+async function pollCloud(){
+  await cloudRead();
+  renderPicksList();
+  if(userVerified) renderFanView();
 }
 
-function setTimerMinutes(mins){
-  const dropTime = new Date(Date.now() + mins * 60000);
-  localStorage.setItem('a2s_drop_target', Math.floor(dropTime.getTime() / 1000));
-  alert(`⏰ Timer set to ${mins} minutes`);
-  startCountdown();
-}
-
-function setTimerHours(hrs){
-  const dropTime = new Date(Date.now() + hrs * 3600000);
-  localStorage.setItem('a2s_drop_target', Math.floor(dropTime.getTime() / 1000));
-  alert(`⏰ Timer set to ${hrs} hour(s)`);
-  startCountdown();
-}
-
-function startCountdown(){
-  if(window.countdownInterval) clearInterval(window.countdownInterval);
-  
-  window.countdownInterval = setInterval(() => {
-    const target = parseInt(localStorage.getItem('a2s_drop_target') || 0);
-    if(!target) return;
-    
-    const now = Math.floor(Date.now() / 1000);
-    const diff = target - now;
-    
-    if(diff <= 0){
-      document.getElementById('countdownTimer').textContent = '00:00:00';
-      document.getElementById('countdownStatus').textContent = '🟢 PICKS ARE LIVE! 💰';
-      document.getElementById('moneySound').play();
-      if(userVerified) renderFanView();
-      clearInterval(window.countdownInterval);
-      return;
-    }
-    
-    const hrs = Math.floor(diff / 3600);
-    const mins = Math.floor((diff % 3600) / 60);
-    const secs = diff % 60;
-    
-    document.getElementById('countdownTimer').textContent = 
-      `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-  }, 1000);
-}
-
-function updateDateTime(){
-  const now = new Date();
-  document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
-  document.getElementById('timeDisplay').textContent = now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
-}
-
-function addPick(){
+// ── PICKS FUNCTIONS ────────────────────────────────────────────────
+async function addPick(){
   const team = document.getElementById('pickTeam').value.trim();
   const betType = document.getElementById('pickBetType').value;
   const odds = document.getElementById('pickOdds').value.trim();
   const time = document.getElementById('pickTime').value.trim();
   const note = document.getElementById('pickNote').value.trim();
-  
-  if(!team || !odds) { alert('⚠️ Fill in Team and Odds'); return; }
-  
-  picks[currentTier].push({team, betType, odds, time, note});
-  localStorage.setItem('a2s_picks', JSON.stringify(picks));
-  
-  document.getElementById('pickTeam').value = '';
-  document.getElementById('pickOdds').value = '';
-  document.getElementById('pickTime').value = '';
-  document.getElementById('pickNote').value = '';
-  
-  renderPicksList();
-  alert('✅ Pick added!');
+  if(!team || !odds){ alert('⚠️ Fill in Team and Odds'); return; }
+  picks[currentTier].push({team, betType, odds, time, note, id: Date.now()});
+  const ok = await cloudWrite({picks, drop: dropTarget});
+  if(ok){
+    document.getElementById('pickTeam').value='';
+    document.getElementById('pickOdds').value='';
+    document.getElementById('pickTime').value='';
+    document.getElementById('pickNote').value='';
+    renderPicksList();
+    alert('✅ Pick added & synced to ALL fans!');
+  }
 }
 
-function deletePick(tier, idx){
-  picks[tier].splice(idx, 1);
-  localStorage.setItem('a2s_picks', JSON.stringify(picks));
+async function deletePick(tier, idx){
+  picks[tier].splice(idx,1);
+  await cloudWrite({picks, drop: dropTarget});
   renderPicksList();
+}
+
+async function pushAllPicksToCloud(){
+  if(Object.values(picks).every(t=>t.length===0)){
+    alert('❌ Add picks first!');
+    return;
+  }
+  const ok = await cloudWrite({picks, drop: dropTarget});
+  if(ok) alert('🚀 All picks LIVE for ALL fans on ALL devices!');
+}
+
+async function clearAllPicks(){
+  if(!confirm('Clear ALL picks from cloud?')) return;
+  picks = {metallica:[],gold:[],purple:[],allaccess:[]};
+  await cloudWrite({picks, drop: dropTarget});
+  renderPicksList();
+  alert('🗑 All picks cleared');
 }
 
 function renderPicksList(){
-  ['metallica','gold','purple','allaccess'].forEach(tier => {
-    const html = picks[tier].map((p,i) => 
+  ['metallica','gold','purple','allaccess'].forEach(tier=>{
+    const html = picks[tier].map((p,i)=>
       `<div class="pick-item">
         <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier">${p.betType}</div></div>
-        <div class="pick-details"><strong>${p.odds}</strong> ${p.time ? '• ' + p.time : ''}</div>
+        <div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div>
         <div class="pick-notes">${p.note}</div>
-        <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})">🗑 Delete</button>
+        <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Delete</button>
       </div>`
     ).join('');
-    document.getElementById(`picksList-${tier}`).innerHTML = html || '<div style="color:var(--slate);font-size:12px;">No picks yet</div>';
+    const el = document.getElementById(`picksList-${tier}`);
+    if(el) el.innerHTML = html || '<div style="color:var(--slate);font-size:12px;">No picks yet</div>';
   });
 }
 
 function renderFanView(){
   const tierNames = {metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
-  const tierAccess = {metallica:['metallica'], gold:['metallica','gold'], purple:['metallica','gold','purple'], allaccess:['metallica','gold','purple','allaccess']};
-  
+  const tierAccess = {metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
   let html = '';
-  const accessibleTiers = tierAccess[userTier] || [];
-  
-  accessibleTiers.forEach(tier => {
-    if(picks[tier].length === 0) return;
+  const accessible = tierAccess[userTier]||[];
+  accessible.forEach(tier=>{
+    if(!picks[tier]||picks[tier].length===0) return;
     html += `<div class="tier-section">
-      <div class="tier-header">${tierNames[tier]} — ${picks[tier].length} Picks</div>
-      ${picks[tier].map(p => 
+      <div class="tier-header">${tierNames[tier]} — ${picks[tier].length} Pick${picks[tier].length>1?'s':''}</div>
+      ${picks[tier].map(p=>
         `<div class="pick-card">
           <div class="pick-card-team">🎯 ${p.team}</div>
-          <div class="pick-card-bet"><span>${p.betType} ${p.time ? '@ ' + p.time : ''}</span><span class="pick-card-odds">${p.odds}</span></div>
+          <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
           <div class="pick-card-note">📊 ${p.note}</div>
         </div>`
       ).join('')}
     </div>`;
   });
-  
-  document.getElementById('fanPicksSection').innerHTML = html || '<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
+  document.getElementById('fanPicksSection').innerHTML = html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
 }
 
-function pushAllPicksToFans(){
-  if(Object.values(picks).every(t => t.length === 0)){
-    alert('❌ Add picks first!');
-    return;
+// ── AUTH ───────────────────────────────────────────────────────────
+function selectTier(tier, el){
+  selectedTier = tier;
+  document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+
+function verifyAndUnlock(){
+  const receipt = document.getElementById('paypalReceipt').value.trim().toUpperCase();
+  if(!receipt){ alert('❌ Enter PayPal receipt #'); return; }
+  localStorage.setItem('a2s_user_verified', JSON.stringify({tier:selectedTier, receipt}));
+  userVerified=true; userTier=selectedTier;
+  document.getElementById('successMessage').classList.add('show');
+  setTimeout(()=>showFanView(),1000);
+}
+
+function checkUserAuth(){
+  const auth = localStorage.getItem('a2s_user_verified');
+  if(auth){
+    const u = JSON.parse(auth);
+    userVerified=true; userTier=u.tier;
+    showFanView();
   }
-  alert('✅ All picks LIVE for fans!');
+}
+
+function showFanView(){
+  document.getElementById('paymentWall').classList.add('hidden');
+  document.getElementById('paymentBanner').style.display='none';
+  document.getElementById('fanView').classList.add('active');
+  renderFanView();
 }
 
 function checkPin(){
-  if(document.getElementById('pinInput').value === '2025'){
-    adminMode = true;
+  if(document.getElementById('pinInput').value==='2025'){
+    adminMode=true;
     document.getElementById('loginModal').classList.remove('active');
     document.getElementById('adminPanel').classList.add('active');
     document.getElementById('paymentWall').classList.add('hidden');
-    document.getElementById('paymentBanner').style.display = 'none';
-    document.getElementById('toggleBtn').textContent = '👀';
+    document.getElementById('paymentBanner').style.display='none';
+    document.getElementById('toggleBtn').textContent='👀';
   } else {
     alert('❌ Wrong PIN');
   }
 }
 
-document.getElementById('toggleBtn').addEventListener('click', () => {
+document.getElementById('toggleBtn').addEventListener('click',()=>{
   if(!adminMode){
     document.getElementById('loginModal').classList.add('active');
   } else {
-    adminMode = false;
+    adminMode=false;
     document.getElementById('adminPanel').classList.remove('active');
-    document.getElementById('paymentWall').classList.remove('hidden');
-    document.getElementById('paymentBanner').style.display = 'block';
-    document.getElementById('toggleBtn').textContent = '🔧';
+    if(!userVerified){
+      document.getElementById('paymentWall').classList.remove('hidden');
+      document.getElementById('paymentBanner').style.display='block';
+    }
+    document.getElementById('toggleBtn').textContent='🔧';
   }
 });
 
-document.querySelectorAll('.tier-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.tier-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    currentTier = btn.dataset.tier;
+    currentTier=btn.dataset.tier;
   });
 });
 
 document.getElementById('addPickBtn').addEventListener('click', addPick);
 
-loadPicks();
+function updateDateTime(){
+  const now=new Date();
+  document.getElementById('dateDisplay').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+}
+
+// ── INIT ───────────────────────────────────────────────────────────
+async function init(){
+  updateDateTime();
+  setInterval(updateDateTime,30000);
+  await cloudRead();
+  renderPicksList();
+  checkUserAuth();
+  setInterval(tickCountdown,1000);
+  // Poll cloud every 30 seconds so fans auto-refresh
+  setInterval(pollCloud, 30000);
+}
+
+init();
 </script>
 
 </body>
