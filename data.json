@@ -7,8 +7,7 @@
         "odds": "-218",
         "time": "4 PM PT",
         "note": "",
-        "id": 1780603103130,
-        "result": "win"
+        "id": 1780603103130
       }
     ],
     "gold": [
@@ -18,7 +17,8 @@
         "odds": "UNDER 9",
         "time": "6:40 PM MLB.TV",
         "note": "",
-        "id": 1780614179862
+        "id": 1780614179862,
+        "result": "win"
       }
     ],
     "purple": [],
