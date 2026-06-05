@@ -587,11 +587,13 @@ function renderFanView(){
   let html='';
   let totalW=0,totalL=0,totalP=0,hasResults=false;
 
+    // limits: metallica=2, gold=4, purple=5, allaccess=all
+  const pickLimits={metallica:2,gold:4,purple:5,allaccess:999};
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
     html+=`<div class="tier-section">
-      <div class="tier-header">${names[tier]} — ${picks[tier].length} Pick${picks[tier].length>1?'s':''}</div>
-      ${picks[tier].map(p=>{
+      <div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>
+      ${picks[tier].slice(0,pickLimits[tier]).map(p=>{
         if(p.result==='win')totalW++;
         else if(p.result==='loss')totalL++;
         else if(p.result==='push')totalP++;
@@ -662,7 +664,7 @@ function selectTier(tier,el){
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
   if(!receipt){alert('❌ Enter PayPal receipt #');return;}
-  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt}));
+  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt,purchaseTime:Date.now()}));
   userVerified=true;userTier=selectedTier;
   document.getElementById('successMessage').classList.add('show');
   setTimeout(showFanView,1000);
