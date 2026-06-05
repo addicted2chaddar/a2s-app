@@ -1,6 +1,25 @@
 {
   "picks": {
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "Cubs",
+        "betType": "MONEYLINE",
+        "odds": "-186",
+        "time": "11:20 AM CT",
+        "note": "Cubs (33-30) home vs Giants (25-38). Back the home team.",
+        "result": "",
+        "id": 1749134400001
+      },
+      {
+        "team": "Cubs vs Giants",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 8.5",
+        "time": "11:20 AM CT",
+        "note": "Wrigley Field. Two struggling offenses. Take the UNDER.",
+        "result": "",
+        "id": 1749134400002
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
