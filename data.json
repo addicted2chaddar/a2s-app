@@ -1,27 +1,7 @@
 {
   "picks": {
-    "metallica": [
-      {
-        "team": "Blue Jays",
-        "betType": "MONEYLINE",
-        "odds": "-218",
-        "time": "4 PM PT",
-        "note": "",
-        "id": 1780603103130,
-        "result": "win"
-      }
-    ],
-    "gold": [
-      {
-        "team": "Dodgers VS DBACKS",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 9",
-        "time": "6:40 PM MLB.TV",
-        "note": "",
-        "id": 1780614179862,
-        "result": "win"
-      }
-    ],
+    "metallica": [],
+    "gold": [],
     "purple": [],
     "allaccess": []
   },
