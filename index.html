@@ -512,10 +512,11 @@ setInterval(()=>{
 },1000);
 
 setInterval(async()=>{
+  // Don't poll from cloud while admin is editing — prevents picks from snapping back
+  if(adminMode) return;
   await ghRead();
   if(userVerified)renderFanView();
   else renderFomo();
-  if(adminMode)renderPicksList();
 },10000);
 
 // ── PICKS ──
