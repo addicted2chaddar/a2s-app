@@ -56,17 +56,28 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;}
 .pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .pick-team{font-weight:900;color:var(--white);font-size:15px;}
-.pick-tier{font-size:11px;background:rgba(250,204,21,0.1);color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;}
+.pick-tier-badge{font-size:11px;background:rgba(250,204,21,0.1);color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;}
 .pick-details{font-size:13px;color:var(--slate);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
 .pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
 .btn-sm{padding:8px 12px;font-size:12px;}
+.result-btns{display:flex;gap:6px;margin-top:8px;}
+.result-btn{flex:1;padding:8px;border:none;border-radius:8px;font-weight:900;font-size:11px;cursor:pointer;text-transform:uppercase;}
+.result-btn-win{background:rgba(34,197,94,0.2);color:var(--green);border:2px solid rgba(34,197,94,0.5);}
+.result-btn-loss{background:rgba(239,68,68,0.2);color:var(--red);border:2px solid rgba(239,68,68,0.5);}
+.result-btn-push{background:rgba(148,163,184,0.2);color:var(--slate);border:2px solid rgba(148,163,184,0.4);}
+.result-btn.selected-win{background:var(--green);color:#000;}
+.result-btn.selected-loss{background:var(--red);color:#fff;}
+.result-btn.selected-push{background:var(--slate);color:#000;}
 .fan-view{display:none !important;}
 .fan-view.active{display:block !important;}
 .picks-section{margin-top:24px;margin-bottom:60px;}
 .tier-section{margin-bottom:28px;}
 .tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);text-transform:uppercase;}
-.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;}
+.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;position:relative;overflow:hidden;}
 .pick-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
+.pick-card.result-win{border-color:var(--green);box-shadow:0 0 20px rgba(34,197,94,0.25);}
+.pick-card.result-loss{border-color:var(--red);box-shadow:0 0 20px rgba(239,68,68,0.2);}
+.pick-card.result-push{border-color:var(--slate);}
 .pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;}
 .pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
@@ -90,8 +101,47 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .modal-input:focus{outline:none;border-color:var(--gold);}
 .modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;text-transform:uppercase;}
 .admin-bar{margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;}
-.saving{font-size:11px;color:var(--gold);animation:blink 0.8s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ── RESULT BADGE on fan pick cards ── */
+.result-badge{position:absolute;top:12px;right:12px;font-size:11px;font-weight:900;padding:5px 10px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;}
+.badge-win{background:linear-gradient(135deg,rgba(34,197,94,0.3),rgba(34,197,94,0.15));color:var(--green);border:2px solid var(--green);}
+.badge-loss{background:linear-gradient(135deg,rgba(239,68,68,0.3),rgba(239,68,68,0.15));color:var(--red);border:2px solid var(--red);}
+.badge-push{background:rgba(148,163,184,0.2);color:var(--slate);border:2px solid var(--slate);}
+
+/* ── HYPNOTIC WAVING FLAG ── */
+.win-flag-wrap{display:none;text-align:center;padding:20px 0 10px;margin-bottom:4px;}
+.win-flag-wrap.active{display:block;}
+.flag-pole{display:inline-flex;align-items:flex-start;gap:0;}
+.pole{width:6px;height:90px;background:linear-gradient(180deg,#ccc,#888);border-radius:3px;flex-shrink:0;}
+.flag-svg{overflow:visible;}
+@keyframes wave{
+  0%  {d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
+  25% {d:path("M0,4 C20,-4 40,12 60,4 C80,-4 100,12 120,4 L120,44 C100,52 80,36 60,44 C40,52 20,36 0,44 Z");}
+  50% {d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z");}
+  75% {d:path("M0,-4 C20,4 40,-12 60,-4 C80,4 100,-12 120,-4 L120,36 C100,28 80,44 60,36 C40,28 20,44 0,36 Z");}
+  100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
+}
+@keyframes waveRed{
+  0%  {d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
+  50% {d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z");}
+  100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
+}
+.flag-shape-win{animation:wave 1.4s ease-in-out infinite;fill:url(#winGrad);}
+.flag-shape-loss{animation:waveRed 1.4s ease-in-out infinite;fill:url(#lossGrad);}
+.flag-label{font-size:22px;font-weight:900;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
+.flag-label-win{color:var(--green);text-shadow:0 0 20px rgba(34,197,94,0.6),0 0 40px rgba(34,197,94,0.3);animation:glow-green 1.2s ease-in-out infinite alternate;}
+.flag-label-loss{color:var(--red);text-shadow:0 0 20px rgba(239,68,68,0.5);}
+@keyframes glow-green{from{text-shadow:0 0 10px rgba(34,197,94,0.4)}to{text-shadow:0 0 30px rgba(34,197,94,0.9),0 0 60px rgba(34,197,94,0.4)}}
+.flag-sub{font-size:12px;color:var(--slate);margin-top:4px;letter-spacing:1px;}
+
+/* record strip */
+.record-strip{display:flex;justify-content:center;gap:16px;margin:10px 0 20px;padding:12px;background:rgba(0,0,0,0.3);border-radius:10px;border:1px solid rgba(255,255,255,0.08);}
+.record-item{text-align:center;}
+.record-num{font-size:24px;font-weight:900;}
+.record-lbl{font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;}
+.record-num-w{color:var(--green);}
+.record-num-l{color:var(--red);}
+.record-num-p{color:var(--slate);}
 </style>
 </head>
 <body>
@@ -149,7 +199,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
         <button class="tier-btn" data-tier="allaccess">👑 All-Access</button>
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Team</label>
       <input type="text" class="form-input" id="pickTeam" placeholder="Houston Astros">
@@ -172,7 +221,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <label class="form-label">Analysis</label>
       <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side..."></textarea>
     </div>
-
     <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
 
     <div class="picks-list active" id="picksList" style="margin-top:20px;">
@@ -228,6 +276,38 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   </div>
 
   <div class="fan-view" id="fanView">
+    <!-- Win flag shown when any wins exist -->
+    <div class="win-flag-wrap" id="winFlagWrap">
+      <div class="flag-pole">
+        <div class="pole"></div>
+        <svg class="flag-svg" width="130" height="60" viewBox="0 0 130 60">
+          <defs>
+            <linearGradient id="winGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#16a34a"/>
+              <stop offset="50%" style="stop-color:#22c55e"/>
+              <stop offset="100%" style="stop-color:#4ade80"/>
+            </linearGradient>
+            <linearGradient id="lossGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#b91c1c"/>
+              <stop offset="50%" style="stop-color:#ef4444"/>
+              <stop offset="100%" style="stop-color:#f87171"/>
+            </linearGradient>
+          </defs>
+          <path id="flagShape" class="flag-shape-win" d="M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z"/>
+          <text id="flagText" x="60" y="26" text-anchor="middle" font-size="13" font-weight="900" fill="white" letter-spacing="1">W</text>
+        </svg>
+      </div>
+      <div class="flag-label flag-label-win" id="flagLabel">WE WINNING 💰</div>
+      <div class="flag-sub" id="flagSub">THE BOSS IS LOCKED IN</div>
+    </div>
+
+    <!-- Record strip -->
+    <div class="record-strip" id="recordStrip" style="display:none;">
+      <div class="record-item"><div class="record-num record-num-w" id="recW">0</div><div class="record-lbl">Wins</div></div>
+      <div class="record-item"><div class="record-num record-num-l" id="recL">0</div><div class="record-lbl">Losses</div></div>
+      <div class="record-item"><div class="record-num record-num-p" id="recP">0</div><div class="record-lbl">Push</div></div>
+    </div>
+
     <div class="picks-section" id="fanPicksSection"></div>
   </div>
 </div>
@@ -248,14 +328,12 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 </audio>
 
 <script>
-// ── CONFIG ─────────────────────────────────────────────────────────
 const GH_TOKEN = ['ghp_qzzX5Sal','FjsqM3sddWPZ','IXiJaJwy930pxV27'].join('');
 const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
 
-// ── STATE ──────────────────────────────────────────────────────────
 let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
 let currentTier = 'metallica';
@@ -263,12 +341,9 @@ let selectedTier = 'metallica';
 let adminMode = false;
 let userVerified = false;
 let userTier = null;
-let fileSHA = '';
 
-// ── GITHUB READ ────────────────────────────────────────────────────
 async function ghRead(){
   try{
-    // Add cache-busting so fans always get latest data
     const r = await fetch(RAW_URL + '?t=' + Date.now());
     if(!r.ok) throw new Error('read fail');
     const data = await r.json();
@@ -282,33 +357,19 @@ async function ghRead(){
   }
 }
 
-// ── GITHUB WRITE (admin only) ──────────────────────────────────────
 async function ghWrite(data){
   setSaveStatus('saving');
   try{
-    // Get current SHA
     const metaR = await fetch(API_URL, {
-      headers:{
-        'Authorization':'token '+GH_TOKEN,
-        'Accept':'application/vnd.github.v3+json'
-      }
+      headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
     });
     const meta = await metaR.json();
     const sha = meta.sha;
-
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
     const r = await fetch(API_URL, {
       method:'PUT',
-      headers:{
-        'Authorization':'token '+GH_TOKEN,
-        'Accept':'application/vnd.github.v3+json',
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({
-        message: 'update picks/timer',
-        content: content,
-        sha: sha
-      })
+      headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body: JSON.stringify({message:'update picks/timer',content,sha})
     });
     if(!r.ok) throw new Error('write fail');
     setSaveStatus('ok');
@@ -319,53 +380,51 @@ async function ghWrite(data){
   }
 }
 
-function setSyncBadge(msg){ const el=document.getElementById('syncBadge'); if(el) el.textContent=msg; }
+function setSyncBadge(msg){const el=document.getElementById('syncBadge');if(el)el.textContent=msg;}
 function setSaveStatus(s){
-  const el=document.getElementById('saveStatus');
-  if(!el) return;
+  const el=document.getElementById('saveStatus');if(!el)return;
   if(s==='saving'){el.textContent='⏳ Saving...';el.style.color='var(--gold)';}
   else if(s==='ok'){el.textContent='✅ Saved & Synced';el.style.color='var(--green)';}
   else{el.textContent='❌ Error — retry';el.style.color='var(--red)';}
 }
 
-// ── TIMER ──────────────────────────────────────────────────────────
+// ── TIMER ──
 async function setTimerMins(m){
-  dropTarget = Math.floor(Date.now()/1000) + m*60;
-  const ok = await ghWrite({picks, drop:dropTarget});
-  if(ok) alert(`✅ Timer set: ${m} min\nSynced to ALL fans on ALL devices!`);
+  dropTarget=Math.floor(Date.now()/1000)+m*60;
+  const ok=await ghWrite({picks,drop:dropTarget});
+  if(ok)alert(`✅ Timer set: ${m} min\nSynced to ALL fans!`);
 }
 async function setTimerHrs(h){
-  dropTarget = Math.floor(Date.now()/1000) + h*3600;
-  const ok = await ghWrite({picks, drop:dropTarget});
-  if(ok) alert(`✅ Timer set: ${h} hr\nSynced to ALL fans on ALL devices!`);
+  dropTarget=Math.floor(Date.now()/1000)+h*3600;
+  const ok=await ghWrite({picks,drop:dropTarget});
+  if(ok)alert(`✅ Timer set: ${h} hr\nSynced to ALL fans!`);
 }
 async function setCustomTime(){
-  const v = document.getElementById('customTime').value;
-  if(!v){ alert('Pick a date/time first'); return; }
-  dropTarget = Math.floor(new Date(v).getTime()/1000);
-  const ok = await ghWrite({picks, drop:dropTarget});
-  const label = new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
-  if(ok) alert(`✅ Drop time: ${label}\nSynced to ALL devices!`);
+  const v=document.getElementById('customTime').value;
+  if(!v){alert('Pick a date/time first');return;}
+  dropTarget=Math.floor(new Date(v).getTime()/1000);
+  const ok=await ghWrite({picks,drop:dropTarget});
+  const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+  if(ok)alert(`✅ Drop time: ${label}\nSynced!`);
 }
 async function clearDropTimer(){
-  dropTarget = 0;
-  await ghWrite({picks, drop:0});
+  dropTarget=0;
+  await ghWrite({picks,drop:0});
   alert('Timer cleared — fans see LIVE status');
 }
 
-// ── COUNTDOWN TICK ─────────────────────────────────────────────────
 setInterval(()=>{
   if(!dropTarget){
     document.getElementById('countdownTimer').textContent='00:00:00';
     document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
     return;
   }
-  const diff = dropTarget - Math.floor(Date.now()/1000);
+  const diff=dropTarget-Math.floor(Date.now()/1000);
   if(diff<=0){
     document.getElementById('countdownTimer').textContent='00:00:00';
     document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
     try{document.getElementById('moneySound').play();}catch(e){}
-    if(userVerified) renderFanView();
+    if(userVerified)renderFanView();
     return;
   }
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
@@ -374,14 +433,13 @@ setInterval(()=>{
   document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
 },1000);
 
-// Poll every 30s so fans auto-get new picks/timer
 setInterval(async()=>{
   await ghRead();
-  if(userVerified) renderFanView();
-  if(adminMode) renderPicksList();
+  if(userVerified)renderFanView();
+  if(adminMode)renderPicksList();
 },30000);
 
-// ── PICKS ──────────────────────────────────────────────────────────
+// ── PICKS ──
 async function addPick(){
   const team=document.getElementById('pickTeam').value.trim();
   const odds=document.getElementById('pickOdds').value.trim();
@@ -392,6 +450,7 @@ async function addPick(){
     odds,
     time:document.getElementById('pickTime').value.trim(),
     note:document.getElementById('pickNote').value.trim(),
+    result:'',
     id:Date.now()
   });
   ['pickTeam','pickOdds','pickTime','pickNote'].forEach(id=>document.getElementById(id).value='');
@@ -401,14 +460,14 @@ async function addPick(){
 
 async function saveToGitHub(){
   if(Object.values(picks).every(t=>t.length===0)){alert('❌ Add picks first!');return;}
-  const ok = await ghWrite({picks, drop:dropTarget});
-  if(ok) alert('🚀 Picks LIVE on ALL devices!\nFans will see them within 30 seconds.');
+  const ok=await ghWrite({picks,drop:dropTarget});
+  if(ok)alert('🚀 Picks LIVE on ALL devices!\nFans see them within 30 seconds.');
 }
 
 async function clearAllPicks(){
-  if(!confirm('Clear ALL picks from all devices?')) return;
+  if(!confirm('Clear ALL picks from all devices?'))return;
   picks={metallica:[],gold:[],purple:[],allaccess:[]};
-  await ghWrite({picks, drop:dropTarget});
+  await ghWrite({picks,drop:dropTarget});
   renderPicksList();
   alert('🗑 All picks cleared');
 }
@@ -419,46 +478,124 @@ async function deletePick(tier,idx){
   alert('Deleted. Click "Push All Picks to Fans" to sync.');
 }
 
+async function setResult(tier,idx,result){
+  picks[tier][idx].result = result;
+  renderPicksList();
+  // Auto-save result to GitHub immediately
+  await ghWrite({picks,drop:dropTarget});
+}
+
 function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);
-    if(!el) return;
+    if(!el)return;
+    const resLabel={'win':'✅ WIN','loss':'❌ LOSS','push':'➖ PUSH','':(p)=>`
+      <div class="result-btns">
+        <button class="result-btn result-btn-win" onclick="setResult('${tier}',${0},'win')">✅ WIN</button>
+        <button class="result-btn result-btn-loss" onclick="setResult('${tier}',${0},'loss')">❌ LOSS</button>
+        <button class="result-btn result-btn-push" onclick="setResult('${tier}',${0},'push')">➖ PUSH</button>
+      </div>`};
     el.innerHTML = picks[tier].length
-      ? picks[tier].map((p,i)=>
-          `<div class="pick-item">
-            <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier">${p.betType}</div></div>
+      ? picks[tier].map((p,i)=>`
+          <div class="pick-item">
+            <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div>
             <div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div>
             <div class="pick-notes">${p.note||'No notes'}</div>
+            ${p.result
+              ? `<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">
+                  ${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}
+                  <button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button>
+                </div>`
+              : `<div class="result-btns">
+                  <button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button>
+                  <button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button>
+                  <button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button>
+                </div>`
+            }
             <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button>
           </div>`).join('')
       : '<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
 }
 
+// ── FAN VIEW with flag ──
 function renderFanView(){
   const names={metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
   const access={metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
   let html='';
+  let totalW=0,totalL=0,totalP=0,hasResults=false;
+
   (access[userTier]||[]).forEach(tier=>{
-    if(!picks[tier]||!picks[tier].length) return;
+    if(!picks[tier]||!picks[tier].length)return;
     html+=`<div class="tier-section">
       <div class="tier-header">${names[tier]} — ${picks[tier].length} Pick${picks[tier].length>1?'s':''}</div>
-      ${picks[tier].map(p=>`<div class="pick-card">
-        <div class="pick-card-team">🎯 ${p.team}</div>
-        <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
-        <div class="pick-card-note">📊 ${p.note||''}</div>
-      </div>`).join('')}
+      ${picks[tier].map(p=>{
+        if(p.result==='win')totalW++;
+        else if(p.result==='loss')totalL++;
+        else if(p.result==='push')totalP++;
+        if(p.result)hasResults=true;
+        const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';
+        const badge=p.result==='win'
+          ?`<div class="result-badge badge-win">✅ WIN</div>`
+          :p.result==='loss'
+          ?`<div class="result-badge badge-loss">❌ LOSS</div>`
+          :p.result==='push'
+          ?`<div class="result-badge badge-push">➖ PUSH</div>`:'';
+        return `<div class="${cardClass}">
+          ${badge}
+          <div class="pick-card-team">🎯 ${p.team}</div>
+          <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
+          <div class="pick-card-note">📊 ${p.note||''}</div>
+        </div>`;
+      }).join('')}
     </div>`;
   });
+
   document.getElementById('fanPicksSection').innerHTML = html||
     '<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
+
+  // Update flag + record
+  const flagWrap = document.getElementById('winFlagWrap');
+  const recordStrip = document.getElementById('recordStrip');
+
+  if(hasResults){
+    recordStrip.style.display='flex';
+    document.getElementById('recW').textContent=totalW;
+    document.getElementById('recL').textContent=totalL;
+    document.getElementById('recP').textContent=totalP;
+
+    flagWrap.classList.add('active');
+    const flagShape = document.getElementById('flagShape');
+    const flagText = document.getElementById('flagText');
+    const flagLabel = document.getElementById('flagLabel');
+    const flagSub = document.getElementById('flagSub');
+
+    if(totalL > totalW){
+      // losing record — red flag
+      flagShape.className='flag-shape-loss';
+      flagText.textContent='L';
+      flagLabel.className='flag-label flag-label-loss';
+      flagLabel.textContent='BOUNCE BACK COMING 🔥';
+      flagSub.textContent='THE BOSS IS RELOADING';
+    } else {
+      // winning or even — green flag
+      flagShape.className='flag-shape-win';
+      flagText.textContent='W';
+      flagLabel.className='flag-label flag-label-win';
+      flagLabel.textContent= totalW >= 3 ? 'WE ON FIRE 🔥💰' : 'WE WINNING 💰';
+      flagSub.textContent='THE BOSS IS LOCKED IN';
+    }
+  } else {
+    flagWrap.classList.remove('active');
+    recordStrip.style.display='none';
+  }
 }
 
-// ── AUTH ───────────────────────────────────────────────────────────
+// ── AUTH ──
 function selectTier(tier,el){
   selectedTier=tier;
   document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));
-  if(el) el.classList.add('active');
+  if(el)el.classList.add('active');
 }
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
@@ -512,7 +649,6 @@ function updateDateTime(){
   document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
 }
 
-// ── INIT ───────────────────────────────────────────────────────────
 async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
