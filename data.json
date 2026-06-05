@@ -1,6 +1,25 @@
 {
   "picks": {
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "NEW YORK YANKEES",
+        "betType": "MONEYLINE",
+        "odds": "-144",
+        "time": "4 06 PM",
+        "note": "",
+        "result": "",
+        "id": 1780696192150
+      },
+      {
+        "team": "Connecticut Sun:",
+        "betType": "MONEYLINE",
+        "odds": "+225",
+        "time": "4 30 PM",
+        "note": "",
+        "result": "",
+        "id": 1780696332900
+      }
+    ],
     "gold": [
       {
         "team": "PIRATES",
