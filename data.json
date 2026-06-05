@@ -1,28 +1,46 @@
 {
   "picks": {
-    "metallica": [
+    "metallica": [],
+    "gold": [
       {
-        "team": "Cubs",
+        "team": "PIRATES",
         "betType": "MONEYLINE",
-        "odds": "-186",
-        "time": "11:20 AM CT",
-        "note": "Cubs (33-30) home vs Giants (25-38). Back the home team.",
-        "result": "loss",
-        "id": 1749134400001
+        "odds": "+125",
+        "time": "4 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1780695769316
       },
       {
-        "team": "Cubs vs Giants",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 8.5",
-        "time": "11:20 AM CT",
-        "note": "Wrigley Field. Two struggling offenses. Take the UNDER.",
-        "result": "loss",
-        "id": 1749134400002
+        "team": "ORIOLES",
+        "betType": "MONEYLINE",
+        "odds": "+133",
+        "time": "4 07 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1780695839728
+      },
+      {
+        "team": "GUARDIAN'",
+        "betType": "MONEYLINE",
+        "odds": "-135",
+        "time": "5 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1780695906924
+      },
+      {
+        "team": "KNICKS'",
+        "betType": "SPREAD",
+        "odds": "+6.5 -108",
+        "time": "5 30 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1780696054447
       }
     ],
-    "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1780695835
+  "drop": 1780699787
 }
