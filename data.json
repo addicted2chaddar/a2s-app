@@ -1,65 +1,9 @@
 {
   "picks": {
-    "metallica": [
-      {
-        "team": "NEW YORK YANKEES",
-        "betType": "MONEYLINE",
-        "odds": "-144",
-        "time": "4 06 PM",
-        "note": "",
-        "result": "loss",
-        "id": 1780696192150
-      },
-      {
-        "team": "Connecticut Sun:",
-        "betType": "MONEYLINE",
-        "odds": "+225",
-        "time": "4 30 PM",
-        "note": "",
-        "result": "loss",
-        "id": 1780696332900
-      }
-    ],
-    "gold": [
-      {
-        "team": "PIRATES",
-        "betType": "MONEYLINE",
-        "odds": "+125",
-        "time": "4 15 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1780695769316
-      },
-      {
-        "team": "ORIOLES",
-        "betType": "MONEYLINE",
-        "odds": "+133",
-        "time": "4 07 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1780695839728
-      },
-      {
-        "team": "GUARDIAN'",
-        "betType": "MONEYLINE",
-        "odds": "-135",
-        "time": "5 15 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1780695906924
-      },
-      {
-        "team": "KNICKS'",
-        "betType": "SPREAD",
-        "odds": "+6.5 -108",
-        "time": "5 30 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1780696054447
-      }
-    ],
+    "metallica": [],
+    "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1780699787
+  "drop": 1780771693
 }
