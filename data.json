@@ -1,65 +1,9 @@
 {
   "picks": {
-    "metallica": [
-      {
-        "team": "Cleveland Guardians:",
-        "betType": "MONEYLINE",
-        "odds": "Cleveland Guardians +100",
-        "time": "4.00 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1780750330573
-      },
-      {
-        "team": "Milwaukee Brewers",
-        "betType": "MONEYLINE",
-        "odds": "-255",
-        "time": "6 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1780750432926
-      }
-    ],
-    "gold": [
-      {
-        "team": "San Francisco Giants:",
-        "betType": "MONEYLINE",
-        "odds": "+124",
-        "time": "11 :21  am",
-        "note": "",
-        "result": "loss",
-        "id": 1780750670949
-      },
-      {
-        "team": "Carolina Hurricanes: NHL",
-        "betType": "MONEYLINE",
-        "odds": "-108",
-        "time": "5:00 PM PT",
-        "note": "NHL",
-        "result": "loss",
-        "id": 1780750857068
-      },
-      {
-        "team": "Indiana Fever",
-        "betType": "SPREAD",
-        "odds": "+4.5",
-        "time": "5:00 PM",
-        "note": "",
-        "result": "",
-        "id": 1780751045913
-      },
-      {
-        "team": "Las Vegas Aces",
-        "betType": "SPREAD",
-        "odds": "-2.5",
-        "time": "12:00 PM PT",
-        "note": "WNBA",
-        "result": "win",
-        "id": 1780751409197
-      }
-    ],
+    "metallica": [],
+    "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1780961654
+  "drop": 1780962298
 }
