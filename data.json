@@ -2,13 +2,22 @@
   "picks": {
     "metallica": [
       {
-        "team": "Knight's",
-        "betType": "MONEYLINE",
-        "odds": "+100",
-        "time": "5 pm pt",
+        "team": "San antonio Spurs",
+        "betType": "SPREAD",
+        "odds": "+2.5",
+        "time": "5:30",
         "note": "",
         "result": "",
-        "id": 1781046942298
+        "id": 1781132414745
+      },
+      {
+        "team": "Spurs vs Knicks",
+        "betType": "OVER/UNDER",
+        "odds": "Under 215.5",
+        "time": "5:30 PM MT",
+        "note": "",
+        "result": "",
+        "id": 1781132554476
       }
     ],
     "gold": [],
