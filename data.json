@@ -7,7 +7,7 @@
         "odds": "+2.5",
         "time": "5:30",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1781132414745
       },
       {
@@ -18,6 +18,15 @@
         "note": "",
         "result": "",
         "id": 1781132554476
+      },
+      {
+        "team": "phillies",
+        "betType": "MONEYLINE",
+        "odds": "+210",
+        "time": "4 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781303088816
       }
     ],
     "gold": [],
