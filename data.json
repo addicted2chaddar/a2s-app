@@ -2,24 +2,6 @@
   "picks": {
     "metallica": [
       {
-        "team": "San antonio Spurs",
-        "betType": "SPREAD",
-        "odds": "+2.5",
-        "time": "5:30",
-        "note": "",
-        "result": "win",
-        "id": 1781132414745
-      },
-      {
-        "team": "Spurs vs Knicks",
-        "betType": "OVER/UNDER",
-        "odds": "Under 215.5",
-        "time": "5:30 PM MT",
-        "note": "",
-        "result": "loss",
-        "id": 1781132554476
-      },
-      {
         "team": "phillies",
         "betType": "MONEYLINE",
         "odds": "+210",
@@ -27,9 +9,55 @@
         "note": "",
         "result": "",
         "id": 1781303088816
+      },
+      {
+        "team": "RAYS",
+        "betType": "MONEYLINE",
+        "odds": "-169",
+        "time": "6 38 PM",
+        "note": "",
+        "result": "",
+        "id": 1781303147367
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "METS",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "4 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781303191481
+      },
+      {
+        "team": "ATHLETSICS",
+        "betType": "MONEYLINE",
+        "odds": "-190",
+        "time": "7 05 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781303233558
+      },
+      {
+        "team": "ASTROS",
+        "betType": "MONEYLINE",
+        "odds": "-115",
+        "time": "5 10 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781303281284
+      },
+      {
+        "team": "CARDNIALS",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "5 10 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781303337851
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
