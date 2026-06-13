@@ -2,16 +2,62 @@
   "picks": {
     "metallica": [
       {
-        "team": "Washington ML",
+        "team": "phillies",
         "betType": "MONEYLINE",
-        "odds": "na",
-        "time": "1:05",
+        "odds": "+210",
+        "time": "4 40 pm pt",
         "note": "",
-        "result": "",
-        "id": 1781377811708
+        "result": "loss",
+        "id": 1781303088816
+      },
+      {
+        "team": "RAYS",
+        "betType": "MONEYLINE",
+        "odds": "-169",
+        "time": "6 38 PM",
+        "note": "",
+        "result": "loss",
+        "id": 1781303147367
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "METS",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "4 15 PM PT",
+        "note": "",
+        "result": "win",
+        "id": 1781303191481
+      },
+      {
+        "team": "ATHLETSICS",
+        "betType": "MONEYLINE",
+        "odds": "-190",
+        "time": "7 05 PM PT",
+        "note": "",
+        "result": "win",
+        "id": 1781303233558
+      },
+      {
+        "team": "ASTROS",
+        "betType": "MONEYLINE",
+        "odds": "-115",
+        "time": "5 10 PM PT",
+        "note": "",
+        "result": "win",
+        "id": 1781303281284
+      },
+      {
+        "team": "CARDNIALS",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "5 10 PM PT",
+        "note": "",
+        "result": "win",
+        "id": 1781303337851
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
