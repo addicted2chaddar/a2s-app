@@ -49,6 +49,51 @@
         "note": "MLB . MONEYLINE -104 | 10:41 AM PT\n       \"HIGH-VALUE SIGNAL | 10:41 AM PT\"",
         "result": "",
         "id": 1781444004906
+      },
+      {
+        "team": "Cincinnati Reds",
+        "betType": "MONEYLINE",
+        "odds": "-104",
+        "time": "10:41 AM PT",
+        "note": "MLB . MONEYLINE -104 | 10:41 AM PT\n       \"HIGH-VALUE SIGNAL | 10:41 AM PT\"",
+        "result": "",
+        "id": 1781444110258
+      },
+      {
+        "team": "Los Angeles Angels",
+        "betType": "MONEYLINE",
+        "odds": "+100",
+        "time": "1 00 PM PT",
+        "note": "MLB . MONEYLINE +100 | 01:08 PM PT\n       \"HIGH-VALUE SIGNAL | 01:08 PM PT\"",
+        "result": "",
+        "id": 1781444251347
+      },
+      {
+        "team": "Chicago White Sox",
+        "betType": "SPREAD",
+        "odds": "+105",
+        "time": "11:10 AM",
+        "note": "\"HIGH-VALUE SIGNAL | 11:11 AM PT\"",
+        "result": "",
+        "id": 1781444382855
+      },
+      {
+        "team": "Toronto Tempo",
+        "betType": "MONEYLINE",
+        "odds": "+200",
+        "time": "12:00 PM PT",
+        "note": "WNBA . MONEYLINE +210 | 12:00 PM PT\n       \"HIGH-VALUE SIGNAL | 12:00 PM PT\"",
+        "result": "",
+        "id": 1781444516529
+      },
+      {
+        "team": "Kansas City Royals",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "11 :11 AM PT",
+        "note": "MLB . MONEYLINE -120 | 11:11 AM PT\n       \"SHARP SIGNAL | 11:11 AM PT\"",
+        "result": "",
+        "id": 1781444626825
       }
     ],
     "allaccess": []
