@@ -2,64 +2,56 @@
   "picks": {
     "metallica": [
       {
-        "team": "phillies",
+        "team": "Netherlands",
         "betType": "MONEYLINE",
-        "odds": "+210",
-        "time": "4 40 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1781303088816
+        "odds": "+100",
+        "time": "1 pm pt",
+        "note": "Soccer . MONEYLINE +100 | 01:00 PM PT\n       \"HIGH-VALUE SIGNAL | 01:00 PM PT\"",
+        "result": "",
+        "id": 1781443601053
       },
       {
-        "team": "RAYS",
+        "team": "Sweden",
         "betType": "MONEYLINE",
-        "odds": "-169",
-        "time": "6 38 PM",
-        "note": "",
-        "result": "loss",
-        "id": 1781303147367
+        "odds": "-110",
+        "time": "7 pm",
+        "note": "Soccer . MONEYLINE -110 | 07:00 PM PT\n       \"HIGH EV PLAY | 07:00 PM PT\"",
+        "result": "",
+        "id": 1781443680178
       }
     ],
     "gold": [
       {
-        "team": "METS",
+        "team": "Pittsburgh Pirates",
         "betType": "MONEYLINE",
-        "odds": "-120",
-        "time": "4 15 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781303191481
+        "odds": "-162",
+        "time": "9 16 am pt",
+        "note": "MLB . MONEYLINE -162 | 09:16 AM PT\n       \"HIGH-VALUE SIGNAL | 09:16 AM PT\"",
+        "result": "",
+        "id": 1781443783719
       },
       {
-        "team": "ATHLETSICS",
+        "team": "ivory coast",
         "betType": "MONEYLINE",
-        "odds": "-190",
-        "time": "7 05 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781303233558
-      },
-      {
-        "team": "ASTROS",
-        "betType": "MONEYLINE",
-        "odds": "-115",
-        "time": "5 10 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781303281284
-      },
-      {
-        "team": "CARDNIALS",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "5 10 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781303337851
+        "odds": "+230",
+        "time": "4 pm",
+        "note": "Soccer . MONEYLINE +230 | 04:00 PM PT\n       \"HIGH EV PLAY | 04:00 PM PT\"",
+        "result": "",
+        "id": 1781443888446
       }
     ],
-    "purple": [],
+    "purple": [
+      {
+        "team": "Minnesota Twins",
+        "betType": "MONEYLINE",
+        "odds": "-104",
+        "time": "10 :41 am PT",
+        "note": "MLB . MONEYLINE -104 | 10:41 AM PT\n       \"HIGH-VALUE SIGNAL | 10:41 AM PT\"",
+        "result": "",
+        "id": 1781444004906
+      }
+    ],
     "allaccess": []
   },
-  "drop": 1781378913
+  "drop": 1781451255
 }
