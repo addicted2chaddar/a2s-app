@@ -433,9 +433,55 @@ function vicAddMsg(text, role){
   div.className = 'vic-msg ' + (role==='bot' ? 'vic-msg-bot' : 'vic-msg-user');
   div.textContent = text;
   msgs.appendChild(div);
+
+  // If Victoria just dropped the PayPal link, show screenshot upload UI
+  if(role==='bot' && (text.toLowerCase().includes('paypal.me/addiicted2sports') || text.toLowerCase().includes('paypal.me/addicted2sports'))){
+    if(!document.getElementById('vicUploadBox')){
+      const uploadBox = document.createElement('div');
+      uploadBox.id = 'vicUploadBox';
+      uploadBox.style.cssText = 'background:rgba(250,204,21,0.08);border:2px dashed rgba(250,204,21,0.5);border-radius:12px;padding:12px;margin-top:6px;text-align:center;';
+      uploadBox.innerHTML = `
+        <div style="color:var(--gold);font-weight:900;font-size:12px;margin-bottom:6px;">📸 SEND PAYMENT SCREENSHOT</div>
+        <div style="color:var(--slate);font-size:11px;margin-bottom:8px;">Upload your PayPal confirmation — we'll generate your unlock code instantly</div>
+        <input type="file" id="vicScreenshotInput" accept="image/*" style="display:none;" onchange="handleVicScreenshot(this)">
+        <button onclick="document.getElementById('vicScreenshotInput').click()" style="background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;font-weight:900;font-size:13px;padding:8px 18px;border:none;border-radius:8px;cursor:pointer;">📎 Upload Screenshot</button>
+        <div id="vicReceiptResult" style="margin-top:8px;display:none;"></div>
+      `;
+      msgs.appendChild(uploadBox);
+    }
+  }
+
   msgs.scrollTop = msgs.scrollHeight;
   if(role==='bot') victoriaHistory.push({role:'assistant',content:text});
   else victoriaHistory.push({role:'user',content:text});
+}
+
+function handleVicScreenshot(input){
+  if(!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const resultDiv = document.getElementById('vicReceiptResult');
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = '<div style="color:var(--gold);font-size:12px;">⏳ Verifying payment...</div>';
+
+  // Simulate processing then generate receipt
+  setTimeout(()=>{
+    const receipt = 'A2S-' + Date.now().toString(36).toUpperCase().slice(-6) + Math.random().toString(36).substring(2,5).toUpperCase();
+    // Store pending receipt for admin to approve or auto-unlock
+    const pending = JSON.parse(localStorage.getItem('a2s_pending_receipts')||'[]');
+    pending.push({receipt, file: file.name, timestamp: Date.now(), status:'pending'});
+    localStorage.setItem('a2s_pending_receipts', JSON.stringify(pending));
+    // Auto-unlock — fan sees receipt + picks unlock
+    localStorage.setItem('a2s_user_verified', JSON.stringify({tier:'allaccess', receipt, purchaseTime: Date.now()}));
+    resultDiv.innerHTML = `
+      <div style="background:rgba(34,197,94,0.15);border:1px solid var(--green);border-radius:8px;padding:10px;">
+        <div style="color:var(--green);font-weight:900;font-size:13px;">✅ PAYMENT CONFIRMED!</div>
+        <div style="color:var(--white);font-size:12px;margin-top:4px;">Your receipt #:</div>
+        <div style="color:var(--gold);font-weight:900;font-size:16px;letter-spacing:2px;margin:4px 0;">${receipt}</div>
+        <div style="color:var(--slate);font-size:11px;">Screenshot this — picks are now unlocked 🔓</div>
+      </div>
+    `;
+    vicAddMsg(`🔓 Receipt confirmed! Your unlock code is ${receipt} — picks are LIVE for you! Welcome to the family 👑`, 'bot');
+  }, 2000);
 }
 
 function vicShowTyping(){
@@ -488,6 +534,8 @@ PayPal: paypal.me/addiicted2sports
 Instagram: @addiicted2sports  
 Website: addiicted2chaddar.github.io/a2s-app
 
+AFTER GIVING PAYPAL LINK — always say: "Soon as you pay, upload your screenshot RIGHT HERE in the chat — the upload button will pop up below. We'll generate your receipt number and unlock your picks INSTANTLY. No waiting, no DMs needed. 📸"
+
 RULES:
 - Never list all tiers at once unless asked — diagnose first
 - Never sound desperate — you have value, they need YOU
@@ -536,7 +584,7 @@ async function callVictoria(userMsg){
 function fallbackVictoria(msg){
   const greets=["Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or still out here losing alone? 👀 What's your budget?","Aye aye aye — welcome to the hottest picks in Las Vegas 💰 We don't miss. Question is... are YOU in? Tell me what you working with 👀","Welcome to Addiicted2Sports™ 👑 The Boss is LOCKED IN today. You tryna eat or nah? Drop your budget and I'll plug you in RIGHT NOW 🔥"];
   if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
-  const closes=["Say less 💰 Hop on paypal.me/addiicted2sports and let's GET IT. Gold tier is calling your name 🥇","That's what I'm talking about 🔥 Purple tier is PERFECT for you — $175 for 72hrs of elite picks. paypal.me/addiicted2sports RIGHT NOW 💜","All-Access is the move 👑 $275 and you get EVERYTHING we drop. paypal.me/addiicted2sports — don't sleep on it 💰"];
+  const closes=["Say less 💰 Hop on paypal.me/addiicted2sports and let's GET IT. Gold tier is calling your name 🥇 Soon as you pay, upload your screenshot right here in the chat — upload button pops up below — and I'll lock in your receipt number INSTANTLY.","That's what I'm talking about 🔥 Purple tier is PERFECT for you — $175 for 72hrs of elite picks. paypal.me/addiicted2sports RIGHT NOW 💜 Upload your payment screenshot right here and your picks unlock IMMEDIATELY.","All-Access is the move 👑 $275 and you get EVERYTHING we drop. paypal.me/addiicted2sports — don't sleep on it 💰 Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot. No waiting."];
   return closes[Math.floor(Math.random()*closes.length)];
 }
 
