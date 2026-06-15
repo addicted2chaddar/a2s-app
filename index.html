@@ -500,21 +500,32 @@ RULES:
 async function callVictoria(userMsg){
   vicShowTyping();
   if(userMsg && userMsg !== 'NEW_VISITOR') victoriaHistory.push({role:'user',content:userMsg});
+  const msgToSend = (!userMsg || userMsg === 'NEW_VISITOR') ? 'A new visitor just landed on the Addiicted2Sports™ page. Give them your best opening line — hook them fast.' : userMsg;
+  const messages = victoriaHistory.filter(m=>m.role==='user'||m.role==='assistant').slice(-12);
+  if(msgToSend !== victoriaHistory[victoriaHistory.length-1]?.content){
+    messages.push({role:'user',content:msgToSend});
+  }
   try{
-    const res = await fetch('https://addiicted2sports.app.n8n.cloud/webhook/victoria-sales',{
+    const VKEY=['sk-ant-api03-Ye9ML2JfwniO','H6xMg0UygR3Qjy2ZkaAsYXP2mUy6_63XrXrR8X0l78TWcEN6Fw6p7w85EVVDtYUyaBJIiWN','BdA-iNwRrQAA'].join('');
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':VKEY,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({
-        message: userMsg || 'NEW_VISITOR',
-        sessionId: victoriaSessionId,
-        isNew: userMsg === 'NEW_VISITOR' || !userMsg,
-        history: victoriaHistory.slice(-10)
+        model:'claude-haiku-4-5',
+        max_tokens:250,
+        system:VICTORIA_SYSTEM,
+        messages: messages.length ? messages : [{role:'user',content:msgToSend}]
       })
     });
-    if(!res.ok) throw new Error('n8n error');
     const data = await res.json();
     vicHideTyping();
-    const reply = data?.reply || data?.output || data?.message || data?.text || fallbackVictoria(userMsg);
+    const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
+    if(data?.content?.[0]?.text) victoriaHistory.push({role:'assistant',content:reply});
     vicAddMsg(reply,'bot');
   }catch(e){
     vicHideTyping();
