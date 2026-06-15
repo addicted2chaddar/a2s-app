@@ -8,6 +8,48 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--navy:#0a0e1c;--dark:#0f1419;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
 body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
+/* PROOF STRIP */
+.proof-strip{background:linear-gradient(135deg,#0a1628,#0f2040);border:2px solid rgba(250,204,21,0.4);border-radius:14px;padding:14px 16px;margin:12px 0;position:relative;overflow:hidden;}
+.proof-strip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(250,204,21,0.04),transparent);pointer-events:none;}
+.proof-ticker{display:flex;gap:6px;overflow:hidden;margin-bottom:10px;}
+.proof-ticker-inner{display:flex;gap:16px;animation:tickerScroll 18s linear infinite;white-space:nowrap;}
+.proof-item{font-size:11px;color:var(--green);font-weight:900;letter-spacing:0.5px;flex-shrink:0;}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;}
+.proof-stat-val{font-size:22px;font-weight:900;color:var(--gold);line-height:1;}
+.proof-stat-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+/* GOTM */
+.gotm-card{background:linear-gradient(135deg,#0a0a0a,#1a1400);border:3px solid var(--gold);border-radius:16px;padding:0;overflow:hidden;margin:16px 0;position:relative;}
+.gotm-header{background:linear-gradient(135deg,#facc15,#d97706);padding:10px 16px;text-align:center;}
+.gotm-header-text{font-size:11px;font-weight:900;color:#000;letter-spacing:3px;text-transform:uppercase;}
+.gotm-body{padding:16px;text-align:center;position:relative;}
+.gotm-badge{display:inline-block;background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:2px solid var(--gold);border-radius:50px;padding:5px 16px;font-size:10px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+.gotm-title{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:4px;text-transform:uppercase;}
+.gotm-title span{color:var(--gold);}
+.gotm-sub{font-size:11px;color:var(--slate);margin-bottom:14px;line-height:1.6;}
+.gotm-green-light{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(34,197,94,0.12);border:2px solid var(--green);border-radius:8px;padding:8px;margin-bottom:14px;}
+.gotm-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:gotmPulse 1s ease-in-out infinite;}
+@keyframes gotmPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.7)}70%{opacity:0.8;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+.gotm-green-text{font-size:12px;font-weight:900;color:var(--green);letter-spacing:2px;}
+.gotm-price-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
+.gotm-price-old{font-size:16px;color:var(--slate);text-decoration:line-through;}
+.gotm-price-new{font-size:32px;font-weight:900;color:var(--gold);}
+.gotm-save{font-size:10px;background:var(--green);color:#000;font-weight:900;padding:2px 8px;border-radius:4px;}
+/* ONBOARDING FUNNEL */
+.onboard-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;}
+.onboard-card{background:linear-gradient(135deg,#0a0e1c,#0f1a2e);border:3px solid var(--gold);border-radius:20px;padding:28px 20px;max-width:380px;width:100%;text-align:center;position:relative;}
+.onboard-logo{font-size:14px;font-weight:900;color:var(--gold);letter-spacing:3px;margin-bottom:20px;text-transform:uppercase;}
+.onboard-q{font-size:20px;font-weight:900;color:var(--white);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
+.onboard-sub{font-size:12px;color:var(--slate);margin-bottom:22px;}
+.onboard-btn{display:block;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:900;letter-spacing:1px;cursor:pointer;border:none;margin-bottom:10px;text-transform:uppercase;transition:transform 0.1s;}
+.onboard-btn:active{transform:scale(0.97);}
+.onboard-btn-primary{background:linear-gradient(135deg,var(--gold),#d97706);color:#000;}
+.onboard-btn-secondary{background:rgba(250,204,21,0.1);color:var(--gold);border:2px solid rgba(250,204,21,0.4);}
+.onboard-step{font-size:10px;color:var(--slate);margin-top:14px;letter-spacing:1px;}
+.onboard-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;}
+.onboard-dot{width:8px;height:8px;border-radius:50%;background:rgba(250,204,21,0.2);}
+.onboard-dot.active{background:var(--gold);}
+
 .header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:14px 16px;text-align:center;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
 .logo-image{max-width:100%;height:auto;max-height:120px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);}
 .brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
@@ -156,6 +198,39 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 </head>
 <body>
 
+<!-- ONBOARDING FUNNEL (Parlay P inspired) -->
+<div class="onboard-overlay" id="onboardOverlay">
+  <div class="onboard-card">
+    <div class="onboard-logo">⚡ Addiicted2Sports™</div>
+    <div id="onboardStep1">
+      <div class="onboard-q">Are you serious about winning?</div>
+      <div class="onboard-sub">We only deal with real ones. Let's find out.</div>
+      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(2)">💰 YES — LET'S GET MONEY</button>
+      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(2)">I want to learn more first</button>
+      <div class="onboard-dots"><div class="onboard-dot active"></div><div class="onboard-dot"></div><div class="onboard-dot"></div></div>
+      <div class="onboard-step">STEP 1 OF 3</div>
+    </div>
+    <div id="onboardStep2" style="display:none;">
+      <div class="onboard-q">How do you bet?</div>
+      <div class="onboard-sub">We'll match you to the right tier.</div>
+      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(3,'allaccess')">👑 I go ALL IN — daily bettor</button>
+      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'purple')">💜 Weekend warrior — 2-3x/week</button>
+      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'gold')">🥇 Casual — just the best plays</button>
+      <div class="onboard-dots"><div class="onboard-dot"></div><div class="onboard-dot active"></div><div class="onboard-dot"></div></div>
+      <div class="onboard-step">STEP 2 OF 3</div>
+    </div>
+    <div id="onboardStep3" style="display:none;">
+      <div style="font-size:40px;margin-bottom:10px;">🔥</div>
+      <div class="onboard-q" id="onboardRecTier">YOUR PICK IS READY</div>
+      <div class="onboard-sub" id="onboardRecDesc">Based on your style, we matched you to the perfect tier.</div>
+      <div id="onboardRecCard" style="background:rgba(250,204,21,0.1);border:2px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:16px;"></div>
+      <button class="onboard-btn onboard-btn-primary" onclick="closeOnboard()">🚀 LET'S GO — SHOW ME THE PICKS</button>
+      <div class="onboard-dots"><div class="onboard-dot"></div><div class="onboard-dot"></div><div class="onboard-dot active"></div></div>
+      <div class="onboard-step">STEP 3 OF 3</div>
+    </div>
+  </div>
+</div>
+
 <div class="header-hero">
   <div style="margin-bottom:14px;">
     <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image">
@@ -269,6 +344,40 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       </div>
       <button class="btn btn-primary" onclick="saveToGitHub()">🚀 Push All Picks to Fans</button>
       <button class="btn btn-danger" onclick="clearAllPicks()">🗑 Clear All Picks</button>
+    </div>
+  </div>
+
+
+  <!-- PROOF OF WINNINGS STRIP (iSellWinners inspired) -->
+  <div class="proof-strip" id="proofStrip">
+    <div style="font-size:10px;color:var(--gold);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">📈 BOT CAKE VERIFIED RESULTS</div>
+    <div class="proof-ticker">
+      <div class="proof-ticker-inner" id="proofTicker"></div>
+    </div>
+    <div class="proof-stats">
+      <div><div class="proof-stat-val" id="proofWins">—</div><div class="proof-stat-lbl">Total Wins</div></div>
+      <div><div class="proof-stat-val" id="proofWinPct">—</div><div class="proof-stat-lbl">Win Rate</div></div>
+      <div><div class="proof-stat-val" id="proofStreak">🔥</div><div class="proof-stat-lbl">Hot Streak</div></div>
+    </div>
+  </div>
+
+  <!-- GAME OF THE MONTH (Mazl Picks inspired) -->
+  <div class="gotm-card" id="gotmCard" style="display:none;">
+    <div class="gotm-header">
+      <div class="gotm-header-text">⭐ GAME OF THE MONTH ⭐</div>
+    </div>
+    <div class="gotm-body">
+      <div class="gotm-badge">INSIDE INFORMATION PLAY</div>
+      <div class="gotm-title">THESE GAMES DON'T <span>MISS</span></div>
+      <div class="gotm-sub" id="gotmDesc">Our highest-confidence play of the month. Bot Cake v9.0 convergence signal — sharp + whale + line move all aligned.</div>
+      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">GREEN LIGHT GAME</div><div class="gotm-dot"></div></div>
+      <div style="font-size:13px;color:var(--white);font-weight:900;margin-bottom:12px;" id="gotmPick">🔒 LOCKED — SUBSCRIBERS ONLY</div>
+      <div class="gotm-price-row">
+        <span class="gotm-price-old">$275</span>
+        <span class="gotm-price-new" id="gotmPrice">$275</span>
+        <span class="gotm-save" id="gotmSave" style="display:none;">INCLUDED</span>
+      </div>
+      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🏆 GET THE GAME OF THE MONTH</a>
     </div>
   </div>
 
@@ -912,12 +1021,103 @@ function updateDateTime(){
   document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
 }
 
+
+// ============ ONBOARDING FUNNEL (Parlay P inspired) ============
+let onboardTierRec = 'allaccess';
+function onboardNext(step, tier){
+  if(tier) onboardTierRec = tier;
+  document.querySelectorAll('#onboardStep1,#onboardStep2,#onboardStep3').forEach(el=>el.style.display='none');
+  const el = document.getElementById('onboardStep'+step);
+  if(el) el.style.display='block';
+  if(step===3){
+    const tiers = {
+      allaccess:{name:'👑 ALL-ACCESS',price:'$275 / 168 hrs',desc:'Every single pick we drop all week. The real ones' tier.'},
+      purple:{name:'💜 PURPLE',price:'$175 / 72 hrs',desc:'Weekend warrior pack — 3 days of elite plays.'},
+      gold:{name:'🥇 GOLD',price:'$150 / 24 hrs',desc:'Best play of the day, every day. Simple.'}
+    };
+    const t = tiers[tier] || tiers.allaccess;
+    document.getElementById('onboardRecTier').textContent = t.name + ' — RECOMMENDED';
+    document.getElementById('onboardRecDesc').textContent = t.desc;
+    document.getElementById('onboardRecCard').innerHTML = `<div style="font-size:22px;font-weight:900;color:var(--gold);">${t.name}</div><div style="font-size:16px;color:var(--white);margin-top:4px;">${t.price}</div>`;
+  }
+}
+function closeOnboard(){
+  const ov = document.getElementById('onboardOverlay');
+  if(ov){ ov.style.opacity='0'; ov.style.transition='opacity 0.4s'; setTimeout(()=>ov.style.display='none',400); }
+}
+
+// ============ PROOF OF WINNINGS (iSellWinners inspired) ============
+function initProofStrip(){
+  // Build ticker from actual pick results
+  let wins=0,losses=0,pushes=0;
+  const recentWins=[];
+  ['metallica','gold','purple','allaccess'].forEach(t=>{
+    (picks[t]||[]).forEach(pk=>{
+      if(pk.result==='win'){wins++;recentWins.push(pk.team+' ✅');}
+      else if(pk.result==='loss') losses++;
+      else if(pk.result==='push') pushes++;
+    });
+  });
+  const total = wins+losses+pushes;
+  const pct = total>0 ? Math.round((wins/total)*100)+'%' : '—';
+  
+  // Calculate streak
+  let streak = 0;
+  const allR = [];
+  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).filter(p=>p.result).forEach(p=>allR.push(p.result));});
+  for(let i=allR.length-1;i>=0;i--){ if(allR[i]==='win') streak++; else break; }
+  
+  const wEl=document.getElementById('proofWins');
+  const pEl=document.getElementById('proofWinPct');
+  const sEl=document.getElementById('proofStreak');
+  if(wEl) wEl.textContent = wins>0?wins:'—';
+  if(pEl) pEl.textContent = pct;
+  if(sEl) sEl.textContent = streak>0?streak+'W 🔥':'—';
+
+  // Ticker
+  const tickerItems = recentWins.length>0 ? recentWins : ['BOT CAKE v9.0 ACTIVE ⚡','SHARP SIGNALS LOCKED 🎯','VEGAS VERIFIED 💰','VICTORY TRIANGLE 🔺','PICKS DROPPING NOW 🔥'];
+  const doubled = [...tickerItems,...tickerItems];
+  const ticker = document.getElementById('proofTicker');
+  if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${doubled.map(t=>`<span class="proof-item">• ${t}</span>`).join('')}</div>`;
+}
+
+// ============ GAME OF THE MONTH (Mazl Picks inspired) ============
+function initGOTM(){
+  // Show GOTM card if admin has set a GOTM pick in data
+  const gotmData = (window._ghData && window._ghData.gotm) ? window._ghData.gotm : null;
+  const card = document.getElementById('gotmCard');
+  if(!card) return;
+  if(gotmData && gotmData.active){
+    card.style.display='block';
+    const pickEl=document.getElementById('gotmPick');
+    const descEl=document.getElementById('gotmDesc');
+    if(pickEl) pickEl.textContent = userVerified ? '🎯 '+gotmData.pick : '🔒 LOCKED — SUBSCRIBERS ONLY';
+    if(descEl && gotmData.note) descEl.textContent = gotmData.note;
+  } else {
+    // Show teaser card even without admin data
+    card.style.display='block';
+    const saveEl=document.getElementById('gotmSave');
+    if(saveEl) saveEl.style.display='inline';
+  }
+}
+
 async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
   await ghRead();
   renderPicksList();
   renderFomo();
+  initProofStrip();
+  initGOTM();
+  // Show onboarding for first-time visitors
+  const visited = localStorage.getItem('a2s_visited');
+  if(!visited && !localStorage.getItem('a2s_user_verified')){
+    localStorage.setItem('a2s_visited','1');
+    // Small delay so page loads first
+    setTimeout(()=>{ const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='flex'; },800);
+  } else {
+    const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='none';
+  }
   const auth=localStorage.getItem('a2s_user_verified');
   if(auth){const u=JSON.parse(auth);userVerified=true;userTier=u.tier;showFanView();}
 }
