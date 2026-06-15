@@ -101,31 +101,17 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .modal-input:focus{outline:none;border-color:var(--gold);}
 .modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;text-transform:uppercase;}
 .admin-bar{margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;}
-
-/* ── RESULT BADGE on fan pick cards ── */
 .result-badge{position:absolute;top:12px;right:12px;font-size:11px;font-weight:900;padding:5px 10px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;}
 .badge-win{background:linear-gradient(135deg,rgba(34,197,94,0.3),rgba(34,197,94,0.15));color:var(--green);border:2px solid var(--green);}
 .badge-loss{background:linear-gradient(135deg,rgba(239,68,68,0.3),rgba(239,68,68,0.15));color:var(--red);border:2px solid var(--red);}
 .badge-push{background:rgba(148,163,184,0.2);color:var(--slate);border:2px solid var(--slate);}
-
-/* ── HYPNOTIC WAVING FLAG ── */
 .win-flag-wrap{display:none;text-align:center;padding:20px 0 10px;margin-bottom:4px;}
 .win-flag-wrap.active{display:block;}
 .flag-pole{display:inline-flex;align-items:flex-start;gap:0;}
 .pole{width:6px;height:90px;background:linear-gradient(180deg,#ccc,#888);border-radius:3px;flex-shrink:0;}
 .flag-svg{overflow:visible;}
-@keyframes wave{
-  0%  {d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
-  25% {d:path("M0,4 C20,-4 40,12 60,4 C80,-4 100,12 120,4 L120,44 C100,52 80,36 60,44 C40,52 20,36 0,44 Z");}
-  50% {d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z");}
-  75% {d:path("M0,-4 C20,4 40,-12 60,-4 C80,4 100,-12 120,-4 L120,36 C100,28 80,44 60,36 C40,28 20,44 0,36 Z");}
-  100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
-}
-@keyframes waveRed{
-  0%  {d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
-  50% {d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z");}
-  100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z");}
-}
+@keyframes wave{0%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}25%{d:path("M0,4 C20,-4 40,12 60,4 C80,-4 100,12 120,4 L120,44 C100,52 80,36 60,44 C40,52 20,36 0,44 Z")}50%{d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z")}75%{d:path("M0,-4 C20,4 40,-12 60,-4 C80,4 100,-12 120,-4 L120,36 C100,28 80,44 60,36 C40,28 20,44 0,36 Z")}100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}}
+@keyframes waveRed{0%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}50%{d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z")}100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}}
 .flag-shape-win{animation:wave 1.4s ease-in-out infinite;fill:url(#winGrad);}
 .flag-shape-loss{animation:waveRed 1.4s ease-in-out infinite;fill:url(#lossGrad);}
 .flag-label{font-size:22px;font-weight:900;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
@@ -133,8 +119,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .flag-label-loss{color:var(--red);text-shadow:0 0 20px rgba(239,68,68,0.5);}
 @keyframes glow-green{from{text-shadow:0 0 10px rgba(34,197,94,0.4)}to{text-shadow:0 0 30px rgba(34,197,94,0.9),0 0 60px rgba(34,197,94,0.4)}}
 .flag-sub{font-size:12px;color:var(--slate);margin-top:4px;letter-spacing:1px;}
-
-/* record strip */
 .record-strip{display:flex;justify-content:center;gap:16px;margin:10px 0 20px;padding:12px;background:rgba(0,0,0,0.3);border-radius:10px;border:1px solid rgba(255,255,255,0.08);}
 .record-item{text-align:center;}
 .record-num{font-size:24px;font-weight:900;}
@@ -142,6 +126,36 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .record-num-w{color:var(--green);}
 .record-num-l{color:var(--red);}
 .record-num-p{color:var(--slate);}
+
+/* ── VICTORIA CHAT WIDGET ── */
+#victoriaWidget{position:fixed;bottom:90px;right:16px;width:320px;z-index:999;font-family:-apple-system,system-ui,sans-serif;}
+#victoriaWidget.hidden{display:none;}
+#victoriaBubble{background:linear-gradient(135deg,#0a1628,#1a2f4a);border:2px solid var(--gold);border-radius:18px 18px 4px 18px;padding:18px;box-shadow:0 8px 40px rgba(250,204,21,0.3);max-height:420px;display:flex;flex-direction:column;}
+#victoriaHeader{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(250,204,21,0.2);}
+#victoriaAvatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 14px rgba(250,204,21,0.5);}
+#victoriaName{font-size:13px;font-weight:900;color:var(--gold);}
+#victoriaStatus{font-size:10px;color:var(--green);letter-spacing:0.5px;}
+#victoriaClose{margin-left:auto;background:none;border:none;color:var(--slate);font-size:18px;cursor:pointer;padding:2px 6px;}
+#victoriaMessages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:12px;max-height:240px;padding-right:2px;}
+#victoriaMessages::-webkit-scrollbar{width:3px;}
+#victoriaMessages::-webkit-scrollbar-track{background:transparent;}
+#victoriaMessages::-webkit-scrollbar-thumb{background:rgba(250,204,21,0.3);border-radius:3px;}
+.vic-msg{padding:10px 13px;border-radius:14px;font-size:13px;line-height:1.5;max-width:92%;animation:msgPop 0.3s ease;}
+@keyframes msgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.vic-msg-bot{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);color:var(--white);align-self:flex-start;border-radius:4px 14px 14px 14px;}
+.vic-msg-user{background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.1));border:1px solid rgba(6,182,212,0.3);color:var(--white);align-self:flex-end;border-radius:14px 4px 14px 14px;}
+.vic-typing{display:flex;gap:4px;padding:10px 14px;background:rgba(250,204,21,0.08);border-radius:4px 14px 14px 14px;align-self:flex-start;width:fit-content;}
+.vic-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:vicDot 1.2s ease-in-out infinite;}
+.vic-dot:nth-child(2){animation-delay:0.2s;}
+.vic-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes vicDot{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
+#victoriaInputRow{display:flex;gap:8px;}
+#victoriaInput{flex:1;padding:10px 13px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;}
+#victoriaInput:focus{outline:none;border-color:var(--gold);}
+#victoriaSend{padding:10px 14px;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;border-radius:10px;color:#000;font-weight:900;font-size:16px;cursor:pointer;}
+#victoriaToggle{position:fixed;bottom:90px;right:16px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(250,204,21,0.5);z-index:999;display:flex;align-items:center;justify-content:center;animation:vicPulse 2s ease-in-out infinite;}
+@keyframes vicPulse{0%,100%{box-shadow:0 4px 20px rgba(250,204,21,0.5)}50%{box-shadow:0 4px 40px rgba(250,204,21,0.9),0 0 60px rgba(250,204,21,0.3)}}
+#victoriaNotif{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
 </style>
 </head>
 <body>
@@ -172,7 +186,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <div style="font-size:12px;color:var(--gold);font-weight:900;text-transform:uppercase;">⚙️ Admin — GitHub Sync</div>
       <span id="saveStatus" style="font-size:11px;color:var(--green);">✅ Ready</span>
     </div>
-
     <div class="timer-controls">
       <div class="timer-label">⏰ Drop Timer — Syncs to every fan device</div>
       <div class="timer-buttons">
@@ -189,7 +202,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       </div>
       <button class="timer-btn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:var(--red);">🗑 Clear Timer / Show LIVE Now</button>
     </div>
-
     <div class="form-group">
       <label class="form-label">Tier</label>
       <div class="tier-selector">
@@ -222,7 +234,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side..."></textarea>
     </div>
     <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
-
     <div class="picks-list active" id="picksList" style="margin-top:20px;">
       <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
         <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">⚡ METALLICA</div>
@@ -245,7 +256,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     </div>
   </div>
 
-  <!-- FOMO SECTION - shown to all unpaid fans -->
+  <!-- FOMO SECTION -->
   <div id="fomoSection">
     <style>
       @keyframes fomoWave{0%{d:path("M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z")}25%{d:path("M0,5 C25,-5 50,15 75,5 C100,-5 125,15 145,5 L145,50 C125,60 100,40 75,50 C50,60 25,40 0,50 Z")}50%{d:path("M0,0 C25,10 50,-10 75,0 C100,10 125,-10 145,0 L145,45 C125,35 100,55 75,45 C50,35 25,55 0,45 Z")}75%{d:path("M0,-5 C25,5 50,-15 75,-5 C100,5 125,-15 145,-5 L145,40 C125,30 100,50 75,40 C50,30 25,50 0,40 Z")}100%{d:path("M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z")}}
@@ -254,8 +265,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       @keyframes fomoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
       @keyframes lockPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px rgba(250,204,21,0.4))}50%{transform:scale(1.2);filter:drop-shadow(0 0 22px rgba(250,204,21,0.9))}}
     </style>
-
-    <!-- Hypnotic gold flag -->
     <div style="text-align:center;padding:22px 0 6px;">
       <div style="display:inline-flex;align-items:flex-start;">
         <div style="width:6px;height:100px;background:linear-gradient(180deg,#ccc,#888);border-radius:3px;flex-shrink:0;"></div>
@@ -267,32 +276,18 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
               <stop offset="100%" style="stop-color:#fde68a"/>
             </linearGradient>
           </defs>
-          <path style="fill:url(#fomoGrad);animation:fomoWave 1.1s ease-in-out infinite;"
-            d="M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z"/>
+          <path style="fill:url(#fomoGrad);animation:fomoWave 1.1s ease-in-out infinite;" d="M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z"/>
           <text x="72" y="28" text-anchor="middle" font-size="18" font-weight="900" fill="#000">💰</text>
         </svg>
       </div>
       <div style="font-size:26px;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:8px;animation:fomoGlow 1.3s ease-in-out infinite,fomoSlam 1.3s ease-in-out infinite;" id="fomoHeadline">WE HITTING 🔥</div>
       <div style="font-size:11px;color:var(--cyan);margin-top:4px;letter-spacing:1.5px;text-transform:uppercase;">THE BOSS IS LOCKED IN — DON'T MISS OUT</div>
     </div>
-
-    <!-- Live record teaser -->
     <div style="display:flex;justify-content:center;gap:20px;margin:14px 0;padding:14px;background:rgba(250,204,21,0.07);border:2px solid rgba(250,204,21,0.2);border-radius:12px;">
-      <div style="text-align:center;">
-        <div style="font-size:28px;font-weight:900;color:var(--green);animation:fomoFloat 1.5s ease-in-out infinite;" id="fomoW">—</div>
-        <div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">WINS</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:28px;font-weight:900;color:var(--red);" id="fomoL">—</div>
-        <div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">LOSSES</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:28px;font-weight:900;color:var(--slate);" id="fomoP">—</div>
-        <div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">PUSH</div>
-      </div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--green);animation:fomoFloat 1.5s ease-in-out infinite;" id="fomoW">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">WINS</div></div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--red);" id="fomoL">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">LOSSES</div></div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--slate);" id="fomoP">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">PUSH</div></div>
     </div>
-
-    <!-- Blurred picks preview -->
     <div style="position:relative;margin-bottom:20px;border-radius:14px;overflow:hidden;min-height:180px;">
       <div id="fomoPicksBlur" style="filter:blur(6px);pointer-events:none;user-select:none;opacity:0.75;padding:12px;"></div>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,28,0.05) 0%,rgba(10,14,28,0.8) 55%,rgba(10,14,28,0.97) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:22px;">
@@ -301,15 +296,11 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
         <div style="font-size:12px;color:var(--slate);margin-top:4px;">Pay below — unlock instantly</div>
       </div>
     </div>
-
-    <!-- FOMO CTA box -->
     <div style="background:linear-gradient(135deg,rgba(250,204,21,0.13),rgba(250,204,21,0.04));border:3px solid var(--gold);border-radius:14px;padding:20px;text-align:center;margin-bottom:20px;animation:fomoSlam 2s ease-in-out infinite;">
       <div style="font-size:15px;font-weight:900;color:var(--gold);margin-bottom:4px;text-transform:uppercase;">⚡ Winners Already Inside</div>
       <div style="font-size:12px;color:var(--slate);margin-bottom:16px;line-height:1.6;">You're missing the play RIGHT NOW.<br>Every minute you wait costs you money.</div>
       <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:18px;animation:fomoSlam 1.5s ease-in-out infinite;">💳 PAY NOW — GET PICKS</a>
     </div>
-
-    <!-- Steps -->
     <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;margin-bottom:20px;font-size:12px;color:var(--slate);line-height:2;">
       <div style="font-weight:900;color:var(--gold);margin-bottom:6px;font-size:13px;text-transform:uppercase;">How to unlock</div>
       <div><span style="color:var(--green);font-weight:900;">1</span> &nbsp;Pay via PayPal → paypal.me/Addiicted2Sports</div>
@@ -337,7 +328,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   </div>
 
   <div class="fan-view" id="fanView" style="margin-top:0;">
-    <!-- Win flag shown when any wins exist -->
     <div class="win-flag-wrap" id="winFlagWrap">
       <div class="flag-pole">
         <div class="pole"></div>
@@ -361,15 +351,36 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <div class="flag-label flag-label-win" id="flagLabel">WE WINNING 💰</div>
       <div class="flag-sub" id="flagSub">THE BOSS IS LOCKED IN</div>
     </div>
-
-    <!-- Record strip -->
     <div class="record-strip" id="recordStrip" style="display:none;">
       <div class="record-item"><div class="record-num record-num-w" id="recW">0</div><div class="record-lbl">Wins</div></div>
       <div class="record-item"><div class="record-num record-num-l" id="recL">0</div><div class="record-lbl">Losses</div></div>
       <div class="record-item"><div class="record-num record-num-p" id="recP">0</div><div class="record-lbl">Push</div></div>
     </div>
-
     <div class="picks-section" id="fanPicksSection"></div>
+  </div>
+</div>
+
+<!-- ── VICTORIA AI CHAT WIDGET ── -->
+<button id="victoriaToggle" onclick="toggleVictoria()" title="Chat with Victoria">
+  💬
+  <div id="victoriaNotif">1</div>
+</button>
+
+<div id="victoriaWidget" class="hidden">
+  <div id="victoriaBubble">
+    <div id="victoriaHeader">
+      <div id="victoriaAvatar">👸</div>
+      <div>
+        <div id="victoriaName">VICTORIA — Addiicted2Sports™</div>
+        <div id="victoriaStatus">🟢 LIVE • Always Selling</div>
+      </div>
+      <button id="victoriaClose" onclick="toggleVictoria()">✕</button>
+    </div>
+    <div id="victoriaMessages"></div>
+    <div id="victoriaInputRow">
+      <input id="victoriaInput" type="text" placeholder="Talk to Victoria..." onkeydown="if(event.key==='Enter')sendToVictoria()">
+      <button id="victoriaSend" onclick="sendToVictoria()">➤</button>
+    </div>
   </div>
 </div>
 
@@ -394,6 +405,7 @@ const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
+const VICTORIA_WEBHOOK = 'https://addiicted2sports.app.n8n.cloud/webhook/victoria-sales';
 
 let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
@@ -402,7 +414,91 @@ let selectedTier = 'metallica';
 let adminMode = false;
 let userVerified = false;
 let userTier = null;
+let victoriaOpen = false;
+let victoriaSessionId = 'vic_' + Math.random().toString(36).substr(2,9);
+let victoriaGreeted = false;
 
+// ── VICTORIA AI ──
+function toggleVictoria(){
+  victoriaOpen = !victoriaOpen;
+  const widget = document.getElementById('victoriaWidget');
+  const toggle = document.getElementById('victoriaToggle');
+  const notif  = document.getElementById('victoriaNotif');
+  if(victoriaOpen){
+    widget.classList.remove('hidden');
+    toggle.style.display = 'none';
+    notif.style.display  = 'none';
+    if(!victoriaGreeted){ victoriaGreeted=true; victoriaGreet(); }
+  } else {
+    widget.classList.add('hidden');
+    toggle.style.display = 'flex';
+  }
+}
+
+function vicAddMsg(text, role){
+  const msgs = document.getElementById('victoriaMessages');
+  const div  = document.createElement('div');
+  div.className = 'vic-msg ' + (role==='bot' ? 'vic-msg-bot' : 'vic-msg-user');
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function vicShowTyping(){
+  const msgs = document.getElementById('victoriaMessages');
+  const div  = document.createElement('div');
+  div.className = 'vic-typing';
+  div.id = 'vicTyping';
+  div.innerHTML = '<div class="vic-dot"></div><div class="vic-dot"></div><div class="vic-dot"></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function vicHideTyping(){
+  const t = document.getElementById('vicTyping');
+  if(t) t.remove();
+}
+
+async function victoriaGreet(){
+  vicShowTyping();
+  try{
+    const res = await fetch(VICTORIA_WEBHOOK, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message:'', sessionId: victoriaSessionId, isNew: true })
+    });
+    const data = await res.json();
+    vicHideTyping();
+    vicAddMsg(data.reply || "Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Question is... are you eating with us or still out here losing alone? 👀 What's your budget looking like?", 'bot');
+  } catch(e){
+    vicHideTyping();
+    vicAddMsg("Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or nah? 💰 Tell me your vibe and I got you right.", 'bot');
+  }
+}
+
+async function sendToVictoria(){
+  const input = document.getElementById('victoriaInput');
+  const msg   = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+  vicAddMsg(msg, 'user');
+  vicShowTyping();
+  try{
+    const res = await fetch(VICTORIA_WEBHOOK, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message: msg, sessionId: victoriaSessionId, isNew: false })
+    });
+    const data = await res.json();
+    vicHideTyping();
+    vicAddMsg(data.reply || "Say less. Hop on paypal.me/addiicted2sports and let's get you locked in! 💰", 'bot');
+  } catch(e){
+    vicHideTyping();
+    vicAddMsg("My signal dropped for a sec but I'm back 👀 — paypal.me/addiicted2sports and let's EAT! 🍽️", 'bot');
+  }
+}
+
+// ── GITHUB ──
 async function ghRead(){
   try{
     const r = await fetch(RAW_URL + '?t=' + Date.now());
@@ -421,7 +517,6 @@ async function ghRead(){
 async function ghWrite(data){
   setSaveStatus('saving');
   try{
-    // Get current SHA — retry up to 3 times
     let sha='';
     for(let i=0;i<3;i++){
       const metaR = await fetch(API_URL+'?t='+Date.now(), {
@@ -433,7 +528,6 @@ async function ghWrite(data){
       await new Promise(r=>setTimeout(r,1000));
     }
     if(!sha) throw new Error('no sha');
-    // Encode — use TextEncoder for safety with special chars
     const json = JSON.stringify(data, null, 2);
     const bytes = new TextEncoder().encode(json);
     let binary='';
@@ -444,10 +538,7 @@ async function ghWrite(data){
       headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
       body: JSON.stringify({message:'a2s picks update',content:encoded,sha})
     });
-    if(!r.ok){
-      const err=await r.json();
-      throw new Error(err.message||'write fail');
-    }
+    if(!r.ok){const err=await r.json();throw new Error(err.message||'write fail');}
     setSaveStatus('ok');
     return true;
   }catch(e){
@@ -466,73 +557,32 @@ function setSaveStatus(s){
   else{el.textContent='❌ Error — retry';el.style.color='var(--red)';}
 }
 
-// ── TIMER ──
-async function setTimerMins(m){
-  dropTarget=Math.floor(Date.now()/1000)+m*60;
-  const ok=await ghWrite({picks,drop:dropTarget});
-  if(ok)alert(`✅ Timer set: ${m} min\nSynced to ALL fans!`);
-}
-async function setTimerHrs(h){
-  dropTarget=Math.floor(Date.now()/1000)+h*3600;
-  const ok=await ghWrite({picks,drop:dropTarget});
-  if(ok)alert(`✅ Timer set: ${h} hr\nSynced to ALL fans!`);
-}
-async function setCustomTime(){
-  const v=document.getElementById('customTime').value;
-  if(!v){alert('Pick a date/time first');return;}
-  dropTarget=Math.floor(new Date(v).getTime()/1000);
-  const ok=await ghWrite({picks,drop:dropTarget});
-  const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
-  if(ok)alert(`✅ Drop time: ${label}\nSynced!`);
-}
-async function clearDropTimer(){
-  dropTarget=0;
-  await ghWrite({picks,drop:0});
-  alert('Timer cleared — fans see LIVE status');
-}
+async function setTimerMins(m){dropTarget=Math.floor(Date.now()/1000)+m*60;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`✅ Timer set: ${m} min\nSynced to ALL fans!`);}
+async function setTimerHrs(h){dropTarget=Math.floor(Date.now()/1000)+h*3600;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`✅ Timer set: ${h} hr\nSynced to ALL fans!`);}
+async function setCustomTime(){const v=document.getElementById('customTime').value;if(!v){alert('Pick a date/time first');return;}dropTarget=Math.floor(new Date(v).getTime()/1000);const ok=await ghWrite({picks,drop:dropTarget});const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});if(ok)alert(`✅ Drop time: ${label}\nSynced!`);}
+async function clearDropTimer(){dropTarget=0;await ghWrite({picks,drop:0});alert('Timer cleared — fans see LIVE status');}
 
 setInterval(()=>{
-  if(!dropTarget){
-    document.getElementById('countdownTimer').textContent='00:00:00';
-    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
-    return;
-  }
+  if(!dropTarget){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';return;}
   const diff=dropTarget-Math.floor(Date.now()/1000);
-  if(diff<=0){
-    document.getElementById('countdownTimer').textContent='00:00:00';
-    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
-    try{document.getElementById('moneySound').play();}catch(e){}
-    if(userVerified)renderFanView();
-    return;
-  }
+  if(diff<=0){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';try{document.getElementById('moneySound').play();}catch(e){}if(userVerified)renderFanView();return;}
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
-  document.getElementById('countdownTimer').textContent=
-    `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('countdownTimer').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
 },1000);
 
 setInterval(async()=>{
-  // Don't poll from cloud while admin is editing — prevents picks from snapping back
   if(adminMode) return;
   await ghRead();
   if(userVerified)renderFanView();
   else renderFomo();
 },10000);
 
-// ── PICKS ──
 async function addPick(){
   const team=document.getElementById('pickTeam').value.trim();
   const odds=document.getElementById('pickOdds').value.trim();
   if(!team||!odds){alert('⚠️ Team and Odds required');return;}
-  picks[currentTier].push({
-    team,
-    betType:document.getElementById('pickBetType').value,
-    odds,
-    time:document.getElementById('pickTime').value.trim(),
-    note:document.getElementById('pickNote').value.trim(),
-    result:'',
-    id:Date.now()
-  });
+  picks[currentTier].push({team,betType:document.getElementById('pickBetType').value,odds,time:document.getElementById('pickTime').value.trim(),note:document.getElementById('pickNote').value.trim(),result:'',id:Date.now()});
   ['pickTeam','pickOdds','pickTime','pickNote'].forEach(id=>document.getElementById(id).value='');
   renderPicksList();
   alert('✅ Pick added!\nClick "Push All Picks to Fans" when ready.');
@@ -552,133 +602,47 @@ async function clearAllPicks(){
   alert('🗑 All picks cleared');
 }
 
-async function deletePick(tier,idx){
-  picks[tier].splice(idx,1);
-  renderPicksList();
-  alert('Deleted. Click "Push All Picks to Fans" to sync.');
-}
+async function deletePick(tier,idx){picks[tier].splice(idx,1);renderPicksList();alert('Deleted. Click "Push All Picks to Fans" to sync.');}
 
 async function setResult(tier,idx,result){
-  picks[tier][idx].result = result;
+  picks[tier][idx].result=result;
   renderPicksList();
-  // Auto-save result to GitHub immediately
   await ghWrite({picks,drop:dropTarget});
 }
 
 function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier=>{
-    const el=document.getElementById('picksList-'+tier);
-    if(!el)return;
-    const resLabel={'win':'✅ WIN','loss':'❌ LOSS','push':'➖ PUSH','':(p)=>`
-      <div class="result-btns">
-        <button class="result-btn result-btn-win" onclick="setResult('${tier}',${0},'win')">✅ WIN</button>
-        <button class="result-btn result-btn-loss" onclick="setResult('${tier}',${0},'loss')">❌ LOSS</button>
-        <button class="result-btn result-btn-push" onclick="setResult('${tier}',${0},'push')">➖ PUSH</button>
-      </div>`};
-    el.innerHTML = picks[tier].length
-      ? picks[tier].map((p,i)=>`
-          <div class="pick-item">
-            <div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div>
-            <div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div>
-            <div class="pick-notes">${p.note||'No notes'}</div>
-            ${p.result
-              ? `<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">
-                  ${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}
-                  <button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button>
-                </div>`
-              : `<div class="result-btns">
-                  <button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button>
-                  <button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button>
-                  <button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button>
-                </div>`
-            }
-            <button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button>
-          </div>`).join('')
-      : '<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
+    const el=document.getElementById('picksList-'+tier);if(!el)return;
+    el.innerHTML=picks[tier].length
+      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button></div>`).join('')
+      :'<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
 }
 
-// ── FAN VIEW with flag ──
 function renderFanView(){
   const names={metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
   const access={metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  let html='';
-  let totalW=0,totalL=0,totalP=0,hasResults=false;
-
-    // limits: metallica=2, gold=4, purple=5, allaccess=all
   const pickLimits={metallica:2,gold:4,purple:5,allaccess:999};
+  let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
-    html+=`<div class="tier-section">
-      <div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>
-      ${picks[tier].slice(0,pickLimits[tier]).map(p=>{
-        if(p.result==='win')totalW++;
-        else if(p.result==='loss')totalL++;
-        else if(p.result==='push')totalP++;
-        if(p.result)hasResults=true;
-        const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';
-        const badge=p.result==='win'
-          ?`<div class="result-badge badge-win">✅ WIN</div>`
-          :p.result==='loss'
-          ?`<div class="result-badge badge-loss">❌ LOSS</div>`
-          :p.result==='push'
-          ?`<div class="result-badge badge-push">➖ PUSH</div>`:'';
-        return `<div class="${cardClass}">
-          ${badge}
-          <div class="pick-card-team">🎯 ${p.team}</div>
-          <div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div>
-          <div class="pick-card-note">📊 ${p.note||''}</div>
-        </div>`;
-      }).join('')}
-    </div>`;
+    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';const badge=p.result==='win'?`<div class="result-badge badge-win">✅ WIN</div>`:p.result==='loss'?`<div class="result-badge badge-loss">❌ LOSS</div>`:p.result==='push'?`<div class="result-badge badge-push">➖ PUSH</div>`:'';return`<div class="${cardClass}">${badge}<div class="pick-card-team">🎯 ${p.team}</div><div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div><div class="pick-card-note">📊 ${p.note||''}</div></div>`;}).join('')}</div>`;
   });
-
-  document.getElementById('fanPicksSection').innerHTML = html||
-    '<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
-
-  // Update flag + record
-  const flagWrap = document.getElementById('winFlagWrap');
-  const recordStrip = document.getElementById('recordStrip');
-
+  document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
+  const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
   if(hasResults){
     recordStrip.style.display='flex';
     document.getElementById('recW').textContent=totalW;
     document.getElementById('recL').textContent=totalL;
     document.getElementById('recP').textContent=totalP;
-
     flagWrap.classList.add('active');
-    const flagShape = document.getElementById('flagShape');
-    const flagText = document.getElementById('flagText');
-    const flagLabel = document.getElementById('flagLabel');
-    const flagSub = document.getElementById('flagSub');
-
-    if(totalL > totalW){
-      // losing record — red flag
-      flagShape.className='flag-shape-loss';
-      flagText.textContent='L';
-      flagLabel.className='flag-label flag-label-loss';
-      flagLabel.textContent='BOUNCE BACK COMING 🔥';
-      flagSub.textContent='THE BOSS IS RELOADING';
-    } else {
-      // winning or even — green flag
-      flagShape.className='flag-shape-win';
-      flagText.textContent='W';
-      flagLabel.className='flag-label flag-label-win';
-      flagLabel.textContent= totalW >= 3 ? 'WE ON FIRE 🔥💰' : 'WE WINNING 💰';
-      flagSub.textContent='THE BOSS IS LOCKED IN';
-    }
-  } else {
-    flagWrap.classList.remove('active');
-    recordStrip.style.display='none';
-  }
+    const flagShape=document.getElementById('flagShape');const flagText=document.getElementById('flagText');const flagLabel=document.getElementById('flagLabel');const flagSub=document.getElementById('flagSub');
+    if(totalL>totalW){flagShape.className='flag-shape-loss';flagText.textContent='L';flagLabel.className='flag-label flag-label-loss';flagLabel.textContent='BOUNCE BACK COMING 🔥';flagSub.textContent='THE BOSS IS RELOADING';}
+    else{flagShape.className='flag-shape-win';flagText.textContent='W';flagLabel.className='flag-label flag-label-win';flagLabel.textContent=totalW>=3?'WE ON FIRE 🔥💰':'WE WINNING 💰';flagSub.textContent='THE BOSS IS LOCKED IN';}
+  }else{flagWrap.classList.remove('active');recordStrip.style.display='none';}
 }
 
-// ── AUTH ──
-function selectTier(tier,el){
-  selectedTier=tier;
-  document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));
-  if(el)el.classList.add('active');
-}
+function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');}
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
   if(!receipt){alert('❌ Enter PayPal receipt #');return;}
@@ -700,83 +664,35 @@ function checkPin(){
     document.getElementById('loginModal').classList.remove('active');
     document.getElementById('adminPanel').classList.add('active');
     document.getElementById('paymentWall').classList.add('hidden');
-    document.getElementById('paymentBanner').style.display='none';
     document.getElementById('toggleBtn').textContent='👀';
     renderPicksList();
   }else{alert('❌ Wrong PIN');}
 }
 document.getElementById('toggleBtn').addEventListener('click',()=>{
   if(!adminMode){document.getElementById('loginModal').classList.add('active');}
-  else{
-    adminMode=false;
-    document.getElementById('adminPanel').classList.remove('active');
-    if(!userVerified){
-      document.getElementById('paymentWall').classList.remove('hidden');
-      document.getElementById('paymentBanner').style.display='block';
-    }
-    document.getElementById('toggleBtn').textContent='🔧';
-  }
+  else{adminMode=false;document.getElementById('adminPanel').classList.remove('active');if(!userVerified){document.getElementById('paymentWall').classList.remove('hidden');}document.getElementById('toggleBtn').textContent='🔧';}
 });
 document.querySelectorAll('.tier-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    currentTier=btn.dataset.tier;
-  });
+  btn.addEventListener('click',()=>{document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentTier=btn.dataset.tier;});
 });
 document.getElementById('addPickBtn').addEventListener('click',addPick);
+
+function renderFomo(){
+  let w=0,l=0,p=0;const allPicks=[];
+  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).forEach(pk=>{allPicks.push(pk);if(pk.result==='win')w++;else if(pk.result==='loss')l++;else if(pk.result==='push')p++;});});
+  const fw=document.getElementById('fomoW');const fl=document.getElementById('fomoL');const fp=document.getElementById('fomoP');
+  if(fw)fw.textContent=w>0?w:'—';if(fl)fl.textContent=l>0?l:'—';if(fp)fp.textContent=p>0?p:'—';
+  const fh=document.getElementById('fomoHeadline');
+  if(fh){if(w>=3)fh.textContent='WE ON FIRE 🔥🔥';else if(w>l)fh.textContent='WE WINNING 💰';else if(l>w&&l>0)fh.textContent='BOUNCE BACK COMING 🔥';else fh.textContent='PICKS ARE LIVE 🎯';}
+  const blurEl=document.getElementById('fomoPicksBlur');
+  if(blurEl&&allPicks.length>0){blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`<div style="background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:14px;margin-bottom:10px;"><div style="font-weight:900;color:#fff;font-size:15px;margin-bottom:6px;">🎯 ${pk.team}</div><div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#94a3b8;">${pk.betType}</span><span style="color:#facc15;font-weight:900;">${pk.odds}</span></div></div>`).join('');}
+  else if(blurEl){blurEl.innerHTML=`<div style="padding:30px;text-align:center;color:#94a3b8;">Picks loading...</div>`;}
+}
 
 function updateDateTime(){
   const now=new Date();
   document.getElementById('dateDisplay').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
   document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-}
-
-function renderFomo(){
-  // Count results across all tiers
-  let w=0,l=0,p=0,total=0;
-  const allPicks=[];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{
-    (picks[t]||[]).forEach(pk=>{
-      allPicks.push(pk);
-      total++;
-      if(pk.result==='win')w++;
-      else if(pk.result==='loss')l++;
-      else if(pk.result==='push')p++;
-    });
-  });
-
-  // Update record numbers
-  const fw=document.getElementById('fomoW');
-  const fl=document.getElementById('fomoL');
-  const fp=document.getElementById('fomoP');
-  if(fw)fw.textContent=w>0?w:'—';
-  if(fl)fl.textContent=l>0?l:'—';
-  if(fp)fp.textContent=p>0?p:'—';
-
-  // Update headline
-  const fh=document.getElementById('fomoHeadline');
-  if(fh){
-    if(w>=3)fh.textContent='WE ON FIRE 🔥🔥';
-    else if(w>l)fh.textContent='WE WINNING 💰';
-    else if(l>w&&l>0)fh.textContent='BOUNCE BACK COMING 🔥';
-    else fh.textContent='PICKS ARE LIVE 🎯';
-  }
-
-  // Build blurred picks preview (show real team names blurred)
-  const blurEl=document.getElementById('fomoPicksBlur');
-  if(blurEl&&allPicks.length>0){
-    blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`
-      <div style="background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:14px;margin-bottom:10px;">
-        <div style="font-weight:900;color:#fff;font-size:15px;margin-bottom:6px;">🎯 ${pk.team}</div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;">
-          <span style="color:#94a3b8;">${pk.betType}</span>
-          <span style="color:#facc15;font-weight:900;">${pk.odds}</span>
-        </div>
-      </div>`).join('');
-  } else if(blurEl){
-    blurEl.innerHTML=`<div style="padding:30px;text-align:center;color:#94a3b8;">Picks loading...</div>`;
-  }
 }
 
 async function init(){
@@ -787,6 +703,12 @@ async function init(){
   renderFomo();
   const auth=localStorage.getItem('a2s_user_verified');
   if(auth){const u=JSON.parse(auth);userVerified=true;userTier=u.tier;showFanView();}
+  // Auto-open Victoria after 3 seconds for new visitors
+  setTimeout(()=>{
+    if(!userVerified && !adminMode){
+      document.getElementById('victoriaNotif').style.display='flex';
+    }
+  },3000);
 }
 init();
 </script>
