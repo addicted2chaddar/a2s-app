@@ -514,7 +514,7 @@ async function callVictoria(userMsg){
     if(!res.ok) throw new Error('n8n error');
     const data = await res.json();
     vicHideTyping();
-    const reply = data?.reply || data?.output || data?.message || fallbackVictoria(userMsg);
+    const reply = data?.reply || data?.output || data?.message || data?.text || fallbackVictoria(userMsg);
     vicAddMsg(reply,'bot');
   }catch(e){
     vicHideTyping();
