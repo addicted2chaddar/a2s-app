@@ -128,17 +128,16 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .record-num-p{color:var(--slate);}
 
 /* ── VICTORIA CHAT WIDGET ── */
-#victoriaWidget{position:fixed;bottom:90px;right:16px;width:320px;z-index:999;font-family:-apple-system,system-ui,sans-serif;}
-#victoriaWidget.hidden{display:none;}
-#victoriaBubble{background:linear-gradient(135deg,#0a1628,#1a2f4a);border:2px solid var(--gold);border-radius:18px 18px 4px 18px;padding:18px;box-shadow:0 8px 40px rgba(250,204,21,0.3);max-height:420px;display:flex;flex-direction:column;}
-#victoriaHeader{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(250,204,21,0.2);}
-#victoriaAvatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 14px rgba(250,204,21,0.5);}
-#victoriaName{font-size:13px;font-weight:900;color:var(--gold);}
-#victoriaStatus{font-size:10px;color:var(--green);letter-spacing:0.5px;}
-#victoriaClose{margin-left:auto;background:none;border:none;color:var(--slate);font-size:18px;cursor:pointer;padding:2px 6px;}
-#victoriaMessages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:12px;max-height:240px;padding-right:2px;}
+#victoriaSection{background:linear-gradient(135deg,rgba(250,204,21,0.08),rgba(250,204,21,0.03));border:2px solid rgba(250,204,21,0.3);border-radius:16px;margin:14px 0 0;padding:14px;text-align:left;}
+#victoriaTopBar{display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer;}
+#victoriaFace{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 16px rgba(250,204,21,0.5);flex-shrink:0;}
+#victoriaTopName{font-size:13px;font-weight:900;color:var(--gold);}
+#victoriaTopStatus{font-size:10px;color:var(--green);letter-spacing:0.5px;}
+#victoriaTopTag{font-size:10px;color:var(--cyan);margin-top:1px;}
+#victoriaChat{display:none;flex-direction:column;gap:8px;}
+#victoriaChat.open{display:flex;}
+#victoriaMessages{overflow-y:auto;display:flex;flex-direction:column;gap:8px;max-height:220px;padding-right:2px;margin-bottom:10px;}
 #victoriaMessages::-webkit-scrollbar{width:3px;}
-#victoriaMessages::-webkit-scrollbar-track{background:transparent;}
 #victoriaMessages::-webkit-scrollbar-thumb{background:rgba(250,204,21,0.3);border-radius:3px;}
 .vic-msg{padding:10px 13px;border-radius:14px;font-size:13px;line-height:1.5;max-width:92%;animation:msgPop 0.3s ease;}
 @keyframes msgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -153,9 +152,6 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 #victoriaInput{flex:1;padding:10px 13px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;}
 #victoriaInput:focus{outline:none;border-color:var(--gold);}
 #victoriaSend{padding:10px 14px;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;border-radius:10px;color:#000;font-weight:900;font-size:16px;cursor:pointer;}
-#victoriaToggle{position:fixed;bottom:90px;right:16px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(250,204,21,0.5);z-index:999;display:flex;align-items:center;justify-content:center;animation:vicPulse 2s ease-in-out infinite;}
-@keyframes vicPulse{0%,100%{box-shadow:0 4px 20px rgba(250,204,21,0.5)}50%{box-shadow:0 4px 40px rgba(250,204,21,0.9),0 0 60px rgba(250,204,21,0.3)}}
-#victoriaNotif{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
 </style>
 </head>
 <body>
@@ -165,6 +161,26 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image">
   </div>
   <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
+
+  <!-- VICTORIA INLINE CHAT -->
+  <div id="victoriaSection">
+    <div id="victoriaTopBar" onclick="toggleVictoriaChat()">
+      <img id="victoriaFace" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/victoria.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22><circle cx=%2224%22 cy=%2224%22 r=%2224%22 fill=%22%23facc15%22/><text x=%2224%22 y=%2230%22 text-anchor=%22middle%22 font-size=%2224%22>👸</text></svg>'" alt="Victoria">
+      <div>
+        <div id="victoriaTopName">👸 VICTORIA — Your Pick Plug</div>
+        <div id="victoriaTopStatus">🟢 LIVE • Tap to chat</div>
+        <div id="victoriaTopTag">Addiicted2Sports™ AI Sales Rep</div>
+      </div>
+      <div style="margin-left:auto;color:var(--gold);font-size:20px;" id="victoriaArrow">▼</div>
+    </div>
+    <div id="victoriaChat">
+      <div id="victoriaMessages"></div>
+      <div id="victoriaInputRow">
+        <input id="victoriaInput" type="text" placeholder="Talk to Victoria..." onkeydown="if(event.key==='Enter')sendToVictoria()">
+        <button id="victoriaSend" onclick="sendToVictoria()">➤</button>
+      </div>
+    </div>
+  </div>
   <div class="countdown-display">
     <div class="countdown-label">⏰ PICKS DROP IN</div>
     <div class="countdown-timer" id="countdownTimer">--:--:--</div>
@@ -360,29 +376,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
   </div>
 </div>
 
-<!-- ── VICTORIA AI CHAT WIDGET ── -->
-<button id="victoriaToggle" onclick="toggleVictoria()" title="Chat with Victoria">
-  💬
-  <div id="victoriaNotif">1</div>
-</button>
-
-<div id="victoriaWidget" class="hidden">
-  <div id="victoriaBubble">
-    <div id="victoriaHeader">
-      <div id="victoriaAvatar">👸</div>
-      <div>
-        <div id="victoriaName">VICTORIA — Addiicted2Sports™</div>
-        <div id="victoriaStatus">🟢 LIVE • Always Selling</div>
-      </div>
-      <button id="victoriaClose" onclick="toggleVictoria()">✕</button>
-    </div>
-    <div id="victoriaMessages"></div>
-    <div id="victoriaInputRow">
-      <input id="victoriaInput" type="text" placeholder="Talk to Victoria..." onkeydown="if(event.key==='Enter')sendToVictoria()">
-      <button id="victoriaSend" onclick="sendToVictoria()">➤</button>
-    </div>
-  </div>
-</div>
+<!-- Victoria is now in the header -->
 
 <button class="footer-btn" id="toggleBtn">🔧</button>
 
@@ -405,7 +399,6 @@ const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
-const VICTORIA_WEBHOOK = 'https://addiicted2sports.app.n8n.cloud/webhook/victoria-sales';
 
 let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
@@ -414,24 +407,23 @@ let selectedTier = 'metallica';
 let adminMode = false;
 let userVerified = false;
 let userTier = null;
-let victoriaOpen = false;
-let victoriaSessionId = 'vic_' + Math.random().toString(36).substr(2,9);
-let victoriaGreeted = false;
 
 // ── VICTORIA AI ──
-function toggleVictoria(){
+let victoriaOpen = false;
+let victoriaGreeted = false;
+let victoriaHistory = [];
+
+function toggleVictoriaChat(){
   victoriaOpen = !victoriaOpen;
-  const widget = document.getElementById('victoriaWidget');
-  const toggle = document.getElementById('victoriaToggle');
-  const notif  = document.getElementById('victoriaNotif');
+  const chat = document.getElementById('victoriaChat');
+  const arrow = document.getElementById('victoriaArrow');
   if(victoriaOpen){
-    widget.classList.remove('hidden');
-    toggle.style.display = 'none';
-    notif.style.display  = 'none';
+    chat.classList.add('open');
+    arrow.textContent = '▲';
     if(!victoriaGreeted){ victoriaGreeted=true; victoriaGreet(); }
   } else {
-    widget.classList.add('hidden');
-    toggle.style.display = 'flex';
+    chat.classList.remove('open');
+    arrow.textContent = '▼';
   }
 }
 
@@ -442,60 +434,71 @@ function vicAddMsg(text, role){
   div.textContent = text;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
+  if(role==='bot') victoriaHistory.push({role:'assistant',content:text});
+  else victoriaHistory.push({role:'user',content:text});
 }
 
 function vicShowTyping(){
   const msgs = document.getElementById('victoriaMessages');
   const div  = document.createElement('div');
-  div.className = 'vic-typing';
-  div.id = 'vicTyping';
+  div.className = 'vic-typing'; div.id = 'vicTyping';
   div.innerHTML = '<div class="vic-dot"></div><div class="vic-dot"></div><div class="vic-dot"></div>';
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
+function vicHideTyping(){ const t=document.getElementById('vicTyping'); if(t)t.remove(); }
 
-function vicHideTyping(){
-  const t = document.getElementById('vicTyping');
-  if(t) t.remove();
-}
+const VICTORIA_SYSTEM = `You are Victoria, the AI sales rep for Addiicted2Sports™ — the hottest sports picks service in Las Vegas. You are a street vendor hustler with luxury swagger. ALWAYS selling, ALWAYS branding. Open strong, close hard.
 
-async function victoriaGreet(){
+Personality: Confident, sexy, witty, street-smart. Short punchy sentences. Use emojis 👀💰🔥. Always end pushing a tier or PayPal link.
+
+Tiers:
+🥈 METALLICA — $125/24hrs — 2 picks
+🥇 GOLD — $150/24hrs — 4 picks  
+💜 PURPLE — $175/72hrs — 5 picks (best value)
+👑 ALL-ACCESS — $275/168hrs — every pick
+
+PayPal: paypal.me/addiicted2sports
+Instagram: @addiicted2sports
+
+Diagnose fast: casual bettor = Metallica/Gold. Serious = Purple/All-Access. Whale = All-Access only. Always close. WE EAT EVERY DAY 🍽️`;
+
+async function callVictoria(userMsg){
   vicShowTyping();
+  const messages = victoriaHistory.slice(-10).filter(m=>m.role==='user'||m.role==='assistant');
+  if(userMsg) messages.push({role:'user',content:userMsg});
   try{
-    const res = await fetch(VICTORIA_WEBHOOK, {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ message:'', sessionId: victoriaSessionId, isNew: true })
+      headers:{'Content-Type':'application/json','x-api-key':'','anthropic-version':'2023-06-01'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,system:VICTORIA_SYSTEM,messages:messages.length?messages:[{role:'user',content:'NEW_VISITOR'}]})
     });
     const data = await res.json();
     vicHideTyping();
-    vicAddMsg(data.reply || "Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Question is... are you eating with us or still out here losing alone? 👀 What's your budget looking like?", 'bot');
-  } catch(e){
+    const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
+    vicAddMsg(reply,'bot');
+  }catch(e){
     vicHideTyping();
-    vicAddMsg("Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or nah? 💰 Tell me your vibe and I got you right.", 'bot');
+    vicAddMsg(fallbackVictoria(userMsg),'bot');
   }
 }
+
+function fallbackVictoria(msg){
+  const greets=["Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or still out here losing alone? 👀 What's your budget?","Aye aye aye — welcome to the hottest picks in Las Vegas 💰 We don't miss. Question is... are YOU in? Tell me what you working with 👀","Welcome to Addiicted2Sports™ 👑 The Boss is LOCKED IN today. You tryna eat or nah? Drop your budget and I'll plug you in RIGHT NOW 🔥"];
+  if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
+  const closes=["Say less 💰 Hop on paypal.me/addiicted2sports and let's GET IT. Gold tier is calling your name 🥇","That's what I'm talking about 🔥 Purple tier is PERFECT for you — $175 for 72hrs of elite picks. paypal.me/addiicted2sports RIGHT NOW 💜","All-Access is the move 👑 $275 and you get EVERYTHING we drop. paypal.me/addiicted2sports — don't sleep on it 💰"];
+  return closes[Math.floor(Math.random()*closes.length)];
+}
+
+async function victoriaGreet(){ await callVictoria('NEW_VISITOR'); }
 
 async function sendToVictoria(){
   const input = document.getElementById('victoriaInput');
-  const msg   = input.value.trim();
+  const msg = input.value.trim();
   if(!msg) return;
   input.value = '';
-  vicAddMsg(msg, 'user');
-  vicShowTyping();
-  try{
-    const res = await fetch(VICTORIA_WEBHOOK, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ message: msg, sessionId: victoriaSessionId, isNew: false })
-    });
-    const data = await res.json();
-    vicHideTyping();
-    vicAddMsg(data.reply || "Say less. Hop on paypal.me/addiicted2sports and let's get you locked in! 💰", 'bot');
-  } catch(e){
-    vicHideTyping();
-    vicAddMsg("My signal dropped for a sec but I'm back 👀 — paypal.me/addiicted2sports and let's EAT! 🍽️", 'bot');
-  }
+  vicAddMsg(msg,'user');
+  await callVictoria(msg);
 }
 
 // ── GITHUB ──
@@ -703,12 +706,6 @@ async function init(){
   renderFomo();
   const auth=localStorage.getItem('a2s_user_verified');
   if(auth){const u=JSON.parse(auth);userVerified=true;userTier=u.tier;showFanView();}
-  // Auto-open Victoria after 3 seconds for new visitors
-  setTimeout(()=>{
-    if(!userVerified && !adminMode){
-      document.getElementById('victoriaNotif').style.display='flex';
-    }
-  },3000);
 }
 init();
 </script>
