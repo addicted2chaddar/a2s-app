@@ -361,23 +361,23 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     </div>
   </div>
 
-  <!-- GAME OF THE MONTH (Mazl Picks inspired) -->
+  <!-- THE HEATER -->
   <div class="gotm-card" id="gotmCard" style="display:none;">
     <div class="gotm-header">
-      <div class="gotm-header-text">⭐ GAME OF THE MONTH ⭐</div>
+      <div class="gotm-header-text">🔥 THE HEATER 🔥</div>
     </div>
     <div class="gotm-body">
-      <div class="gotm-badge">INSIDE INFORMATION PLAY</div>
-      <div class="gotm-title">THESE GAMES DON'T <span>MISS</span></div>
+      <div class="gotm-badge">ADDIICTED2SPORTS™ VERIFIED</div>
+      <div class="gotm-title">WE ON A <span>HEATER</span></div>
       <div class="gotm-sub" id="gotmDesc">Our highest-confidence play of the month. Our proprietary signal system — sharp money, whale action, line movement all aligned. When everything points the same way, we don't miss.</div>
-      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">GREEN LIGHT GAME</div><div class="gotm-dot"></div></div>
+      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">🔥 HEATER CONFIRMED 🔥</div><div class="gotm-dot"></div></div>
       <div style="font-size:13px;color:var(--white);font-weight:900;margin-bottom:12px;" id="gotmPick">🔒 LOCKED — SUBSCRIBERS ONLY</div>
       <div class="gotm-price-row">
         <span class="gotm-price-old">$275</span>
         <span class="gotm-price-new" id="gotmPrice">$275</span>
         <span class="gotm-save" id="gotmSave" style="display:none;">INCLUDED</span>
       </div>
-      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🏆 GET THE GAME OF THE MONTH</a>
+      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🔥 GET ON THE HEATER NOW</a>
     </div>
   </div>
 
@@ -1075,13 +1075,13 @@ function initProofStrip(){
   if(sEl) sEl.textContent = streak>0?streak+'W 🔥':'—';
 
   // Ticker
-  const tickerItems = recentWins.length>0 ? recentWins : ['BOT CAKE v9.0 ACTIVE ⚡','SHARP SIGNALS LOCKED 🎯','VEGAS VERIFIED 💰','VICTORY TRIANGLE 🔺','PICKS DROPPING NOW 🔥'];
+  const tickerItems = recentWins.length>0 ? recentWins : ['WE ON A HEATER 🔥','SHARP SIGNALS LOCKED 🎯','VEGAS VERIFIED 💰','VICTORY TRIANGLE 🔺','PICKS DROPPING NOW 💰'];
   const doubled = [...tickerItems,...tickerItems];
   const ticker = document.getElementById('proofTicker');
   if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${doubled.map(t=>`<span class="proof-item">• ${t}</span>`).join('')}</div>`;
 }
 
-// ============ GAME OF THE MONTH (Mazl Picks inspired) ============
+// ============ THE HEATER ============
 function initGOTM(){
   // Show GOTM card if admin has set a GOTM pick in data
   const gotmData = (window._ghData && window._ghData.gotm) ? window._ghData.gotm : null;
