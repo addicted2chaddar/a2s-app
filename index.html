@@ -18,23 +18,23 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;}
 .proof-stat-val{font-size:22px;font-weight:900;color:var(--gold);line-height:1;}
 .proof-stat-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
-/* THE HEATER */
-.heater-card{background:linear-gradient(135deg,#0a0a0a,#1a1400);border:3px solid var(--gold);border-radius:16px;padding:0;overflow:hidden;margin:16px 0;position:relative;}
-.heater-header{background:linear-gradient(135deg,#facc15,#d97706);padding:10px 16px;text-align:center;}
-.heater-header-text{font-size:11px;font-weight:900;color:#000;letter-spacing:3px;text-transform:uppercase;}
-.heater-body{padding:16px;text-align:center;position:relative;}
-.heater-badge{display:inline-block;background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:2px solid var(--gold);border-radius:50px;padding:5px 16px;font-size:10px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
-.heater-title{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:4px;text-transform:uppercase;}
-.heater-title span{color:var(--gold);}
-.heater-sub{font-size:11px;color:var(--slate);margin-bottom:14px;line-height:1.6;}
-.heater-green-light{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(34,197,94,0.12);border:2px solid var(--green);border-radius:8px;padding:8px;margin-bottom:14px;}
-.heater-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:gotmPulse 1s ease-in-out infinite;}
+/* GOTM */
+.gotm-card{background:linear-gradient(135deg,#0a0a0a,#1a1400);border:3px solid var(--gold);border-radius:16px;padding:0;overflow:hidden;margin:16px 0;position:relative;}
+.gotm-header{background:linear-gradient(135deg,#facc15,#d97706);padding:10px 16px;text-align:center;}
+.gotm-header-text{font-size:11px;font-weight:900;color:#000;letter-spacing:3px;text-transform:uppercase;}
+.gotm-body{padding:16px;text-align:center;position:relative;}
+.gotm-badge{display:inline-block;background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:2px solid var(--gold);border-radius:50px;padding:5px 16px;font-size:10px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+.gotm-title{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:4px;text-transform:uppercase;}
+.gotm-title span{color:var(--gold);}
+.gotm-sub{font-size:11px;color:var(--slate);margin-bottom:14px;line-height:1.6;}
+.gotm-green-light{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(34,197,94,0.12);border:2px solid var(--green);border-radius:8px;padding:8px;margin-bottom:14px;}
+.gotm-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:gotmPulse 1s ease-in-out infinite;}
 @keyframes gotmPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.7)}70%{opacity:0.8;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
-.heater-green-text{font-size:12px;font-weight:900;color:var(--green);letter-spacing:2px;}
-.heater-price-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
-.heater-price-old{font-size:16px;color:var(--slate);text-decoration:line-through;}
-.heater-price-new{font-size:32px;font-weight:900;color:var(--gold);}
-.heater-save{font-size:10px;background:var(--green);color:#000;font-weight:900;padding:2px 8px;border-radius:4px;}
+.gotm-green-text{font-size:12px;font-weight:900;color:var(--green);letter-spacing:2px;}
+.gotm-price-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
+.gotm-price-old{font-size:16px;color:var(--slate);text-decoration:line-through;}
+.gotm-price-new{font-size:32px;font-weight:900;color:var(--gold);}
+.gotm-save{font-size:10px;background:var(--green);color:#000;font-weight:900;padding:2px 8px;border-radius:4px;}
 /* ONBOARDING FUNNEL */
 .onboard-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;}
 .onboard-card{background:linear-gradient(135deg,#0a0e1c,#0f1a2e);border:3px solid var(--gold);border-radius:20px;padding:28px 20px;max-width:380px;width:100%;text-align:center;position:relative;}
@@ -350,7 +350,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 
   <!-- PROOF OF WINNINGS STRIP (iSellWinners inspired) -->
   <div class="proof-strip" id="proofStrip">
-    <div style="font-size:10px;color:var(--gold);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">📈 BOT CAKE VERIFIED RESULTS</div>
+    <div style="font-size:10px;color:var(--gold);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">📈 ADDIICTED2SPORTS™ VERIFIED RESULTS</div>
     <div class="proof-ticker">
       <div class="proof-ticker-inner" id="proofTicker"></div>
     </div>
@@ -361,23 +361,23 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     </div>
   </div>
 
-  <!-- THE HEATER (Mazl Picks inspired) -->
-  <div class="heater-card" id="heaterCard" style="display:none;">
-    <div class="heater-header">
-      <div class="heater-header-text">🔥 THE HEATER 🔥</div>
+  <!-- GAME OF THE MONTH (Mazl Picks inspired) -->
+  <div class="gotm-card" id="gotmCard" style="display:none;">
+    <div class="gotm-header">
+      <div class="gotm-header-text">⭐ GAME OF THE MONTH ⭐</div>
     </div>
-    <div class="heater-body">
-      <div class="heater-badge">BOT CAKE v9.0 — CONVERGENCE SIGNAL</div>
-      <div class="heater-title">WE ON A <span>HEATER</span></div>
-      <div class="heater-sub" id="heaterDesc">When Bot Cake fires on all cylinders — sharp money, whale action, line movement all pointing the same way — this is THE HEATER. Our hottest play. These don't miss.</div>
-      <div class="heater-green-light"><div class="heater-dot"></div><div class="heater-green-text">🔥 HEATER CONFIRMED 🔥</div><div class="heater-dot"></div></div>
-      <div style="font-size:13px;color:var(--white);font-weight:900;margin-bottom:12px;" id="heaterPick">🔒 LOCKED — SUBSCRIBERS ONLY</div>
-      <div class="heater-price-row">
-        <span class="heater-price-old">$275</span>
-        <span class="heater-price-new" id="heaterPrice">$275</span>
-        <span class="heater-save" id="heaterSave" style="display:none;">INCLUDED</span>
+    <div class="gotm-body">
+      <div class="gotm-badge">INSIDE INFORMATION PLAY</div>
+      <div class="gotm-title">THESE GAMES DON'T <span>MISS</span></div>
+      <div class="gotm-sub" id="gotmDesc">Our highest-confidence play of the month. Our proprietary signal system — sharp money, whale action, line movement all aligned. When everything points the same way, we don't miss.</div>
+      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">GREEN LIGHT GAME</div><div class="gotm-dot"></div></div>
+      <div style="font-size:13px;color:var(--white);font-weight:900;margin-bottom:12px;" id="gotmPick">🔒 LOCKED — SUBSCRIBERS ONLY</div>
+      <div class="gotm-price-row">
+        <span class="gotm-price-old">$275</span>
+        <span class="gotm-price-new" id="gotmPrice">$275</span>
+        <span class="gotm-save" id="gotmSave" style="display:none;">INCLUDED</span>
       </div>
-      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🏆 GET ON THE HEATER NOW</a>
+      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🏆 GET THE GAME OF THE MONTH</a>
     </div>
   </div>
 
@@ -743,9 +743,9 @@ YOUR SALES STRATEGY:
 1. Open with a hook that creates instant curiosity
 2. Ask ONE sharp qualifying question
 3. Listen to their answer and mirror their energy
-4. Build credibility — mention THE HEATER if they seem serious
+4. Build credibility with a specific insight or stat
 5. Match them to the perfect tier
-6. Create urgency — THE HEATER is live RIGHT NOW, streak is hot
+6. Create urgency without being pushy
 7. Drop the PayPal link naturally like it's the obvious next step
 
 TIERS:
@@ -753,16 +753,6 @@ TIERS:
 🥇 GOLD — $150/24hrs — 4 premium picks — for the serious bettor who wants options
 💜 PURPLE — $175/72hrs — 5 premium picks — best value, 3 days of elite signals
 👑 ALL-ACCESS — $275/168hrs — every single pick we drop all week — for the real ones who want it all
-
-🔥 THE HEATER — THIS IS YOUR BIGGEST WEAPON:
-- THE HEATER is Addiicted2Sports™ hottest play — when Bot Cake v9.0 fires on ALL cylinders
-- Sharp money + whale action + line movement ALL pointing the same direction = THE HEATER
-- These plays hit at an insane rate — this is Vegas insider level intel
-- Every real bettor knows what a heater is — when you're hot, you're HOT and you don't stop
-- Use THE HEATER to create maximum urgency: "We are ON A HEATER right now and you're missing it"
-- THE HEATER is INCLUDED in All-Access ($275) — the best closer you have
-- For lower tiers, tease THE HEATER: "I can't give you The Heater at that tier... but with All-Access you get it plus everything else"
-- Phrases to use: "Bot Cake is SMOKING right now 🔥", "The Heater is live and we don't miss when we're running hot", "You know what a casino heater feels like? That's us RIGHT NOW"
 
 CLOSING INFO:
 PayPal: paypal.me/addiicted2sports
@@ -776,10 +766,8 @@ RULES:
 - Never sound desperate — you have value, they need YOU
 - Always end your message with either a question OR a close
 - If they ask about a specific sport, show you know it
-- If they seem hesitant, drop THE HEATER: "Look, I'll be real with you — we are on a HEATER right now. Bot Cake hasn't missed. You really want to sit this one out?"
-- Mention THE HEATER at least once every conversation — it's your secret weapon
-- WE EAT EVERY DAY 🍽️ — this is your motto, use it naturally
-- When closing All-Access, ALWAYS mention THE HEATER is included`;
+- If they seem hesitant, give them one specific recent win as social proof
+- WE EAT EVERY DAY 🍽️ — this is your motto, use it naturally`;
 
 
 async function callVictoria(userMsg){
@@ -821,7 +809,7 @@ async function callVictoria(userMsg){
 function fallbackVictoria(msg){
   const greets=["Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or still out here losing alone? 👀 What's your budget?","Aye aye aye — welcome to the hottest picks in Las Vegas 💰 We don't miss. Question is... are YOU in? Tell me what you working with 👀","Welcome to Addiicted2Sports™ 👑 The Boss is LOCKED IN today. You tryna eat or nah? Drop your budget and I'll plug you in RIGHT NOW 🔥"];
   if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
-  const closes=["Say less 💰 We are ON A HEATER right now — Bot Cake hasn't missed. Hop on paypal.me/addiicted2sports, grab Gold tier 🥇 and get in before the next one drops. Upload your screenshot right here — receipt number hits INSTANTLY.","You feel that? 🔥 That's THE HEATER. We are running HOT and Purple tier gets you 72hrs of this energy. $175 — paypal.me/addiicted2sports RIGHT NOW 💜 Upload your screenshot in this chat and you're unlocked on the spot.","All-Access is the only move right now 👑 You get THE HEATER plus every single pick we drop — $275 and Bot Cake is SMOKING. paypal.me/addiicted2sports — don't let this heater pass you by 🔥 Upload your PayPal screenshot right here, receipt number generated instantly. Let's GET IT."];
+  const closes=["Say less 💰 Hop on paypal.me/addiicted2sports and let's GET IT. Gold tier is calling your name 🥇 Soon as you pay, upload your screenshot right here in the chat — upload button pops up below — and I'll lock in your receipt number INSTANTLY.","That's what I'm talking about 🔥 Purple tier is PERFECT for you — $175 for 72hrs of elite picks. paypal.me/addiicted2sports RIGHT NOW 💜 Upload your payment screenshot right here and your picks unlock IMMEDIATELY.","All-Access is the move 👑 $275 and you get EVERYTHING we drop. paypal.me/addiicted2sports — don't sleep on it 💰 Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot. No waiting."];
   return closes[Math.floor(Math.random()*closes.length)];
 }
 
@@ -1093,22 +1081,22 @@ function initProofStrip(){
   if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${doubled.map(t=>`<span class="proof-item">• ${t}</span>`).join('')}</div>`;
 }
 
-// ============ THE HEATER (Mazl Picks inspired) ============
-function initHeater(){
+// ============ GAME OF THE MONTH (Mazl Picks inspired) ============
+function initGOTM(){
   // Show GOTM card if admin has set a GOTM pick in data
-  const heaterData = (window._ghData && window._ghData.heater) ? window._ghData.heater : null;
-  const card = document.getElementById('heaterCard');
+  const gotmData = (window._ghData && window._ghData.gotm) ? window._ghData.gotm : null;
+  const card = document.getElementById('gotmCard');
   if(!card) return;
-  if(heaterData && heaterData.active){
+  if(gotmData && gotmData.active){
     card.style.display='block';
-    const pickEl=document.getElementById('heaterPick');
-    const descEl=document.getElementById('heaterDesc');
-    if(pickEl) pickEl.textContent = userVerified ? '🎯 '+heaterData.pick : '🔒 LOCKED — SUBSCRIBERS ONLY';
-    if(descEl && heaterData.note) descEl.textContent = heaterData.note;
+    const pickEl=document.getElementById('gotmPick');
+    const descEl=document.getElementById('gotmDesc');
+    if(pickEl) pickEl.textContent = userVerified ? '🎯 '+gotmData.pick : '🔒 LOCKED — SUBSCRIBERS ONLY';
+    if(descEl && gotmData.note) descEl.textContent = gotmData.note;
   } else {
     // Show teaser card even without admin data
     card.style.display='block';
-    const saveEl=document.getElementById('heaterSave');
+    const saveEl=document.getElementById('gotmSave');
     if(saveEl) saveEl.style.display='inline';
   }
 }
@@ -1120,7 +1108,7 @@ async function init(){
   renderPicksList();
   renderFomo();
   initProofStrip();
-  initHeater();
+  initGOTM();
   // Show onboarding for first-time visitors
   const visited = localStorage.getItem('a2s_visited');
   if(!visited && !localStorage.getItem('a2s_user_verified')){
