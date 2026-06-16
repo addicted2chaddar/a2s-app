@@ -2,64 +2,27 @@
   "picks": {
     "metallica": [
       {
-        "team": "PHILLIES",
+        "team": "Boston Red sox",
         "betType": "MONEYLINE",
-        "odds": "-210",
-        "time": "3 40 PM PT",
+        "odds": "16th Jun 2026, 3:45 EDT",
+        "time": "3 pm pt",
         "note": "",
-        "result": "win",
-        "id": 1781554146313
+        "result": "",
+        "id": 1781617847179
       },
       {
-        "team": "ANGELES VS D' BACK",
-        "betType": "OVER/UNDER",
-        "odds": "-105",
-        "time": "6 40 PM PT",
-        "note": "OVER 9",
-        "result": "loss",
-        "id": 1781554243710
+        "team": "Chicago White Sox",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "3 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781617904311
       }
     ],
-    "gold": [
-      {
-        "team": "REDS",
-        "betType": "MONEYLINE",
-        "odds": "-135",
-        "time": "4 10 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781554282639
-      },
-      {
-        "team": "CUBS",
-        "betType": "MONEYLINE",
-        "odds": "-210",
-        "time": "5 05 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781554319370
-      },
-      {
-        "team": "ATHLETICS",
-        "betType": "MONEYLINE",
-        "odds": "-125",
-        "time": "6 40 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1781554371300
-      },
-      {
-        "team": "RAYS",
-        "betType": "MONEYLINE",
-        "odds": "+140",
-        "time": "7 10 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1781554412373
-      }
-    ],
+    "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1781639197
+  "drop": 1781601771
 }
