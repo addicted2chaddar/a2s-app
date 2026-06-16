@@ -20,7 +20,35 @@
         "id": 1781617904311
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "Mets",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "5pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781650255631
+      },
+      {
+        "team": "Atlanta Braves",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "",
+        "note": "",
+        "result": "",
+        "id": 1781650293801
+      },
+      {
+        "team": "San diego",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "5pm",
+        "note": "",
+        "result": "",
+        "id": 1781650353778
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
