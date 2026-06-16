@@ -45,7 +45,7 @@
         "odds": "-125",
         "time": "6 40 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1781554371300
       },
       {
@@ -61,5 +61,5 @@
     "purple": [],
     "allaccess": []
   },
-  "drop": 1781601595
+  "drop": 1781601681
 }
