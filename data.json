@@ -1,6 +1,16 @@
 {
   "picks": {
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "test",
+        "betType": "SPREAD",
+        "odds": "-140",
+        "time": "3 pm",
+        "note": "",
+        "result": "",
+        "id": 1781667408478
+      }
+    ],
     "gold": [
       {
         "team": "Atlanta Braves",
