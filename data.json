@@ -2,33 +2,69 @@
   "picks": {
     "metallica": [
       {
-        "team": "test",
-        "betType": "SPREAD",
-        "odds": "-140",
-        "time": "3 pm",
+        "team": "BOSTON RED SOX",
+        "betType": "MONEYLINE",
+        "odds": "-123",
+        "time": "3;45 PM PT",
         "note": "",
         "result": "",
-        "id": 1781667408478
+        "id": 1781728894260
+      },
+      {
+        "team": "NEW YORK YANKEES",
+        "betType": "MONEYLINE",
+        "odds": "-192",
+        "time": "4 :05 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781729004057
       }
     ],
     "gold": [
       {
-        "team": "Atlanta Braves",
+        "team": "CUBS",
         "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "",
+        "odds": "-205",
+        "time": "5 05 PM PT",
         "note": "",
-        "result": "push",
-        "id": 1781650293801
+        "result": "",
+        "id": 1781729122715
       },
       {
-        "team": "San diego",
+        "team": "SAN FRANISCO GIANTS",
         "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "5pm",
+        "odds": "+136",
+        "time": "4 15 PM PT",
         "note": "",
-        "result": "loss",
-        "id": 1781650353778
+        "result": "",
+        "id": 1781729237990
+      },
+      {
+        "team": "MILWAUKEE BREWERS",
+        "betType": "MONEYLINE",
+        "odds": "-126",
+        "time": "4 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781729361024
+      },
+      {
+        "team": "BALTIMORE  ORIOLES",
+        "betType": "MONEYLINE",
+        "odds": "-132",
+        "time": "",
+        "note": "",
+        "result": "",
+        "id": 1781729446485
+      },
+      {
+        "team": "ATHLETICS",
+        "betType": "MONEYLINE",
+        "odds": "+131",
+        "time": "6 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1781729577582
       }
     ],
     "purple": [],
