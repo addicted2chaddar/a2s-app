@@ -1,42 +1,14 @@
 {
   "picks": {
-    "metallica": [
-      {
-        "team": "Boston Red sox",
-        "betType": "MONEYLINE",
-        "odds": "16th Jun 2026, 3:45 EDT",
-        "time": "3 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1781617847179
-      },
-      {
-        "team": "Chicago White Sox",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "3 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1781617904311
-      }
-    ],
+    "metallica": [],
     "gold": [
-      {
-        "team": "Mets",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "5pm pt",
-        "note": "",
-        "result": "",
-        "id": 1781650255631
-      },
       {
         "team": "Atlanta Braves",
         "betType": "MONEYLINE",
         "odds": "-140",
         "time": "",
         "note": "",
-        "result": "",
+        "result": "push",
         "id": 1781650293801
       },
       {
