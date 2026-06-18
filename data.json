@@ -7,7 +7,7 @@
         "odds": "-123",
         "time": "3;45 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1781728894260
       },
       {
@@ -16,7 +16,7 @@
         "odds": "-192",
         "time": "4 :05 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1781729004057
       }
     ],
@@ -27,7 +27,7 @@
         "odds": "-205",
         "time": "5 05 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1781729122715
       },
       {
@@ -45,7 +45,7 @@
         "odds": "-126",
         "time": "4 40 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1781729361024
       },
       {
@@ -54,7 +54,7 @@
         "odds": "-132",
         "time": "",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1781729446485
       },
       {
