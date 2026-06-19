@@ -20,7 +20,26 @@
         "id": 1781819981944
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "Kansas City Royals  +100",
+        "betType": "MONEYLINE",
+        "odds": "+100",
+        "time": "3 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781887343702
+      },
+      {
+        "team": "Chicago White Sox  +189",
+        "betType": "MONEYLINE",
+        "odds": "Chicago White Sox  +189",
+        "time": "3 40 pt",
+        "note": "",
+        "result": "",
+        "id": 1781887408833
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
