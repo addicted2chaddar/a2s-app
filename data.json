@@ -2,42 +2,51 @@
   "picks": {
     "metallica": [
       {
-        "team": "White sox",
-        "betType": "MONEYLINE",
-        "odds": "+140",
-        "time": "339.pm pt",
+        "team": "Blue jays",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "11 20 am pt",
         "note": "",
-        "result": "win",
-        "id": 1781819890781
+        "result": "",
+        "id": 1781975393589
       },
       {
-        "team": "White sox vs Yankees",
-        "betType": "OVER/UNDER",
-        "odds": "-110",
-        "time": "",
-        "note": "Over buy 1.down 8.5",
-        "result": "win",
-        "id": 1781819981944
+        "team": "Padres",
+        "betType": "MONEYLINE",
+        "odds": "+125",
+        "time": "1 05 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781975454325
       }
     ],
     "gold": [
       {
-        "team": "Kansas City Royals  +100",
+        "team": "Marlins",
         "betType": "MONEYLINE",
-        "odds": "+100",
-        "time": "3 40 pm pt",
+        "odds": "-140",
+        "time": "1 10 pm pt",
         "note": "",
         "result": "",
-        "id": 1781887343702
+        "id": 1781975496683
       },
       {
-        "team": "Chicago White Sox  +189",
+        "team": "Astros",
         "betType": "MONEYLINE",
-        "odds": "Chicago White Sox  +189",
-        "time": "3 40 pt",
+        "odds": "-140",
+        "time": "4 15 pm pt",
         "note": "",
-        "result": "loss",
-        "id": 1781887408833
+        "result": "",
+        "id": 1781975545425
+      },
+      {
+        "team": "TWINS",
+        "betType": "MONEYLINE",
+        "odds": "+118",
+        "time": "7 10 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781975592413
       }
     ],
     "purple": [],
