@@ -49,8 +49,109 @@
         "id": 1781975592413
       }
     ],
-    "purple": [],
-    "allaccess": []
+    "purple": [
+      {
+        "team": "Texas Rangers (54.9/100)",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "1 pm",
+        "note": "",
+        "result": "",
+        "id": 1781985758349
+      },
+      {
+        "team": "Houston Astros (58.7/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "4 15 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781985802686
+      },
+      {
+        "team": "Atlanta Braves (56.0/100)",
+        "betType": "MONEYLINE",
+        "odds": "-160",
+        "time": "1 pm",
+        "note": "",
+        "result": "",
+        "id": 1781985844398
+      },
+      {
+        "team": "Tampa Bay Rays (52.8/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "1 pm",
+        "note": "",
+        "result": "",
+        "id": 1781985894163
+      },
+      {
+        "team": "Miami Marlins (56.8/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "1 pm",
+        "note": "",
+        "result": "",
+        "id": 1781985923388
+      }
+    ],
+    "allaccess": [
+      {
+        "team": "Philadelphia Phillies (64.3/100)",
+        "betType": "MONEYLINE",
+        "odds": "-100 pm",
+        "time": "4 15 pm",
+        "note": "",
+        "result": "",
+        "id": 1781985973101
+      },
+      {
+        "team": "Athletics (60.5/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "7 05 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781986021130
+      },
+      {
+        "team": "Arizona Diamondbacks (54.5/100)",
+        "betType": "MONEYLINE",
+        "odds": "110",
+        "time": "7 10 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781986060317
+      },
+      {
+        "team": "Los Angeles Dodgers (67.5/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "7 10 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781986095756
+      },
+      {
+        "team": "Dallas Wings (76.8/100)",
+        "betType": "SPREAD",
+        "odds": "-9.5",
+        "time": "5 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781986233527
+      },
+      {
+        "team": "Phoenix Mercury (57.5/100)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "3 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1781986288694
+      }
+    ]
   },
   "drop": 1781978925
 }
