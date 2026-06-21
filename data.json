@@ -74,17 +74,8 @@
         "odds": "-160",
         "time": "1 pm",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1781985844398
-      },
-      {
-        "team": "Tampa Bay Rays (52.8/100)",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "1 pm",
-        "note": "",
-        "result": "loss",
-        "id": 1781985894163
       },
       {
         "team": "Miami Marlins (56.8/100)",
