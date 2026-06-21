@@ -51,15 +51,6 @@
     ],
     "purple": [
       {
-        "team": "Houston Astros (58.7/100)",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "4 15 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1781985802686
-      },
-      {
         "team": "Atlanta Braves (56.0/100)",
         "betType": "MONEYLINE",
         "odds": "-160",
@@ -74,7 +65,7 @@
         "odds": "-110",
         "time": "1 pm",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1781985923388
       }
     ],
