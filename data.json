@@ -1,7 +1,54 @@
 {
   "picks": {
-    "metallica": [],
-    "gold": [],
+    "metallica": [
+      {
+        "team": "GUARDIANS",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "4 45 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782169206263
+      },
+      {
+        "team": "DREAM",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "5 PM PT",
+        "note": "WMBA",
+        "result": "",
+        "id": 1782169249378
+      }
+    ],
+    "gold": [
+      {
+        "team": "BREWERS",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "440 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782169309481
+      },
+      {
+        "team": "ROCKIES",
+        "betType": "MONEYLINE",
+        "odds": "+118",
+        "time": "5 400 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782169429008
+      },
+      {
+        "team": "ORIOLES",
+        "betType": "MONEYLINE",
+        "odds": "-160",
+        "time": "6 38 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782169483960
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
