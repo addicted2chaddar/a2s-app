@@ -97,7 +97,8 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .picks-list.active{display:block;}
 .pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;}
 .pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
-.pick-team{font-weight:900;color:var(--white);font-size:15px;}
+.pick-team{font-weight:900;color:var(--white);font-size:15px;display:flex;align-items:center;gap:8px;}
+.team-logo-sm{width:22px;height:22px;object-fit:contain;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:5px;padding:2px;}
 .pick-tier-badge{font-size:11px;background:rgba(250,204,21,0.1);color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;}
 .pick-details{font-size:13px;color:var(--slate);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
 .pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
@@ -120,7 +121,8 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 .pick-card.result-win{border-color:var(--green);box-shadow:0 0 20px rgba(34,197,94,0.25);}
 .pick-card.result-loss{border-color:var(--red);box-shadow:0 0 20px rgba(239,68,68,0.2);}
 .pick-card.result-push{border-color:var(--slate);}
-.pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;}
+.pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.team-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:6px;padding:2px;}
 .pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
 .pick-card-note{font-size:13px;color:var(--cyan);line-height:1.6;}
@@ -512,6 +514,50 @@ const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
+
+// ── MLB TEAM LOGOS ──
+const FALLBACK_LOGO = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="19" fill="%23ffffff" stroke="%23cc3333" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20">⚾</text></svg>';
+const MLB_TEAM_LOGOS = {
+  'orioles':'bal','baltimore':'bal','baltimore orioles':'bal',
+  'red sox':'bos','boston':'bos','boston red sox':'bos',
+  'yankees':'nyy','new york yankees':'nyy',
+  'rays':'tb','tampa bay':'tb','tampa bay rays':'tb',
+  'blue jays':'tor','toronto':'tor','toronto blue jays':'tor',
+  'white sox':'chw','chicago white sox':'chw',
+  'guardians':'cle','cleveland':'cle','cleveland guardians':'cle',
+  'tigers':'det','detroit':'det','detroit tigers':'det',
+  'royals':'kc','kansas city':'kc','kansas city royals':'kc',
+  'twins':'min','minnesota':'min','minnesota twins':'min',
+  'astros':'hou','houston':'hou','houston astros':'hou',
+  'angels':'laa','los angeles angels':'laa','anaheim':'laa',
+  'athletics':'ath','oakland':'ath','oakland athletics':'ath',"a's":'ath',
+  'mariners':'sea','seattle':'sea','seattle mariners':'sea',
+  'rangers':'tex','texas':'tex','texas rangers':'tex',
+  'braves':'atl','atlanta':'atl','atlanta braves':'atl',
+  'marlins':'mia','miami':'mia','miami marlins':'mia',
+  'mets':'nym','new york mets':'nym',
+  'phillies':'phi','philadelphia':'phi','philadelphia phillies':'phi',
+  'nationals':'wsh','washington':'wsh','washington nationals':'wsh',
+  'cubs':'chc','chicago cubs':'chc',
+  'reds':'cin','cincinnati':'cin','cincinnati reds':'cin',
+  'brewers':'mil','milwaukee':'mil','milwaukee brewers':'mil',
+  'pirates':'pit','pittsburgh':'pit','pittsburgh pirates':'pit',
+  'cardinals':'stl','st louis':'stl',"st. louis":'stl','st louis cardinals':'stl',
+  'diamondbacks':'ari','arizona':'ari','arizona diamondbacks':'ari','dbacks':'ari','d-backs':'ari',
+  'rockies':'col','colorado':'col','colorado rockies':'col',
+  'dodgers':'lad','los angeles dodgers':'lad',
+  'padres':'sd','san diego':'sd','san diego padres':'sd',
+  'giants':'sf','san francisco':'sf','san francisco giants':'sf',
+};
+const MLB_LOOKUP_KEYS = Object.keys(MLB_TEAM_LOGOS).sort((a,b)=>b.length-a.length);
+function getTeamLogoUrl(teamText){
+  if(!teamText) return FALLBACK_LOGO;
+  const lower = teamText.toLowerCase();
+  for(const key of MLB_LOOKUP_KEYS){
+    if(lower.includes(key)) return `https://a.espncdn.com/i/teamlogos/mlb/500/${MLB_TEAM_LOGOS[key]}.png`;
+  }
+  return FALLBACK_LOGO;
+}
 
 let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
@@ -990,7 +1036,7 @@ function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);if(!el)return;
     el.innerHTML=picks[tier].length
-      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button></div>`).join('')
+      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button></div>`).join('')
       :'<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
 }
@@ -1002,7 +1048,7 @@ function renderFanView(){
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
-    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';const badge=p.result==='win'?`<div class="result-badge badge-win">✅ WIN</div>`:p.result==='loss'?`<div class="result-badge badge-loss">❌ LOSS</div>`:p.result==='push'?`<div class="result-badge badge-push">➖ PUSH</div>`:'';return`<div class="${cardClass}">${badge}<div class="pick-card-team">🎯 ${p.team}</div><div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div><div class="pick-card-note">📊 ${p.note||''}</div></div>`;}).join('')}</div>`;
+    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';const badge=p.result==='win'?`<div class="result-badge badge-win">✅ WIN</div>`:p.result==='loss'?`<div class="result-badge badge-loss">❌ LOSS</div>`:p.result==='push'?`<div class="result-badge badge-push">➖ PUSH</div>`:'';return`<div class="${cardClass}">${badge}<div class="pick-card-team"><img class="team-logo" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div><div class="pick-card-note">📊 ${p.note||''}</div></div>`;}).join('')}</div>`;
   });
   document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
   const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
@@ -1061,7 +1107,7 @@ function renderFomo(){
   const fh=document.getElementById('fomoHeadline');
   if(fh){if(w>=3)fh.textContent='WE ON FIRE 🔥🔥';else if(w>l)fh.textContent='WE WINNING 💰';else if(l>w&&l>0)fh.textContent='BOUNCE BACK COMING 🔥';else fh.textContent='PICKS ARE LIVE 🎯';}
   const blurEl=document.getElementById('fomoPicksBlur');
-  if(blurEl&&allPicks.length>0){blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`<div style="background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:14px;margin-bottom:10px;"><div style="font-weight:900;color:#fff;font-size:15px;margin-bottom:6px;">🎯 ${pk.team}</div><div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#94a3b8;">${pk.betType}</span><span style="color:#facc15;font-weight:900;">${pk.odds}</span></div></div>`).join('');}
+  if(blurEl&&allPicks.length>0){blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`<div style="background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:14px;margin-bottom:10px;"><div style="font-weight:900;color:#fff;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px;"><img class="team-logo-sm" src="${getTeamLogoUrl(pk.team)}" onerror="this.src='${FALLBACK_LOGO}'">${pk.team}</div><div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#94a3b8;">${pk.betType}</span><span style="color:#facc15;font-weight:900;">${pk.odds}</span></div></div>`).join('');}
   else if(blurEl){blurEl.innerHTML=`<div style="padding:30px;text-align:center;color:#94a3b8;">Picks loading...</div>`;}
 }
 
