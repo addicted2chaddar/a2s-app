@@ -515,11 +515,11 @@ const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
 
-// ── MLB TEAM LOGOS ──
+// ── MLB + WNBA TEAM LOGOS ──
 const FALLBACK_LOGO = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="19" fill="%23ffffff" stroke="%23cc3333" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20">⚾</text></svg>';
 const MLB_TEAM_LOGOS = {
-  'orioles':'bal','baltimore':'bal','baltimore orioles':'bal',
-  'red sox':'bos','boston':'bos','boston red sox':'bos',
+  'orioles':'bal','baltimore orioles':'bal',
+  'red sox':'bos','boston red sox':'bos',
   'yankees':'nyy','new york yankees':'nyy',
   'rays':'tb','tampa bay':'tb','tampa bay rays':'tb',
   'blue jays':'tor','toronto':'tor','toronto blue jays':'tor',
@@ -531,13 +531,13 @@ const MLB_TEAM_LOGOS = {
   'astros':'hou','houston':'hou','houston astros':'hou',
   'angels':'laa','los angeles angels':'laa','anaheim':'laa',
   'athletics':'ath','oakland':'ath','oakland athletics':'ath',"a's":'ath',
-  'mariners':'sea','seattle':'sea','seattle mariners':'sea',
+  'mariners':'sea','seattle mariners':'sea',
   'rangers':'tex','texas':'tex','texas rangers':'tex',
-  'braves':'atl','atlanta':'atl','atlanta braves':'atl',
-  'marlins':'mia','miami':'mia','miami marlins':'mia',
+  'braves':'atl','atlanta braves':'atl',
+  'marlins':'mia','miami marlins':'mia',
   'mets':'nym','new york mets':'nym',
   'phillies':'phi','philadelphia':'phi','philadelphia phillies':'phi',
-  'nationals':'wsh','washington':'wsh','washington nationals':'wsh',
+  'nationals':'wsh','washington nationals':'wsh',
   'cubs':'chc','chicago cubs':'chc',
   'reds':'cin','cincinnati':'cin','cincinnati reds':'cin',
   'brewers':'mil','milwaukee':'mil','milwaukee brewers':'mil',
@@ -549,12 +549,30 @@ const MLB_TEAM_LOGOS = {
   'padres':'sd','san diego':'sd','san diego padres':'sd',
   'giants':'sf','san francisco':'sf','san francisco giants':'sf',
 };
-const MLB_LOOKUP_KEYS = Object.keys(MLB_TEAM_LOGOS).sort((a,b)=>b.length-a.length);
+const WNBA_TEAM_LOGOS = {
+  'sky':'chi','chicago sky':'chi',
+  'sparks':'la','los angeles sparks':'la',
+  'liberty':'ny','new york liberty':'ny',
+  'wings':'dal','dallas wings':'dal',
+  'fever':'ind','indiana fever':'ind',
+  'lynx':'min','minnesota lynx':'min',
+  'mercury':'phx','phoenix mercury':'phx',
+  'storm':'sea','seattle storm':'sea',
+  'aces':'lv','las vegas aces':'lv',
+  'sun':'conn','connecticut sun':'conn',
+  'dream':'atl','atlanta dream':'atl',
+  'mystics':'wsh','washington mystics':'wsh',
+  'valkyries':'gs','golden state valkyries':'gs',
+};
+const TEAM_LOGO_ENTRIES = [
+  ...Object.keys(MLB_TEAM_LOGOS).map(k=>({key:k, abbrev:MLB_TEAM_LOGOS[k], league:'mlb'})),
+  ...Object.keys(WNBA_TEAM_LOGOS).map(k=>({key:k, abbrev:WNBA_TEAM_LOGOS[k], league:'wnba'})),
+].sort((a,b)=>b.key.length-a.key.length);
 function getTeamLogoUrl(teamText){
   if(!teamText) return FALLBACK_LOGO;
   const lower = teamText.toLowerCase();
-  for(const key of MLB_LOOKUP_KEYS){
-    if(lower.includes(key)) return `https://a.espncdn.com/i/teamlogos/mlb/500/${MLB_TEAM_LOGOS[key]}.png`;
+  for(const entry of TEAM_LOGO_ENTRIES){
+    if(lower.includes(entry.key)) return `https://a.espncdn.com/i/teamlogos/${entry.league}/500/${entry.abbrev}.png`;
   }
   return FALLBACK_LOGO;
 }
