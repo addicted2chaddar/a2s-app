@@ -585,6 +585,41 @@ let adminMode = false;
 let userVerified = false;
 let userTier = null;
 
+// ── AUDIO UNLOCK ──
+// Browsers block .play() until the user has interacted with the page at least once.
+// This silently "warms up" the audio element on the very first tap/click anywhere,
+// so the real money-counter sound is guaranteed to be allowed to play later.
+let audioUnlocked = false;
+function unlockAudioOnce(){
+  if(audioUnlocked) return;
+  const snd = document.getElementById('moneySound');
+  if(snd){
+    snd.muted = true;
+    snd.play().then(()=>{
+      snd.pause();
+      snd.currentTime = 0;
+      snd.muted = false;
+      audioUnlocked = true;
+    }).catch(()=>{ /* still blocked, will retry on next interaction */ });
+  }
+  document.removeEventListener('click', unlockAudioOnce);
+  document.removeEventListener('touchstart', unlockAudioOnce);
+}
+document.addEventListener('click', unlockAudioOnce, {once:false});
+document.addEventListener('touchstart', unlockAudioOnce, {once:false});
+
+function playMoneySound(){
+  const snd = document.getElementById('moneySound');
+  if(!snd) return;
+  snd.currentTime = 0;
+  const playPromise = snd.play();
+  if(playPromise && playPromise.catch){
+    playPromise.catch(err=>{
+      console.warn('moneySound blocked by browser autoplay policy:', err.message);
+    });
+  }
+}
+
 // ── VICTORIA AI ──
 let victoriaOpen = false;
 let victoriaGreeted = false;
@@ -1005,7 +1040,7 @@ async function clearDropTimer(){dropTarget=0;await ghWrite({picks,drop:0});alert
 setInterval(()=>{
   if(!dropTarget){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';return;}
   const diff=dropTarget-Math.floor(Date.now()/1000);
-  if(diff<=0){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';try{document.getElementById('moneySound').play();}catch(e){}if(userVerified)renderFanView();return;}
+  if(diff<=0){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';playMoneySound();if(userVerified)renderFanView();return;}
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
   document.getElementById('countdownTimer').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
