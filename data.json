@@ -18,6 +18,24 @@
         "note": "WMBA",
         "result": "win",
         "id": 1782169249378
+      },
+      {
+        "team": "Chicago White Sox -104 (51.0%)",
+        "betType": "MONEYLINE",
+        "odds": "-104",
+        "time": "4 41 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782249285138
+      },
+      {
+        "team": "St. Louis Cardinals -112 (52.8%)",
+        "betType": "MONEYLINE",
+        "odds": "-112",
+        "time": "4:46 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782249373970
       }
     ],
     "gold": [
@@ -47,9 +65,46 @@
         "note": "",
         "result": "win",
         "id": 1782169483960
+      },
+      {
+        "team": "Washington Nationals +144 (41.0%)",
+        "betType": "MONEYLINE",
+        "odds": "+144",
+        "time": "3 46 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782249437497
+      },
+      {
+        "team": "Colorado Rockies +136 (42.4%)",
+        "betType": "MONEYLINE",
+        "odds": "+136",
+        "time": "5:41 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782249508211
+      },
+      {
+        "team": "New York Mets -110 (52.4%)",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "4 11 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782249588739
       }
     ],
-    "purple": [],
+    "purple": [
+      {
+        "team": "Tampa Bay Rays -188 (65.3%)",
+        "betType": "MONEYLINE",
+        "odds": "-188",
+        "time": "3 41 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782249727555
+      }
+    ],
     "allaccess": []
   },
   "drop": 1782252807
