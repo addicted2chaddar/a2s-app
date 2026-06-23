@@ -1037,10 +1037,22 @@ async function setTimerHrs(h){dropTarget=Math.floor(Date.now()/1000)+h*3600;cons
 async function setCustomTime(){const v=document.getElementById('customTime').value;if(!v){alert('Pick a date/time first');return;}dropTarget=Math.floor(new Date(v).getTime()/1000);const ok=await ghWrite({picks,drop:dropTarget});const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});if(ok)alert(`✅ Drop time: ${label}\nSynced!`);}
 async function clearDropTimer(){dropTarget=0;await ghWrite({picks,drop:0});alert('Timer cleared — fans see LIVE status');}
 
+let hasPlayedDropSound = false;
+let lastSeenDropTarget = 0;
 setInterval(()=>{
+  if(dropTarget !== lastSeenDropTarget){
+    lastSeenDropTarget = dropTarget;
+    hasPlayedDropSound = false;
+  }
   if(!dropTarget){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';return;}
   const diff=dropTarget-Math.floor(Date.now()/1000);
-  if(diff<=0){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';playMoneySound();if(userVerified)renderFanView();return;}
+  if(diff<=0){
+    document.getElementById('countdownTimer').textContent='00:00:00';
+    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
+    if(!hasPlayedDropSound){ hasPlayedDropSound=true; playMoneySound(); }
+    if(userVerified)renderFanView();
+    return;
+  }
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
   document.getElementById('countdownTimer').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
