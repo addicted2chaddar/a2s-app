@@ -72,39 +72,11 @@
         "odds": "+144",
         "time": "3 46 pm pt",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1782249437497
-      },
-      {
-        "team": "Colorado Rockies +136 (42.4%)",
-        "betType": "MONEYLINE",
-        "odds": "+136",
-        "time": "5:41 PM PT",
-        "note": "",
-        "result": "",
-        "id": 1782249508211
-      },
-      {
-        "team": "New York Mets -110 (52.4%)",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "4 11 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1782249588739
       }
     ],
-    "purple": [
-      {
-        "team": "Tampa Bay Rays -188 (65.3%)",
-        "betType": "MONEYLINE",
-        "odds": "-188",
-        "time": "3 41 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1782249727555
-      }
-    ],
+    "purple": [],
     "allaccess": []
   },
   "drop": 1782252807
