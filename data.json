@@ -9,9 +9,37 @@
         "note": "",
         "result": "",
         "id": 1782421947004
+      },
+      {
+        "team": "texas",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "340 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782421991338
       }
     ],
-    "gold": [],
+    "gold": [
+      {
+        "team": "METS",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "3 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782422018661
+      },
+      {
+        "team": "HOUSTON  ASTROS",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "5 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1782422043739
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
