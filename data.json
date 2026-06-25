@@ -2,73 +2,18 @@
   "picks": {
     "metallica": [
       {
-        "team": "GUARDIANS",
+        "team": "phillies",
         "betType": "MONEYLINE",
         "odds": "-110",
-        "time": "4 45 PM PT",
+        "time": "3 40 pmt",
         "note": "",
-        "result": "loss",
-        "id": 1782169206263
-      },
-      {
-        "team": "DREAM",
-        "betType": "MONEYLINE",
-        "odds": "-120",
-        "time": "5 PM PT",
-        "note": "WMBA",
-        "result": "win",
-        "id": 1782169249378
-      },
-      {
-        "team": "St. Louis Cardinals -112 (52.8%)",
-        "betType": "MONEYLINE",
-        "odds": "-112",
-        "time": "4:46 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782249373970
+        "result": "",
+        "id": 1782421947004
       }
     ],
-    "gold": [
-      {
-        "team": "BREWERS",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "440 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782169309481
-      },
-      {
-        "team": "ROCKIES",
-        "betType": "MONEYLINE",
-        "odds": "+118",
-        "time": "5 400 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782169429008
-      },
-      {
-        "team": "ORIOLES",
-        "betType": "MONEYLINE",
-        "odds": "-160",
-        "time": "6 38 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782169483960
-      },
-      {
-        "team": "Washington Nationals +144 (41.0%)",
-        "betType": "MONEYLINE",
-        "odds": "+144",
-        "time": "3 46 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1782249437497
-      }
-    ],
+    "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1782335772
+  "drop": 1782425552
 }
