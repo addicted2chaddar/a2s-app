@@ -36,6 +36,15 @@
         "note": "",
         "result": "",
         "id": 1782515535334
+      },
+      {
+        "team": "NEW ZEALAND",
+        "betType": "MONEYLINE",
+        "odds": "+2.5 -135",
+        "time": "8 00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782515655297
       }
     ],
     "gold": [
@@ -56,6 +65,33 @@
         "note": "",
         "result": "win",
         "id": 1782422043739
+      },
+      {
+        "team": "MIAMI MARLINS",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "5 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782515744239
+      },
+      {
+        "team": "SAN DIEGO",
+        "betType": "MONEYLINE",
+        "odds": "+129",
+        "time": "6 45 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782515816964
+      },
+      {
+        "team": "SAN FRANCISCO  GIANTS",
+        "betType": "MONEYLINE",
+        "odds": "-101",
+        "time": "7 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1782515878063
       }
     ],
     "purple": [],
