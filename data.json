@@ -34,7 +34,7 @@
         "odds": "-1.5",
         "time": "7 00 pm",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1782515535334
       },
       {
@@ -48,15 +48,6 @@
       }
     ],
     "gold": [
-      {
-        "team": "METS",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "3 40 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1782422018661
-      },
       {
         "team": "HOUSTON  ASTROS",
         "betType": "MONEYLINE",
