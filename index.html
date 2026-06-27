@@ -6,208 +6,227 @@
 <title>Addicted2Sports™ — Expert Picks</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-:root{--navy:#0a0e1c;--dark:#0f1419;--gold:#facc15;--cyan:#06b6d4;--green:#22c55e;--red:#ef4444;--slate:#94a3b8;--white:#e8eef7;}
-body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;}
-/* PROOF STRIP */
-.proof-strip{background:linear-gradient(135deg,#0a1628,#0f2040);border:2px solid rgba(250,204,21,0.4);border-radius:14px;padding:14px 16px;margin:12px 0;position:relative;overflow:hidden;}
-.proof-strip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(250,204,21,0.04),transparent);pointer-events:none;}
-.proof-ticker{display:flex;gap:6px;overflow:hidden;margin-bottom:10px;}
-.proof-ticker-inner{display:flex;gap:16px;animation:tickerScroll 18s linear infinite;white-space:nowrap;}
-.proof-item{font-size:11px;color:var(--green);font-weight:900;letter-spacing:0.5px;flex-shrink:0;}
-@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;}
-.proof-stat-val{font-size:22px;font-weight:900;color:var(--gold);line-height:1;}
-.proof-stat-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
-/* GOTM */
-.gotm-card{background:linear-gradient(135deg,#0a0a0a,#1a1400);border:3px solid var(--gold);border-radius:16px;padding:0;overflow:hidden;margin:16px 0;position:relative;}
-.gotm-header{background:linear-gradient(135deg,#facc15,#d97706);padding:10px 16px;text-align:center;}
-.gotm-header-text{font-size:11px;font-weight:900;color:#000;letter-spacing:3px;text-transform:uppercase;}
-.gotm-body{padding:16px;text-align:center;position:relative;}
-.gotm-badge{display:inline-block;background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:2px solid var(--gold);border-radius:50px;padding:5px 16px;font-size:10px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
-.gotm-title{font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:4px;text-transform:uppercase;}
-.gotm-title span{color:var(--gold);}
-.gotm-sub{font-size:11px;color:var(--slate);margin-bottom:14px;line-height:1.6;}
-.gotm-green-light{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(34,197,94,0.12);border:2px solid var(--green);border-radius:8px;padding:8px;margin-bottom:14px;}
-.gotm-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:gotmPulse 1s ease-in-out infinite;}
-@keyframes gotmPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.7)}70%{opacity:0.8;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
-.gotm-green-text{font-size:12px;font-weight:900;color:var(--green);letter-spacing:2px;}
-.gotm-price-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
-.gotm-price-old{font-size:16px;color:var(--slate);text-decoration:line-through;}
-.gotm-price-new{font-size:32px;font-weight:900;color:var(--gold);}
-.gotm-save{font-size:10px;background:var(--green);color:#000;font-weight:900;padding:2px 8px;border-radius:4px;}
-/* ONBOARDING FUNNEL */
-.onboard-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;}
-.onboard-card{background:linear-gradient(135deg,#0a0e1c,#0f1a2e);border:3px solid var(--gold);border-radius:20px;padding:28px 20px;max-width:380px;width:100%;text-align:center;position:relative;}
-.onboard-logo{font-size:14px;font-weight:900;color:var(--gold);letter-spacing:3px;margin-bottom:20px;text-transform:uppercase;}
-.onboard-q{font-size:20px;font-weight:900;color:var(--white);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
-.onboard-sub{font-size:12px;color:var(--slate);margin-bottom:22px;}
-.onboard-btn{display:block;width:100%;padding:14px;border-radius:10px;font-size:15px;font-weight:900;letter-spacing:1px;cursor:pointer;border:none;margin-bottom:10px;text-transform:uppercase;transition:transform 0.1s;}
-.onboard-btn:active{transform:scale(0.97);}
-.onboard-btn-primary{background:linear-gradient(135deg,var(--gold),#d97706);color:#000;}
-.onboard-btn-secondary{background:rgba(250,204,21,0.1);color:var(--gold);border:2px solid rgba(250,204,21,0.4);}
-.onboard-step{font-size:10px;color:var(--slate);margin-top:14px;letter-spacing:1px;}
-.onboard-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;}
-.onboard-dot{width:8px;height:8px;border-radius:50%;background:rgba(250,204,21,0.2);}
-.onboard-dot.active{background:var(--gold);}
-
-.header-hero{background:linear-gradient(135deg,#0a1628 0%,#1a2f4a 100%);border-bottom:5px solid var(--gold);padding:14px 16px;text-align:center;z-index:1000;box-shadow:0 12px 40px rgba(250,204,21,0.25);}
-.logo-image{max-width:100%;height:auto;max-height:120px;border-radius:14px;box-shadow:0 8px 30px rgba(250,204,21,0.3);}
-.brand-tagline{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:900;margin-bottom:12px;text-transform:uppercase;}
-.countdown-display{background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));border:3px solid var(--gold);border-radius:14px;padding:10px;margin:10px 0;box-shadow:0 0 30px rgba(250,204,21,0.25);text-align:center;animation:pulse 1s infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(250,204,21,0.25)}50%{box-shadow:0 0 50px rgba(250,204,21,0.4)}}
-.countdown-label{font-size:10px;color:var(--slate);letter-spacing:1.5px;font-weight:900;text-transform:uppercase;margin-bottom:6px;}
-.countdown-timer{font-size:38px;font-weight:900;color:var(--gold);letter-spacing:3px;text-shadow:0 0 20px rgba(250,204,21,0.4);font-family:'Monaco','Courier New',monospace;line-height:1;}
-.countdown-status{font-size:12px;color:var(--cyan);margin-top:6px;font-weight:800;}
-.sync-badge{font-size:10px;color:var(--green);margin-top:4px;}
-.header-info{background:rgba(0,0,0,0.4);border-radius:12px;padding:8px 16px;display:flex;justify-content:center;gap:18px;font-size:12px;border:2px solid rgba(250,204,21,0.25);}
+:root{
+  --vault:#08090c;
+  --vault-2:#0e1014;
+  --panel:#13151a;
+  --panel-2:#1a1d24;
+  --gold:#d4af37;
+  --gold-bright:#f4d35e;
+  --gold-dim:#9c7f2c;
+  --green:#2fae65;
+  --red:#d4453f;
+  --slate:#8a8d96;
+  --white:#f0eee6;
+  --hair:rgba(212,175,55,0.14);
+  --hair-strong:rgba(212,175,55,0.28);
+}
+body{background:radial-gradient(circle at 50% -10%,#15161b,var(--vault) 60%);color:var(--white);font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;min-height:100vh;position:relative;}
+body::before{content:'';position:fixed;inset:0;background-image:url('https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/watermark_tile.png');background-repeat:repeat;background-size:140px 140px;pointer-events:none;z-index:0;}
+.header-hero,.container,.footer-btn,.modal,.onboard-overlay{position:relative;z-index:1;}
+.bar-divider{display:flex;justify-content:center;gap:3px;padding:10px 0;}
+.bar-divider span{width:34px;height:6px;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));border-radius:1px;}
+.header-hero{background:linear-gradient(180deg,#101218,var(--vault) 85%);border-bottom:1px solid var(--hair-strong);padding:18px 16px 14px;text-align:center;position:relative;}
+.logo-image{max-width:100%;height:auto;max-height:108px;border-radius:12px;border:1px solid var(--hair-strong);}
+.brand-tagline{font-size:10px;color:var(--gold);letter-spacing:3px;font-weight:600;margin:12px 0 14px;text-transform:uppercase;opacity:0.9;}
+.countdown-display{background:var(--panel);border:1px solid var(--hair-strong);border-radius:12px;padding:14px;margin:12px 0;text-align:center;}
+.countdown-label{font-size:9px;color:var(--slate);letter-spacing:2px;font-weight:600;text-transform:uppercase;margin-bottom:8px;}
+.countdown-timer{font-size:34px;font-weight:700;color:var(--gold-bright);letter-spacing:3px;font-family:'Courier New',monospace;line-height:1;}
+.countdown-status{font-size:11px;color:var(--slate);margin-top:8px;font-weight:500;}
+.sync-badge{font-size:9px;color:var(--gold-dim);margin-top:4px;}
+.header-info{background:var(--panel);border-radius:10px;padding:9px 14px;display:flex;justify-content:center;gap:20px;font-size:12px;border:1px solid var(--hair);margin-top:10px;}
 .info-item{display:flex;flex-direction:column;align-items:center;}
-.info-label{font-size:9px;color:var(--slate);letter-spacing:0.8px;margin-bottom:3px;text-transform:uppercase;}
-.info-value{font-weight:900;color:var(--gold);font-size:14px;}
-.container{max-width:520px;margin:0 auto;padding:16px;}
-.admin-panel{display:none !important;overflow:hidden;}
-.admin-panel.active{display:block !important;}
-.payment-instructions{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(34,197,94,0.05));border:3px solid var(--green);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center;}
-.payment-instructions-title{font-size:20px;font-weight:900;color:var(--green);margin-bottom:12px;text-transform:uppercase;}
-.payment-steps{font-size:13px;color:var(--white);line-height:1.8;margin-bottom:16px;}
-.payment-step{margin-bottom:10px;}
-.step-num{background:var(--green);color:#000;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-right:8px;}
-.paypal-button{background:linear-gradient(135deg,#0070ba,#003087);color:var(--white);padding:16px 24px;border-radius:12px;border:none;font-weight:900;font-size:16px;cursor:pointer;width:100%;text-decoration:none;display:inline-block;text-align:center;transition:all 0.3s ease;}
-.payment-wall{display:block !important;}
-.payment-wall.hidden{display:none !important;}
-.form-group{margin-bottom:16px;}
-.form-label{display:block;font-size:12px;font-weight:900;color:var(--gold);margin-bottom:8px;letter-spacing:0.8px;text-transform:uppercase;}
-.form-input,.form-textarea,.form-select{width:100%;padding:13px 14px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;transition:all 0.3s ease;}
-.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);}
-.form-textarea{resize:vertical;min-height:90px;}
-.timer-controls{background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;padding:14px;margin-bottom:16px;}
-.timer-label{font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;text-transform:uppercase;}
-.timer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.timer-btn{padding:10px;background:rgba(250,204,21,0.1);border:2px solid rgba(250,204,21,0.3);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;text-transform:uppercase;}
-.custom-time-row{display:flex;gap:8px;margin-top:8px;}
-.custom-time-input{flex:1;padding:10px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:8px;color:var(--white);font-size:13px;}
-.custom-time-btn{padding:10px 14px;background:rgba(250,204,21,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;white-space:nowrap;}
-.tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-.tier-btn{padding:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(10,16,28,0.8);color:var(--white);border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
-.tier-btn.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));color:var(--gold);}
-.btn{padding:14px 20px;border:none;border-radius:11px;font-weight:900;font-size:13px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;text-transform:uppercase;}
-.btn-primary{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;width:100%;box-shadow:0 4px 20px rgba(250,204,21,0.3);}
-.btn-secondary{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.2);width:100%;margin-top:8px;}
-.btn-danger{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);width:100%;margin-top:8px;}
-.picks-list{display:none;}
-.picks-list.active{display:block;}
-.pick-item{background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:16px;margin-bottom:12px;}
-.pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
-.pick-team{font-weight:900;color:var(--white);font-size:15px;display:flex;align-items:center;gap:8px;}
-.team-logo-sm{width:22px;height:22px;object-fit:contain;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:5px;padding:2px;}
-.pick-tier-badge{font-size:11px;background:rgba(250,204,21,0.1);color:var(--gold);padding:5px 10px;border-radius:20px;font-weight:900;}
-.pick-details{font-size:13px;color:var(--slate);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.pick-notes{font-size:13px;color:var(--cyan);background:rgba(6,182,212,0.12);padding:10px 12px;border-radius:9px;border-left:4px solid var(--cyan);}
-.btn-sm{padding:8px 12px;font-size:12px;}
-.result-btns{display:flex;gap:6px;margin-top:8px;}
-.result-btn{flex:1;padding:8px;border:none;border-radius:8px;font-weight:900;font-size:11px;cursor:pointer;text-transform:uppercase;}
-.result-btn-win{background:rgba(34,197,94,0.2);color:var(--green);border:2px solid rgba(34,197,94,0.5);}
-.result-btn-loss{background:rgba(239,68,68,0.2);color:var(--red);border:2px solid rgba(239,68,68,0.5);}
-.result-btn-push{background:rgba(148,163,184,0.2);color:var(--slate);border:2px solid rgba(148,163,184,0.4);}
-.result-btn.selected-win{background:var(--green);color:#000;}
-.result-btn.selected-loss{background:var(--red);color:#fff;}
-.result-btn.selected-push{background:var(--slate);color:#000;}
-.fan-view{display:none !important;}
-.fan-view.active{display:block !important;}
-.picks-section{margin-top:24px;margin-bottom:60px;}
-.tier-section{margin-bottom:28px;}
-.tier-header{font-size:14px;font-weight:900;color:var(--gold);padding:14px 16px;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(250,204,21,0.05));border-radius:11px;margin-bottom:14px;letter-spacing:1px;border-left:5px solid var(--gold);text-transform:uppercase;}
-.pick-card{background:rgba(10,16,28,0.92);border:2px solid rgba(250,204,21,0.12);border-radius:12px;padding:16px;margin-bottom:12px;transition:all 0.3s ease;position:relative;overflow:hidden;}
-.pick-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 25px rgba(250,204,21,0.15);}
-.pick-card.result-win{border-color:var(--green);box-shadow:0 0 20px rgba(34,197,94,0.25);}
-.pick-card.result-loss{border-color:var(--red);box-shadow:0 0 20px rgba(239,68,68,0.2);}
-.pick-card.result-push{border-color:var(--slate);}
-.pick-card-team{font-weight:900;color:var(--white);font-size:16px;margin-bottom:10px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
-.team-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:6px;padding:2px;}
-.pick-card-bet{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.pick-card-odds{color:var(--gold);font-weight:900;font-size:14px;}
-.pick-card-note{font-size:13px;color:var(--cyan);line-height:1.6;}
-.tier-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
-.tier-card{padding:16px;background:rgba(250,204,21,0.08);border:2px solid rgba(250,204,21,0.2);border-radius:10px;cursor:pointer;transition:all 0.3s ease;text-align:center;}
-.tier-card.active{border-color:var(--gold);background:linear-gradient(135deg,rgba(250,204,21,0.15),rgba(250,204,21,0.05));}
-.tier-name{font-weight:900;color:var(--gold);font-size:14px;margin-bottom:4px;}
-.tier-price{color:var(--white);font-size:13px;}
-.payment-form{background:rgba(10,16,28,0.95);border:2px solid rgba(250,204,21,0.3);border-radius:14px;padding:28px;margin-top:40px;margin-bottom:60px;}
-.payment-title{font-size:20px;font-weight:900;color:var(--gold);margin-bottom:20px;text-align:center;}
-.payment-subtitle{font-size:13px;color:var(--cyan);margin-bottom:16px;text-align:center;line-height:1.6;}
-.success-message{background:rgba(34,197,94,0.2);border:2px solid var(--green);color:var(--green);padding:12px;border-radius:10px;margin:20px 0;font-weight:900;display:none;}
-.success-message.show{display:block !important;}
-.footer-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;color:#000;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 6px 25px rgba(250,204,21,0.4);z-index:500;}
-.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
-.modal.active{display:flex;}
-.modal-content{background:linear-gradient(135deg,#0d1f38,#1a2f4a);border:3px solid var(--gold);border-radius:16px;padding:32px 28px;max-width:320px;text-align:center;}
-.modal-title{font-size:18px;font-weight:900;color:var(--gold);margin-bottom:14px;text-transform:uppercase;}
-.modal-input{width:100%;padding:13px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:10px;color:var(--white);font-size:13px;margin-bottom:14px;}
-.modal-input:focus{outline:none;border-color:var(--gold);}
-.modal-btn{padding:13px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer;width:100%;text-transform:uppercase;}
-.admin-bar{margin-bottom:20px;padding:14px;background:rgba(250,204,21,0.1);border-radius:10px;border:2px solid rgba(250,204,21,0.3);display:flex;justify-content:space-between;align-items:center;}
-.result-badge{position:absolute;top:12px;right:12px;font-size:11px;font-weight:900;padding:5px 10px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;}
-.badge-win{background:linear-gradient(135deg,rgba(34,197,94,0.3),rgba(34,197,94,0.15));color:var(--green);border:2px solid var(--green);}
-.badge-loss{background:linear-gradient(135deg,rgba(239,68,68,0.3),rgba(239,68,68,0.15));color:var(--red);border:2px solid var(--red);}
-.badge-push{background:rgba(148,163,184,0.2);color:var(--slate);border:2px solid var(--slate);}
-.win-flag-wrap{display:none;text-align:center;padding:20px 0 10px;margin-bottom:4px;}
-.win-flag-wrap.active{display:block;}
-.flag-pole{display:inline-flex;align-items:flex-start;gap:0;}
-.pole{width:6px;height:90px;background:linear-gradient(180deg,#ccc,#888);border-radius:3px;flex-shrink:0;}
-.flag-svg{overflow:visible;}
-@keyframes wave{0%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}25%{d:path("M0,4 C20,-4 40,12 60,4 C80,-4 100,12 120,4 L120,44 C100,52 80,36 60,44 C40,52 20,36 0,44 Z")}50%{d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z")}75%{d:path("M0,-4 C20,4 40,-12 60,-4 C80,4 100,-12 120,-4 L120,36 C100,28 80,44 60,36 C40,28 20,44 0,36 Z")}100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}}
-@keyframes waveRed{0%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}50%{d:path("M0,0 C20,8 40,-8 60,0 C80,8 100,-8 120,0 L120,40 C100,32 80,48 60,40 C40,32 20,48 0,40 Z")}100%{d:path("M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z")}}
-.flag-shape-win{animation:wave 1.4s ease-in-out infinite;fill:url(#winGrad);}
-.flag-shape-loss{animation:waveRed 1.4s ease-in-out infinite;fill:url(#lossGrad);}
-.flag-label{font-size:22px;font-weight:900;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
-.flag-label-win{color:var(--green);text-shadow:0 0 20px rgba(34,197,94,0.6),0 0 40px rgba(34,197,94,0.3);animation:glow-green 1.2s ease-in-out infinite alternate;}
-.flag-label-loss{color:var(--red);text-shadow:0 0 20px rgba(239,68,68,0.5);}
-@keyframes glow-green{from{text-shadow:0 0 10px rgba(34,197,94,0.4)}to{text-shadow:0 0 30px rgba(34,197,94,0.9),0 0 60px rgba(34,197,94,0.4)}}
-.flag-sub{font-size:12px;color:var(--slate);margin-top:4px;letter-spacing:1px;}
-.record-strip{display:flex;justify-content:center;gap:16px;margin:10px 0 20px;padding:12px;background:rgba(0,0,0,0.3);border-radius:10px;border:1px solid rgba(255,255,255,0.08);}
-.record-item{text-align:center;}
-.record-num{font-size:24px;font-weight:900;}
-.record-lbl{font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;}
-.record-num-w{color:var(--green);}
-.record-num-l{color:var(--red);}
-.record-num-p{color:var(--slate);}
-
-/* ── VICTORIA CHAT WIDGET ── */
-#victoriaSection{background:linear-gradient(135deg,rgba(250,204,21,0.08),rgba(250,204,21,0.03));border:2px solid rgba(250,204,21,0.3);border-radius:16px;margin:14px 0 0;padding:14px;text-align:left;}
+.info-label{font-size:9px;color:var(--slate);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;}
+.info-value{font-weight:600;color:var(--gold);font-size:13px;}
+#victoriaSection{background:var(--panel);border:1px solid var(--hair-strong);border-radius:14px;margin:14px 0 0;padding:14px;text-align:left;}
 #victoriaTopBar{display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer;}
-#victoriaFace{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 16px rgba(250,204,21,0.5);flex-shrink:0;}
-#victoriaTopName{font-size:13px;font-weight:900;color:var(--gold);}
-#victoriaTopStatus{font-size:10px;color:var(--green);letter-spacing:0.5px;}
-#victoriaTopTag{font-size:10px;color:var(--cyan);margin-top:1px;}
+#victoriaFace{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);flex-shrink:0;}
+#victoriaTopName{font-size:13px;font-weight:600;color:var(--gold);}
+#victoriaTopStatus{font-size:10px;color:var(--green);letter-spacing:0.3px;}
+#victoriaTopTag{font-size:10px;color:var(--slate);margin-top:1px;}
 #victoriaChat{display:none;flex-direction:column;gap:8px;}
 #victoriaChat.open{display:flex;}
 #victoriaMessages{overflow-y:auto;display:flex;flex-direction:column;gap:8px;max-height:220px;padding-right:2px;margin-bottom:10px;}
 #victoriaMessages::-webkit-scrollbar{width:3px;}
-#victoriaMessages::-webkit-scrollbar-thumb{background:rgba(250,204,21,0.3);border-radius:3px;}
-.vic-msg{padding:10px 13px;border-radius:14px;font-size:13px;line-height:1.5;max-width:92%;animation:msgPop 0.3s ease;}
-@keyframes msgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.vic-msg-bot{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);color:var(--white);align-self:flex-start;border-radius:4px 14px 14px 14px;}
-.vic-msg-user{background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(6,182,212,0.1));border:1px solid rgba(6,182,212,0.3);color:var(--white);align-self:flex-end;border-radius:14px 4px 14px 14px;}
-.vic-typing{display:flex;gap:4px;padding:10px 14px;background:rgba(250,204,21,0.08);border-radius:4px 14px 14px 14px;align-self:flex-start;width:fit-content;}
-.vic-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:vicDot 1.2s ease-in-out infinite;}
+#victoriaMessages::-webkit-scrollbar-thumb{background:var(--hair-strong);border-radius:3px;}
+.vic-msg{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5;max-width:92%;}
+.vic-msg-bot{background:rgba(212,175,55,0.08);border:1px solid var(--hair);color:var(--white);align-self:flex-start;border-radius:4px 12px 12px 12px;}
+.vic-msg-user{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--white);align-self:flex-end;border-radius:12px 4px 12px 12px;}
+.vic-typing{display:flex;gap:4px;padding:10px 14px;background:rgba(212,175,55,0.06);border-radius:4px 12px 12px 12px;align-self:flex-start;width:fit-content;}
+.vic-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:vicDot 1.2s ease-in-out infinite;}
 .vic-dot:nth-child(2){animation-delay:0.2s;}
 .vic-dot:nth-child(3){animation-delay:0.4s;}
 @keyframes vicDot{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
 #victoriaInputRow{display:flex;gap:8px;}
-#victoriaInput{flex:1;padding:10px 13px;background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.2);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;}
+#victoriaInput{flex:1;padding:10px 13px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;color:var(--white);font-size:13px;font-family:inherit;}
 #victoriaInput:focus{outline:none;border-color:var(--gold);}
-#victoriaSend{padding:10px 14px;background:linear-gradient(135deg,var(--gold),#f59e0b);border:none;border-radius:10px;color:#000;font-weight:900;font-size:16px;cursor:pointer;}
+#victoriaSend{padding:10px 14px;background:var(--gold);border:none;border-radius:10px;color:#1a1400;font-weight:700;font-size:15px;cursor:pointer;}
+.container{max-width:520px;margin:0 auto;padding:16px;}
+.admin-panel{display:none !important;overflow:hidden;}
+.admin-panel.active{display:block !important;}
+.admin-bar{margin-bottom:18px;padding:12px;background:var(--panel);border-radius:10px;border:1px solid var(--hair-strong);display:flex;justify-content:space-between;align-items:center;}
+.timer-controls{background:var(--panel);border:1px solid var(--hair);border-radius:10px;padding:14px;margin-bottom:16px;}
+.timer-label{font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.timer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.timer-btn{padding:10px;background:rgba(212,175,55,0.06);border:1px solid var(--hair-strong);color:var(--gold);border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;text-transform:uppercase;}
+.custom-time-row{display:flex;gap:8px;margin-top:8px;}
+.custom-time-input{flex:1;padding:10px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;color:var(--white);font-size:13px;}
+.custom-time-btn{padding:10px 14px;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold);border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;white-space:nowrap;}
+.tier-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.tier-btn{padding:14px;border:1px solid var(--hair-strong);background:var(--vault-2);color:var(--white);border-radius:10px;font-weight:600;font-size:12px;cursor:pointer;letter-spacing:0.3px;text-transform:uppercase;}
+.tier-btn.active{border-color:var(--gold);background:rgba(212,175,55,0.1);color:var(--gold);}
+.form-group{margin-bottom:14px;}
+.form-label{display:block;font-size:11px;font-weight:600;color:var(--gold);margin-bottom:7px;letter-spacing:0.5px;text-transform:uppercase;}
+.form-input,.form-textarea,.form-select{width:100%;padding:12px 14px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;color:var(--white);font-size:13px;font-family:inherit;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--gold);}
+.form-textarea{resize:vertical;min-height:80px;}
+.btn{padding:13px 20px;border:none;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;letter-spacing:0.3px;text-transform:uppercase;}
+.btn-primary{background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;width:100%;}
+.btn-secondary{background:rgba(255,255,255,0.05);color:var(--white);border:1px solid var(--hair-strong);width:100%;margin-top:8px;}
+.btn-danger{background:rgba(212,69,63,0.12);color:var(--red);border:1px solid rgba(212,69,63,0.3);width:100%;margin-top:8px;}
+.btn-sm{padding:8px 12px;font-size:12px;}
+.picks-list{display:none;}
+.picks-list.active{display:block;}
+.pick-item{background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;padding:14px;margin-bottom:10px;}
+.pick-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.pick-team{font-weight:600;color:var(--white);font-size:14px;display:flex;align-items:center;gap:8px;}
+.team-logo-sm{width:20px;height:20px;object-fit:contain;flex-shrink:0;background:rgba(255,255,255,0.06);border-radius:4px;padding:2px;}
+.pick-tier-badge{font-size:10px;background:rgba(212,175,55,0.1);color:var(--gold);padding:4px 9px;border-radius:20px;font-weight:600;}
+.pick-details{font-size:12px;color:var(--slate);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+.pick-notes{font-size:12px;color:var(--slate);background:rgba(255,255,255,0.03);padding:9px 11px;border-radius:8px;border-left:2px solid var(--gold-dim);}
+.result-btns{display:flex;gap:6px;margin-top:8px;}
+.result-btn{flex:1;padding:8px;border:none;border-radius:8px;font-weight:600;font-size:11px;cursor:pointer;text-transform:uppercase;}
+.result-btn-win{background:rgba(47,174,101,0.15);color:var(--green);border:1px solid rgba(47,174,101,0.4);}
+.result-btn-loss{background:rgba(212,69,63,0.15);color:var(--red);border:1px solid rgba(212,69,63,0.4);}
+.result-btn-push{background:rgba(138,141,150,0.15);color:var(--slate);border:1px solid rgba(138,141,150,0.4);}
+.proof-strip{background:var(--panel);border:1px solid var(--hair-strong);border-radius:14px;padding:14px 16px;margin:14px 0;position:relative;}
+.proof-strip-label{font-size:9px;color:var(--gold-dim);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.proof-ticker{display:flex;gap:6px;overflow:hidden;margin-bottom:12px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:8px 0;}
+.proof-ticker-inner{display:flex;gap:18px;animation:tickerScroll 22s linear infinite;white-space:nowrap;}
+.proof-item{font-size:11px;color:var(--gold);font-weight:600;letter-spacing:0.3px;flex-shrink:0;}
+.proof-item-v2{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--gold);font-weight:600;flex-shrink:0;white-space:nowrap;}
+.proof-item-v2 img{width:16px;height:16px;object-fit:contain;background:rgba(255,255,255,0.08);border-radius:3px;padding:1px;flex-shrink:0;}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;}
+.proof-stat-val{font-size:22px;font-weight:700;color:var(--gold-bright);line-height:1;}
+.proof-stat-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;}
+.gotm-card{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:0;overflow:hidden;margin:16px 0;}
+.gotm-header{background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright),var(--gold-dim));padding:9px 16px;text-align:center;}
+.gotm-header-text{font-size:11px;font-weight:700;color:#1a1400;letter-spacing:3px;text-transform:uppercase;}
+.gotm-body{padding:18px;text-align:center;}
+.gotm-badge{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);border-radius:50px;padding:5px 16px;font-size:10px;font-weight:600;color:var(--gold);letter-spacing:1.5px;margin-bottom:12px;}
+.gotm-title{font-size:24px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:6px;text-transform:uppercase;}
+.gotm-title span{color:var(--gold-bright);}
+.gotm-sub{font-size:11px;color:var(--slate);margin-bottom:14px;line-height:1.7;}
+.gotm-green-light{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(47,174,101,0.08);border:1px solid rgba(47,174,101,0.4);border-radius:8px;padding:8px;margin-bottom:14px;}
+.gotm-dot{width:8px;height:8px;border-radius:50%;background:var(--green);}
+.gotm-green-text{font-size:11px;font-weight:700;color:var(--green);letter-spacing:1.5px;}
+.gotm-price-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
+.gotm-price-old{font-size:15px;color:var(--slate);text-decoration:line-through;}
+.gotm-price-new{font-size:28px;font-weight:700;color:var(--gold-bright);}
+.gotm-save{font-size:10px;background:var(--green);color:#06210f;font-weight:700;padding:3px 9px;border-radius:4px;}
+.paypal-button{background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;padding:15px 24px;border-radius:10px;border:none;font-weight:700;font-size:14px;cursor:pointer;width:100%;text-decoration:none;display:inline-block;text-align:center;letter-spacing:0.3px;}
+#fomoSection{margin-top:6px;}
+.fomo-head{text-align:center;padding:18px 0 6px;}
+.fomo-headline{font-size:20px;font-weight:700;color:var(--gold-bright);letter-spacing:0.5px;}
+.fomo-sub{font-size:10px;color:var(--slate);margin-top:4px;letter-spacing:1px;text-transform:uppercase;}
+.fomo-record{display:flex;justify-content:center;gap:18px;margin:14px 0;padding:14px;background:var(--panel);border:1px solid var(--hair-strong);border-radius:12px;}
+.fomo-record-item{text-align:center;}
+.fomo-record-num{font-size:24px;font-weight:700;}
+.fomo-record-lbl{font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;}
+.locked-wrap{position:relative;margin-bottom:18px;border-radius:14px;overflow:hidden;min-height:180px;background:var(--vault-2);border:1px solid var(--hair-strong);}
+.locked-blur{filter:blur(7px);pointer-events:none;user-select:none;opacity:0.55;padding:12px;}
+.locked-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,12,0.1) 0%,rgba(8,9,12,0.88) 55%,rgba(8,9,12,0.98) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:22px;}
+.locked-icon{width:40px;height:40px;border:1px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px;}
+.locked-title{font-size:14px;font-weight:600;color:var(--gold);margin-top:10px;text-transform:uppercase;letter-spacing:1px;}
+.locked-sub{font-size:11px;color:var(--slate);margin-top:4px;}
+.cta-block{background:var(--panel);border:1px solid var(--gold);border-radius:14px;padding:20px;text-align:center;margin-bottom:18px;}
+.cta-block-title{font-size:14px;font-weight:600;color:var(--gold);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
+.cta-block-sub{font-size:11px;color:var(--slate);margin-bottom:16px;line-height:1.7;}
+.howto{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:16px;margin-bottom:18px;font-size:12px;color:var(--slate);line-height:2;}
+.howto-title{font-weight:600;color:var(--gold);margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;}
+.howto-num{background:var(--gold);color:#1a1400;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;margin-right:8px;}
+.payment-wall{display:block !important;}
+.payment-wall.hidden{display:none !important;}
+.payment-form{background:var(--panel);border:1px solid var(--hair-strong);border-radius:14px;padding:24px;margin-top:30px;margin-bottom:50px;}
+.payment-title{font-size:18px;font-weight:600;color:var(--gold);margin-bottom:18px;text-align:center;}
+.tier-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.tier-card{padding:14px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;cursor:pointer;text-align:center;}
+.tier-card.active{border-color:var(--gold);background:rgba(212,175,55,0.08);}
+.tier-name{font-weight:600;color:var(--gold);font-size:13px;margin-bottom:3px;}
+.tier-price{color:var(--white);font-size:12px;}
+.tier-explainer{background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:var(--slate);line-height:1.7;}
+.tier-explainer b{color:var(--gold);font-weight:600;}
+.success-message{background:rgba(47,174,101,0.12);border:1px solid var(--green);color:var(--green);padding:12px;border-radius:10px;margin:18px 0;font-weight:600;display:none;font-size:13px;}
+.success-message.show{display:block !important;}
+.fan-view{display:none !important;}
+.fan-view.active{display:block !important;}
+.picks-section{margin-top:20px;margin-bottom:50px;}
+.tier-section{margin-bottom:26px;}
+.tier-header{font-size:12px;font-weight:600;color:var(--gold);padding:13px 16px;background:var(--panel);border-radius:10px;margin-bottom:12px;letter-spacing:1px;border-left:3px solid var(--gold);text-transform:uppercase;}
+.pick-card-v2{background:var(--panel);border-radius:12px;padding:14px;margin-bottom:10px;border:1px solid var(--hair-strong);position:relative;}
+.pick-card-v2.result-win{border-color:rgba(47,174,101,0.4);}
+.pick-card-v2.result-loss{border-color:rgba(212,69,63,0.3);}
+.pick-card-v2.result-push{border-color:var(--hair-strong);}
+.pick-card-v2-accent{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));}
+.pick-card-v2-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.pick-card-v2-team{display:flex;align-items:center;gap:9px;}
+.pick-card-v2-team img{width:26px;height:26px;object-fit:contain;background:rgba(255,255,255,0.06);border-radius:6px;padding:2px;flex-shrink:0;}
+.pick-card-v2-name{font-size:14px;font-weight:600;color:var(--white);}
+.pick-card-v2-badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.4px;}
+.pick-card-v2-badge.win{background:rgba(47,174,101,0.14);border:1px solid var(--green);color:var(--green);}
+.pick-card-v2-badge.loss{background:rgba(212,69,63,0.14);border:1px solid var(--red);color:var(--red);}
+.pick-card-v2-badge.push{background:rgba(138,141,150,0.14);border:1px solid var(--slate);color:var(--slate);}
+.pick-card-v2-badge.pending{background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold);}
+.pick-card-v2-bet{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--slate);padding-top:10px;border-top:1px solid var(--hair);}
+.pick-card-v2-bettype{letter-spacing:0.3px;}
+.pick-card-v2-odds{color:var(--gold-bright);font-weight:700;font-size:14px;}
+.record-strip{display:flex;justify-content:center;gap:16px;margin:10px 0 20px;padding:14px;background:var(--panel);border-radius:12px;border:1px solid var(--hair-strong);}
+.record-item{text-align:center;}
+.record-num{font-size:22px;font-weight:700;}
+.record-lbl{font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;}
+.record-num-w{color:var(--green);}
+.record-num-l{color:var(--red);}
+.record-num-p{color:var(--slate);}
+.win-flag-wrap{display:none;text-align:center;padding:16px 0 6px;}
+.win-flag-wrap.active{display:block;}
+.flag-label{font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.flag-label-win{color:var(--gold-bright);}
+.flag-label-loss{color:var(--slate);}
+.flag-sub{font-size:11px;color:var(--slate);margin-top:4px;letter-spacing:0.5px;}
+.brand-footer-tag{text-align:center;padding:14px;}
+.brand-footer-tag-main{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:3px;}
+.brand-footer-tag-sub{font-size:10px;color:var(--slate);letter-spacing:0.3px;}
+.footer-btn{position:fixed;bottom:20px;right:20px;width:54px;height:54px;border-radius:50%;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));border:none;color:#1a1400;font-size:22px;cursor:pointer;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.5);}
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
+.modal.active{display:flex;}
+.modal-content{background:var(--panel);border:1px solid var(--gold);border-radius:14px;padding:30px 26px;max-width:300px;text-align:center;}
+.modal-title{font-size:16px;font-weight:600;color:var(--gold);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;}
+.modal-input{width:100%;padding:12px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;color:var(--white);font-size:13px;margin-bottom:14px;}
+.modal-input:focus{outline:none;border-color:var(--gold);}
+.modal-btn{padding:12px;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;width:100%;text-transform:uppercase;letter-spacing:0.3px;}
+.onboard-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;}
+.onboard-card{background:var(--panel);border:1px solid var(--gold);border-radius:18px;padding:28px 22px;max-width:360px;width:100%;text-align:center;}
+.onboard-logo{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:2.5px;margin-bottom:20px;text-transform:uppercase;}
+.onboard-q{font-size:18px;font-weight:600;color:var(--white);margin-bottom:6px;letter-spacing:0.3px;}
+.onboard-sub{font-size:12px;color:var(--slate);margin-bottom:22px;}
+.onboard-btn{display:block;width:100%;padding:14px;border-radius:10px;font-size:14px;font-weight:600;letter-spacing:0.3px;cursor:pointer;border:none;margin-bottom:10px;}
+.onboard-btn-primary{background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;}
+.onboard-btn-secondary{background:rgba(212,175,55,0.07);color:var(--gold);border:1px solid var(--hair-strong);}
+.onboard-step{font-size:10px;color:var(--slate);margin-top:14px;letter-spacing:1px;}
+.onboard-dots{display:flex;justify-content:center;gap:6px;margin-top:10px;}
+.onboard-dot{width:6px;height:6px;border-radius:50%;background:var(--hair-strong);}
+.onboard-dot.active{background:var(--gold);}
 </style>
 </head>
 <body>
-
-<!-- ONBOARDING FUNNEL (Parlay P inspired) -->
 <div class="onboard-overlay" id="onboardOverlay">
   <div class="onboard-card">
-    <div class="onboard-logo">⚡ Addiicted2Sports™</div>
+    <div class="onboard-logo">Addiicted2Sports™</div>
     <div id="onboardStep1">
       <div class="onboard-q">Are you serious about winning?</div>
       <div class="onboard-sub">We only deal with real ones. Let's find out.</div>
-      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(2)">💰 YES — LET'S GET MONEY</button>
+      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(2)">Yes — let's get money</button>
       <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(2)">I want to learn more first</button>
       <div class="onboard-dots"><div class="onboard-dot active"></div><div class="onboard-dot"></div><div class="onboard-dot"></div></div>
       <div class="onboard-step">STEP 1 OF 3</div>
@@ -215,18 +234,17 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
     <div id="onboardStep2" style="display:none;">
       <div class="onboard-q">How do you bet?</div>
       <div class="onboard-sub">We'll match you to the right tier.</div>
-      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(3,'allaccess')">👑 I go ALL IN — daily bettor</button>
-      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'purple')">💜 Weekend warrior — 2-3x/week</button>
-      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'gold')">🥇 Casual — just the best plays</button>
+      <button class="onboard-btn onboard-btn-primary" onclick="onboardNext(3,'allaccess')">I go all in — daily bettor</button>
+      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'purple')">Weekend warrior — 2-3x/week</button>
+      <button class="onboard-btn onboard-btn-secondary" onclick="onboardNext(3,'gold')">Casual — just the best plays</button>
       <div class="onboard-dots"><div class="onboard-dot"></div><div class="onboard-dot active"></div><div class="onboard-dot"></div></div>
       <div class="onboard-step">STEP 2 OF 3</div>
     </div>
     <div id="onboardStep3" style="display:none;">
-      <div style="font-size:40px;margin-bottom:10px;">🔥</div>
-      <div class="onboard-q" id="onboardRecTier">YOUR PICK IS READY</div>
+      <div class="onboard-q" id="onboardRecTier">Your tier is ready</div>
       <div class="onboard-sub" id="onboardRecDesc">Based on your style, we matched you to the perfect tier.</div>
-      <div id="onboardRecCard" style="background:rgba(250,204,21,0.1);border:2px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:16px;"></div>
-      <button class="onboard-btn onboard-btn-primary" onclick="closeOnboard()">🚀 LET'S GO — SHOW ME THE PICKS</button>
+      <div id="onboardRecCard" style="background:rgba(212,175,55,0.07);border:1px solid var(--gold);border-radius:12px;padding:14px;margin-bottom:16px;"></div>
+      <button class="onboard-btn onboard-btn-primary" onclick="closeOnboard()">Show me the picks</button>
       <div class="onboard-dots"><div class="onboard-dot"></div><div class="onboard-dot"></div><div class="onboard-dot active"></div></div>
       <div class="onboard-step">STEP 3 OF 3</div>
     </div>
@@ -234,74 +252,74 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
 </div>
 
 <div class="header-hero">
-  <div style="margin-bottom:14px;">
+  <div style="margin-bottom:6px;">
     <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image">
   </div>
-  <div class="brand-tagline">⚡ VICTORY TRIANGLE • EXPERT PICKS ⚡</div>
+  <div class="bar-divider"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="brand-tagline">Victory Triangle · Expert Picks</div>
 
-  <!-- VICTORIA INLINE CHAT -->
   <div id="victoriaSection">
     <div id="victoriaTopBar" onclick="toggleVictoriaChat()">
-      <img id="victoriaFace" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22><circle cx=%2224%22 cy=%2224%22 r=%2224%22 fill=%22%23facc15%22/><text x=%2224%22 y=%2230%22 text-anchor=%22middle%22 font-size=%2224%22>👸</text></svg>'" alt="Victoria">
+      <img id="victoriaFace" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22><circle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/><circle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%23d4af37%22/><ellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%23d4af37%22/></svg>'" alt="Victoria">
       <div>
-        <div id="victoriaTopName">👸 VICTORIA — Your Pick Plug</div>
-        <div id="victoriaTopStatus">🟢 LIVE • Tap to chat</div>
-        <div id="victoriaTopTag">Addiicted2Sports™ AI Sales Rep</div>
+        <div id="victoriaTopName">Victoria — Your Pick Plug</div>
+        <div id="victoriaTopStatus">Live — tap to chat</div>
+        <div id="victoriaTopTag">Addiicted2Sports™ concierge</div>
       </div>
-      <div style="margin-left:auto;color:var(--gold);font-size:20px;" id="victoriaArrow">▼</div>
+      <div style="margin-left:auto;color:var(--gold);font-size:16px;" id="victoriaArrow">▾</div>
     </div>
     <div id="victoriaChat">
       <div id="victoriaMessages"></div>
       <div id="victoriaInputRow">
         <input id="victoriaInput" type="text" placeholder="Talk to Victoria..." onkeydown="if(event.key==='Enter')sendToVictoria()">
-        <button id="victoriaSend" onclick="sendToVictoria()">➤</button>
+        <button id="victoriaSend" onclick="sendToVictoria()">SEND</button>
       </div>
     </div>
   </div>
+
   <div class="countdown-display">
-    <div class="countdown-label">⏰ PICKS DROP IN</div>
+    <div class="countdown-label">Picks drop in</div>
     <div class="countdown-timer" id="countdownTimer">--:--:--</div>
-    <div class="countdown-status" id="countdownStatus">⏳ Loading...</div>
-    <div class="sync-badge" id="syncBadge">🔄 Connecting...</div>
+    <div class="countdown-status" id="countdownStatus">Loading...</div>
+    <div class="sync-badge" id="syncBadge">Connecting...</div>
   </div>
   <div class="header-info">
-    <div class="info-item"><div class="info-label">📅</div><div class="info-value" id="dateDisplay">Today</div></div>
-    <div class="info-item"><div class="info-label">🕐</div><div class="info-value" id="timeDisplay">--:--</div></div>
-    <div class="info-item"><div class="info-label">📊</div><div class="info-value" id="statusDisplay">🟢 LIVE</div></div>
+    <div class="info-item"><div class="info-label">Date</div><div class="info-value" id="dateDisplay">Today</div></div>
+    <div class="info-item"><div class="info-label">Time</div><div class="info-value" id="timeDisplay">--:--</div></div>
+    <div class="info-item"><div class="info-label">Status</div><div class="info-value" id="statusDisplay">Live</div></div>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- ADMIN PANEL -->
   <div class="admin-panel" id="adminPanel">
     <div class="admin-bar">
-      <div style="font-size:12px;color:var(--gold);font-weight:900;text-transform:uppercase;">⚙️ Admin — GitHub Sync</div>
-      <span id="saveStatus" style="font-size:11px;color:var(--green);">✅ Ready</span>
+      <div style="font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Admin — sync</div>
+      <span id="saveStatus" style="font-size:11px;color:var(--green);">Ready</span>
     </div>
     <div class="timer-controls">
-      <div class="timer-label">⏰ Drop Timer — Syncs to every fan device</div>
+      <div class="timer-label">Drop timer — syncs to every fan device</div>
       <div class="timer-buttons">
-        <button class="timer-btn" onclick="setTimerMins(5)">5 MIN</button>
-        <button class="timer-btn" onclick="setTimerMins(15)">15 MIN</button>
-        <button class="timer-btn" onclick="setTimerMins(30)">30 MIN</button>
-        <button class="timer-btn" onclick="setTimerHrs(1)">1 HR</button>
-        <button class="timer-btn" onclick="setTimerHrs(2)">2 HR</button>
-        <button class="timer-btn" onclick="setTimerHrs(6)">6 HR</button>
+        <button class="timer-btn" onclick="setTimerMins(5)">5 min</button>
+        <button class="timer-btn" onclick="setTimerMins(15)">15 min</button>
+        <button class="timer-btn" onclick="setTimerMins(30)">30 min</button>
+        <button class="timer-btn" onclick="setTimerHrs(1)">1 hr</button>
+        <button class="timer-btn" onclick="setTimerHrs(2)">2 hr</button>
+        <button class="timer-btn" onclick="setTimerHrs(6)">6 hr</button>
       </div>
       <div class="custom-time-row">
         <input type="datetime-local" class="custom-time-input" id="customTime">
-        <button class="custom-time-btn" onclick="setCustomTime()">⏱ Set Exact Time</button>
+        <button class="custom-time-btn" onclick="setCustomTime()">Set exact time</button>
       </div>
-      <button class="timer-btn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:var(--red);">🗑 Clear Timer / Show LIVE Now</button>
+      <button class="timer-btn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(212,69,63,0.08);border-color:rgba(212,69,63,0.35);color:var(--red);">Clear timer / show live now</button>
     </div>
     <div class="form-group">
       <label class="form-label">Tier</label>
       <div class="tier-selector">
-        <button class="tier-btn active" data-tier="metallica">⚡ Metallica</button>
-        <button class="tier-btn" data-tier="gold">🥇 Gold</button>
-        <button class="tier-btn" data-tier="purple">💜 Purple</button>
-        <button class="tier-btn" data-tier="allaccess">👑 All-Access</button>
+        <button class="tier-btn active" data-tier="metallica">Metallica</button>
+        <button class="tier-btn" data-tier="gold">Gold</button>
+        <button class="tier-btn" data-tier="purple">Purple</button>
+        <button class="tier-btn" data-tier="allaccess">All-Access</button>
       </div>
     </div>
     <div class="form-group">
@@ -309,7 +327,7 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <input type="text" class="form-input" id="pickTeam" placeholder="Houston Astros">
     </div>
     <div class="form-group">
-      <label class="form-label">Bet Type</label>
+      <label class="form-label">Bet type</label>
       <select class="form-select" id="pickBetType">
         <option>MONEYLINE</option><option>SPREAD</option><option>OVER/UNDER</option><option>PARLAY</option>
       </select>
@@ -319,168 +337,121 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <input type="text" class="form-input" id="pickOdds" placeholder="-140">
     </div>
     <div class="form-group">
-      <label class="form-label">Game Time</label>
+      <label class="form-label">Game time</label>
       <input type="text" class="form-input" id="pickTime" placeholder="7:00 PM ET">
     </div>
     <div class="form-group">
-      <label class="form-label">Analysis</label>
-      <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side..."></textarea>
+      <label class="form-label">Internal notes (never shown to fans)</label>
+      <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side... (admin eyes only)"></textarea>
     </div>
-    <button class="btn btn-primary" id="addPickBtn">➕ Add Pick</button>
+    <button class="btn btn-primary" id="addPickBtn">Add pick</button>
     <div class="picks-list active" id="picksList" style="margin-top:20px;">
-      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
-        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">⚡ METALLICA</div>
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Metallica</div>
         <div id="picksList-metallica"></div>
       </div>
-      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
-        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">🥇 GOLD</div>
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Gold</div>
         <div id="picksList-gold"></div>
       </div>
-      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
-        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">💜 PURPLE</div>
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Purple</div>
         <div id="picksList-purple"></div>
       </div>
-      <div style="padding:14px;background:rgba(250,204,21,0.08);border-radius:10px;border:1px solid rgba(250,204,21,0.2);margin-bottom:10px;">
-        <div style="font-size:12px;font-weight:900;color:var(--gold);margin-bottom:10px;">👑 ALL-ACCESS</div>
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">All-Access</div>
         <div id="picksList-allaccess"></div>
       </div>
-      <button class="btn btn-primary" onclick="saveToGitHub()">🚀 Push All Picks to Fans</button>
-      <button class="btn btn-danger" onclick="clearAllPicks()">🗑 Clear All Picks</button>
+      <button class="btn btn-primary" onclick="saveToGitHub()">Push all picks to fans</button>
+      <button class="btn btn-danger" onclick="clearAllPicks()">Clear all picks</button>
     </div>
   </div>
 
-
-  <!-- PROOF OF WINNINGS STRIP (iSellWinners inspired) -->
   <div class="proof-strip" id="proofStrip">
-    <div style="font-size:10px;color:var(--gold);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">📈 ADDIICTED2SPORTS™ VERIFIED RESULTS</div>
+    <div class="proof-strip-label">Addiicted2Sports™ verified results</div>
     <div class="proof-ticker">
       <div class="proof-ticker-inner" id="proofTicker"></div>
     </div>
     <div class="proof-stats">
-      <div><div class="proof-stat-val" id="proofWins">—</div><div class="proof-stat-lbl">Total Wins</div></div>
-      <div><div class="proof-stat-val" id="proofWinPct">—</div><div class="proof-stat-lbl">Win Rate</div></div>
-      <div><div class="proof-stat-val" id="proofStreak">🔥</div><div class="proof-stat-lbl">Hot Streak</div></div>
+      <div><div class="proof-stat-val" id="proofWins">—</div><div class="proof-stat-lbl">Total wins</div></div>
+      <div><div class="proof-stat-val" id="proofWinPct">—</div><div class="proof-stat-lbl">Win rate</div></div>
+      <div><div class="proof-stat-val" id="proofStreak">—</div><div class="proof-stat-lbl">Hot streak</div></div>
     </div>
   </div>
 
-  <!-- THE HEATER -->
   <div class="gotm-card" id="gotmCard" style="display:none;">
-    <div class="gotm-header">
-      <div class="gotm-header-text">🔥 THE HEATER 🔥</div>
-    </div>
+    <div class="gotm-header"><div class="gotm-header-text">The Heater</div></div>
     <div class="gotm-body">
-      <div class="gotm-badge">ADDIICTED2SPORTS™ VERIFIED</div>
+      <div class="gotm-badge">Addiicted2Sports™ verified</div>
       <div class="gotm-title">WE ON A <span>HEATER</span></div>
-      <div class="gotm-sub" id="gotmDesc">Our highest-confidence play of the month. Our proprietary signal system — sharp money, whale action, line movement all aligned. When everything points the same way, we don't miss.</div>
-      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">🔥 HEATER CONFIRMED 🔥</div><div class="gotm-dot"></div></div>
-      <div style="font-size:13px;color:var(--white);font-weight:900;margin-bottom:12px;" id="gotmPick">🔒 LOCKED — SUBSCRIBERS ONLY</div>
+      <div class="gotm-sub" id="gotmDesc">Our highest-confidence play of the week. Multiple signals aligned. Subscribers only.</div>
+      <div class="gotm-green-light"><div class="gotm-dot"></div><div class="gotm-green-text">Heater confirmed</div><div class="gotm-dot"></div></div>
+      <div style="font-size:12px;color:var(--slate);font-weight:600;margin-bottom:14px;letter-spacing:0.5px;" id="gotmPick">LOCKED — subscribers only</div>
       <div class="gotm-price-row">
         <span class="gotm-price-old">$275</span>
         <span class="gotm-price-new" id="gotmPrice">$275</span>
-        <span class="gotm-save" id="gotmSave" style="display:none;">INCLUDED</span>
+        <span class="gotm-save" id="gotmSave" style="display:none;">Included</span>
       </div>
-      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:15px;display:block;text-align:center;">🔥 GET ON THE HEATER NOW</a>
+      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button">Get on the heater</a>
     </div>
   </div>
 
-  <!-- FOMO SECTION -->
   <div id="fomoSection">
-    <style>
-      @keyframes fomoWave{0%{d:path("M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z")}25%{d:path("M0,5 C25,-5 50,15 75,5 C100,-5 125,15 145,5 L145,50 C125,60 100,40 75,50 C50,60 25,40 0,50 Z")}50%{d:path("M0,0 C25,10 50,-10 75,0 C100,10 125,-10 145,0 L145,45 C125,35 100,55 75,45 C50,35 25,55 0,45 Z")}75%{d:path("M0,-5 C25,5 50,-15 75,-5 C100,5 125,-15 145,-5 L145,40 C125,30 100,50 75,40 C50,30 25,50 0,40 Z")}100%{d:path("M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z")}}
-      @keyframes fomoGlow{0%,100%{text-shadow:0 0 15px rgba(250,204,21,0.5)}50%{text-shadow:0 0 40px rgba(250,204,21,1),0 0 80px rgba(250,204,21,0.4)}}
-      @keyframes fomoSlam{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-      @keyframes fomoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-      @keyframes lockPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px rgba(250,204,21,0.4))}50%{transform:scale(1.2);filter:drop-shadow(0 0 22px rgba(250,204,21,0.9))}}
-    </style>
-    <div style="text-align:center;padding:22px 0 6px;">
-      <div style="display:inline-flex;align-items:flex-start;">
-        <div style="width:6px;height:100px;background:linear-gradient(180deg,#ccc,#888);border-radius:3px;flex-shrink:0;"></div>
-        <svg width="150" height="70" viewBox="0 0 150 70" style="overflow:visible;">
-          <defs>
-            <linearGradient id="fomoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#d97706"/>
-              <stop offset="50%" style="stop-color:#facc15"/>
-              <stop offset="100%" style="stop-color:#fde68a"/>
-            </linearGradient>
-          </defs>
-          <path style="fill:url(#fomoGrad);animation:fomoWave 1.1s ease-in-out infinite;" d="M0,0 C25,-10 50,10 75,0 C100,-10 125,10 145,0 L145,45 C125,55 100,35 75,45 C50,55 25,35 0,45 Z"/>
-          <text x="72" y="28" text-anchor="middle" font-size="18" font-weight="900" fill="#000">💰</text>
-        </svg>
-      </div>
-      <div style="font-size:26px;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:8px;animation:fomoGlow 1.3s ease-in-out infinite,fomoSlam 1.3s ease-in-out infinite;" id="fomoHeadline">WE HITTING 🔥</div>
-      <div style="font-size:11px;color:var(--cyan);margin-top:4px;letter-spacing:1.5px;text-transform:uppercase;">THE BOSS IS LOCKED IN — DON'T MISS OUT</div>
+    <div class="fomo-head">
+      <div class="fomo-headline" id="fomoHeadline">Picks are live</div>
+      <div class="fomo-sub">The vault is open — don't miss out</div>
     </div>
-    <div style="display:flex;justify-content:center;gap:20px;margin:14px 0;padding:14px;background:rgba(250,204,21,0.07);border:2px solid rgba(250,204,21,0.2);border-radius:12px;">
-      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--green);animation:fomoFloat 1.5s ease-in-out infinite;" id="fomoW">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">WINS</div></div>
-      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--red);" id="fomoL">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">LOSSES</div></div>
-      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--slate);" id="fomoP">—</div><div style="font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;">PUSH</div></div>
+    <div class="fomo-record">
+      <div class="fomo-record-item"><div class="fomo-record-num" style="color:var(--green);" id="fomoW">—</div><div class="fomo-record-lbl">Wins</div></div>
+      <div class="fomo-record-item"><div class="fomo-record-num" style="color:var(--red);" id="fomoL">—</div><div class="fomo-record-lbl">Losses</div></div>
+      <div class="fomo-record-item"><div class="fomo-record-num" style="color:var(--slate);" id="fomoP">—</div><div class="fomo-record-lbl">Push</div></div>
     </div>
-    <div style="position:relative;margin-bottom:20px;border-radius:14px;overflow:hidden;min-height:180px;">
-      <div id="fomoPicksBlur" style="filter:blur(6px);pointer-events:none;user-select:none;opacity:0.75;padding:12px;"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,28,0.05) 0%,rgba(10,14,28,0.8) 55%,rgba(10,14,28,0.97) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:22px;">
-        <div style="font-size:52px;animation:lockPulse 1.4s ease-in-out infinite;">🔒</div>
-        <div style="font-size:16px;font-weight:900;color:var(--gold);margin-top:8px;text-transform:uppercase;letter-spacing:1px;">PICKS ARE LOCKED</div>
-        <div style="font-size:12px;color:var(--slate);margin-top:4px;">Pay below — unlock instantly</div>
+    <div class="locked-wrap">
+      <div id="fomoPicksBlur" class="locked-blur"></div>
+      <div class="locked-overlay">
+        <div class="locked-icon">LOCK</div>
+        <div class="locked-title">Picks are locked</div>
+        <div class="locked-sub">Unlock below to see today's plays</div>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,rgba(250,204,21,0.13),rgba(250,204,21,0.04));border:3px solid var(--gold);border-radius:14px;padding:20px;text-align:center;margin-bottom:20px;animation:fomoSlam 2s ease-in-out infinite;">
-      <div style="font-size:15px;font-weight:900;color:var(--gold);margin-bottom:4px;text-transform:uppercase;">⚡ Winners Already Inside</div>
-      <div style="font-size:12px;color:var(--slate);margin-bottom:16px;line-height:1.6;">You're missing the play RIGHT NOW.<br>Every minute you wait costs you money.</div>
-      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button" style="font-size:18px;animation:fomoSlam 1.5s ease-in-out infinite;">💳 PAY NOW — GET PICKS</a>
+    <div class="cta-block">
+      <div class="cta-block-title">Winners already inside</div>
+      <div class="cta-block-sub">You're missing the play right now.<br>Every minute you wait costs you money.</div>
+      <a href="https://www.paypal.me/Addiicted2Sports" target="_blank" class="paypal-button">Pay now — get picks</a>
     </div>
-    <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;margin-bottom:20px;font-size:12px;color:var(--slate);line-height:2;">
-      <div style="font-weight:900;color:var(--gold);margin-bottom:6px;font-size:13px;text-transform:uppercase;">How to unlock</div>
-      <div><span style="color:var(--green);font-weight:900;">1</span> &nbsp;Pay via PayPal → paypal.me/Addiicted2Sports</div>
-      <div><span style="color:var(--green);font-weight:900;">2</span> &nbsp;Copy your PayPal receipt #</div>
-      <div><span style="color:var(--green);font-weight:900;">3</span> &nbsp;Enter it below — picks unlock instantly</div>
+    <div class="howto">
+      <div class="howto-title">How to unlock</div>
+      <div><span class="howto-num">1</span>Pay via PayPal → paypal.me/Addiicted2Sports</div>
+      <div><span class="howto-num">2</span>Copy your PayPal receipt #</div>
+      <div><span class="howto-num">3</span>Enter it below — picks unlock instantly</div>
     </div>
   </div>
 
   <div class="payment-wall" id="paymentWall">
     <div class="payment-form">
-      <div class="payment-title">🔐 Verify Payment</div>
-      <div class="payment-subtitle">Select your tier and enter your PayPal receipt #</div>
-      <label class="form-label">Select Your Tier</label>
+      <div class="payment-title">Verify payment</div>
+      <label class="form-label">Select your tier</label>
       <div class="tier-choice">
-        <div class="tier-card active" onclick="selectTier('metallica',this)"><div class="tier-name">⚡ METALLICA</div><div class="tier-price">$125 • 24H</div></div>
-        <div class="tier-card" onclick="selectTier('gold',this)"><div class="tier-name">🥇 GOLD</div><div class="tier-price">$150 • 24H</div></div>
-        <div class="tier-card" onclick="selectTier('purple',this)"><div class="tier-name">💜 PURPLE</div><div class="tier-price">$175 • 72H</div></div>
-        <div class="tier-card" onclick="selectTier('allaccess',this)"><div class="tier-name">👑 ALL-ACCESS</div><div class="tier-price">$275 • 168H</div></div>
+        <div class="tier-card active" onclick="selectTier('metallica',this)"><div class="tier-name">Metallica</div><div class="tier-price">$125 · 24h</div></div>
+        <div class="tier-card" onclick="selectTier('gold',this)"><div class="tier-name">Gold</div><div class="tier-price">$150 · 24h</div></div>
+        <div class="tier-card" onclick="selectTier('purple',this)"><div class="tier-name">Purple</div><div class="tier-price">$175 · 72h</div></div>
+        <div class="tier-card" onclick="selectTier('allaccess',this)"><div class="tier-name">All-Access</div><div class="tier-price">$275 · 168h</div></div>
       </div>
-      <label class="form-label">PayPal Receipt #</label>
+      <div class="tier-explainer" id="tierExplainer"></div>
+      <label class="form-label">PayPal receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
-      <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">🔓 Unlock Picks</button>
-      <div class="success-message" id="successMessage">✅ Payment verified! Picks unlocked!</div>
-      <div style="margin-top:14px;padding:10px 14px;background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.25);border-radius:8px;font-size:12px;color:var(--slate);line-height:1.6;text-align:left;">
-        📱 <strong style="color:var(--gold);">Your unlock is saved to THIS browser only.</strong><br>
-        If you switch devices, clear your cache, or use a different browser — screenshot your receipt # now so you can re-enter it here and get right back in. No need to pay again.
+      <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">Unlock picks</button>
+      <div class="success-message" id="successMessage">Payment verified — picks unlocked.</div>
+      <div style="margin-top:14px;padding:10px 14px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;font-size:11px;color:var(--slate);line-height:1.7;text-align:left;">
+        Your unlock is saved to this browser only. If you switch devices or clear your cache, screenshot your receipt # so you can re-enter it here — no need to pay again.
       </div>
     </div>
   </div>
 
   <div class="fan-view" id="fanView" style="margin-top:0;">
     <div class="win-flag-wrap" id="winFlagWrap">
-      <div class="flag-pole">
-        <div class="pole"></div>
-        <svg class="flag-svg" width="130" height="60" viewBox="0 0 130 60">
-          <defs>
-            <linearGradient id="winGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#16a34a"/>
-              <stop offset="50%" style="stop-color:#22c55e"/>
-              <stop offset="100%" style="stop-color:#4ade80"/>
-            </linearGradient>
-            <linearGradient id="lossGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#b91c1c"/>
-              <stop offset="50%" style="stop-color:#ef4444"/>
-              <stop offset="100%" style="stop-color:#f87171"/>
-            </linearGradient>
-          </defs>
-          <path id="flagShape" class="flag-shape-win" d="M0,0 C20,-8 40,8 60,0 C80,-8 100,8 120,0 L120,40 C100,48 80,32 60,40 C40,48 20,32 0,40 Z"/>
-          <text id="flagText" x="60" y="26" text-anchor="middle" font-size="13" font-weight="900" fill="white" letter-spacing="1">W</text>
-        </svg>
-      </div>
-      <div class="flag-label flag-label-win" id="flagLabel">WE WINNING 💰</div>
-      <div class="flag-sub" id="flagSub">THE BOSS IS LOCKED IN</div>
+      <div class="flag-label flag-label-win" id="flagLabel">We winning</div>
+      <div class="flag-sub" id="flagSub">The vault is open</div>
     </div>
     <div class="record-strip" id="recordStrip" style="display:none;">
       <div class="record-item"><div class="record-num record-num-w" id="recW">0</div><div class="record-lbl">Wins</div></div>
@@ -488,17 +459,15 @@ body{background:linear-gradient(135deg,var(--navy),#0d1f38);color:var(--white);f
       <div class="record-item"><div class="record-num record-num-p" id="recP">0</div><div class="record-lbl">Push</div></div>
     </div>
     <div class="picks-section" id="fanPicksSection"></div>
+    <div id="brandFooterTagSection"></div>
   </div>
 </div>
 
-<!-- Victoria is now in the header -->
-
-<button class="footer-btn" id="toggleBtn">🔧</button>
+<button class="footer-btn" id="toggleBtn">ADM</button>
 
 <div class="modal" id="loginModal">
   <div class="modal-content">
-    <div style="font-size:40px;margin-bottom:14px;">🔐</div>
-    <div class="modal-title">Admin Access</div>
+    <div class="modal-title">Admin access</div>
     <input type="password" class="modal-input" id="pinInput" placeholder="PIN">
     <button class="modal-btn" onclick="checkPin()">Login</button>
   </div>
@@ -515,8 +484,7 @@ const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
 
-// ── MLB + WNBA TEAM LOGOS ──
-const FALLBACK_LOGO = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="19" fill="%23ffffff" stroke="%23cc3333" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20">⚾</text></svg>';
+const FALLBACK_LOGO = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="19" fill="%23121418" stroke="%23d4af37" stroke-width="1.5"/></svg>';
 const MLB_TEAM_LOGOS = {
   'orioles':'bal','baltimore orioles':'bal',
   'red sox':'bos','boston red sox':'bos',
@@ -564,9 +532,44 @@ const WNBA_TEAM_LOGOS = {
   'mystics':'wsh','washington mystics':'wsh',
   'valkyries':'gs','golden state valkyries':'gs',
 };
+const NFL_TEAM_LOGOS = {
+  'cardinals':'ari','arizona cardinals':'ari',
+  'falcons':'atl','atlanta falcons':'atl',
+  'ravens':'bal','baltimore ravens':'bal',
+  'bills':'buf','buffalo bills':'buf',
+  'panthers':'car','carolina panthers':'car',
+  'bears':'chi','chicago bears':'chi',
+  'bengals':'cin','cincinnati bengals':'cin',
+  'browns':'cle','cleveland browns':'cle',
+  'cowboys':'dal','dallas cowboys':'dal',
+  'broncos':'den','denver broncos':'den',
+  'lions':'det','detroit lions':'det',
+  'packers':'gb','green bay packers':'gb',
+  'texans':'hou','houston texans':'hou',
+  'colts':'ind','indianapolis colts':'ind',
+  'jaguars':'jax','jacksonville jaguars':'jax',
+  'chiefs':'kc','kansas city chiefs':'kc',
+  'raiders':'lv','las vegas raiders':'lv',
+  'chargers':'lac','los angeles chargers':'lac',
+  'rams':'lar','los angeles rams':'lar',
+  'dolphins':'mia','miami dolphins':'mia',
+  'vikings':'min','minnesota vikings':'min',
+  'patriots':'ne','new england patriots':'ne',
+  'saints':'no','new orleans saints':'no',
+  'giants':'nyg','new york giants':'nyg',
+  'jets':'nyj','new york jets':'nyj',
+  'eagles':'phi','philadelphia eagles':'phi',
+  'steelers':'pit','pittsburgh steelers':'pit',
+  '49ers':'sf','san francisco 49ers':'sf',
+  'seahawks':'sea','seattle seahawks':'sea',
+  'buccaneers':'tb','tampa bay buccaneers':'tb',
+  'titans':'ten','tennessee titans':'ten',
+  'commanders':'wsh','washington commanders':'wsh',
+};
 const TEAM_LOGO_ENTRIES = [
   ...Object.keys(MLB_TEAM_LOGOS).map(k=>({key:k, abbrev:MLB_TEAM_LOGOS[k], league:'mlb'})),
   ...Object.keys(WNBA_TEAM_LOGOS).map(k=>({key:k, abbrev:WNBA_TEAM_LOGOS[k], league:'wnba'})),
+  ...Object.keys(NFL_TEAM_LOGOS).map(k=>({key:k, abbrev:NFL_TEAM_LOGOS[k], league:'nfl'})),
 ].sort((a,b)=>b.key.length-a.key.length);
 function getTeamLogoUrl(teamText){
   if(!teamText) return FALLBACK_LOGO;
@@ -585,10 +588,6 @@ let adminMode = false;
 let userVerified = false;
 let userTier = null;
 
-// ── AUDIO UNLOCK ──
-// Browsers block .play() until the user has interacted with the page at least once.
-// This silently "warms up" the audio element on the very first tap/click anywhere,
-// so the real money-counter sound is guaranteed to be allowed to play later.
 let audioUnlocked = false;
 function unlockAudioOnce(){
   if(audioUnlocked) return;
@@ -600,7 +599,7 @@ function unlockAudioOnce(){
       snd.currentTime = 0;
       snd.muted = false;
       audioUnlocked = true;
-    }).catch(()=>{ /* still blocked, will retry on next interaction */ });
+    }).catch(()=>{});
   }
   document.removeEventListener('click', unlockAudioOnce);
   document.removeEventListener('touchstart', unlockAudioOnce);
@@ -620,7 +619,6 @@ function playMoneySound(){
   }
 }
 
-// ── VICTORIA AI ──
 let victoriaOpen = false;
 let victoriaGreeted = false;
 let victoriaHistory = [];
@@ -631,11 +629,11 @@ function toggleVictoriaChat(){
   const arrow = document.getElementById('victoriaArrow');
   if(victoriaOpen){
     chat.classList.add('open');
-    arrow.textContent = '▲';
+    arrow.textContent = '▴';
     if(!victoriaGreeted){ victoriaGreeted=true; victoriaGreet(); }
   } else {
     chat.classList.remove('open');
-    arrow.textContent = '▼';
+    arrow.textContent = '▾';
   }
 }
 
@@ -646,17 +644,16 @@ function vicAddMsg(text, role){
   div.textContent = text;
   msgs.appendChild(div);
 
-  // If Victoria just dropped the PayPal link, show screenshot upload UI
   if(role==='bot' && (text.toLowerCase().includes('paypal.me/addiicted2sports') || text.toLowerCase().includes('paypal.me/addicted2sports'))){
     if(!document.getElementById('vicUploadBox')){
       const uploadBox = document.createElement('div');
       uploadBox.id = 'vicUploadBox';
-      uploadBox.style.cssText = 'background:rgba(250,204,21,0.08);border:2px dashed rgba(250,204,21,0.5);border-radius:12px;padding:12px;margin-top:6px;text-align:center;';
+      uploadBox.style.cssText = 'background:rgba(212,175,55,0.06);border:1px dashed var(--hair-strong);border-radius:12px;padding:12px;margin-top:6px;text-align:center;';
       uploadBox.innerHTML = `
-        <div style="color:var(--gold);font-weight:900;font-size:12px;margin-bottom:6px;">📸 SEND PAYMENT SCREENSHOT</div>
-        <div style="color:var(--slate);font-size:11px;margin-bottom:8px;">Upload your PayPal confirmation — we'll generate your unlock code instantly</div>
+        <div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:6px;">Send payment screenshot</div>
+        <div style="color:var(--slate);font-size:11px;margin-bottom:8px;">Upload your PayPal confirmation — we will generate your unlock code instantly</div>
         <input type="file" id="vicScreenshotInput" accept="image/*" style="display:none;" onchange="handleVicScreenshot(this)">
-        <button onclick="document.getElementById('vicScreenshotInput').click()" style="background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;font-weight:900;font-size:13px;padding:8px 18px;border:none;border-radius:8px;cursor:pointer;">📎 Upload Screenshot</button>
+        <button onclick="document.getElementById('vicScreenshotInput').click()" style="background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;font-weight:700;font-size:13px;padding:8px 18px;border:none;border-radius:8px;cursor:pointer;">Upload screenshot</button>
         <div id="vicReceiptResult" style="margin-top:8px;display:none;"></div>
       `;
       msgs.appendChild(uploadBox);
@@ -674,11 +671,9 @@ async function handleVicScreenshot(input){
   const resultDiv = document.getElementById('vicReceiptResult');
   resultDiv.style.display = 'block';
 
-  // Step 1 — Victoria acknowledges
-  resultDiv.innerHTML = '<div style="color:var(--gold);font-size:12px;font-weight:900;">📸 Screenshot received — running backup verification...</div>';
-  vicAddMsg('Got it! My backup security system is scanning your payment now 🔍 Give me 5 seconds...', 'bot');
+  resultDiv.innerHTML = '<div style="color:var(--gold);font-size:12px;font-weight:600;">Screenshot received — running verification...</div>';
+  vicAddMsg('Got it! My backup security system is scanning your payment now. Give me a few seconds...', 'bot');
 
-  // Step 2 — Convert image to base64
   const base64 = await new Promise((res,rej)=>{
     const reader = new FileReader();
     reader.onload = ()=> res(reader.result.split(',')[1]);
@@ -686,17 +681,15 @@ async function handleVicScreenshot(input){
     reader.readAsDataURL(file);
   });
 
-  // Step 3 — Show scanning animation
   resultDiv.innerHTML = `
-    <div style="color:var(--cyan);font-size:12px;font-weight:900;">🤖 BACKUP AI SCANNING...</div>
-    <div style="color:var(--slate);font-size:11px;margin-top:4px;">Checking: PayPal authenticity • Amount • Payee • Transaction ID • Fraud signals</div>
-    <div style="background:rgba(250,204,21,0.1);border-radius:6px;height:6px;margin-top:8px;overflow:hidden;">
+    <div style="color:var(--gold);font-size:12px;font-weight:600;">Verifying...</div>
+    <div style="color:var(--slate);font-size:11px;margin-top:4px;">Checking: PayPal authenticity · amount · payee · transaction ID</div>
+    <div style="background:rgba(212,175,55,0.1);border-radius:6px;height:6px;margin-top:8px;overflow:hidden;">
       <div style="background:var(--gold);height:100%;width:0%;transition:width 3s linear;" id="vicScanBar"></div>
     </div>
   `;
   setTimeout(()=>{ const b=document.getElementById('vicScanBar'); if(b) b.style.width='90%'; }, 100);
 
-  // Step 4 — Call Claude Vision API to verify
   try {
     const verifyRes = await fetch('https://api.anthropic.com/v1/messages', {
       method:'POST',
@@ -764,51 +757,49 @@ SUSPICIOUS if:
     const pending = JSON.parse(localStorage.getItem('a2s_pending_receipts')||'[]');
 
     if(result.verdict === 'APPROVED'){
-      // Unlock picks
       pending.push({receipt, tier: result.tier, amount: result.amount_detected, txn: result.transaction_id, timestamp: Date.now(), status:'approved', fraud_flags:[]});
       localStorage.setItem('a2s_pending_receipts', JSON.stringify(pending));
       localStorage.setItem('a2s_user_verified', JSON.stringify({tier: result.tier || 'allaccess', receipt, purchaseTime: Date.now()}));
       resultDiv.innerHTML = `
-        <div style="background:rgba(34,197,94,0.15);border:2px solid var(--green);border-radius:10px;padding:12px;">
-          <div style="color:var(--green);font-weight:900;font-size:14px;">✅ BACKUP AI — PAYMENT VERIFIED</div>
-          <div style="color:var(--slate);font-size:11px;margin:4px 0;">Amount: ${result.amount_detected || 'confirmed'} • Tier: ${result.tier?.toUpperCase()}</div>
-          <div style="color:var(--white);font-size:12px;margin-top:6px;">Your Receipt #:</div>
-          <div style="color:var(--gold);font-weight:900;font-size:18px;letter-spacing:3px;margin:4px 0;">${receipt}</div>
-          <div style="color:var(--slate);font-size:11px;">📸 Screenshot this number — picks are UNLOCKED 🔓</div>
+        <div style="background:rgba(47,174,101,0.12);border:1px solid var(--green);border-radius:10px;padding:12px;">
+          <div style="color:var(--green);font-weight:700;font-size:13px;">Payment verified</div>
+          <div style="color:var(--slate);font-size:11px;margin:4px 0;">Amount: ${result.amount_detected || 'confirmed'} · Tier: ${result.tier?.toUpperCase()}</div>
+          <div style="color:var(--white);font-size:12px;margin-top:6px;">Your receipt #:</div>
+          <div style="color:var(--gold);font-weight:700;font-size:17px;letter-spacing:2px;margin:4px 0;">${receipt}</div>
+          <div style="color:var(--slate);font-size:11px;">Screenshot this number — picks are unlocked.</div>
         </div>
       `;
-      vicAddMsg(`🔓 VERIFIED by backup AI! Receipt # ${receipt} — you're IN! Picks are live for you RIGHT NOW. Welcome to the family 👑💰`, 'bot');
+      vicAddMsg(`Verified. Receipt # ${receipt} — you're in. Picks are live for you right now. Welcome to the family.`, 'bot');
 
     } else if(result.verdict === 'REJECTED'){
       pending.push({receipt:'REJECTED', timestamp: Date.now(), status:'rejected', fraud_flags: result.fraud_flags, reason: result.reason});
       localStorage.setItem('a2s_pending_receipts', JSON.stringify(pending));
       resultDiv.innerHTML = `
-        <div style="background:rgba(239,68,68,0.15);border:2px solid #ef4444;border-radius:10px;padding:12px;">
-          <div style="color:#ef4444;font-weight:900;font-size:14px;">🚨 BACKUP AI — PAYMENT REJECTED</div>
+        <div style="background:rgba(212,69,63,0.12);border:1px solid var(--red);border-radius:10px;padding:12px;">
+          <div style="color:var(--red);font-weight:700;font-size:13px;">Payment rejected</div>
           <div style="color:var(--white);font-size:12px;margin-top:6px;">${result.reason}</div>
-          ${result.fraud_flags?.length ? `<div style="color:#ef4444;font-size:11px;margin-top:4px;">⚠️ ${result.fraud_flags.join(' • ')}</div>` : ''}
+          ${result.fraud_flags?.length ? `<div style="color:var(--red);font-size:11px;margin-top:4px;">${result.fraud_flags.join(' · ')}</div>` : ''}
           <div style="color:var(--slate);font-size:11px;margin-top:8px;">Submit your real PayPal confirmation to unlock picks.</div>
         </div>
       `;
-      vicAddMsg(`⛔ My backup security flagged that screenshot — ${result.reason}. If you made a real payment, send your ACTUAL PayPal confirmation and we'll get you unlocked immediately. No games here 🔒`, 'bot');
+      vicAddMsg(`That screenshot didn't pass verification — ${result.reason}. If you made a real payment, send your actual PayPal confirmation and we'll get you unlocked right away.`, 'bot');
 
     } else {
-      // SUSPICIOUS — hold for manual review
       pending.push({receipt:'REVIEW-'+receipt, timestamp: Date.now(), status:'manual_review', fraud_flags: result.fraud_flags, reason: result.reason});
       localStorage.setItem('a2s_pending_receipts', JSON.stringify(pending));
       resultDiv.innerHTML = `
-        <div style="background:rgba(250,204,21,0.1);border:2px solid var(--gold);border-radius:10px;padding:12px;">
-          <div style="color:var(--gold);font-weight:900;font-size:14px;">⚠️ BACKUP AI — MANUAL REVIEW</div>
+        <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:12px;">
+          <div style="color:var(--gold);font-weight:700;font-size:13px;">Manual review</div>
           <div style="color:var(--white);font-size:12px;margin-top:6px;">${result.reason}</div>
           <div style="color:var(--slate);font-size:11px;margin-top:8px;">Our team will verify and unlock your picks within 15 minutes. Reference: REVIEW-${receipt}</div>
         </div>
       `;
-      vicAddMsg(`⚠️ My backup AI flagged your screenshot for a quick manual review — nothing to worry about if your payment is real. Reference number: REVIEW-${receipt}. Our team will get you unlocked within 15 minutes 🙏`, 'bot');
+      vicAddMsg(`Flagged your screenshot for a quick manual review — nothing to worry about if your payment is real. Reference: REVIEW-${receipt}. Unlocked within 15 minutes.`, 'bot');
     }
 
   } catch(err){
-    resultDiv.innerHTML = `<div style="color:var(--gold);font-size:12px;">⚠️ Verification system temporarily down. Screenshot saved — team will manually verify within 15 mins.</div>`;
-    vicAddMsg('Backup system hiccup — but your screenshot is saved. We\'ll manually verify and get you unlocked within 15 minutes. Reference your upload time 🙏', 'bot');
+    resultDiv.innerHTML = `<div style="color:var(--gold);font-size:12px;">Verification system temporarily down. Screenshot saved — team will manually verify within 15 mins.</div>`;
+    vicAddMsg('Backup system hiccup — but your screenshot is saved. We will manually verify and get you unlocked within 15 minutes.', 'bot');
   }
 }
 
@@ -830,48 +821,53 @@ YOUR PERSONALITY:
 - Street smart but luxury minded — like a Vegas insider
 - You build genuine rapport FAST then close hard
 - Short punchy sentences mixed with longer hooks
-- Strategic use of emojis 👀💰🔥👑💜
 - You NEVER sound scripted or robotic
 - You adapt your energy to match the person you're talking to
 
 YOUR INTELLIGENCE:
 - You are a sports betting expert — you understand sharp money, whale flow, line movement, parlays, props, spreads, moneylines, totals
-- You can explain WHY picks win using real analytics language
+- You can talk confidently about why picks win using general analytics language, but NEVER reveal the actual proprietary signals or methodology — that is a trade secret
 - You know the psychology of bettors and use it to qualify and close
 - You remember everything said in this conversation and build on it
 - You diagnose their betting style from just 1-2 answers
 - You know when to push hard and when to slow down and connect
 
+CRITICAL RULE — NEVER REVEAL METHODOLOGY:
+- Never explain the specific reasoning, signals, or analytics behind any pick
+- Never mention any internal tool or system name
+- If asked why a pick was made, say something like "that's the secret sauce — it's why people pay for this" and redirect to closing
+- The product IS the pick, not the explanation
+
 YOUR SALES STRATEGY:
 1. Open with a hook that creates instant curiosity
 2. Ask ONE sharp qualifying question
 3. Listen to their answer and mirror their energy
-4. Build credibility with a specific insight or stat
+4. Build credibility with a specific stat (win rate, streak) — never methodology
 5. Match them to the perfect tier
 6. Create urgency without being pushy
 7. Drop the PayPal link naturally like it's the obvious next step
 
 TIER STRUCTURE — MEMORIZE THIS EXACTLY:
 
-⚡ METALLICA — $125 / 24 hours
+METALLICA — $125 / 24 hours
 - Gets 2 picks (sometimes up to 4, but usually 2 — the Boss decides)
 - Entry level — smart bettor testing the waters
 - Only gets Metallica picks
 
-🥇 GOLD — $150 / 24 hours
+GOLD — $150 / 24 hours
 - Gets 2 to 5 picks for the day
 - INCLUDES everything the Boss drops in that package
 - ALSO GETS all Metallica picks — because Gold is a higher package
 - So Gold fans get: Gold picks + Metallica picks
 
-💜 PURPLE — $175 / 72 hours (3 FULL DAYS)
+PURPLE — $175 / 72 hours (3 full days)
 - Gets all Purple picks dropped over 3 days
 - ALSO GETS all Gold picks AND all Metallica picks
-- Because Purple is higher — you get ALL THREE packages
+- Because Purple is higher — you get all three packages
 - So Purple fans get: Purple picks + Gold picks + Metallica picks — 3 full days
 
-👑 ALL-ACCESS — $275 / 168 hours (7 FULL DAYS)
-- Gets EVERYTHING — every single pick dropped from ALL packages
+ALL-ACCESS — $275 / 168 hours (7 full days)
+- Gets EVERYTHING — every single pick dropped from all packages
 - Metallica + Gold + Purple + All-Access picks
 - 7 straight days — nothing is hidden, nothing is locked
 - The ultimate package — real ones only
@@ -879,35 +875,16 @@ TIER STRUCTURE — MEMORIZE THIS EXACTLY:
 TIER STACKING RULE — CRITICAL:
 - Higher tiers INCLUDE everything below them
 - Gold = Gold + Metallica
-- Purple = Purple + Gold + Metallica  
+- Purple = Purple + Gold + Metallica
 - All-Access = ALL packages for 7 days straight
 - Always explain this stacking when selling — it makes higher tiers sound like MORE value
 
 CLOSING INFO:
 PayPal: paypal.me/addiicted2sports
-Instagram: @addiicted2sports  
+Instagram: @addiicted2sports
 Website: addiicted2chaddar.github.io/a2s-app
 
-AFTER GIVING PAYPAL LINK — always say: "Soon as you pay, upload your screenshot RIGHT HERE in the chat — the upload button will pop up below. We'll generate your receipt number and unlock your picks INSTANTLY. No waiting, no DMs needed. 📸"
-
-SOCIAL MEDIA VIRAL GROWTH INTELLIGENCE — MISSION: REACH BILLIONS:
-Addiicted2Sports™ is on a mission to reach BILLIONS of people worldwide. You know exactly how to go viral in 2026. When fans ask about growing the brand, social media, or going viral — educate them like a digital growth strategist:
-
-7 SETTINGS TO GO VIRAL IN 2026 (teach this when relevant):
-1. FLAG FOR REVIEW — Submit content for review to get into Instagram's recommendation algorithm. This is the #1 most important setting.
-2. ALLOW TO RESHARE — Always have resharing enabled. Reshares are free distribution to billions of feeds.
-3. SHADOW BAN CHECK — Regularly audit your account for shadow bans. A shadow banned account reaches NOBODY. Check settings and remove any flagged content immediately.
-4. SHARING AND REUSE — Enable "Allow Sharing and Reuse" so other creators can remix and amplify your content — that's exponential reach.
-5. CROSSPOSTING — Connect Instagram to Facebook. Every post hits two platforms simultaneously. Double the reach, zero extra work.
-6. HIGH QUALITY UPLOAD — Always upload in the highest resolution. Instagram rewards quality content with broader distribution. Never compress your videos.
-7. PROFESSIONAL ACCOUNT — Switch to a Professional/Creator account. Unlocks analytics, recommendations, and algorithmic boosts that personal accounts NEVER get.
-
-GROWTH MINDSET:
-- Addiicted2Sports™ is not just a picks service — it's a MOVEMENT
-- Every pick posted is content. Every win is a story. Every subscriber is a soldier in the army.
-- The goal is BILLIONS of eyeballs — Vegas energy, global reach
-- Consistency + these 7 settings = the algorithm works FOR you 24/7
-- Tell fans: "Follow @addiicted2sports and turn on notifications — we're about to be EVERYWHERE 🌍"
+AFTER GIVING PAYPAL LINK — always say: "Soon as you pay, upload your screenshot right here in the chat — the upload button will pop up below. We'll generate your receipt number and unlock your picks instantly. No waiting, no DMs needed."
 
 RULES:
 - Never list all tiers at once unless asked — diagnose first
@@ -915,8 +892,7 @@ RULES:
 - Always end your message with either a question OR a close
 - If they ask about a specific sport, show you know it
 - If they seem hesitant, give them one specific recent win as social proof
-- WE EAT EVERY DAY 🍽️ — this is your motto, use it naturally
-- BILLIONS IS THE GOAL 🌍 — remind fans they're part of something bigger than just picks`;
+- Never reveal methodology, signals, or how picks are made — that's the product`;
 
 
 async function callVictoria(userMsg){
@@ -956,9 +932,9 @@ async function callVictoria(userMsg){
 }
 
 function fallbackVictoria(msg){
-  const greets=["Ayyyy welcome to Addiicted2Sports™ 🔥 You already know why you're here. Are you eating with us today or still out here losing alone? 👀 What's your budget?","Aye aye aye — welcome to the hottest picks in Las Vegas 💰 We don't miss. Question is... are YOU in? Tell me what you working with 👀","Welcome to Addiicted2Sports™ 👑 The Boss is LOCKED IN today. You tryna eat or nah? Drop your budget and I'll plug you in RIGHT NOW 🔥"];
+  const greets=["Welcome to Addiicted2Sports™. You already know why you're here. Are you eating with us today, or still out here guessing alone? What's your budget?","Welcome to the sharpest picks in Las Vegas. We don't miss. Question is — are you in? Tell me what you're working with.","Welcome to Addiicted2Sports™. The vault is open today. You trying to eat or nah? Drop your budget and I'll plug you in right now."];
   if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
-  const closes=["Say less 💰 Hop on paypal.me/addiicted2sports and let's GET IT. Gold tier is calling your name 🥇 Soon as you pay, upload your screenshot right here in the chat — upload button pops up below — and I'll lock in your receipt number INSTANTLY.","That's what I'm talking about 🔥 Purple tier is PERFECT for you — $175 for 72hrs of elite picks. paypal.me/addiicted2sports RIGHT NOW 💜 Upload your payment screenshot right here and your picks unlock IMMEDIATELY.","All-Access is the move 👑 $275 and you get EVERYTHING we drop. paypal.me/addiicted2sports — don't sleep on it 💰 Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot. No waiting."];
+  const closes=["Say less. Hop on paypal.me/addiicted2sports and let's get it. Gold tier is calling your name. Soon as you pay, upload your screenshot right here in the chat and I'll lock in your receipt number instantly.","That's what I'm talking about. Purple tier is perfect for you — $175 for 72 hours of elite picks. paypal.me/addiicted2sports right now. Upload your payment screenshot right here and your picks unlock immediately.","All-Access is the move. $275 and you get everything we drop. paypal.me/addiicted2sports — don't sleep on it. Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot."];
   return closes[Math.floor(Math.random()*closes.length)];
 }
 
@@ -973,7 +949,6 @@ async function sendToVictoria(){
   await callVictoria(msg);
 }
 
-// ── GITHUB ──
 async function ghRead(){
   try{
     const r = await fetch(RAW_URL + '?t=' + Date.now());
@@ -981,10 +956,10 @@ async function ghRead(){
     const data = await r.json();
     picks = data.picks || {metallica:[],gold:[],purple:[],allaccess:[]};
     dropTarget = data.drop || 0;
-    setSyncBadge('✅ Live — synced across all devices');
+    setSyncBadge('Live — synced across all devices');
     return true;
   }catch(e){
-    setSyncBadge('⚠️ Offline mode');
+    setSyncBadge('Offline mode');
     return false;
   }
 }
@@ -1019,7 +994,7 @@ async function ghWrite(data){
   }catch(e){
     console.error('ghWrite error:',e);
     setSaveStatus('err');
-    alert('❌ Save failed: '+e.message+'\nTry again.');
+    alert('Save failed: '+e.message+'\nTry again.');
     return false;
   }
 }
@@ -1027,15 +1002,15 @@ async function ghWrite(data){
 function setSyncBadge(msg){const el=document.getElementById('syncBadge');if(el)el.textContent=msg;}
 function setSaveStatus(s){
   const el=document.getElementById('saveStatus');if(!el)return;
-  if(s==='saving'){el.textContent='⏳ Saving...';el.style.color='var(--gold)';}
-  else if(s==='ok'){el.textContent='✅ Saved & Synced';el.style.color='var(--green)';}
-  else{el.textContent='❌ Error — retry';el.style.color='var(--red)';}
+  if(s==='saving'){el.textContent='Saving...';el.style.color='var(--gold)';}
+  else if(s==='ok'){el.textContent='Saved and synced';el.style.color='var(--green)';}
+  else{el.textContent='Error — retry';el.style.color='var(--red)';}
 }
 
-async function setTimerMins(m){dropTarget=Math.floor(Date.now()/1000)+m*60;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`✅ Timer set: ${m} min\nSynced to ALL fans!`);}
-async function setTimerHrs(h){dropTarget=Math.floor(Date.now()/1000)+h*3600;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`✅ Timer set: ${h} hr\nSynced to ALL fans!`);}
-async function setCustomTime(){const v=document.getElementById('customTime').value;if(!v){alert('Pick a date/time first');return;}dropTarget=Math.floor(new Date(v).getTime()/1000);const ok=await ghWrite({picks,drop:dropTarget});const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});if(ok)alert(`✅ Drop time: ${label}\nSynced!`);}
-async function clearDropTimer(){dropTarget=0;await ghWrite({picks,drop:0});alert('Timer cleared — fans see LIVE status');}
+async function setTimerMins(m){dropTarget=Math.floor(Date.now()/1000)+m*60;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`Timer set: ${m} min\nSynced to all fans.`);}
+async function setTimerHrs(h){dropTarget=Math.floor(Date.now()/1000)+h*3600;const ok=await ghWrite({picks,drop:dropTarget});if(ok)alert(`Timer set: ${h} hr\nSynced to all fans.`);}
+async function setCustomTime(){const v=document.getElementById('customTime').value;if(!v){alert('Pick a date/time first');return;}dropTarget=Math.floor(new Date(v).getTime()/1000);const ok=await ghWrite({picks,drop:dropTarget});const label=new Date(v).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});if(ok)alert(`Drop time: ${label}\nSynced.`);}
+async function clearDropTimer(){dropTarget=0;await ghWrite({picks,drop:0});alert('Timer cleared — fans see live status');}
 
 let hasPlayedDropSound = false;
 let lastSeenDropTarget = 0;
@@ -1044,18 +1019,18 @@ setInterval(()=>{
     lastSeenDropTarget = dropTarget;
     hasPlayedDropSound = false;
   }
-  if(!dropTarget){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';return;}
+  if(!dropTarget){document.getElementById('countdownTimer').textContent='00:00:00';document.getElementById('countdownStatus').textContent='Picks are live';return;}
   const diff=dropTarget-Math.floor(Date.now()/1000);
   if(diff<=0){
     document.getElementById('countdownTimer').textContent='00:00:00';
-    document.getElementById('countdownStatus').textContent='🟢 PICKS ARE LIVE! 💰';
+    document.getElementById('countdownStatus').textContent='Picks are live';
     if(!hasPlayedDropSound){ hasPlayedDropSound=true; playMoneySound(); }
     if(userVerified)renderFanView();
     return;
   }
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
   document.getElementById('countdownTimer').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  document.getElementById('countdownStatus').textContent='⏳ Picks dropping soon...';
+  document.getElementById('countdownStatus').textContent='Picks dropping soon...';
 },1000);
 
 setInterval(async()=>{
@@ -1068,28 +1043,28 @@ setInterval(async()=>{
 async function addPick(){
   const team=document.getElementById('pickTeam').value.trim();
   const odds=document.getElementById('pickOdds').value.trim();
-  if(!team||!odds){alert('⚠️ Team and Odds required');return;}
+  if(!team||!odds){alert('Team and odds required');return;}
   picks[currentTier].push({team,betType:document.getElementById('pickBetType').value,odds,time:document.getElementById('pickTime').value.trim(),note:document.getElementById('pickNote').value.trim(),result:'',id:Date.now()});
   ['pickTeam','pickOdds','pickTime','pickNote'].forEach(id=>document.getElementById(id).value='');
   renderPicksList();
-  alert('✅ Pick added!\nClick "Push All Picks to Fans" when ready.');
+  alert('Pick added.\nClick "Push all picks to fans" when ready.');
 }
 
 async function saveToGitHub(){
-  if(Object.values(picks).every(t=>t.length===0)){alert('❌ Add picks first!');return;}
+  if(Object.values(picks).every(t=>t.length===0)){alert('Add picks first');return;}
   const ok=await ghWrite({picks,drop:dropTarget});
-  if(ok)alert('🚀 Picks LIVE on ALL devices!\nFans see them within 30 seconds.');
+  if(ok)alert('Picks live on all devices. Fans see them within 30 seconds.');
 }
 
 async function clearAllPicks(){
-  if(!confirm('Clear ALL picks from all devices?'))return;
+  if(!confirm('Clear all picks from all devices?'))return;
   picks={metallica:[],gold:[],purple:[],allaccess:[]};
   await ghWrite({picks,drop:dropTarget});
   renderPicksList();
-  alert('🗑 All picks cleared');
+  alert('All picks cleared');
 }
 
-async function deletePick(tier,idx){picks[tier].splice(idx,1);renderPicksList();alert('Deleted. Click "Push All Picks to Fans" to sync.');}
+async function deletePick(tier,idx){picks[tier].splice(idx,1);renderPicksList();alert('Deleted. Click "Push all picks to fans" to sync.');}
 
 async function setResult(tier,idx,result){
   picks[tier][idx].result=result;
@@ -1101,21 +1076,57 @@ function renderPicksList(){
   ['metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);if(!el)return;
     el.innerHTML=picks[tier].length
-      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:900;font-size:13px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'✅ WIN':p.result==='loss'?'❌ LOSS':'➖ PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">↩ Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">✅ WIN</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">❌ LOSS</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">➖ PUSH</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">🗑 Remove</button></div>`).join('')
+      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:600;font-size:12px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'WIN':p.result==='loss'?'LOSS':'PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">Win</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">Loss</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">Push</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">Remove</button></div>`).join('')
       :'<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
 }
 
+function renderPickCardV2(p){
+  const resultClass = p.result ? 'result-'+p.result : '';
+  const badgeHtml = p.result==='win' ? '<div class="pick-card-v2-badge win">Win</div>'
+    : p.result==='loss' ? '<div class="pick-card-v2-badge loss">Loss</div>'
+    : p.result==='push' ? '<div class="pick-card-v2-badge push">Push</div>'
+    : '<div class="pick-card-v2-badge pending">Pending</div>';
+  return `
+    <div class="pick-card-v2 ${resultClass}">
+      <div class="pick-card-v2-accent"></div>
+      <div class="pick-card-v2-top">
+        <div class="pick-card-v2-team">
+          <img src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'" alt="${p.team}">
+          <div class="pick-card-v2-name">${p.team}</div>
+        </div>
+        ${badgeHtml}
+      </div>
+      <div class="pick-card-v2-bet">
+        <span class="pick-card-v2-bettype">${p.betType}${p.time?' · '+p.time:''}</span>
+        <span class="pick-card-v2-odds">${p.odds}</span>
+      </div>
+    </div>
+  `;
+}
+
+function renderBrandFooterTag(){
+  const el = document.getElementById('brandFooterTagSection');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="brand-footer-tag">
+      <div class="brand-footer-tag-main">One brand. Every sport.</div>
+      <div class="brand-footer-tag-sub">MLB · WNBA · NHL · NFL · World Cup soccer</div>
+    </div>
+  `;
+}
+
 function renderFanView(){
-  const names={metallica:'⚡ Metallica $125',gold:'🥇 Gold $150',purple:'💜 Purple $175',allaccess:'👑 All-Access $275'};
+  const names={metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
   const access={metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
   const pickLimits={metallica:2,gold:4,purple:5,allaccess:999};
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
-    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;const cardClass=p.result?`pick-card result-${p.result}`:'pick-card';const badge=p.result==='win'?`<div class="result-badge badge-win">✅ WIN</div>`:p.result==='loss'?`<div class="result-badge badge-loss">❌ LOSS</div>`:p.result==='push'?`<div class="result-badge badge-push">➖ PUSH</div>`:'';return`<div class="${cardClass}">${badge}<div class="pick-card-team"><img class="team-logo" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-card-bet"><span>${p.betType}${p.time?' @ '+p.time:''}</span><span class="pick-card-odds">${p.odds}</span></div><div class="pick-card-note">📊 ${p.note||''}</div></div>`;}).join('')}</div>`;
+    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;return renderPickCardV2(p);}).join('')}</div>`;
   });
-  document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">⏳ Picks coming soon...</div>';
+  document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">Picks coming soon...</div>';
+  renderBrandFooterTag();
   const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
   if(hasResults){
     recordStrip.style.display='flex';
@@ -1123,16 +1134,27 @@ function renderFanView(){
     document.getElementById('recL').textContent=totalL;
     document.getElementById('recP').textContent=totalP;
     flagWrap.classList.add('active');
-    const flagShape=document.getElementById('flagShape');const flagText=document.getElementById('flagText');const flagLabel=document.getElementById('flagLabel');const flagSub=document.getElementById('flagSub');
-    if(totalL>totalW){flagShape.className='flag-shape-loss';flagText.textContent='L';flagLabel.className='flag-label flag-label-loss';flagLabel.textContent='BOUNCE BACK COMING 🔥';flagSub.textContent='THE BOSS IS RELOADING';}
-    else{flagShape.className='flag-shape-win';flagText.textContent='W';flagLabel.className='flag-label flag-label-win';flagLabel.textContent=totalW>=3?'WE ON FIRE 🔥💰':'WE WINNING 💰';flagSub.textContent='THE BOSS IS LOCKED IN';}
+    const flagLabel=document.getElementById('flagLabel');const flagSub=document.getElementById('flagSub');
+    if(totalL>totalW){flagLabel.className='flag-label flag-label-loss';flagLabel.textContent='Bounce back coming';flagSub.textContent='The vault is reloading';}
+    else{flagLabel.className='flag-label flag-label-win';flagLabel.textContent=totalW>=3?'We on fire':'We winning';flagSub.textContent='The vault is open';}
   }else{flagWrap.classList.remove('active');recordStrip.style.display='none';}
 }
 
-function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');}
+const TIER_RULES = {
+  metallica: 'Metallica — <b>2 picks</b>, locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
+  gold: 'Gold — <b>4-teamer</b>, locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours.',
+  purple: 'Purple — <b>72 hours</b> (3 days). Anything dropped in Purple, you get it for 3 full days.',
+  allaccess: 'All-Access — <b>168 hours</b> (7 days). Anything dropped in any tier, you get it for 7 full days.'
+};
+function renderTierExplainer(tier){
+  const el = document.getElementById('tierExplainer');
+  if(!el) return;
+  el.innerHTML = TIER_RULES[tier] || '';
+}
+function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);}
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
-  if(!receipt){alert('❌ Enter PayPal receipt #');return;}
+  if(!receipt){alert('Enter PayPal receipt #');return;}
   localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt,purchaseTime:Date.now()}));
   userVerified=true;userTier=selectedTier;
   document.getElementById('successMessage').classList.add('show');
@@ -1151,18 +1173,41 @@ function checkPin(){
     document.getElementById('loginModal').classList.remove('active');
     document.getElementById('adminPanel').classList.add('active');
     document.getElementById('paymentWall').classList.add('hidden');
-    document.getElementById('toggleBtn').textContent='👀';
+    document.getElementById('toggleBtn').textContent='VIEW';
     renderPicksList();
-  }else{alert('❌ Wrong PIN');}
+  }else{alert('Wrong PIN');}
 }
 document.getElementById('toggleBtn').addEventListener('click',()=>{
   if(!adminMode){document.getElementById('loginModal').classList.add('active');}
-  else{adminMode=false;document.getElementById('adminPanel').classList.remove('active');if(!userVerified){document.getElementById('paymentWall').classList.remove('hidden');}document.getElementById('toggleBtn').textContent='🔧';}
+  else{adminMode=false;document.getElementById('adminPanel').classList.remove('active');if(!userVerified){document.getElementById('paymentWall').classList.remove('hidden');}document.getElementById('toggleBtn').textContent='ADM';}
 });
 document.querySelectorAll('.tier-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{document.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentTier=btn.dataset.tier;});
 });
 document.getElementById('addPickBtn').addEventListener('click',addPick);
+
+function buildProofTickerHtml(){
+  const recentWithLogos = [];
+  ['metallica','gold','purple','allaccess'].forEach(t=>{
+    (picks[t]||[]).forEach(pk=>{
+      if(pk.result==='win'){
+        recentWithLogos.push({team:pk.team, logo:getTeamLogoUrl(pk.team)});
+      }
+    });
+  });
+  const items = recentWithLogos.length>0 ? recentWithLogos : [
+    {team:'WE ON A HEATER', logo:null},
+    {team:'SHARP SIGNALS LOCKED', logo:null},
+    {team:'VEGAS VERIFIED', logo:null},
+    {team:'VICTORY TRIANGLE', logo:null},
+    {team:'PICKS DROPPING NOW', logo:null}
+  ];
+  const doubled = [...items, ...items];
+  return doubled.map(it => it.logo
+    ? `<span class="proof-item-v2"><img src="${it.logo}" onerror="this.src='${FALLBACK_LOGO}'">${it.team} WIN</span>`
+    : `<span class="proof-item">• ${it.team}</span>`
+  ).join('');
+}
 
 function renderFomo(){
   let w=0,l=0,p=0;const allPicks=[];
@@ -1170,20 +1215,57 @@ function renderFomo(){
   const fw=document.getElementById('fomoW');const fl=document.getElementById('fomoL');const fp=document.getElementById('fomoP');
   if(fw)fw.textContent=w>0?w:'—';if(fl)fl.textContent=l>0?l:'—';if(fp)fp.textContent=p>0?p:'—';
   const fh=document.getElementById('fomoHeadline');
-  if(fh){if(w>=3)fh.textContent='WE ON FIRE 🔥🔥';else if(w>l)fh.textContent='WE WINNING 💰';else if(l>w&&l>0)fh.textContent='BOUNCE BACK COMING 🔥';else fh.textContent='PICKS ARE LIVE 🎯';}
+  if(fh){if(w>=3)fh.textContent='We on fire';else if(w>l)fh.textContent='We winning';else if(l>w&&l>0)fh.textContent='Bounce back coming';else fh.textContent='Picks are live';}
   const blurEl=document.getElementById('fomoPicksBlur');
-  if(blurEl&&allPicks.length>0){blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`<div style="background:rgba(10,16,28,0.9);border:2px solid rgba(250,204,21,0.15);border-radius:12px;padding:14px;margin-bottom:10px;"><div style="font-weight:900;color:#fff;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px;"><img class="team-logo-sm" src="${getTeamLogoUrl(pk.team)}" onerror="this.src='${FALLBACK_LOGO}'">${pk.team}</div><div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#94a3b8;">${pk.betType}</span><span style="color:#facc15;font-weight:900;">${pk.odds}</span></div></div>`).join('');}
-  else if(blurEl){blurEl.innerHTML=`<div style="padding:30px;text-align:center;color:#94a3b8;">Picks loading...</div>`;}
+  if(blurEl&&allPicks.length>0){blurEl.innerHTML=allPicks.slice(0,4).map(pk=>`<div style="background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:10px;padding:12px;margin-bottom:8px;"><div style="font-weight:600;color:var(--white);font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:8px;"><img class="team-logo-sm" src="${getTeamLogoUrl(pk.team)}" onerror="this.src='${FALLBACK_LOGO}'">${pk.team}</div><div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--slate);">${pk.betType}</span><span style="color:var(--gold);font-weight:700;">${pk.odds}</span></div></div>`).join('');}
+  else if(blurEl){blurEl.innerHTML=`<div style="padding:30px;text-align:center;color:var(--slate);">Picks loading...</div>`;}
 }
 
-function updateDateTime(){
-  const now=new Date();
-  document.getElementById('dateDisplay').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
-  document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+function initProofStrip(){
+  let wins=0,losses=0,pushes=0;
+  ['metallica','gold','purple','allaccess'].forEach(t=>{
+    (picks[t]||[]).forEach(pk=>{
+      if(pk.result==='win') wins++;
+      else if(pk.result==='loss') losses++;
+      else if(pk.result==='push') pushes++;
+    });
+  });
+  const total = wins+losses+pushes;
+  const pct = total>0 ? Math.round((wins/total)*100)+'%' : '—';
+
+  let streak = 0;
+  const allR = [];
+  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).filter(p=>p.result).forEach(p=>allR.push(p.result));});
+  for(let i=allR.length-1;i>=0;i--){ if(allR[i]==='win') streak++; else break; }
+
+  const wEl=document.getElementById('proofWins');
+  const pEl=document.getElementById('proofWinPct');
+  const sEl=document.getElementById('proofStreak');
+  if(wEl) wEl.textContent = wins>0?wins:'—';
+  if(pEl) pEl.textContent = pct;
+  if(sEl) sEl.textContent = streak>0?streak+'W':'—';
+
+  const ticker = document.getElementById('proofTicker');
+  if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${buildProofTickerHtml()}</div>`;
 }
 
+function initGOTM(){
+  const gotmData = (window._ghData && window._ghData.gotm) ? window._ghData.gotm : null;
+  const card = document.getElementById('gotmCard');
+  if(!card) return;
+  if(gotmData && gotmData.active){
+    card.style.display='block';
+    const pickEl=document.getElementById('gotmPick');
+    const descEl=document.getElementById('gotmDesc');
+    if(pickEl) pickEl.textContent = userVerified ? gotmData.pick : 'LOCKED — subscribers only';
+    if(descEl && gotmData.note) descEl.textContent = gotmData.note;
+  } else {
+    card.style.display='block';
+    const saveEl=document.getElementById('gotmSave');
+    if(saveEl) saveEl.style.display='inline';
+  }
+}
 
-// ============ ONBOARDING FUNNEL (Parlay P inspired) ============
 let onboardTierRec = 'allaccess';
 function onboardNext(step, tier){
   if(tier) onboardTierRec = tier;
@@ -1192,14 +1274,14 @@ function onboardNext(step, tier){
   if(el) el.style.display='block';
   if(step===3){
     const tiers = {
-      allaccess:{name:'👑 ALL-ACCESS',price:'$275 / 168 hrs',desc:'Every single pick we drop all week. The real ones tier.'},
-      purple:{name:'💜 PURPLE',price:'$175 / 72 hrs',desc:'Weekend warrior pack — 3 days of elite plays.'},
-      gold:{name:'🥇 GOLD',price:'$150 / 24 hrs',desc:'Best play of the day, every day. Simple.'}
+      allaccess:{name:'All-Access',price:'$275 / 168 hrs',desc:'Every single pick we drop all week.'},
+      purple:{name:'Purple',price:'$175 / 72 hrs',desc:'Weekend warrior pack — 3 days of elite plays.'},
+      gold:{name:'Gold',price:'$150 / 24 hrs',desc:'Best play of the day, every day.'}
     };
     const t = tiers[tier] || tiers.allaccess;
-    document.getElementById('onboardRecTier').textContent = t.name + ' — RECOMMENDED';
+    document.getElementById('onboardRecTier').textContent = t.name + ' — recommended';
     document.getElementById('onboardRecDesc').textContent = t.desc;
-    document.getElementById('onboardRecCard').innerHTML = `<div style="font-size:22px;font-weight:900;color:var(--gold);">${t.name}</div><div style="font-size:16px;color:var(--white);margin-top:4px;">${t.price}</div>`;
+    document.getElementById('onboardRecCard').innerHTML = `<div style="font-size:18px;font-weight:700;color:var(--gold);">${t.name}</div><div style="font-size:14px;color:var(--white);margin-top:4px;">${t.price}</div>`;
   }
 }
 function closeOnboard(){
@@ -1207,74 +1289,18 @@ function closeOnboard(){
   if(ov){ ov.style.opacity='0'; ov.style.transition='opacity 0.4s'; setTimeout(()=>ov.style.display='none',400); }
 }
 
-// ============ PROOF OF WINNINGS (iSellWinners inspired) ============
-function initProofStrip(){
-  // Build ticker from actual pick results
-  let wins=0,losses=0,pushes=0;
-  const recentWins=[];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{
-    (picks[t]||[]).forEach(pk=>{
-      if(pk.result==='win'){wins++;recentWins.push(pk.team+' ✅');}
-      else if(pk.result==='loss') losses++;
-      else if(pk.result==='push') pushes++;
-    });
-  });
-  const total = wins+losses+pushes;
-  const pct = total>0 ? Math.round((wins/total)*100)+'%' : '—';
-  
-  // Calculate streak
-  let streak = 0;
-  const allR = [];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).filter(p=>p.result).forEach(p=>allR.push(p.result));});
-  for(let i=allR.length-1;i>=0;i--){ if(allR[i]==='win') streak++; else break; }
-  
-  const wEl=document.getElementById('proofWins');
-  const pEl=document.getElementById('proofWinPct');
-  const sEl=document.getElementById('proofStreak');
-  if(wEl) wEl.textContent = wins>0?wins:'—';
-  if(pEl) pEl.textContent = pct;
-  if(sEl) sEl.textContent = streak>0?streak+'W 🔥':'—';
-
-  // Ticker
-  const tickerItems = recentWins.length>0 ? recentWins : ['WE ON A HEATER 🔥','SHARP SIGNALS LOCKED 🎯','VEGAS VERIFIED 💰','VICTORY TRIANGLE 🔺','PICKS DROPPING NOW 💰'];
-  const doubled = [...tickerItems,...tickerItems];
-  const ticker = document.getElementById('proofTicker');
-  if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${doubled.map(t=>`<span class="proof-item">• ${t}</span>`).join('')}</div>`;
-}
-
-// ============ THE HEATER ============
-function initGOTM(){
-  // Show GOTM card if admin has set a GOTM pick in data
-  const gotmData = (window._ghData && window._ghData.gotm) ? window._ghData.gotm : null;
-  const card = document.getElementById('gotmCard');
-  if(!card) return;
-  if(gotmData && gotmData.active){
-    card.style.display='block';
-    const pickEl=document.getElementById('gotmPick');
-    const descEl=document.getElementById('gotmDesc');
-    if(pickEl) pickEl.textContent = userVerified ? '🎯 '+gotmData.pick : '🔒 LOCKED — SUBSCRIBERS ONLY';
-    if(descEl && gotmData.note) descEl.textContent = gotmData.note;
-  } else {
-    // Show teaser card even without admin data
-    card.style.display='block';
-    const saveEl=document.getElementById('gotmSave');
-    if(saveEl) saveEl.style.display='inline';
-  }
-}
-
 async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
+  renderTierExplainer('metallica');
   await ghRead();
   renderPicksList();
   renderFomo();
   initProofStrip();
   initGOTM();
-  // Show onboarding for first-time visitors
   const visited = localStorage.getItem('a2s_visited');
   if(!visited && !localStorage.getItem('a2s_user_verified')){
     localStorage.setItem('a2s_visited','1');
-    // Small delay so page loads first
     setTimeout(()=>{ const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='flex'; },800);
   } else {
     const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='none';
@@ -1282,7 +1308,13 @@ async function init(){
   const auth=localStorage.getItem('a2s_user_verified');
   if(auth){const u=JSON.parse(auth);userVerified=true;userTier=u.tier;showFanView();}
 }
+function updateDateTime(){
+  const now=new Date();
+  document.getElementById('dateDisplay').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  document.getElementById('timeDisplay').textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+}
 init();
 </script>
+
 </body>
 </html>
