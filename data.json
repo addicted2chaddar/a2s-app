@@ -2,78 +2,51 @@
   "picks": {
     "metallica": [
       {
-        "team": "phillies",
+        "team": "Las Vegas Aces -265",
         "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "3 40 pmt",
-        "note": "",
-        "result": "win",
-        "id": 1782421947004
+        "odds": "-265",
+        "time": "7:00 PM PT",
+        "note": "WNBA",
+        "result": "",
+        "id": 1783103360689
       },
       {
-        "team": "texas",
+        "team": "Chicago Cubs -130",
         "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "340 pm pt",
+        "odds": "-130",
+        "time": "1:05 PM PT",
         "note": "",
-        "result": "win",
-        "id": 1782421991338
-      },
-      {
-        "team": "Chicago sky",
-        "betType": "SPREAD",
-        "odds": "-6.5",
-        "time": "4 30 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1782515497666
-      },
-      {
-        "team": "ATL Dream",
-        "betType": "SPREAD",
-        "odds": "-1.5",
-        "time": "7 00 pm",
-        "note": "",
-        "result": "win",
-        "id": 1782515535334
+        "result": "",
+        "id": 1783103494487
       }
     ],
     "gold": [
       {
-        "team": "HOUSTON  ASTROS",
+        "team": "New York Liberty",
         "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "5 pm pt",
+        "odds": "+114",
+        "time": "4:40 PM PT",
         "note": "",
-        "result": "win",
-        "id": 1782422043739
+        "result": "",
+        "id": 1783103657970
       },
       {
-        "team": "MIAMI MARLINS",
+        "team": "-Washington Nationals -154",
         "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "5 15 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782515744239
+        "odds": "-154",
+        "time": "3:45 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783103838007
       },
       {
-        "team": "SAN DIEGO",
+        "team": "Baltimore Orioles",
         "betType": "MONEYLINE",
-        "odds": "+129",
-        "time": "6 45 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1782515816964
-      },
-      {
-        "team": "SAN FRANCISCO  GIANTS",
-        "betType": "MONEYLINE",
-        "odds": "-101",
-        "time": "7 15 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1782515878063
+        "odds": "-140",
+        "time": "4:10 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783104137071
       }
     ],
     "purple": [],
