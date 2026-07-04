@@ -438,6 +438,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
         <div class="tier-card" onclick="selectTier('allaccess',this)"><div class="tier-name">All-Access</div><div class="tier-price">$275 · 168h</div></div>
       </div>
       <div class="tier-explainer" id="tierExplainer"></div>
+      <div id="stripeCardBtnWrap" style="margin-bottom:16px;"></div>
       <label class="form-label">PayPal receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
       <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">Unlock picks</button>
@@ -483,6 +484,13 @@ const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
+
+const STRIPE_LINKS = {
+  metallica: 'https://buy.stripe.com/aFa00c2VEa2UaZOaV293y00',
+  gold: null,
+  purple: null,
+  allaccess: null
+};
 
 const FALLBACK_LOGO = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="19" fill="%23121418" stroke="%23d4af37" stroke-width="1.5"/></svg>';
 const MLB_TEAM_LOGOS = {
@@ -1213,7 +1221,19 @@ function renderTierExplainer(tier){
   if(!el) return;
   el.innerHTML = TIER_RULES[tier] || '';
 }
-function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);}
+
+function renderStripeCardBtn(tier){
+  const el = document.getElementById('stripeCardBtnWrap');
+  if(!el) return;
+  const link = STRIPE_LINKS[tier];
+  if(link){
+    el.innerHTML = `<a href="${link}" target="_blank" class="paypal-button" style="background:linear-gradient(180deg,#8b8fff,#635BFF);color:#fff;">💳 Pay with Card — Stripe</a>`;
+  } else {
+    el.innerHTML = `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">Card payment coming soon for this tier — use PayPal above for now</div>`;
+  }
+}
+
+function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderStripeCardBtn(tier);}
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
   if(!receipt){alert('Enter PayPal receipt #');return;}
@@ -1356,6 +1376,7 @@ async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
   renderTierExplainer('metallica');
+  renderStripeCardBtn('metallica');
   await ghRead();
   renderPicksList();
   renderFomo();
