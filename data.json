@@ -18,6 +18,24 @@
         "note": "",
         "result": "loss",
         "id": 1783103494487
+      },
+      {
+        "team": "Minnesota Twins",
+        "betType": "MONEYLINE",
+        "odds": "+1.5",
+        "time": "10 36 AM PT",
+        "note": "UMPIRE    [C] James Hoye  HomeW: 50.2%  O/U: NEUTRAL 49%  K/G: 16.4",
+        "result": "",
+        "id": 1783181932255
+      },
+      {
+        "team": "Morocco -127",
+        "betType": "MONEYLINE",
+        "odds": "-127",
+        "time": "10 AM  PT",
+        "note": "",
+        "result": "",
+        "id": 1783182106910
       }
     ],
     "gold": [
