@@ -2,73 +2,102 @@
   "picks": {
     "metallica": [
       {
-        "team": "Las Vegas Aces -265",
+        "team": "San Francisco Giants MONEYLINE -120",
         "betType": "MONEYLINE",
-        "odds": "-265",
-        "time": "7:00 PM PT",
-        "note": "WNBA",
-        "result": "win",
-        "id": 1783103360689
-      },
-      {
-        "team": "Chicago Cubs -130",
-        "betType": "MONEYLINE",
-        "odds": "-130",
-        "time": "1:05 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1783103494487
-      },
-      {
-        "team": "Minnesota Twins",
-        "betType": "MONEYLINE",
-        "odds": "+1.5",
-        "time": "10 36 AM PT",
-        "note": "UMPIRE    [C] James Hoye  HomeW: 50.2%  O/U: NEUTRAL 49%  K/G: 16.4",
-        "result": "",
-        "id": 1783181932255
-      },
-      {
-        "team": "Morocco -127",
-        "betType": "MONEYLINE",
-        "odds": "-127",
-        "time": "10 AM  PT",
+        "odds": "-120",
+        "time": "1:00 PM",
         "note": "",
         "result": "",
-        "id": 1783182106910
+        "id": 1783276663565
+      },
+      {
+        "team": "Arizona Diamondbacks +101",
+        "betType": "MONEYLINE",
+        "odds": "+101",
+        "time": "1:00 pm  PT",
+        "note": "",
+        "result": "",
+        "id": 1783276746117
       }
     ],
     "gold": [
       {
-        "team": "New York Liberty",
+        "team": "Texas Rangers +100",
         "betType": "MONEYLINE",
-        "odds": "+114",
-        "time": "4:40 PM PT",
+        "odds": "+100",
+        "time": "12:31 PM PT",
         "note": "",
-        "result": "win",
-        "id": 1783103657970
+        "result": "",
+        "id": 1783276818897
       },
       {
-        "team": "-Washington Nationals -154",
+        "team": "Houston Astros +106",
         "betType": "MONEYLINE",
-        "odds": "-154",
-        "time": "3:45 PM PT",
-        "note": "MLB",
-        "result": "win",
-        "id": 1783103838007
-      },
-      {
-        "team": "Baltimore Orioles",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "4:10 PM PT",
-        "note": "MLB",
-        "result": "win",
-        "id": 1783104137071
+        "odds": "+106",
+        "time": "12:31 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783276898130
       }
     ],
-    "purple": [],
-    "allaccess": []
+    "purple": [
+      {
+        "team": "Philadelphia Phillies -136",
+        "betType": "MONEYLINE",
+        "odds": "3:01 PM ET / 12:01 PM PT",
+        "time": "-136",
+        "note": "",
+        "result": "",
+        "id": 1783277005708
+      },
+      {
+        "team": "Athletics -120 MONEYLINE -120",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "4:31 PM ET / 1:31 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783277051453
+      }
+    ],
+    "allaccess": [
+      {
+        "team": "Las Vegas Aces -155 MONEYLINE -155",
+        "betType": "MONEYLINE",
+        "odds": "-155",
+        "time": "7:00 PM ET / 4:00 PM PT",
+        "note": "WMBA",
+        "result": "",
+        "id": 1783277145337
+      },
+      {
+        "team": "Dallas Wings -235",
+        "betType": "MONEYLINE",
+        "odds": "-235",
+        "time": "3:00 PM ET / 12:00 PM PT",
+        "note": "WMBA",
+        "result": "",
+        "id": 1783277215328
+      },
+      {
+        "team": "Brazil -129 MONEYLINE",
+        "betType": "MONEYLINE",
+        "odds": "-129",
+        "time": "4:00 PM ET / 1:00 PM",
+        "note": "",
+        "result": "",
+        "id": 1783277259638
+      },
+      {
+        "team": "Mexico +210 MONEYLINE",
+        "betType": "MONEYLINE",
+        "odds": "+210",
+        "time": "8:00 PM ET / 5:00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783277309947
+      }
+    ]
   },
   "drop": 1783278341
 }
