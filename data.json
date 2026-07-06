@@ -1,9 +1,47 @@
 {
   "picks": {
-    "metallica": [],
-    "gold": [],
+    "metallica": [
+      {
+        "team": "San Diego Padres -124",
+        "betType": "MONEYLINE",
+        "odds": "-124",
+        "time": "6:41 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783379444270
+      },
+      {
+        "team": "Los Angeles Dodgers -230",
+        "betType": "MONEYLINE",
+        "odds": "-230",
+        "time": "10:11 PM ET  /  7:11 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783379673531
+      }
+    ],
+    "gold": [
+      {
+        "team": "Minnesota Lynx",
+        "betType": "MONEYLINE",
+        "odds": "-11.5",
+        "time": "8:00 PM ET  /  5:00 PM PT",
+        "note": "WMBA",
+        "result": "",
+        "id": 1783379889126
+      },
+      {
+        "team": "Belgium +175",
+        "betType": "MONEYLINE",
+        "odds": "+175",
+        "time": "8:00 PM ET  /  5:00 PM PT",
+        "note": "SOCCER ⚽",
+        "result": "",
+        "id": 1783380156032
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1783382920
+  "drop": 1783381967
 }
