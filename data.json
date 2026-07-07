@@ -2,13 +2,31 @@
   "picks": {
     "metallica": [
       {
+        "team": "San Diego Padres -124",
+        "betType": "MONEYLINE",
+        "odds": "-124",
+        "time": "6:41 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783379444270
+      },
+      {
         "team": "Los Angeles Dodgers -230",
         "betType": "MONEYLINE",
         "odds": "-230",
         "time": "10:11 PM ET  /  7:11 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1783379673531
+      },
+      {
+        "team": "St Louis Cardinals",
+        "betType": "MONEYLINE",
+        "odds": "ML",
+        "time": "11:15 am",
+        "note": "",
+        "result": "",
+        "id": 1783395085798
       }
     ],
     "gold": [
@@ -18,7 +36,7 @@
         "odds": "-11.5",
         "time": "8:00 PM ET  /  5:00 PM PT",
         "note": "WMBA",
-        "result": "loss",
+        "result": "",
         "id": 1783379889126
       },
       {
