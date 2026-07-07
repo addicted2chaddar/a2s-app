@@ -7,7 +7,7 @@
         "odds": "-124",
         "time": "6:41 PM PT",
         "note": "MLB",
-        "result": "loss",
+        "result": "",
         "id": 1783379444270
       },
       {
@@ -16,11 +16,20 @@
         "odds": "-230",
         "time": "10:11 PM ET  /  7:11 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1783379673531
       }
     ],
     "gold": [
+      {
+        "team": "Minnesota Lynx",
+        "betType": "MONEYLINE",
+        "odds": "-11.5",
+        "time": "8:00 PM ET  /  5:00 PM PT",
+        "note": "WMBA",
+        "result": "loss",
+        "id": 1783379889126
+      },
       {
         "team": "Belgium +175",
         "betType": "MONEYLINE",
@@ -34,5 +43,5 @@
     "purple": [],
     "allaccess": []
   },
-  "drop": 1783444500
+  "drop": 1783381967
 }
