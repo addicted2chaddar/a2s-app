@@ -2,15 +2,6 @@
   "picks": {
     "metallica": [
       {
-        "team": "San Diego Padres -124",
-        "betType": "MONEYLINE",
-        "odds": "-124",
-        "time": "6:41 PM PT",
-        "note": "MLB",
-        "result": "loss",
-        "id": 1783379444270
-      },
-      {
         "team": "Los Angeles Dodgers -230",
         "betType": "MONEYLINE",
         "odds": "-230",
@@ -43,5 +34,5 @@
     "purple": [],
     "allaccess": []
   },
-  "drop": 1783381967
+  "drop": 1783444500
 }
