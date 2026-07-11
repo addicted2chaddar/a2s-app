@@ -45,6 +45,24 @@
         "note": "MLB",
         "result": "win",
         "id": 1783720048960
+      },
+      {
+        "team": "Pittsburgh Pirates -112",
+        "betType": "MONEYLINE",
+        "odds": "-112",
+        "time": "12:06 PM ET  /  9:06 AM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783778146063
+      },
+      {
+        "team": "Colorado Rockies@  San Francisco Giants",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 8.5",
+        "time": "4:06 PM ET  /  1:06 PM PT",
+        "note": "UNDER 8.5",
+        "result": "",
+        "id": 1783778485371
       }
     ],
     "gold": [
@@ -56,9 +74,46 @@
         "note": "WMBA",
         "result": "win",
         "id": 1783379889126
+      },
+      {
+        "team": "San Francisco Giants",
+        "betType": "MONEYLINE",
+        "odds": "-154",
+        "time": "4:06 PM ET  /  1:06 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783778655650
+      },
+      {
+        "team": "Los Angeles Angels + 1.5",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "2:11 PM ET  /  11:11 AM PT",
+        "note": "",
+        "result": "",
+        "id": 1783778795366
       }
     ],
-    "purple": [],
+    "purple": [
+      {
+        "team": "Athletics -108",
+        "betType": "MONEYLINE",
+        "odds": "-108",
+        "time": "2:11 PM ET  /  11:11 AM PT",
+        "note": "",
+        "result": "",
+        "id": 1783778936997
+      },
+      {
+        "team": "New York Liberty@  Minnesota Lynx",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 174.5",
+        "time": "1:00 PM ET  /  10:00 AM PT",
+        "note": "",
+        "result": "",
+        "id": 1783779282118
+      }
+    ],
     "allaccess": []
   },
   "drop": 1783781186
