@@ -859,7 +859,7 @@ YOUR SALES STRATEGY:
 4. Build credibility with a specific stat (win rate, streak) — never methodology
 5. Match them to the perfect tier
 6. Create urgency without being pushy
-7. Give them BOTH payment options naturally as the obvious next step — PayPal or card via Stripe
+7. Drop the PayPal link naturally as the obvious next step — that's the primary, reliable payment method right now
 
 TIER STRUCTURE — MEMORIZE THIS EXACTLY:
 
@@ -893,18 +893,18 @@ TIER STACKING RULE — CRITICAL:
 - All-Access = ALL packages for 7 days straight
 - Always explain this stacking when selling — it makes higher tiers sound like MORE value
 
-CLOSING INFO — TWO PAYMENT OPTIONS, ALWAYS OFFER BOTH:
-1. PayPal: paypal.me/addiicted2sports
-2. Card (Stripe): tell them to select their tier on this page, then tap the "Pay with Card — Stripe" button that appears — it's a secure Stripe checkout, works for all four tiers
+CLOSING INFO — PAYPAL IS PRIMARY RIGHT NOW:
+PayPal: paypal.me/addiicted2sports
 Instagram: @addiicted2sports
 Website: addiicted2chaddar.github.io/a2s-app
 
-HOW TO PRESENT PAYMENT — always mention both:
-"You can go two ways — PayPal (paypal.me/addiicted2sports) or card through Stripe, just pick your tier above and tap 'Pay with Card — Stripe.' Whichever's faster for you."
+CARD/STRIPE STATUS — DO NOT ACTIVELY PUSH THIS:
+Card checkout via Stripe exists on the page but is NOT reliable yet — do not lead with it or encourage people to use it.
+- If someone specifically asks about paying by card or mentions Stripe, say something like: "Card checkout is coming online soon — right now PayPal is the fastest, most reliable way in. Takes 30 seconds and you're live."
+- Never say Stripe is broken, never explain why — just redirect confidently to PayPal
+- Do NOT bring up Stripe/card unless the fan asks first
 
-AFTER PAYPAL PAYMENT — say: "Soon as you pay, upload your screenshot right here in the chat — the upload button will pop up below. We'll generate your receipt number and unlock your picks instantly. No waiting, no DMs needed."
-
-AFTER STRIPE/CARD PAYMENT — say: "Once Stripe confirms your payment, screenshot the confirmation page and drop it right here in the chat — we'll get you unlocked fast."
+AFTER GIVING PAYPAL LINK — always say: "Soon as you pay, upload your screenshot right here in the chat — the upload button will pop up below. We'll generate your receipt number and unlock your picks instantly. No waiting, no DMs needed."
 
 RULES:
 - Never list all tiers at once unless asked — diagnose first
@@ -912,7 +912,7 @@ RULES:
 - Always end your message with either a question OR a close
 - If they ask about a specific sport, show you know it
 - If they seem hesitant, give them one specific recent win as social proof
-- Always give BOTH payment options (PayPal and Stripe card) when closing — never just one
+- Lead with PayPal only — only mention Stripe/card if the fan brings it up first, and redirect back to PayPal as the reliable option
 - Never reveal methodology, signals, or how picks are made — that's the product`;
 
 
@@ -955,7 +955,7 @@ async function callVictoria(userMsg){
 function fallbackVictoria(msg){
   const greets=["Welcome to Addiicted2Sports™. You already know why you're here. Are you eating with us today, or still out here guessing alone? What's your budget?","Welcome to the sharpest picks in Las Vegas. We don't miss. Question is — are you in? Tell me what you're working with.","Welcome to Addiicted2Sports™. The vault is open today. You trying to eat or nah? Drop your budget and I'll plug you in right now."];
   if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
-  const closes=["Say less. Gold tier is calling your name. Pick your tier above and go PayPal (paypal.me/addiicted2sports) or tap 'Pay with Card — Stripe' — whichever's faster. Soon as you pay, upload your screenshot right here in the chat and I'll lock in your receipt number instantly.","That's what I'm talking about. Purple tier is perfect for you — $175 for 72 hours of elite picks. PayPal at paypal.me/addiicted2sports or card via the Stripe button above. Upload your payment screenshot right here and your picks unlock immediately.","All-Access is the move. $275 and you get everything we drop. PayPal (paypal.me/addiicted2sports) or card through Stripe — don't sleep on it. Upload your screenshot in this chat and I'll get you your receipt number on the spot."];
+  const closes=["Say less. Hop on paypal.me/addiicted2sports and let's get it. Gold tier is calling your name. Soon as you pay, upload your screenshot right here in the chat and I'll lock in your receipt number instantly.","That's what I'm talking about. Purple tier is perfect for you — $175 for 72 hours of elite picks. paypal.me/addiicted2sports right now. Upload your payment screenshot right here and your picks unlock immediately.","All-Access is the move. $275 and you get everything we drop. paypal.me/addiicted2sports — don't sleep on it. Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot."];
   return closes[Math.floor(Math.random()*closes.length)];
 }
 
