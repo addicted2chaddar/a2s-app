@@ -63,6 +63,24 @@
         "note": "UNDER 8.5",
         "result": "win",
         "id": 1783778485371
+      },
+      {
+        "team": "Pittsburgh Pirates -130",
+        "betType": "MONEYLINE",
+        "odds": "-130",
+        "time": "12:16 PM ET  /  9:16 AM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783868253951
+      },
+      {
+        "team": "San Francisco Giants -144",
+        "betType": "MONEYLINE",
+        "odds": "-144",
+        "time": "4:06 PM ET  /  1:06 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1783868376278
       }
     ],
     "gold": [
@@ -92,6 +110,24 @@
         "note": "",
         "result": "win",
         "id": 1783778795366
+      },
+      {
+        "team": "New York Liberty -290",
+        "betType": "MONEYLINE",
+        "odds": "-190",
+        "time": "3:00 PM ET  /  12:00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783868492309
+      },
+      {
+        "team": "New York Liberty@  Toronto Tempo",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER  183.5",
+        "time": "3:00 PM ET  /  12:00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783868717924
       }
     ],
     "purple": [
