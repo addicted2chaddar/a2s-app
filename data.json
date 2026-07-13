@@ -1,5 +1,25 @@
 {
   "picks": {
+    "starter": [
+      {
+        "team": "Atlanta Dream",
+        "betType": "SPREAD",
+        "odds": "-7.5",
+        "time": "7:00 PM ET  /  4:00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783958148031
+      },
+      {
+        "team": "Minnesota Lynx",
+        "betType": "MONEYLINE",
+        "odds": "n/a",
+        "time": "9:00 PM ET  /  6:00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1783958247137
+      }
+    ],
     "metallica": [
       {
         "team": "San Diego Padres -124",
