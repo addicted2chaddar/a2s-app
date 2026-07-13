@@ -173,7 +173,5 @@
     "allaccess": []
   },
   "drop": 1783980000,
-  "usedReceipts": [
-    "TESTRECEIPT001VERIFY"
-  ]
+  "usedReceipts": []
 }
