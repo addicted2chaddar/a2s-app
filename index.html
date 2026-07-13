@@ -417,7 +417,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div class="gotm-price-row">
         <span class="gotm-price-new">$15</span>
       </div>
-      <a href="https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E" target="_blank" class="paypal-button">Get Starter Pick</a>
+      <a href="https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E" target="_blank" class="paypal-button" id="starterCardBtn">Get Starter Pick</a>
     </div>
   </div>
 
@@ -910,6 +910,7 @@ STARTER — $15 / 24 hours
 - Only gets Starter picks — no stacking with other tiers
 - Use this to close hesitant fans who won't commit to $125+ yet — "no pressure, just try us"
 - Once they win with Starter, upsell them hard into Metallica or higher next time
+- IMPORTANT: Starter can only be purchased 5 times total per fan (device-limited). If a fan mentions they've bought Starter multiple times already, or asks to buy Starter again after several rounds, tell them something like "you've been riding Starter for a minute — you already know it works, time to step up to Metallica and get real volume" and push Metallica hard. Do not encourage repeat Starter purchases as a long-term plan.
 
 METALLICA — $125 / 24 hours
 - Gets 3 picks guaranteed (2 standard + 1 loyalty bonus pick — Starter buyers only get 2, no bonus), sometimes up to 4 if the Boss drops extra
@@ -1329,7 +1330,16 @@ function renderStripeCardBtn(tier){
 }
 
 function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);}
+const STARTER_MAX_USES = 5;
+function getStarterCount(){ return parseInt(localStorage.getItem('a2s_starter_count')||'0',10); }
+function starterCapReached(){ return getStarterCount() >= STARTER_MAX_USES; }
+
 function verifyAndUnlock(){
+  if(selectedTier==='starter' && starterCapReached()){
+    alert("You've used all "+STARTER_MAX_USES+" Starter Pick trials on this device. Time to level up — grab Metallica for 3 real picks and VIP access instead.");
+    selectTier('metallica', document.querySelector('.tier-card'));
+    return;
+  }
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
   if(!receipt){alert('Enter PayPal receipt #');return;}
   const looksReal = /^[A-Z0-9]{10,20}$/.test(receipt) && !/^(.)\1+$/.test(receipt);
@@ -1345,10 +1355,22 @@ function verifyAndUnlock(){
   }
   used.push(receipt);
   localStorage.setItem(usedKey,JSON.stringify(used));
+  if(selectedTier==='starter'){
+    localStorage.setItem('a2s_starter_count', String(getStarterCount()+1));
+  }
   localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt,purchaseTime:Date.now()}));
   userVerified=true;userTier=selectedTier;
   document.getElementById('successMessage').classList.add('show');
   setTimeout(showFanView,1000);
+  refreshStarterCardUI();
+}
+
+function refreshStarterCardUI(){
+  const btn = document.getElementById('starterCardBtn');
+  if(!btn) return;
+  if(starterCapReached()){
+    btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">You have used all '+STARTER_MAX_USES+' Starter trials. Ready to upgrade? Scroll down and grab Metallica for 3 real picks + VIP access.</div>';
+  }
 }
 function showFanView(){
   document.getElementById('paymentWall').classList.add('hidden');
@@ -1490,6 +1512,7 @@ async function init(){
   renderFomo();
   initProofStrip();
   initGOTM();
+  refreshStarterCardUI();
   const visited = localStorage.getItem('a2s_visited');
   if(!visited && !localStorage.getItem('a2s_user_verified')){
     localStorage.setItem('a2s_visited','1');
