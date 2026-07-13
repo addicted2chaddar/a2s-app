@@ -912,9 +912,10 @@ STARTER — $15 / 24 hours
 - Once they win with Starter, upsell them hard into Metallica or higher next time
 
 METALLICA — $125 / 24 hours
-- Gets 2 picks (sometimes up to 4, but usually 2 — the Boss decides)
-- Entry level — smart bettor testing the waters
+- Gets 3 picks guaranteed (2 standard + 1 loyalty bonus pick — Starter buyers only get 2, no bonus), sometimes up to 4 if the Boss drops extra
+- Entry level for real committed bettors — not just a taste test like Starter
 - Only gets Metallica picks
+- Metallica+ tiers also get VIP priority in this chat — treat these fans with extra attentiveness, answer them first if you are mid-conversation with multiple people, and mention the loyalty bonus pick if they ask why Metallica is worth it over Starter
 
 GOLD — $150 / 24 hours
 - Gets 2 to 5 picks for the day
@@ -1268,8 +1269,11 @@ function renderBrandFooterTag(){
 function renderFanView(){
   const names={starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
   const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  const pickLimits={starter:2,metallica:2,gold:4,purple:5,allaccess:999};
+  const pickLimits={starter:2,metallica:3,gold:4,purple:5,allaccess:999};
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
+  if(userTier && userTier!=='starter'){
+    html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
+  }
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
     html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;return renderPickCardV2(p);}).join('')}</div>`;
@@ -1291,7 +1295,7 @@ function renderFanView(){
 
 const TIER_RULES = {
   starter: 'Starter Pick — <b>2 picks</b>, locked for <b>24 hours</b>. Perfect way to test us out before going all in.',
-  metallica: 'Metallica — <b>2 picks</b>, locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
+  metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
   gold: 'Gold — <b>4-teamer</b>, locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours.',
   purple: 'Purple — <b>72 hours</b> (3 days). Anything dropped in Purple, you get it for 3 full days.',
   allaccess: 'All-Access — <b>168 hours</b> (7 days). Anything dropped in any tier, you get it for 7 full days.'
