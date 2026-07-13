@@ -1225,7 +1225,7 @@ async function setResult(tier,idx,result){
 }
 
 function renderPicksList(){
-  ['metallica','gold','purple','allaccess'].forEach(tier=>{
+  ['starter','metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);if(!el)return;
     el.innerHTML=picks[tier].length
       ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:600;font-size:12px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'WIN':p.result==='loss'?'LOSS':'PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">Win</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">Loss</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">Push</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">Remove</button></div>`).join('')
