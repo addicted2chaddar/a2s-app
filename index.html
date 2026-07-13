@@ -1290,9 +1290,13 @@ function renderFanView(){
   const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
   const pickLimits={starter:2,metallica:3,gold:5,purple:6,allaccess:999};
 
-  // GATE: verified fans still cannot see actual picks until the countdown hits zero
+  // GATE: verified fans cannot see actual picks until the countdown hits zero —
+  // but only for their FIRST reveal. Once a fan has legitimately seen a live drop,
+  // they keep continuous access even if the admin later sets a new dropTarget
+  // for the next batch of games (e.g. Purple/All-Access multi-day subscribers).
   const nowSec = Math.floor(Date.now()/1000);
-  if(dropTarget && dropTarget > nowSec){
+  const hasUnlockedBefore = localStorage.getItem('a2s_has_seen_drop') === 'true';
+  if(dropTarget && dropTarget > nowSec && !hasUnlockedBefore){
     const diff = dropTarget - nowSec;
     const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
     document.getElementById('fanPicksSection').innerHTML = `
@@ -1308,6 +1312,7 @@ function renderFanView(){
     return;
   }
 
+  localStorage.setItem('a2s_has_seen_drop', 'true');
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   if(userTier && userTier!=='starter'){
     html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
