@@ -947,7 +947,7 @@ CLOSING INFO — PAYPAL IS PRIMARY RIGHT NOW:
 PayPal links are PER TIER — always give the link matching the tier you just sold:
 - Starter ($15): https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E
 - Metallica ($125): https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS
-- Gold, Purple, All-Access: no direct link built yet — tell them "hit up our Instagram DM and we'll get you a link for that tier right now" instead of giving the wrong link
+- Gold, Purple, All-Access: no direct link built yet — do NOT tell fans to DM us. Instead say something like "that tier's link is being finalized right now — Starter or Metallica are live and ready to go if you want in today, or check back shortly for the rest." Never invite DMs as a payment workaround.
 Instagram: @addiicted2sports
 Website: addiicted2chaddar.github.io/a2s-app
 
@@ -1314,7 +1314,7 @@ function renderPaypalBtn(tier){
   if(link){
     el.innerHTML = `<a href="${link}" target="_blank" class="paypal-button">Pay with PayPal — ${tier==='starter'?'$15':'$125'}</a>`;
   } else {
-    el.innerHTML = `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">DM us on Instagram to pay for this tier — direct link coming soon</div>`;
+    el.innerHTML = `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">Direct payment link for this tier is being finalized — check back shortly</div>`;
   }
 }
 function renderStripeCardBtn(tier){
