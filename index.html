@@ -1198,6 +1198,7 @@ setInterval(()=>{
   const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
   document.getElementById('countdownTimer').textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   document.getElementById('countdownStatus').textContent='Picks dropping soon...';
+  if(userVerified) renderFanView(); // keep the verified-waiting countdown ticking live too
 },1000);
 
 setInterval(async()=>{
@@ -1288,6 +1289,25 @@ function renderFanView(){
   const names={starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
   const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
   const pickLimits={starter:2,metallica:3,gold:5,purple:6,allaccess:999};
+
+  // GATE: verified fans still cannot see actual picks until the countdown hits zero
+  const nowSec = Math.floor(Date.now()/1000);
+  if(dropTarget && dropTarget > nowSec){
+    const diff = dropTarget - nowSec;
+    const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+    document.getElementById('fanPicksSection').innerHTML = `
+      <div style="text-align:center;padding:40px 20px;">
+        <div style="color:var(--green);font-weight:700;font-size:13px;margin-bottom:10px;letter-spacing:0.5px;">✓ PAYMENT VERIFIED</div>
+        <div style="color:var(--white);font-size:20px;font-weight:700;font-family:'Courier New',monospace;margin-bottom:8px;">${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}</div>
+        <div style="color:var(--slate);font-size:12px;line-height:1.6;">Your picks are locked and loading — they unlock the instant the countdown hits zero. No need to refresh, this updates automatically.</div>
+      </div>`;
+    renderBrandFooterTag();
+    const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
+    if(flagWrap) flagWrap.classList.remove('active');
+    if(recordStrip) recordStrip.style.display='none';
+    return;
+  }
+
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   if(userTier && userTier!=='starter'){
     html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
