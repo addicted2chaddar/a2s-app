@@ -1052,7 +1052,14 @@ async function ghRead(){
     const r = await fetch(RAW_URL + '?t=' + Date.now());
     if(!r.ok) throw new Error('read fail');
     const data = await r.json();
-    picks = data.picks || {metallica:[],gold:[],purple:[],allaccess:[]};
+    const loadedPicks = data.picks || {};
+    picks = {
+      starter: loadedPicks.starter || [],
+      metallica: loadedPicks.metallica || [],
+      gold: loadedPicks.gold || [],
+      purple: loadedPicks.purple || [],
+      allaccess: loadedPicks.allaccess || []
+    };
     dropTarget = data.drop || 0;
     setSyncBadge('Live — synced across all devices');
     return true;
