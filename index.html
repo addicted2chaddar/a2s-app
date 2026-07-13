@@ -486,7 +486,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div id="stripeCardBtnWrap" style="margin-bottom:16px;"></div>
       <label class="form-label">PayPal receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
-      <button class="btn btn-primary" onclick="verifyAndUnlock()" style="margin-top:16px;">Unlock picks</button>
+      <button class="btn btn-primary" id="verifyBtn" onclick="verifyAndUnlock()" style="margin-top:16px;">Unlock picks</button>
       <div class="success-message" id="successMessage">Payment verified — picks unlocked.</div>
       <div style="margin-top:14px;padding:10px 14px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;font-size:11px;color:var(--slate);line-height:1.7;text-align:left;">
         Your unlock is saved to this browser only. If you switch devices or clear your cache, screenshot your receipt # so you can re-enter it here — no need to pay again.
@@ -1074,6 +1074,41 @@ async function ghRead(){
   }
 }
 
+async function claimReceiptGlobally(receipt){
+  // Cross-device check: prevents the same PayPal receipt from being used to
+  // unlock picks on multiple different phones (e.g. 3 friends splitting one payment).
+  for(let attempt=0; attempt<3; attempt++){
+    try{
+      const metaR = await fetch(API_URL+'?t='+Date.now(), {
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
+      });
+      if(!metaR.ok) return {ok:false, reason:'network'};
+      const meta = await metaR.json();
+      const current = JSON.parse(atob(meta.content));
+      current.usedReceipts = current.usedReceipts || [];
+      if(current.usedReceipts.includes(receipt)){
+        return {ok:false, reason:'duplicate'};
+      }
+      current.usedReceipts.push(receipt);
+      const json = JSON.stringify(current, null, 2);
+      const bytes = new TextEncoder().encode(json);
+      let binary=''; bytes.forEach(b=>binary+=String.fromCharCode(b));
+      const encoded = btoa(binary);
+      const putR = await fetch(API_URL, {
+        method:'PUT',
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+        body: JSON.stringify({message:'claim receipt '+receipt, content:encoded, sha:meta.sha})
+      });
+      if(putR.ok) return {ok:true};
+      if(putR.status===409){ continue; } // another device wrote first, retry from top
+      return {ok:false, reason:'network'};
+    }catch(e){
+      if(attempt===2) return {ok:false, reason:'network'};
+    }
+  }
+  return {ok:false, reason:'duplicate'};
+}
+
 async function ghWrite(data){
   setSaveStatus('saving');
   try{
@@ -1380,7 +1415,7 @@ const STARTER_MAX_USES = 5;
 function getStarterCount(){ return parseInt(localStorage.getItem('a2s_starter_count')||'0',10); }
 function starterCapReached(){ return getStarterCount() >= STARTER_MAX_USES; }
 
-function verifyAndUnlock(){
+async function verifyAndUnlock(){
   if(selectedTier==='starter' && starterCapReached()){
     alert("You've used all "+STARTER_MAX_USES+" Starter Pick trials on this device. Time to level up — grab Metallica for 3 real picks and VIP access instead.");
     selectTier('metallica', document.querySelector('.tier-card'));
@@ -1397,6 +1432,19 @@ function verifyAndUnlock(){
   const used=JSON.parse(localStorage.getItem(usedKey)||'[]');
   if(used.includes(receipt)){
     alert('This receipt number was already used to unlock picks on this device. If this is a mistake, use the screenshot upload in the Victoria chat for manual verification.');
+    return;
+  }
+  const btn=document.getElementById('verifyBtn');
+  const originalBtnText = btn ? btn.textContent : '';
+  if(btn){ btn.textContent='Checking...'; btn.disabled=true; }
+  const claim = await claimReceiptGlobally(receipt);
+  if(btn){ btn.textContent=originalBtnText; btn.disabled=false; }
+  if(!claim.ok){
+    if(claim.reason==='duplicate'){
+      alert('This receipt number has already been used to unlock picks — on this device or another one. Each PayPal payment unlocks picks for ONE person only. If you believe this is a mistake, use the screenshot upload in the Victoria chat for manual verification.');
+    }else{
+      alert('Could not verify right now — check your connection and try again in a moment.');
+    }
     return;
   }
   used.push(receipt);
