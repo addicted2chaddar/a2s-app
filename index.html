@@ -918,10 +918,11 @@ METALLICA — $125 / 24 hours
 - Metallica+ tiers also get VIP priority in this chat — treat these fans with extra attentiveness, answer them first if you are mid-conversation with multiple people, and mention the loyalty bonus pick if they ask why Metallica is worth it over Starter
 
 GOLD — $150 / 24 hours
-- Gets 2 to 5 picks for the day
+- Gets up to 5 picks for the day, including 1 loyalty bonus pick on top of the standard drop
 - INCLUDES everything the Boss drops in that package
-- ALSO GETS all Metallica picks — because Gold is a higher package
-- So Gold fans get: Gold picks + Metallica picks
+- ALSO GETS all Metallica picks (which now include Metallica's own bonus pick too) — because Gold is a higher package
+- So Gold fans get: Gold picks (up to 5, bonus included) + Metallica picks (3, bonus included) — real stacked volume, not just a slightly bigger Metallica
+- If a Gold fan compares themselves to Metallica, remind them Gold stacks on top of Metallica entirely — they are never getting less than a Metallica buyer, only more
 
 PURPLE — $175 / 72 hours (3 full days)
 - Gets all Purple picks dropped over 3 days
@@ -1269,7 +1270,7 @@ function renderBrandFooterTag(){
 function renderFanView(){
   const names={starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
   const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  const pickLimits={starter:2,metallica:3,gold:4,purple:5,allaccess:999};
+  const pickLimits={starter:2,metallica:3,gold:5,purple:5,allaccess:999};
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   if(userTier && userTier!=='starter'){
     html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
@@ -1296,7 +1297,7 @@ function renderFanView(){
 const TIER_RULES = {
   starter: 'Starter Pick — <b>2 picks</b>, locked for <b>24 hours</b>. Perfect way to test us out before going all in.',
   metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
-  gold: 'Gold — <b>4-teamer</b>, locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours.',
+  gold: 'Gold — <b>up to 5 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours — plus everything Metallica gets.',
   purple: 'Purple — <b>72 hours</b> (3 days). Anything dropped in Purple, you get it for 3 full days.',
   allaccess: 'All-Access — <b>168 hours</b> (7 days). Anything dropped in any tier, you get it for 7 full days.'
 };
