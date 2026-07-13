@@ -316,6 +316,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="form-group">
       <label class="form-label">Tier</label>
       <div class="tier-selector">
+        <button class="tier-btn" data-tier="starter">Starter</button>
         <button class="tier-btn active" data-tier="metallica">Metallica</button>
         <button class="tier-btn" data-tier="gold">Gold</button>
         <button class="tier-btn" data-tier="purple">Purple</button>
@@ -346,6 +347,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     </div>
     <button class="btn btn-primary" id="addPickBtn">Add pick</button>
     <div class="picks-list active" id="picksList" style="margin-top:20px;">
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Starter</div>
+        <div id="picksList-starter"></div>
+      </div>
       <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
         <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Metallica</div>
         <div id="picksList-metallica"></div>
@@ -438,12 +443,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div class="payment-title">Verify payment</div>
       <label class="form-label">Select your tier</label>
       <div class="tier-choice">
+        <div class="tier-card" onclick="selectTier('starter',this)"><div class="tier-name">Starter</div><div class="tier-price">$15 · 24h</div></div>
         <div class="tier-card active" onclick="selectTier('metallica',this)"><div class="tier-name">Metallica</div><div class="tier-price">$125 · 24h</div></div>
         <div class="tier-card" onclick="selectTier('gold',this)"><div class="tier-name">Gold</div><div class="tier-price">$150 · 24h</div></div>
         <div class="tier-card" onclick="selectTier('purple',this)"><div class="tier-name">Purple</div><div class="tier-price">$175 · 72h</div></div>
         <div class="tier-card" onclick="selectTier('allaccess',this)"><div class="tier-name">All-Access</div><div class="tier-price">$275 · 168h</div></div>
       </div>
       <div class="tier-explainer" id="tierExplainer"></div>
+      <div id="paypalBtnWrap" style="margin-bottom:12px;"></div>
       <div id="stripeCardBtnWrap" style="margin-bottom:16px;"></div>
       <label class="form-label">PayPal receipt #</label>
       <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
@@ -491,6 +498,10 @@ const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
 
+const PAYPAL_LINKS = {
+  starter: 'https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E',
+  metallica: 'https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS'
+};
 const STRIPE_LINKS = {
   metallica: 'https://buy.stripe.com/aFa00c2VEa2UaZOaV293y00',
   gold: 'https://buy.stripe.com/14A00ceEm7UM9VKaV293y02',
@@ -594,7 +605,7 @@ function getTeamLogoUrl(teamText){
   return FALLBACK_LOGO;
 }
 
-let picks = {metallica:[],gold:[],purple:[],allaccess:[]};
+let picks = {starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
 let currentTier = 'metallica';
 let selectedTier = 'metallica';
@@ -1141,7 +1152,7 @@ async function saveToGitHub(){
 
 async function clearAllPicks(){
   if(!confirm('Clear all picks from all devices?'))return;
-  picks={metallica:[],gold:[],purple:[],allaccess:[]};
+  picks={starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
   await ghWrite({picks,drop:dropTarget});
   renderPicksList();
   alert('All picks cleared');
@@ -1200,9 +1211,9 @@ function renderBrandFooterTag(){
 }
 
 function renderFanView(){
-  const names={metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
-  const access={metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  const pickLimits={metallica:2,gold:4,purple:5,allaccess:999};
+  const names={starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
+  const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
+  const pickLimits={starter:2,metallica:2,gold:4,purple:5,allaccess:999};
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
@@ -1224,6 +1235,7 @@ function renderFanView(){
 }
 
 const TIER_RULES = {
+  starter: 'Starter Pick — <b>2 picks</b>, locked for <b>24 hours</b>. Perfect way to test us out before going all in.',
   metallica: 'Metallica — <b>2 picks</b>, locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
   gold: 'Gold — <b>4-teamer</b>, locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours.',
   purple: 'Purple — <b>72 hours</b> (3 days). Anything dropped in Purple, you get it for 3 full days.',
@@ -1235,6 +1247,16 @@ function renderTierExplainer(tier){
   el.innerHTML = TIER_RULES[tier] || '';
 }
 
+function renderPaypalBtn(tier){
+  const el = document.getElementById('paypalBtnWrap');
+  if(!el) return;
+  const link = PAYPAL_LINKS[tier];
+  if(link){
+    el.innerHTML = `<a href="${link}" target="_blank" class="paypal-button">Pay with PayPal — ${tier==='starter'?'$15':'$125'}</a>`;
+  } else {
+    el.innerHTML = `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">DM us on Instagram to pay for this tier — direct link coming soon</div>`;
+  }
+}
 function renderStripeCardBtn(tier){
   const el = document.getElementById('stripeCardBtnWrap');
   if(!el) return;
@@ -1246,7 +1268,7 @@ function renderStripeCardBtn(tier){
   }
 }
 
-function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderStripeCardBtn(tier);}
+function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);}
 function verifyAndUnlock(){
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
   if(!receipt){alert('Enter PayPal receipt #');return;}
@@ -1389,7 +1411,7 @@ async function init(){
   updateDateTime();
   setInterval(updateDateTime,30000);
   renderTierExplainer('metallica');
-  renderStripeCardBtn('metallica');
+  renderPaypalBtn('metallica');renderStripeCardBtn('metallica');
   await ghRead();
   renderPicksList();
   renderFomo();
