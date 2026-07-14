@@ -16,7 +16,7 @@
         "odds": "-750",
         "time": "9:00 PM ET  /  6:00 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1783958247137
       }
     ],
@@ -172,5 +172,5 @@
     ],
     "allaccess": []
   },
-  "drop": 1783980000
+  "drop": 0
 }
