@@ -16,7 +16,7 @@
         "odds": "-750",
         "time": "9:00 PM ET  /  6:00 PM PT",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1783958247137
       }
     ],
@@ -101,6 +101,15 @@
         "note": "MLB",
         "result": "",
         "id": 1783868376278
+      },
+      {
+        "team": "France 🇫🇷",
+        "betType": "MONEYLINE",
+        "odds": "+135",
+        "time": "12:00 Pm PT",
+        "note": "Soccer ⚽️",
+        "result": "",
+        "id": 1784036038582
       }
     ],
     "gold": [
