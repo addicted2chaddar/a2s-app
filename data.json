@@ -18,6 +18,24 @@
         "note": "",
         "result": "win",
         "id": 1783958247137
+      },
+      {
+        "team": "GSV",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "5 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1784122998398
+      },
+      {
+        "team": "Sea",
+        "betType": "SPREAD",
+        "odds": "+2",
+        "time": "9 am pt",
+        "note": "",
+        "result": "",
+        "id": 1784123027751
       }
     ],
     "metallica": [
@@ -110,6 +128,24 @@
         "note": "Soccer ⚽️",
         "result": "loss",
         "id": 1784036038582
+      },
+      {
+        "team": "LAS",
+        "betType": "SPREAD",
+        "odds": "+10.5",
+        "time": "10.AM",
+        "note": "",
+        "result": "",
+        "id": 1784123061726
+      },
+      {
+        "team": "Argentina 🇦🇷",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "12 noon pm pt",
+        "note": "",
+        "result": "",
+        "id": 1784123092557
       }
     ],
     "gold": [
