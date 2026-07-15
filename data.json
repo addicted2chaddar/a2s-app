@@ -27,7 +27,7 @@
         "odds": "+10.5",
         "time": "10am pt",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784123574214
       },
       {
@@ -36,7 +36,7 @@
         "odds": "+1.5",
         "time": "12 noon pt",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784123609596
       }
     ],
