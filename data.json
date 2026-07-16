@@ -1,10 +1,48 @@
 {
   "picks": {
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "GSV",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "5 pn pt",
+        "note": "",
+        "result": "win",
+        "id": 1784123441690
+      },
+      {
+        "team": "Sea  Strom",
+        "betType": "SPREAD",
+        "odds": "+2",
+        "time": "9 am pt",
+        "note": "",
+        "result": "loss",
+        "id": 1784123488235
+      }
+    ],
+    "metallica": [
+      {
+        "team": "LSA",
+        "betType": "SPREAD",
+        "odds": "+10.5",
+        "time": "10am pt",
+        "note": "",
+        "result": "win",
+        "id": 1784123574214
+      },
+      {
+        "team": "Argentina 🇦🇷",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "12 noon pt",
+        "note": "",
+        "result": "win",
+        "id": 1784123609596
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1784215860
+  "drop": 1784127600
 }
