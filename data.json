@@ -2,44 +2,25 @@
   "picks": {
     "starter": [
       {
-        "team": "GSV",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "5 pn pt",
-        "note": "",
-        "result": "win",
-        "id": 1784123441690
+        "team": "METS",
+        "betType": "MONEYLINE",
+        "odds": "+1.5 -186",
+        "time": "7:11 PM ET  /  4:11 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1784237717943
       },
       {
-        "team": "Sea  Strom",
+        "team": "Portland Fire 10-14 , 4-8 Away",
         "betType": "SPREAD",
-        "odds": "+2",
-        "time": "9 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1784123488235
+        "odds": "+6.5 -115",
+        "time": "",
+        "note": "WMBA",
+        "result": "",
+        "id": 1784237826773
       }
     ],
-    "metallica": [
-      {
-        "team": "LSA",
-        "betType": "SPREAD",
-        "odds": "+10.5",
-        "time": "10am pt",
-        "note": "",
-        "result": "win",
-        "id": 1784123574214
-      },
-      {
-        "team": "Argentina 🇦🇷",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "12 noon pt",
-        "note": "",
-        "result": "win",
-        "id": 1784123609596
-      }
-    ],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
