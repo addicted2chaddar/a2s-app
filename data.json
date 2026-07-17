@@ -36,9 +36,55 @@
         "note": "wnba",
         "result": "",
         "id": 1784293530690
+      },
+      {
+        "team": "DODGERS VS YANKEES",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 9",
+        "time": "4 05 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1784322101467
+      },
+      {
+        "team": "CONNECTICUT SUN VS PHOENIX MERCURY",
+        "betType": "OVER/UNDER",
+        "odds": "166.5",
+        "time": "7 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1784322173962
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "PITRATES VS GUARDIANS",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 7.5",
+        "time": "4 10 PM",
+        "note": "",
+        "result": "",
+        "id": 1784322256021
+      },
+      {
+        "team": "ORIOLES",
+        "betType": "MONEYLINE",
+        "odds": "-105",
+        "time": "5 10 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1784322297324
+      },
+      {
+        "team": "NATIONALS",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "6 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1784322355682
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
