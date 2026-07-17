@@ -18,6 +18,15 @@
         "note": "WMBA",
         "result": "win",
         "id": 1784237826773
+      },
+      {
+        "team": "Tampa Bay Rays",
+        "betType": "MONEYLINE",
+        "odds": "+103",
+        "time": "10:35 am pt",
+        "note": "MLB",
+        "result": "",
+        "id": 1784292836041
       }
     ],
     "metallica": [],
