@@ -34,7 +34,7 @@
         "odds": "-110",
         "time": "4:30 PM",
         "note": "wnba",
-        "result": "win",
+        "result": "",
         "id": 1784293530690
       },
       {
@@ -43,7 +43,7 @@
         "odds": "UNDER 9",
         "time": "4 05 PM PT",
         "note": "",
-        "result": "win",
+        "result": "loss",
         "id": 1784322101467
       },
       {
@@ -63,7 +63,7 @@
         "odds": "UNDER 7.5",
         "time": "4 10 PM",
         "note": "",
-        "result": "push",
+        "result": "",
         "id": 1784322256021
       },
       {
@@ -72,7 +72,7 @@
         "odds": "-105",
         "time": "5 10 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784322297324
       },
       {
@@ -81,7 +81,7 @@
         "odds": "-140",
         "time": "6 40 PM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784322355682
       }
     ],
