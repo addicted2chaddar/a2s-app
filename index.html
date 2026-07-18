@@ -126,6 +126,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .gotm-price-new{font-size:28px;font-weight:700;color:var(--gold-bright);}
 .gotm-save{font-size:10px;background:var(--green);color:#06210f;font-weight:700;padding:3px 9px;border-radius:4px;}
 .paypal-button{background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#1a1400;padding:15px 24px;border-radius:10px;border:none;font-weight:700;font-size:14px;cursor:pointer;width:100%;text-decoration:none;display:inline-block;text-align:center;letter-spacing:0.3px;}
+.quick-cta-row{display:flex;gap:8px;margin:10px 0;}
+.quick-cta-green{background:linear-gradient(180deg,#3ec97a,#1f7a45);color:#06210f;padding:14px 10px;border-radius:10px;border:none;font-weight:800;font-size:13px;cursor:pointer;flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center;letter-spacing:0.2px;box-shadow:0 2px 10px rgba(47,174,101,0.35);}
+.quick-cta-green:active{filter:brightness(0.92);}
 #fomoSection{margin-top:6px;}
 .fomo-head{text-align:center;padding:18px 0 6px;}
 .fomo-headline{font-size:20px;font-weight:700;color:var(--gold-bright);letter-spacing:0.5px;}
@@ -290,6 +293,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div style="font-size:10.5px;color:var(--slate);margin-top:8px;line-height:1.5;">Picks drop 1 hour before game start — no matter where you are in the world 🌎</div>
   </div>
   <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.3px;">🏀⚾🌎 TODAY: MLB, WNBA & World Cup Soccer picks are live</div>
+  <div class="quick-cta-row">
+    <a href="https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E" target="_blank" class="quick-cta-green">⚡ Try it — $15</a>
+    <a href="#paymentWall" class="quick-cta-green" onclick="document.getElementById('paymentWall').scrollIntoView({behavior:'smooth'});return false;">🔓 Unlock Picks</a>
+  </div>
   <div class="header-info">
     <div class="info-item"><div class="info-label">Date</div><div class="info-value" id="dateDisplay">Today</div></div>
     <div class="info-item"><div class="info-label">Time</div><div class="info-value" id="timeDisplay">--:--</div></div>
