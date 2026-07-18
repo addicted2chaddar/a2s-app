@@ -1,6 +1,25 @@
 {
   "picks": {
-    "starter": [],
+    "starter": [
+      {
+        "team": "Pittsburgh pirates ☠️",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "10 am pt",
+        "note": "MLB",
+        "result": "",
+        "id": 1784381424782
+      },
+      {
+        "team": "Houston Astros vs Baltimore Orioles",
+        "betType": "OVER/UNDER",
+        "odds": "Over 8.5",
+        "time": "10 am pt",
+        "note": "",
+        "result": "",
+        "id": 1784381518000
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
