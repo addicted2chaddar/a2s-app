@@ -294,8 +294,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
   </div>
   <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.3px;">🏀⚾🌎 TODAY: MLB, WNBA & World Cup Soccer picks are live</div>
   <div style="background:rgba(47,174,101,0.08);border:1px solid var(--green);border-radius:10px;padding:12px 14px;margin:10px 0 6px;text-align:center;">
-    <div style="color:var(--green);font-weight:800;font-size:13px;letter-spacing:0.3px;">WE'RE 2-FOR-2 THIS WEEK 🔥</div>
-    <div style="color:var(--white);font-size:11.5px;margin-top:4px;line-height:1.5;">Every pick verified. Every result public. No cherry-picking.</div>
+    <div style="color:var(--green);font-weight:800;font-size:13px;letter-spacing:0.3px;" id="heroStreakLine">PICKS ARE LIVE RIGHT NOW 🔥</div>
+    <div style="color:var(--white);font-size:11.5px;margin-top:4px;line-height:1.5;" id="heroSubLine">Every pick verified. Every result public. No cherry-picking.</div>
     <div style="color:var(--slate);font-size:11px;margin-top:4px;">Today's play drops in <b style="color:var(--gold);">1hr before game start</b> — miss it, miss the number.</div>
   </div>
   <div class="quick-cta-row">
@@ -1666,6 +1666,20 @@ function initProofStrip(){
   if(wEl) wEl.textContent = wins>0?wins:'—';
   if(pEl) pEl.textContent = pct;
   if(sEl) sEl.textContent = streak>0?streak+'W':'—';
+
+  const heroStreakEl = document.getElementById('heroStreakLine');
+  const heroSubEl = document.getElementById('heroSubLine');
+  if(heroStreakEl){
+    if(streak>=2) heroStreakEl.textContent = `WE'RE ON A ${streak}-GAME WIN STREAK 🔥`;
+    else if(wins>losses && wins>0) heroStreakEl.textContent = `WE'RE ${wins}-${losses} THIS WEEK 🔥`;
+    else if(total>0) heroStreakEl.textContent = `${wins}-${losses}${pushes>0?'-'+pushes:''} — PICKS ARE LIVE 🔥`;
+    else heroStreakEl.textContent = 'PICKS ARE LIVE RIGHT NOW 🔥';
+  }
+  if(heroSubEl){
+    heroSubEl.textContent = total>0
+      ? `Every pick verified. ${pct} hit rate. No cherry-picking.`
+      : `Every pick verified. Every result public. No cherry-picking.`;
+  }
 
   const ticker = document.getElementById('proofTicker');
   if(ticker) ticker.innerHTML = `<div class="proof-ticker-inner">${buildProofTickerHtml()}</div>`;
