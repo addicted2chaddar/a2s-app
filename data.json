@@ -20,8 +20,55 @@
         "id": 1784381518000
       }
     ],
-    "metallica": [],
-    "gold": [],
+    "metallica": [
+      {
+        "team": "France 🇫🇷",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "5 pm ET/2 Pm PT westcoast time",
+        "note": "",
+        "result": "",
+        "id": 1784388503835
+      },
+      {
+        "team": "Guardians",
+        "betType": "MONEYLINE",
+        "odds": "-122",
+        "time": "1:11 PM ET/ 10:11 AM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1784388725760
+      },
+      {
+        "team": "Phillies",
+        "betType": "MONEYLINE",
+        "odds": "-166",
+        "time": "4:06 PM ET/1:06 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1784388990892
+      }
+    ],
+    "gold": [
+      {
+        "team": "Yankees",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "8 :09 PM/ET / 5 :09 PM PT",
+        "note": "Baseball ⚾️",
+        "result": "",
+        "id": 1784389102310
+      },
+      {
+        "team": "Liberty 🗽",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "8:00 PM ET/5 :00 PM PT",
+        "note": "WNBA",
+        "result": "",
+        "id": 1784389246969
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
