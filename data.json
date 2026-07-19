@@ -83,7 +83,7 @@
         "odds": "-166",
         "time": "2:21 PM ET  /  11:21 AM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784475349653
       }
     ],
@@ -103,7 +103,7 @@
         "odds": "-116",
         "time": "2:11 PM ET  /  11:11 AM PT",
         "note": "",
-        "result": "loss",
+        "result": "",
         "id": 1784475463331
       },
       {
@@ -121,7 +121,7 @@
         "odds": "-134",
         "time": "1:36 PM ET  /  10:36 AM PT",
         "note": "",
-        "result": "win",
+        "result": "",
         "id": 1784475575040
       },
       {
@@ -130,7 +130,7 @@
         "odds": "-162",
         "time": "3:11 PM ET  /  12:11 PM PT",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1784475657730
       }
     ],
