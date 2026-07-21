@@ -2,139 +2,19 @@
   "picks": {
     "starter": [
       {
-        "team": "Seattle Mariners -196",
+        "team": "Los Angeles Dodgers +106",
         "betType": "MONEYLINE",
-        "odds": "-196",
-        "time": "4:11 PM ET  /  1:11 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784474772606
-      },
-      {
-        "team": "Detroit Tigers -152",
-        "betType": "MONEYLINE",
-        "odds": "-152",
-        "time": "4:08 PM ET  /  1:08 PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1784474827620
+        "odds": "+106",
+        "time": "6:41 PM ET  /  3:41 PM PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1784668667436
       }
     ],
-    "metallica": [
-      {
-        "team": "Phoenix Mercury",
-        "betType": "MONEYLINE",
-        "odds": "-170",
-        "time": "7:00 PM ET  /  4:00 PM PT",
-        "note": "wnba",
-        "result": "win",
-        "id": 1784474905605
-      },
-      {
-        "team": "Argentina +270",
-        "betType": "MONEYLINE",
-        "odds": "3:00 PM ET  /  12:00 PM PT",
-        "time": "+270",
-        "note": "",
-        "result": "loss",
-        "id": 1784474971404
-      },
-      {
-        "team": "Atlanta Dream -700",
-        "betType": "MONEYLINE",
-        "odds": "-700",
-        "time": "4:00 PM ET  /  1:00 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475053553
-      }
-    ],
-    "gold": [
-      {
-        "team": "Houston Astros -116",
-        "betType": "MONEYLINE",
-        "odds": "-116",
-        "time": "2:11 PM ET  /  11:11 AM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1784475113870
-      },
-      {
-        "team": "Chicago White Sox -120",
-        "betType": "MONEYLINE",
-        "odds": "-120",
-        "time": "12:16 PM ET  /  9:16 AM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475176571
-      },
-      {
-        "team": "Los Angeles Dodgers -130",
-        "betType": "MONEYLINE",
-        "odds": "-130",
-        "time": "12:36 PM ET  /  9:36 AM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475243910
-      },
-      {
-        "team": "Chicago Cubs -166",
-        "betType": "MONEYLINE",
-        "odds": "-166",
-        "time": "2:21 PM ET  /  11:21 AM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475349653
-      }
-    ],
-    "purple": [
-      {
-        "team": "Milwaukee Brewers -130",
-        "betType": "MONEYLINE",
-        "odds": "-130",
-        "time": "2:11 PM ET  /  11:11 AM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475411515
-      },
-      {
-        "team": "Kansas City Royals -116",
-        "betType": "MONEYLINE",
-        "odds": "-116",
-        "time": "2:11 PM ET  /  11:11 AM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1784475463331
-      },
-      {
-        "team": "Cleveland Guardians -116",
-        "betType": "MONEYLINE",
-        "odds": "-116",
-        "time": "1:41 PM ET  /  10:41 AM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1784475518308
-      },
-      {
-        "team": "New York Mets -134",
-        "betType": "MONEYLINE",
-        "odds": "-134",
-        "time": "1:36 PM ET  /  10:36 AM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475575040
-      },
-      {
-        "team": "Cincinnati Reds -162",
-        "betType": "MONEYLINE",
-        "odds": "-162",
-        "time": "3:11 PM ET  /  12:11 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1784475657730
-      }
-    ],
+    "metallica": [],
+    "gold": [],
+    "purple": [],
     "allaccess": []
   },
-  "drop": 1784559600
+  "drop": 1784672848
 }
