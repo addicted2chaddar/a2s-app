@@ -1,20 +1,10 @@
 {
   "picks": {
-    "starter": [
-      {
-        "team": "Los Angeles Dodgers +106",
-        "betType": "MONEYLINE",
-        "odds": "+106",
-        "time": "6:41 PM ET  /  3:41 PM PT",
-        "note": "MLB",
-        "result": "win",
-        "id": 1784668667436
-      }
-    ],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1784919600
+  "drop": 1784930400
 }
