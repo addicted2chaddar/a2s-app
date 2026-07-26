@@ -1718,15 +1718,103 @@ function refreshStarterCardUI(){
 const FREE_MAX_USES = 3;
 function getFreeCount(){ return parseInt(localStorage.getItem('a2s_free_count')||'0',10); }
 function freeCapReached(){ return getFreeCount() >= FREE_MAX_USES; }
-function claimFreePick(){
+
+// Device fingerprint: combines canvas render + navigator/screen signals into one id.
+// Cached in localStorage so it's stable across visits on the same browser, but unlike
+// the plain claim counter, a fan can't beat this just by clearing localStorage alone —
+// the true count lives server-side in data.json keyed by this fingerprint.
+function getDeviceFingerprint(){
+  try{
+    const cached = localStorage.getItem('a2s_fp');
+    if(cached) return cached;
+    const parts = [
+      navigator.userAgent||'',
+      navigator.language||'',
+      screen.width+'x'+screen.height+'x'+screen.colorDepth,
+      (Intl.DateTimeFormat().resolvedOptions().timeZone)||'',
+      navigator.hardwareConcurrency||'',
+      navigator.deviceMemory||'',
+      navigator.platform||''
+    ];
+    try{
+      const c = document.createElement('canvas');
+      const ctx = c.getContext('2d');
+      ctx.textBaseline='top';ctx.font='14px Arial';ctx.fillText('a2s-fp-'+navigator.userAgent,2,2);
+      parts.push(c.toDataURL());
+    }catch(e){}
+    const str = parts.join('||');
+    let hash = 0;
+    for(let i=0;i<str.length;i++){ hash = ((hash<<5)-hash+str.charCodeAt(i))|0; }
+    const fp = 'fp_'+Math.abs(hash).toString(36)+'_'+str.length;
+    localStorage.setItem('a2s_fp', fp);
+    return fp;
+  }catch(e){
+    return 'fp_unknown';
+  }
+}
+
+// Server-side check/increment against data.json.freeClaims[fingerprint] — same
+// GET-sha/edit/PUT-with-retry pattern as claimReceiptGlobally(), so clearing
+// browser storage or using incognito doesn't reset the count as long as the
+// fingerprint signals (screen, GPU/canvas render, timezone, etc.) stay the same.
+async function claimFreePickGlobally(fp){
+  for(let attempt=0; attempt<3; attempt++){
+    try{
+      const metaR = await fetch(API_URL+'?t='+Date.now(), {
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
+      });
+      if(!metaR.ok) return {ok:false, reason:'network'};
+      const meta = await metaR.json();
+      const current = JSON.parse(atob(meta.content));
+      current.freeClaims = current.freeClaims || {};
+      const count = current.freeClaims[fp] || 0;
+      if(count >= FREE_MAX_USES){
+        return {ok:false, reason:'cap', count};
+      }
+      current.freeClaims[fp] = count+1;
+      const json = JSON.stringify(current, null, 2);
+      const bytes = new TextEncoder().encode(json);
+      let binary=''; bytes.forEach(b=>binary+=String.fromCharCode(b));
+      const encoded = btoa(binary);
+      const putR = await fetch(API_URL, {
+        method:'PUT',
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+        body: JSON.stringify({message:'free claim', content:encoded, sha:meta.sha})
+      });
+      if(putR.ok) return {ok:true, count:count+1};
+      if(putR.status===409){ continue; } // another device wrote first, retry from top
+      return {ok:false, reason:'network'};
+    }catch(e){
+      if(attempt===2) return {ok:false, reason:'network'};
+    }
+  }
+  return {ok:false, reason:'network'};
+}
+
+async function claimFreePick(){
   if(freeCapReached()){
     alert("You've used all "+FREE_MAX_USES+" free picks on this device. Time to lock in real volume — grab Starter or Metallica below.");
     return;
   }
-  localStorage.setItem('a2s_free_count', String(getFreeCount()+1));
+  const btn = document.getElementById('freeCardBtn');
+  if(btn){ btn.style.opacity='0.6'; btn.style.pointerEvents='none'; }
+  const fp = getDeviceFingerprint();
+  const result = await claimFreePickGlobally(fp);
+  if(btn){ btn.style.opacity=''; btn.style.pointerEvents=''; }
+  if(!result.ok){
+    if(result.reason==='cap'){
+      localStorage.setItem('a2s_free_count', String(FREE_MAX_USES));
+      refreshFreeCardUI();
+      alert("You've already used all "+FREE_MAX_USES+" free picks — looks like this device (or one very similar) has been through this before. Time to grab Starter or Metallica.");
+    } else {
+      alert("Couldn't process your free pick right now — check your connection and try again.");
+    }
+    return;
+  }
+  localStorage.setItem('a2s_free_count', String(result.count));
   localStorage.setItem('a2s_user_verified',JSON.stringify({tier:'free',receipt:'FREE',purchaseTime:Date.now()}));
   userVerified=true;userTier='free';
-  logEvent('free_claim',{tier:'free',claimNumber:getFreeCount()});
+  logEvent('free_claim',{tier:'free',claimNumber:result.count});
   refreshFreeCardUI();
   setTimeout(showFanView,300);
 }
