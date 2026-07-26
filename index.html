@@ -315,6 +315,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div style="font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Admin — sync</div>
       <span id="saveStatus" style="font-size:11px;color:var(--green);">Ready</span>
     </div>
+    <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px;">Traffic analytics</div>
+        <button class="btn btn-sm btn-secondary" onclick="refreshAnalyticsPanel()">Refresh</button>
+      </div>
+      <div id="analyticsPanel" style="font-size:12px;color:var(--white);">
+        <div style="color:var(--slate);font-size:12px;padding:10px;">Tap Refresh to load.</div>
+      </div>
+    </div>
     <div class="timer-controls">
       <div class="timer-label">Drop timer — syncs to every fan device</div>
       <div class="timer-buttons">
@@ -334,6 +343,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="form-group">
       <label class="form-label">Tier</label>
       <div class="tier-selector">
+        <button class="tier-btn" data-tier="free">Free</button>
         <button class="tier-btn" data-tier="starter">Starter</button>
         <button class="tier-btn active" data-tier="metallica">Metallica</button>
         <button class="tier-btn" data-tier="gold">Gold</button>
@@ -365,6 +375,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     </div>
     <button class="btn btn-primary" id="addPickBtn">Add pick</button>
     <div class="picks-list active" id="picksList" style="margin-top:20px;">
+      <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Free</div>
+        <div id="picksList-free"></div>
+      </div>
       <div style="padding:14px;background:var(--vault-2);border-radius:10px;border:1px solid var(--hair-strong);margin-bottom:10px;">
         <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Starter</div>
         <div id="picksList-starter"></div>
@@ -416,6 +430,21 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
         <span class="gotm-save" id="gotmSave" style="display:none;">Included</span>
       </div>
       <a href="https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS" target="_blank" class="paypal-button">Get on the heater</a>
+    </div>
+  </div>
+
+  <div class="gotm-card" style="border-color:var(--gold-bright);">
+    <div class="gotm-header" style="background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright),var(--gold-dim));">
+      <div class="gotm-header-text" style="color:#06210f;">Free Pick</div>
+    </div>
+    <div class="gotm-body">
+      <div class="gotm-badge" style="border-color:var(--gold-bright);color:var(--gold-bright);">No payment · No risk</div>
+      <div class="gotm-title">TRY US FOR <span>$0</span></div>
+      <div class="gotm-sub">1 free pick, 24hr access — see the quality before you spend a dollar. One per device.</div>
+      <div class="gotm-price-row">
+        <span class="gotm-price-new">FREE</span>
+      </div>
+      <a href="javascript:void(0)" onclick="claimFreePick()" class="paypal-button" id="freeCardBtn" style="background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));color:#06210f;">Claim Free Pick</a>
     </div>
   </div>
 
@@ -540,6 +569,9 @@ const GH_REPO   = 'addicted2chaddar/a2s-app';
 const DATA_FILE = 'data.json';
 const RAW_URL   = `https://raw.githubusercontent.com/${GH_REPO}/main/${DATA_FILE}`;
 const API_URL   = `https://api.github.com/repos/${GH_REPO}/contents/${DATA_FILE}`;
+const ANALYTICS_FILE = 'analytics.json';
+const ANALYTICS_RAW_URL = `https://raw.githubusercontent.com/${GH_REPO}/main/${ANALYTICS_FILE}`;
+const ANALYTICS_API_URL = `https://api.github.com/repos/${GH_REPO}/contents/${ANALYTICS_FILE}`;
 
 const PAYPAL_LINKS = {
   starter: 'https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E',
@@ -752,7 +784,7 @@ function getTeamLogoUrl(teamText){
   return FALLBACK_LOGO;
 }
 
-let picks = {starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
+let picks = {free:[],starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTarget = 0;
 let currentTier = 'metallica';
 let selectedTier = 'metallica';
@@ -1174,6 +1206,7 @@ async function ghRead(){
     const data = await r.json();
     const loadedPicks = data.picks || {};
     picks = {
+      free: loadedPicks.free || [],
       starter: loadedPicks.starter || [],
       metallica: loadedPicks.metallica || [],
       gold: loadedPicks.gold || [],
@@ -1257,6 +1290,93 @@ async function ghWrite(data){
     alert('Save failed: '+e.message+'\nTry again.');
     return false;
   }
+}
+
+// ---- UTM capture + lightweight analytics logging ----
+function captureUTM(){
+  const params = new URLSearchParams(window.location.search);
+  const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  const incoming = {};
+  let hasAny = false;
+  keys.forEach(k=>{ const v=params.get(k); if(v){ incoming[k]=v; hasAny=true; } });
+  if(hasAny){
+    if(!localStorage.getItem('a2s_utm_first')) localStorage.setItem('a2s_utm_first', JSON.stringify(incoming));
+    localStorage.setItem('a2s_utm_last', JSON.stringify(incoming));
+  }
+  try{ return JSON.parse(localStorage.getItem('a2s_utm_last')||'null'); }catch(e){ return null; }
+}
+async function logEvent(type, extra){
+  try{
+    const utm = captureUTM() || {};
+    const entry = Object.assign({
+      type,
+      utm_source: utm.utm_source||'direct',
+      utm_medium: utm.utm_medium||'none',
+      utm_campaign: utm.utm_campaign||'none',
+      ts: Date.now()
+    }, extra||{});
+    for(let attempt=0; attempt<2; attempt++){
+      let sha, current;
+      const metaR = await fetch(ANALYTICS_API_URL+'?t='+Date.now(), {
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
+      });
+      if(metaR.ok){
+        const meta = await metaR.json();
+        sha = meta.sha;
+        try{ current = JSON.parse(atob(meta.content)); }catch(e){ current = {events:[]}; }
+      } else {
+        current = {events:[]};
+      }
+      current.events = current.events || [];
+      current.events.push(entry);
+      if(current.events.length > 800) current.events = current.events.slice(-800);
+      const json = JSON.stringify(current, null, 2);
+      const bytes = new TextEncoder().encode(json);
+      let binary=''; bytes.forEach(b=>binary+=String.fromCharCode(b));
+      const encoded = btoa(binary);
+      const body = {message:'log '+type, content:encoded};
+      if(sha) body.sha = sha;
+      const putR = await fetch(ANALYTICS_API_URL, {
+        method:'PUT',
+        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+      if(putR.ok) return;
+      if(putR.status===409) continue;
+      return;
+    }
+  }catch(e){ /* analytics must never block the fan experience */ }
+}
+async function loadAnalyticsSummary(){
+  try{
+    const r = await fetch(ANALYTICS_RAW_URL+'?t='+Date.now());
+    if(!r.ok) return null;
+    const data = await r.json();
+    return (data && data.events) || [];
+  }catch(e){ return null; }
+}
+function renderAnalyticsPanel(events){
+  const el = document.getElementById('analyticsPanel');
+  if(!el) return;
+  if(!events || !events.length){ el.innerHTML = '<div style="color:var(--slate);font-size:12px;padding:10px;">No analytics events yet.</div>'; return; }
+  const bySource = {}, byType = {};
+  events.forEach(e=>{
+    const src = e.utm_source || 'direct';
+    bySource[src] = (bySource[src]||0)+1;
+    byType[e.type] = (byType[e.type]||0)+1;
+  });
+  const srcRows = Object.entries(bySource).sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--hair);"><span>${k}</span><b style="color:var(--gold);">${v}</b></div>`).join('');
+  const typeRows = Object.entries(byType).sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--hair);"><span>${k}</span><b style="color:var(--gold);">${v}</b></div>`).join('');
+  el.innerHTML = `<div style="font-size:11px;color:var(--slate);margin-bottom:6px;">Last ${events.length} events · by source</div>${srcRows}
+    <div style="font-size:11px;color:var(--slate);margin:14px 0 6px;">By event type</div>${typeRows}`;
+}
+async function refreshAnalyticsPanel(){
+  const el = document.getElementById('analyticsPanel');
+  if(el) el.innerHTML = '<div style="color:var(--slate);font-size:12px;padding:10px;">Loading...</div>';
+  const events = await loadAnalyticsSummary();
+  renderAnalyticsPanel(events);
 }
 
 function setSyncBadge(msg){const el=document.getElementById('syncBadge');if(el)el.textContent=msg;}
@@ -1381,7 +1501,7 @@ async function saveToGitHub(){
 
 async function clearAllPicks(){
   if(!confirm('Clear all picks from all devices?'))return;
-  picks={starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
+  picks={free:[],starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
   await ghWrite({picks,drop:dropTarget});
   renderPicksList();
   alert('All picks cleared');
@@ -1396,7 +1516,7 @@ async function setResult(tier,idx,result){
 }
 
 function renderPicksList(){
-  ['starter','metallica','gold','purple','allaccess'].forEach(tier=>{
+  ['free','starter','metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);if(!el)return;
     el.innerHTML=picks[tier].length
       ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:600;font-size:12px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'WIN':p.result==='loss'?'LOSS':'PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">Win</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">Loss</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">Push</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">Remove</button></div>`).join('')
@@ -1441,9 +1561,9 @@ function renderBrandFooterTag(){
 }
 
 function renderFanView(){
-  const names={starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
-  const access={starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
-  const pickLimits={starter:2,metallica:3,gold:5,purple:6,allaccess:999};
+  const names={free:'Free Pick',starter:'Starter $15',metallica:'Metallica $125',gold:'Gold $150',purple:'Purple $175',allaccess:'All-Access $275'};
+  const access={free:['free'],starter:['starter'],metallica:['metallica'],gold:['metallica','gold'],purple:['metallica','gold','purple'],allaccess:['metallica','gold','purple','allaccess']};
+  const pickLimits={free:1,starter:2,metallica:3,gold:5,purple:6,allaccess:999};
 
   // GATE: verified fans cannot see actual picks until the countdown hits zero —
   // but only for their FIRST reveal. Once a fan has legitimately seen a live drop,
@@ -1469,13 +1589,16 @@ function renderFanView(){
 
   localStorage.setItem('a2s_has_seen_drop', 'true');
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
-  if(userTier && userTier!=='starter'){
+  if(userTier && userTier!=='starter' && userTier!=='free'){
     html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
   }
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
     html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;return renderPickCardV2(p);}).join('')}</div>`;
   });
+  if(userTier==='free'){
+    html+='<div style="text-align:center;margin-top:18px;padding:14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:12px;"><div style="color:var(--gold);font-weight:700;font-size:13px;margin-bottom:6px;">Liked what you saw?</div><div style="color:var(--slate);font-size:12px;margin-bottom:10px;">Starter gets you 2 picks for $15, or go straight to Metallica for 3 picks + VIP access.</div><button class="btn btn-primary" onclick="userVerified=false;document.getElementById(\'fanView\').classList.remove(\'active\');document.getElementById(\'paymentWall\').classList.remove(\'hidden\');goToPaymentWall();">See upgrade options</button></div>';
+  }
   document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">Picks coming soon...</div>';
   renderBrandFooterTag();
   const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
@@ -1492,6 +1615,7 @@ function renderFanView(){
 }
 
 const TIER_RULES = {
+  free: 'Free Pick — <b>1 pick</b>, locked for <b>24 hours</b>. One per device, zero payment — just to show you what we do.',
   starter: 'Starter Pick — <b>2 picks</b>, locked for <b>24 hours</b>. Perfect way to test us out before going all in.',
   metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
   gold: 'Gold — <b>up to 5 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours — plus everything Metallica gets.',
@@ -1525,7 +1649,7 @@ function renderStripeCardBtn(tier){
   }
 }
 
-function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);}
+function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);logEvent('tier_view',{tier});}
 const STARTER_MAX_USES = 5;
 function getStarterCount(){ return parseInt(localStorage.getItem('a2s_starter_count')||'0',10); }
 function starterCapReached(){ return getStarterCount() >= STARTER_MAX_USES; }
@@ -1569,6 +1693,7 @@ async function verifyAndUnlock(){
   }
   localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt,purchaseTime:Date.now()}));
   userVerified=true;userTier=selectedTier;
+  logEvent('unlock',{tier:selectedTier});
   document.getElementById('successMessage').classList.add('show');
   setTimeout(showFanView,1000);
   refreshStarterCardUI();
@@ -1579,6 +1704,29 @@ function refreshStarterCardUI(){
   if(!btn) return;
   if(starterCapReached()){
     btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">You have used all '+STARTER_MAX_USES+' Starter trials. Ready to upgrade? Scroll down and grab Metallica for 3 real picks + VIP access.</div>';
+  }
+}
+
+const FREE_MAX_USES = 1;
+function getFreeUsed(){ return localStorage.getItem('a2s_free_used')==='true'; }
+function freeCapReached(){ return getFreeUsed(); }
+function claimFreePick(){
+  if(freeCapReached()){
+    alert("You've already claimed your free pick on this device. Ready for more? Grab Starter or Metallica below.");
+    return;
+  }
+  localStorage.setItem('a2s_free_used','true');
+  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:'free',receipt:'FREE',purchaseTime:Date.now()}));
+  userVerified=true;userTier='free';
+  logEvent('free_claim',{tier:'free'});
+  refreshFreeCardUI();
+  setTimeout(showFanView,300);
+}
+function refreshFreeCardUI(){
+  const btn = document.getElementById('freeCardBtn');
+  if(!btn) return;
+  if(freeCapReached()){
+    btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">Free pick claimed. Ready for more? Grab Starter or Metallica below.</div>';
   }
 }
 function showFanView(){
@@ -1732,6 +1880,8 @@ function closeOnboard(){
 
 async function init(){
   attemptSilentAudioPrime();
+  captureUTM();
+  logEvent('pageview');
   updateDateTime();
   setInterval(updateDateTime,30000);
   renderTierExplainer('metallica');
@@ -1742,6 +1892,7 @@ async function init(){
   initProofStrip();
   initGOTM();
   refreshStarterCardUI();
+  refreshFreeCardUI();
   const visited = localStorage.getItem('a2s_visited');
   if(!visited && !localStorage.getItem('a2s_user_verified')){
     localStorage.setItem('a2s_visited','1');
