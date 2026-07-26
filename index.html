@@ -1758,6 +1758,21 @@ function getDeviceFingerprint(){
 // browser storage or using incognito doesn't reset the count as long as the
 // fingerprint signals (screen, GPU/canvas render, timezone, etc.) stay the same.
 async function claimFreePickGlobally(fp){
+  // Primary: Cloudflare Worker sees the visitor's real IP, so it can catch someone who
+  // switches browsers/clears storage but stays on the same network — something no
+  // client-side fingerprint alone can do.
+  try{
+    const workerR = await fetch('https://a2s-picks-gateway.2forex9919.workers.dev/free-claim', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({fingerprint: fp})
+    });
+    if(workerR.ok){
+      return await workerR.json();
+    }
+    // fall through to data.json check below if the worker route isn't live yet / errors
+  }catch(e){ /* fall through */ }
+
   for(let attempt=0; attempt<3; attempt++){
     try{
       const metaR = await fetch(API_URL+'?t='+Date.now(), {
