@@ -13,6 +13,14 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1785084266113
+    },
+    {
+      "type": "free_claim",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1785084272705,
+      "tier": "free"
     }
   ]
 }
