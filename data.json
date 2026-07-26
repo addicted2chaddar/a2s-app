@@ -11,8 +11,37 @@
         "id": 1785084363570
       }
     ],
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "chiago white sox",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "11:10 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785084500429
+      },
+      {
+        "team": "ANGELS",
+        "betType": "MONEYLINE",
+        "odds": "-160",
+        "time": "1:05 pm  PT",
+        "note": "",
+        "result": "",
+        "id": 1785084897027
+      }
+    ],
+    "metallica": [
+      {
+        "team": "PHILLIES",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 8.5 -110",
+        "time": "4:20 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785085148737
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
