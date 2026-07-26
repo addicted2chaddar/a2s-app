@@ -108,6 +108,14 @@
       "utm_campaign": "none",
       "ts": 1785098747996,
       "tier": "allaccess"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1785098748690,
+      "tier": "starter"
     }
   ]
 }
