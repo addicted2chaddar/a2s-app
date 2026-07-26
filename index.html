@@ -440,7 +440,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="gotm-body">
       <div class="gotm-badge" style="border-color:var(--gold-bright);color:var(--gold-bright);">No payment · No risk</div>
       <div class="gotm-title">TRY US FOR <span>$0</span></div>
-      <div class="gotm-sub">1 free pick, 24hr access — see the quality before you spend a dollar. One per device.</div>
+      <div class="gotm-sub">Free pick, 24hr access — see the quality before you spend a dollar. Up to 3 per device.</div>
       <div class="gotm-price-row">
         <span class="gotm-price-new">FREE</span>
       </div>
@@ -1615,7 +1615,7 @@ function renderFanView(){
 }
 
 const TIER_RULES = {
-  free: 'Free Pick — <b>1 pick</b>, locked for <b>24 hours</b>. One per device, zero payment — just to show you what we do.',
+  free: 'Free Pick — <b>1 pick</b>, locked for <b>24 hours</b>. Up to 3 per device, zero payment — just to show you what we do before you upgrade.',
   starter: 'Starter Pick — <b>2 picks</b>, locked for <b>24 hours</b>. Perfect way to test us out before going all in.',
   metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anytime a pick drops in this tier, you get it for 24 hours from your unlock.',
   gold: 'Gold — <b>up to 5 picks</b> (includes 1 loyalty bonus pick), locked for <b>24 hours</b>. Anything dropped in Gold all day, you get it for 24 hours — plus everything Metallica gets.',
@@ -1707,18 +1707,18 @@ function refreshStarterCardUI(){
   }
 }
 
-const FREE_MAX_USES = 1;
-function getFreeUsed(){ return localStorage.getItem('a2s_free_used')==='true'; }
-function freeCapReached(){ return getFreeUsed(); }
+const FREE_MAX_USES = 3;
+function getFreeCount(){ return parseInt(localStorage.getItem('a2s_free_count')||'0',10); }
+function freeCapReached(){ return getFreeCount() >= FREE_MAX_USES; }
 function claimFreePick(){
   if(freeCapReached()){
-    alert("You've already claimed your free pick on this device. Ready for more? Grab Starter or Metallica below.");
+    alert("You've used all "+FREE_MAX_USES+" free picks on this device. Time to lock in real volume — grab Starter or Metallica below.");
     return;
   }
-  localStorage.setItem('a2s_free_used','true');
+  localStorage.setItem('a2s_free_count', String(getFreeCount()+1));
   localStorage.setItem('a2s_user_verified',JSON.stringify({tier:'free',receipt:'FREE',purchaseTime:Date.now()}));
   userVerified=true;userTier='free';
-  logEvent('free_claim',{tier:'free'});
+  logEvent('free_claim',{tier:'free',claimNumber:getFreeCount()});
   refreshFreeCardUI();
   setTimeout(showFanView,300);
 }
@@ -1726,7 +1726,7 @@ function refreshFreeCardUI(){
   const btn = document.getElementById('freeCardBtn');
   if(!btn) return;
   if(freeCapReached()){
-    btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">Free pick claimed. Ready for more? Grab Starter or Metallica below.</div>';
+    btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">You have used all '+FREE_MAX_USES+' free picks. Ready for more? Grab Starter or Metallica below.</div>';
   }
 }
 function showFanView(){
