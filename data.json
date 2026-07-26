@@ -1,10 +1,21 @@
 {
   "picks": {
+    "free": [
+      {
+        "team": "Minnesota Twins",
+        "betType": "MONEYLINE",
+        "odds": "-160",
+        "time": "",
+        "note": "",
+        "result": "",
+        "id": 1785084363570
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
-  "drop": 1785078000
+  "drop": 1785087978
 }
