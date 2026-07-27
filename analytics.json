@@ -182,6 +182,15 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1785116390661
+    },
+    {
+      "type": "free_claim",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1785116448505,
+      "tier": "free",
+      "claimNumber": 3
     }
   ]
 }
