@@ -2,46 +2,17 @@
   "picks": {
     "free": [
       {
-        "team": "Minnesota Twins",
+        "team": "MARINERS",
         "betType": "MONEYLINE",
-        "odds": "-160",
-        "time": "",
-        "note": "",
-        "result": "win",
-        "id": 1785084363570
-      }
-    ],
-    "starter": [
-      {
-        "team": "chiago white sox",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "11:10 am pt",
-        "note": "",
-        "result": "win",
-        "id": 1785084500429
-      },
-      {
-        "team": "ANGELS",
-        "betType": "MONEYLINE",
-        "odds": "-160",
-        "time": "1:05 pm  PT",
+        "odds": "-126",
+        "time": "10:35 AM PT",
         "note": "",
         "result": "",
-        "id": 1785084897027
+        "id": 1785168450330
       }
     ],
-    "metallica": [
-      {
-        "team": "PHILLIES",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 8.5 -110",
-        "time": "4:20 PM PT",
-        "note": "",
-        "result": "",
-        "id": 1785085148737
-      }
-    ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
