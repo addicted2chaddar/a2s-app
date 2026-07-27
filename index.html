@@ -1897,7 +1897,7 @@ function buildProofTickerHtml(){
 
 function renderFomo(){
   let w=0,l=0,p=0;const allPicks=[];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).forEach(pk=>{allPicks.push(pk);if(pk.result==='win')w++;else if(pk.result==='loss')l++;else if(pk.result==='push')p++;});});
+  ['free','starter','metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).forEach(pk=>{allPicks.push(pk);if(pk.result==='win')w++;else if(pk.result==='loss')l++;else if(pk.result==='push')p++;});});
   const fw=document.getElementById('fomoW');const fl=document.getElementById('fomoL');const fp=document.getElementById('fomoP');
   if(fw)fw.textContent=w>0?w:'—';if(fl)fl.textContent=l>0?l:'—';if(fp)fp.textContent=p>0?p:'—';
   const fh=document.getElementById('fomoHeadline');
