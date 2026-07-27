@@ -27,21 +27,11 @@
         "odds": "-160",
         "time": "1:05 pm  PT",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1785084897027
       }
     ],
-    "metallica": [
-      {
-        "team": "PHILLIES",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 8.5 -110",
-        "time": "4:20 PM PT",
-        "note": "",
-        "result": "",
-        "id": 1785085148737
-      }
-    ],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
