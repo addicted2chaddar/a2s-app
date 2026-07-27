@@ -1874,7 +1874,7 @@ document.getElementById('addPickBtn').addEventListener('click',addPick);
 
 function buildProofTickerHtml(){
   const recentWithLogos = [];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{
+  ['free','starter','metallica','gold','purple','allaccess'].forEach(t=>{
     (picks[t]||[]).forEach(pk=>{
       if(pk.result==='win'){
         recentWithLogos.push({team:pk.team, logo:getTeamLogoUrl(pk.team)});
@@ -1909,7 +1909,7 @@ function renderFomo(){
 
 function initProofStrip(){
   let wins=0,losses=0,pushes=0;
-  ['metallica','gold','purple','allaccess'].forEach(t=>{
+  ['free','starter','metallica','gold','purple','allaccess'].forEach(t=>{
     (picks[t]||[]).forEach(pk=>{
       if(pk.result==='win') wins++;
       else if(pk.result==='loss') losses++;
@@ -1921,7 +1921,7 @@ function initProofStrip(){
 
   let streak = 0;
   const allR = [];
-  ['metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).filter(p=>p.result).forEach(p=>allR.push(p.result));});
+  ['free','starter','metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).filter(p=>p.result).forEach(p=>allR.push(p.result));});
   for(let i=allR.length-1;i>=0;i--){ if(allR[i]==='win') streak++; else break; }
 
   const wEl=document.getElementById('proofWins');
