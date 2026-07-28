@@ -11,7 +11,17 @@
         "id": 1785252386991
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "Reds",
+        "betType": "MONEYLINE",
+        "odds": "-160",
+        "time": "10 40 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785252465547
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
