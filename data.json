@@ -11,7 +11,17 @@
         "id": 1785198954744
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "Angels",
+        "betType": "MONEYLINE",
+        "odds": "-109",
+        "time": "6:00PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785199013683
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
