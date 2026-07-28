@@ -177,9 +177,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .pick-card-v2-team img{width:26px;height:26px;object-fit:contain;background:rgba(255,255,255,0.06);border-radius:6px;padding:2px;flex-shrink:0;}
 .pick-card-v2-name{font-size:14px;font-weight:600;color:var(--white);}
 .pick-card-v2-badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.4px;}
-.pick-card-v2-watermark{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,175,55,0.15);opacity:0.85;}
-.pick-card-v2-watermark img{width:16px;height:16px;object-fit:contain;border-radius:3px;}
-.pick-card-v2-watermark span{font-size:8.5px;font-weight:700;letter-spacing:0.8px;color:var(--gold);}
+.pick-card-v2-branded{overflow:hidden;}
+.pick-card-v2-brand-tile{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/watermark_tile.png');background-repeat:repeat;background-size:70px 70px;opacity:0.16;z-index:0;pointer-events:none;}
+.pick-card-v2-branded .pick-card-v2-top,.pick-card-v2-branded .pick-card-v2-bet{position:relative;z-index:1;}
+.pick-card-v2-brand-tag{position:relative;z-index:1;text-align:right;margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,175,55,0.15);font-size:8.5px;font-weight:700;letter-spacing:0.8px;color:var(--gold);opacity:0.85;}
 .pick-card-v2-badge.win{background:rgba(47,174,101,0.14);border:1px solid var(--green);color:var(--green);}
 .pick-card-v2-badge.loss{background:rgba(212,69,63,0.14);border:1px solid var(--red);color:var(--red);}
 .pick-card-v2-badge.push{background:rgba(138,141,150,0.14);border:1px solid var(--slate);color:var(--slate);}
@@ -1565,13 +1566,12 @@ function renderPickCardV2(p,tier){
     : p.result==='loss' ? '<div class="pick-card-v2-badge loss">Loss</div>'
     : p.result==='push' ? '<div class="pick-card-v2-badge push">Push</div>'
     : '<div class="pick-card-v2-badge pending">Pending</div>';
-  const freeWatermark = tier==='free' ? `
-      <div class="pick-card-v2-watermark">
-        <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/ADdicted2sports-resize.png" alt="Addiicted2Sports">
-        <span>ADDIICTED2SPORTS™</span>
-      </div>` : '';
+  const brandedClass = tier==='free' ? ' pick-card-v2-branded' : '';
+  const brandTile = tier==='free' ? '<div class="pick-card-v2-brand-tile"></div>' : '';
+  const brandTag = tier==='free' ? '<div class="pick-card-v2-brand-tag">ADDIICTED2SPORTS™</div>' : '';
   return `
-    <div class="pick-card-v2 ${resultClass}">
+    <div class="pick-card-v2 ${resultClass}${brandedClass}">
+      ${brandTile}
       <div class="pick-card-v2-accent"></div>
       <div class="pick-card-v2-top">
         <div class="pick-card-v2-team">
@@ -1584,7 +1584,7 @@ function renderPickCardV2(p,tier){
         <span class="pick-card-v2-bettype">${p.betType}${p.time?' · '+p.time:''}</span>
         <span class="pick-card-v2-odds">${p.odds}</span>
       </div>
-      ${freeWatermark}
+      ${brandTag}
     </div>
   `;
 }
