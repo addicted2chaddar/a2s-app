@@ -17,5 +17,12 @@
     "purple": [],
     "allaccess": []
   },
-  "drop": 1785199080
+  "drop": {
+    "free": 1785199080,
+    "starter": 1785199080,
+    "metallica": 1785198720,
+    "gold": 1785199080,
+    "purple": 1785199080,
+    "allaccess": 1785199080
+  }
 }
