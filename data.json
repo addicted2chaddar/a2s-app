@@ -2,26 +2,16 @@
   "picks": {
     "free": [
       {
-        "team": "Angels",
+        "team": "Reds",
         "betType": "MONEYLINE",
-        "odds": "-109",
-        "time": "6 38 pm PT",
+        "odds": "-165",
+        "time": "10 40 am pt",
         "note": "",
-        "result": "loss",
-        "id": 1785198954744
+        "result": "",
+        "id": 1785252386991
       }
     ],
-    "starter": [
-      {
-        "team": "Angels",
-        "betType": "MONEYLINE",
-        "odds": "-109",
-        "time": "6:00PM PT",
-        "note": "",
-        "result": "loss",
-        "id": 1785199013683
-      }
-    ],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
