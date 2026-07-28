@@ -9,6 +9,15 @@
         "note": "",
         "result": "loss",
         "id": 1785252386991
+      },
+      {
+        "team": "Texas  Rangers",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 9",
+        "time": "3:40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785275600954
       }
     ],
     "starter": [
@@ -20,6 +29,15 @@
         "note": "",
         "result": "loss",
         "id": 1785252465547
+      },
+      {
+        "team": "Tampa Bay  Rays",
+        "betType": "OVER/UNDER",
+        "odds": "Over 7",
+        "time": "3 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785275682330
       }
     ],
     "metallica": [],
