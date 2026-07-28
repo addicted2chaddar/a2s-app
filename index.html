@@ -181,6 +181,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .pick-card-v2-brand-tile{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/watermark_tile.png');background-repeat:repeat;background-size:70px 70px;opacity:0.16;z-index:0;pointer-events:none;}
 .pick-card-v2-branded .pick-card-v2-top,.pick-card-v2-branded .pick-card-v2-bet{position:relative;z-index:1;}
 .pick-card-v2-brand-tag{position:relative;z-index:1;text-align:right;margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,175,55,0.15);font-size:8.5px;font-weight:700;letter-spacing:0.8px;color:var(--gold);opacity:0.85;}
+.pick-card-v2-brand-mark{width:22px;height:22px;object-fit:cover;border-radius:5px;flex-shrink:0;border:1px solid rgba(212,175,55,0.4);}
 .pick-card-v2-badge.win{background:rgba(47,174,101,0.14);border:1px solid var(--green);color:var(--green);}
 .pick-card-v2-badge.loss{background:rgba(212,69,63,0.14);border:1px solid var(--red);color:var(--red);}
 .pick-card-v2-badge.push{background:rgba(138,141,150,0.14);border:1px solid var(--slate);color:var(--slate);}
@@ -1568,6 +1569,7 @@ function renderPickCardV2(p,tier){
     : '<div class="pick-card-v2-badge pending">Pending</div>';
   const brandedClass = tier==='free' ? ' pick-card-v2-branded' : '';
   const brandTile = tier==='free' ? '<div class="pick-card-v2-brand-tile"></div>' : '';
+  const brandMark = tier==='free' ? '<img class="pick-card-v2-brand-mark" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/logo-mark.jpg" alt="Addiicted2Sports">' : '';
   const brandTag = tier==='free' ? '<div class="pick-card-v2-brand-tag">ADDIICTED2SPORTS™</div>' : '';
   return `
     <div class="pick-card-v2 ${resultClass}${brandedClass}">
@@ -1576,6 +1578,7 @@ function renderPickCardV2(p,tier){
       <div class="pick-card-v2-top">
         <div class="pick-card-v2-team">
           <img src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'" alt="${p.team}">
+          ${brandMark}
           <div class="pick-card-v2-name">${p.team}</div>
         </div>
         ${badgeHtml}
