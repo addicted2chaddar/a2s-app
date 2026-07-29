@@ -1,52 +1,14 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Reds",
-        "betType": "MONEYLINE",
-        "odds": "-165",
-        "time": "10 40 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785252386991
-      },
-      {
-        "team": "Texas  Rangers",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 9",
-        "time": "3:40 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1785275600954
-      }
-    ],
-    "starter": [
-      {
-        "team": "Reds",
-        "betType": "MONEYLINE",
-        "odds": "-160",
-        "time": "10 40 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785252465547
-      },
-      {
-        "team": "Tampa Bay  Rays",
-        "betType": "OVER/UNDER",
-        "odds": "Over 7",
-        "time": "3 40 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1785275682330
-      }
-    ],
+    "free": [],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
   "drop": {
-    "free": 1785277394,
+    "free": 1785340800,
     "starter": 1785256800,
     "metallica": 1785256800,
     "gold": 1785256800,
