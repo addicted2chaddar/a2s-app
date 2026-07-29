@@ -107,6 +107,19 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .proof-item-v2{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--gold);font-weight:600;flex-shrink:0;white-space:nowrap;}
 .proof-item-v2 img{width:16px;height:16px;object-fit:contain;background:rgba(255,255,255,0.08);border-radius:3px;padding:1px;flex-shrink:0;}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.top-banner-ticker{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright),var(--gold-dim));overflow:hidden;white-space:nowrap;padding:7px 0;border-bottom:1px solid var(--gold-bright);}
+.top-banner-ticker-inner{display:inline-block;padding-left:100%;animation:topTickerScroll 26s linear infinite;font-size:11px;font-weight:800;color:#06210f;letter-spacing:0.3px;}
+.top-banner-ticker-inner span{margin-right:48px;}
+@keyframes topTickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.trust-badges-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0;}
+.trust-badge-pill{display:flex;align-items:center;gap:5px;background:rgba(212,175,55,0.08);border:1px solid var(--hair-strong);border-radius:20px;padding:6px 12px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.3px;}
+.live-activity-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--slate);margin:2px 0 12px;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(47,174,101,0.6);animation:livePulse 1.8s infinite;flex-shrink:0;}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(47,174,101,0.55);}70%{box-shadow:0 0 0 8px rgba(47,174,101,0);}100%{box-shadow:0 0 0 0 rgba(47,174,101,0);}}
+.fan-ticker-strip{background:var(--panel);border:1px solid var(--hair-strong);border-radius:14px;padding:14px 16px;margin:14px 0;}
+.fan-ticker{display:flex;gap:6px;overflow:hidden;}
+.fan-ticker-inner{display:flex;gap:14px;animation:tickerScroll 24s linear infinite;white-space:nowrap;}
+.fan-ticker-item{font-size:11.5px;color:var(--white);background:rgba(47,174,101,0.08);border:1px solid var(--green);border-radius:20px;padding:6px 14px;font-weight:600;}
 .proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;}
 .proof-stat-val{font-size:22px;font-weight:700;color:var(--gold-bright);line-height:1;}
 .proof-stat-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:0.8px;margin-top:3px;}
@@ -228,6 +241,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 </style>
 </head>
 <body>
+<div class="top-banner-ticker" id="topBannerTicker">
+  <div class="top-banner-ticker-inner" id="topBannerTickerInner"></div>
+</div>
 <div class="onboard-overlay" id="onboardOverlay">
   <div class="onboard-card">
     <div class="onboard-logo">Addiicted2Sports™</div>
@@ -419,6 +435,22 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div><div class="proof-stat-val" id="proofWins">—</div><div class="proof-stat-lbl">Total wins</div></div>
       <div><div class="proof-stat-val" id="proofWinPct">—</div><div class="proof-stat-lbl">Win rate</div></div>
       <div><div class="proof-stat-val" id="proofStreak">—</div><div class="proof-stat-lbl">Hot streak</div></div>
+    </div>
+  </div>
+
+  <div class="trust-badges-row">
+    <div class="trust-badge-pill">✅ Verified Results</div>
+    <div class="trust-badge-pill">🔒 Secure Checkout</div>
+    <div class="trust-badge-pill">📊 Public Track Record</div>
+  </div>
+  <div class="live-activity-line" id="liveActivityLine">
+    <span class="live-dot"></span><span id="liveActivityText">Loading activity…</span>
+  </div>
+
+  <div class="fan-ticker-strip" id="fanTickerStrip">
+    <div class="proof-strip-label">Fan activity</div>
+    <div class="fan-ticker">
+      <div class="fan-ticker-inner" id="fanTicker"></div>
     </div>
   </div>
 
@@ -1932,6 +1964,57 @@ function buildProofTickerHtml(){
   ).join('');
 }
 
+// Edit these anytime to change what scrolls in the top banner
+const TOP_BANNER_MESSAGES = [
+  '🔥 PICKS DROP DAILY — 1HR BEFORE FIRST PITCH/TIP',
+  '💰 EVERY RESULT VERIFIED & POSTED PUBLIC',
+  '⚡ TRY US FOR $15 — STARTER PICK LIVE NOW',
+  '🐐 JOIN THE VICTORY TRIANGLE'
+];
+function buildTopBannerHtml(){
+  const doubled=[...TOP_BANNER_MESSAGES,...TOP_BANNER_MESSAGES];
+  return doubled.map(m=>`<span>${m}</span>`).join('');
+}
+function initTopBanner(){
+  const el=document.getElementById('topBannerTickerInner');
+  if(el) el.innerHTML = buildTopBannerHtml();
+}
+
+function buildFanTickerHtml(){
+  const wins=[];
+  ['starter','metallica','gold','purple','allaccess'].forEach(t=>{
+    (picks[t]||[]).forEach(pk=>{
+      if(pk.result==='win') wins.push(`🔥 ${tierLabel(t)} tier hit — ${pk.team}${pk.betType?' '+pk.betType:''}`);
+    });
+  });
+  const items = wins.length>0 ? wins.slice(-8) : [
+    'New fans joining the Victory Triangle daily',
+    'Free picks going out right now',
+    'Starter → Metallica upgrades happening today',
+    'All-Access fans locked in for the week'
+  ];
+  const doubled=[...items,...items];
+  return doubled.map(i=>`<span class="fan-ticker-item">${i}</span>`).join('');
+}
+function initFanTicker(){
+  const el=document.getElementById('fanTicker');
+  if(el) el.innerHTML = buildFanTickerHtml();
+}
+
+// Pulls REAL numbers from analytics.json — never fabricate this figure
+async function initLiveActivity(){
+  const el=document.getElementById('liveActivityText');
+  if(!el) return;
+  const events = await loadAnalyticsSummary();
+  if(!events || !events.length){ el.textContent='Fans checking picks right now'; return; }
+  const now=Date.now();
+  const last24h = events.filter(e=>e.ts && (now-e.ts) < 24*60*60*1000);
+  const views = last24h.filter(e=>e.type==='pageview').length;
+  const claims = last24h.filter(e=>e.type==='free_claim').length;
+  if(views>0) el.textContent = `${views} fan${views===1?'':'s'} viewed picks in the last 24h${claims>0?` · ${claims} free pick${claims===1?'':'s'} claimed`:''}`;
+  else el.textContent = 'Fans checking picks right now';
+}
+
 function renderFomo(){
   let w=0,l=0,p=0;const allPicks=[];
   ['free','starter','metallica','gold','purple','allaccess'].forEach(t=>{(picks[t]||[]).forEach(pk=>{allPicks.push(pk);if(pk.result==='win')w++;else if(pk.result==='loss')l++;else if(pk.result==='push')p++;});});
@@ -2039,6 +2122,9 @@ async function init(){
   renderTimerStatus();
   renderFomo();
   initProofStrip();
+  initTopBanner();
+  initFanTicker();
+  initLiveActivity();
   initGOTM();
   refreshStarterCardUI();
   refreshFreeCardUI();
