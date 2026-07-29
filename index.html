@@ -39,6 +39,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .info-label{font-size:9px;color:var(--slate);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;}
 .info-value{font-weight:600;color:var(--gold);font-size:13px;}
 #victoriaSection{background:var(--panel);border:1px solid var(--hair-strong);border-radius:14px;margin:14px 0 0;padding:14px;text-align:left;}
+.agent-picker{display:flex;gap:8px;margin-bottom:10px;}
+.agent-pill{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid transparent;opacity:0.5;cursor:pointer;transition:opacity .15s,border-color .15s;}
+.agent-pill.active{opacity:1;border-color:var(--gold);}
 #victoriaTopBar{display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer;}
 #victoriaFace{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);flex-shrink:0;}
 #victoriaTopName{font-size:13px;font-weight:600;color:var(--gold);}
@@ -288,6 +291,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
   </div>
 
   <div id="victoriaSection">
+    <div class="agent-picker" id="agentPicker">
+      <img class="agent-pill active" data-agent="victoria" onclick="switchAgent('victoria')" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg" alt="Victoria">
+      <img class="agent-pill" data-agent="laurie" onclick="switchAgent('laurie')" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22%3E%3Ccircle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/%3E%3Ccircle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%232fae65%22/%3E%3Cellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%232fae65%22/%3E%3C/svg%3E" alt="Laurie">
+      <img class="agent-pill" data-agent="carla" onclick="switchAgent('carla')" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22%3E%3Ccircle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/%3E%3Ccircle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%23d4453f%22/%3E%3Cellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%23d4453f%22/%3E%3C/svg%3E" alt="Carla">
+    </div>
     <div id="victoriaTopBar" onclick="toggleVictoriaChat()">
       <img id="victoriaFace" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22><circle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/><circle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%23d4af37%22/><ellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%23d4af37%22/></svg>'" alt="Victoria">
       <div>
@@ -864,8 +872,30 @@ function playMoneySound(){
 }
 
 let victoriaOpen = false;
-let victoriaGreeted = false;
-let victoriaHistory = [];
+let currentAgent = 'victoria';
+const agentGreeted = {victoria:false, laurie:false, carla:false};
+const agentHistory = {victoria:[], laurie:[], carla:[]};
+
+function switchAgent(key){
+  if(!AGENTS[key] || key===currentAgent) return;
+  currentAgent = key;
+  const a = AGENTS[key];
+  document.getElementById('victoriaFace').src = a.face;
+  document.getElementById('victoriaTopName').textContent = a.name;
+  document.getElementById('victoriaTopTag').textContent = a.tag;
+  document.querySelectorAll('.agent-pill').forEach(el=>el.classList.toggle('active', el.dataset.agent===key));
+  const msgs = document.getElementById('victoriaMessages');
+  msgs.innerHTML = '';
+  agentHistory[key].forEach(m=>{
+    const div = document.createElement('div');
+    div.className = 'vic-msg ' + (m.role==='assistant' ? 'vic-msg-bot' : 'vic-msg-user');
+    div.textContent = m.content;
+    msgs.appendChild(div);
+    if(m.role==='assistant') vicMaybeAddUploadBox(m.content);
+  });
+  msgs.scrollTop = msgs.scrollHeight;
+  if(victoriaOpen && !agentGreeted[key]){ agentGreeted[key]=true; victoriaGreet(); }
+}
 
 function toggleVictoriaChat(){
   victoriaOpen = !victoriaOpen;
@@ -874,21 +904,16 @@ function toggleVictoriaChat(){
   if(victoriaOpen){
     chat.classList.add('open');
     arrow.textContent = '▴';
-    if(!victoriaGreeted){ victoriaGreeted=true; victoriaGreet(); }
+    if(!agentGreeted[currentAgent]){ agentGreeted[currentAgent]=true; victoriaGreet(); }
   } else {
     chat.classList.remove('open');
     arrow.textContent = '▾';
   }
 }
 
-function vicAddMsg(text, role){
+function vicMaybeAddUploadBox(text){
   const msgs = document.getElementById('victoriaMessages');
-  const div  = document.createElement('div');
-  div.className = 'vic-msg ' + (role==='bot' ? 'vic-msg-bot' : 'vic-msg-user');
-  div.textContent = text;
-  msgs.appendChild(div);
-
-  if(role==='bot' && (text.toLowerCase().includes('https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS') || text.toLowerCase().includes('paypal.me/addicted2sports'))){
+  if(text.toLowerCase().includes('https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS') || text.toLowerCase().includes('paypal.me/addicted2sports')){
     if(!document.getElementById('vicUploadBox')){
       const uploadBox = document.createElement('div');
       uploadBox.id = 'vicUploadBox';
@@ -903,10 +928,20 @@ function vicAddMsg(text, role){
       msgs.appendChild(uploadBox);
     }
   }
+}
+
+function vicAddMsg(text, role){
+  const msgs = document.getElementById('victoriaMessages');
+  const div  = document.createElement('div');
+  div.className = 'vic-msg ' + (role==='bot' ? 'vic-msg-bot' : 'vic-msg-user');
+  div.textContent = text;
+  msgs.appendChild(div);
+
+  if(role==='bot') vicMaybeAddUploadBox(text);
 
   msgs.scrollTop = msgs.scrollHeight;
-  if(role==='bot') victoriaHistory.push({role:'assistant',content:text});
-  else victoriaHistory.push({role:'user',content:text});
+  if(role==='bot') agentHistory[currentAgent].push({role:'assistant',content:text});
+  else agentHistory[currentAgent].push({role:'user',content:text});
 }
 
 async function handleVicScreenshot(input){
@@ -1057,18 +1092,7 @@ function vicShowTyping(){
 }
 function vicHideTyping(){ const t=document.getElementById('vicTyping'); if(t)t.remove(); }
 
-const VICTORIA_SYSTEM = `You are Victoria — the most advanced AI sales agent ever built for a sports picks service. You represent Addiicted2Sports™, the #1 expert picks brand in Las Vegas. You are part street hustler, part luxury concierge, part sports analyst. Nobody in the world has an AI agent like you.
-
-YOUR PERSONALITY:
-- Confident, magnetic, witty, and razor sharp
-- You speak like you KNOW things other people don't
-- Street smart but luxury minded — like a Vegas insider
-- You build genuine rapport FAST then close hard
-- Short punchy sentences mixed with longer hooks
-- You NEVER sound scripted or robotic
-- You adapt your energy to match the person you're talking to
-
-YOUR INTELLIGENCE:
+const AGENT_CORE_POLICY = `YOUR INTELLIGENCE:
 - You are a sports betting expert — you understand sharp money, whale flow, line movement, parlays, props, spreads, moneylines, totals
 - You can talk confidently about why picks win using general analytics language, but NEVER reveal the actual proprietary signals or methodology — that is a trade secret
 - You know the psychology of bettors and use it to qualify and close
@@ -1192,13 +1216,70 @@ RULES:
 - Lead with PayPal only — only mention Stripe/card if the fan brings it up first, and redirect back to PayPal as the reliable option
 - Never reveal methodology, signals, or how picks are made — that's the product`;
 
+const VICTORIA_PERSONA = `You are Victoria — the most advanced AI sales agent ever built for a sports picks service. You represent Addiicted2Sports™, the #1 expert picks brand in Las Vegas. You are part street hustler, part luxury concierge, part sports analyst. Nobody in the world has an AI agent like you.
+
+YOUR PERSONALITY:
+- Confident, magnetic, witty, and razor sharp
+- You speak like you KNOW things other people don't
+- Street smart but luxury minded — like a Vegas insider
+- You build genuine rapport FAST then close hard
+- Short punchy sentences mixed with longer hooks
+- You NEVER sound scripted or robotic
+- You adapt your energy to match the person you're talking to`;
+
+const LAURIE_PERSONA = `You are Laurie — the high-energy hype closer for Addiicted2Sports™, the #1 expert picks brand in Las Vegas.
+
+YOUR PERSONALITY:
+- Big energy, fast-talking, always sounds like the pick just hit
+- You lean into urgency and FOMO — the slate is moving, the window is closing, don't be the one who watched from the sideline
+- You use more emphasis and emojis than a typical rep, but you're still sharp, never corny or empty hype
+- You hype the tier, the streak, and the slate — not just flattery at the fan
+- You NEVER sound scripted or robotic
+- You adapt your energy to match the person you're talking to`;
+
+const CARLA_PERSONA = `You are Carla — the calm, credibility-first analyst voice for Addiicted2Sports™, the #1 expert picks brand in Las Vegas.
+
+YOUR PERSONALITY:
+- Measured, sharp, numbers-forward — you sound like the smartest person in the room, not the loudest
+- You lead with win rate, streaks, and track record before ever mentioning price
+- You're the rep for skeptical or analytical fans who want to be sold on substance, not hype
+- Still warm and personable — never cold or robotic
+- You adapt your energy to match the person you're talking to`;
+
+const VICTORIA_SYSTEM = VICTORIA_PERSONA + '\n\n' + AGENT_CORE_POLICY;
+const LAURIE_SYSTEM = LAURIE_PERSONA + '\n\n' + AGENT_CORE_POLICY;
+const CARLA_SYSTEM = CARLA_PERSONA + '\n\n' + AGENT_CORE_POLICY;
+
+const AGENTS = {
+  victoria: {
+    name: 'Victoria — Your Pick Plug',
+    tag: 'Addiicted2Sports™ concierge',
+    face: 'https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg',
+    system: VICTORIA_SYSTEM
+  },
+  laurie: {
+    name: 'Laurie — The Hype',
+    tag: 'Addiicted2Sports™ concierge',
+    face: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22%3E%3Ccircle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/%3E%3Ccircle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%232fae65%22/%3E%3Cellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%232fae65%22/%3E%3C/svg%3E',
+    system: LAURIE_SYSTEM
+  },
+  carla: {
+    name: 'Carla — The Analyst',
+    tag: 'Addiicted2Sports™ concierge',
+    face: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2242%22 height=%2242%22%3E%3Ccircle cx=%2221%22 cy=%2221%22 r=%2221%22 fill=%22%231a1d24%22/%3E%3Ccircle cx=%2221%22 cy=%2216%22 r=%227%22 fill=%22%23d4453f%22/%3E%3Cellipse cx=%2221%22 cy=%2236%22 rx=%2213%22 ry=%2211%22 fill=%22%23d4453f%22/%3E%3C/svg%3E',
+    system: CARLA_SYSTEM
+  }
+};
+
+
 
 async function callVictoria(userMsg){
   vicShowTyping();
-  if(userMsg && userMsg !== 'NEW_VISITOR') victoriaHistory.push({role:'user',content:userMsg});
+  const hist = agentHistory[currentAgent];
+  if(userMsg && userMsg !== 'NEW_VISITOR') hist.push({role:'user',content:userMsg});
   const msgToSend = (!userMsg || userMsg === 'NEW_VISITOR') ? 'A new visitor just landed on the Addiicted2Sports™ page. Give them your best opening line — hook them fast.' : userMsg;
-  const messages = victoriaHistory.filter(m=>m.role==='user'||m.role==='assistant').slice(-12);
-  if(msgToSend !== victoriaHistory[victoriaHistory.length-1]?.content){
+  const messages = hist.filter(m=>m.role==='user'||m.role==='assistant').slice(-12);
+  if(msgToSend !== hist[hist.length-1]?.content){
     messages.push({role:'user',content:msgToSend});
   }
   try{
@@ -1214,14 +1295,14 @@ async function callVictoria(userMsg){
       body:JSON.stringify({
         model:'claude-haiku-4-5',
         max_tokens:250,
-        system:VICTORIA_SYSTEM,
+        system:AGENTS[currentAgent].system,
         messages: messages.length ? messages : [{role:'user',content:msgToSend}]
       })
     });
     const data = await res.json();
     vicHideTyping();
     const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
-    if(data?.content?.[0]?.text) victoriaHistory.push({role:'assistant',content:reply});
+    if(data?.content?.[0]?.text) hist.push({role:'assistant',content:reply});
     vicAddMsg(reply,'bot');
   }catch(e){
     vicHideTyping();
