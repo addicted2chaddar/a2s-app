@@ -1,6 +1,16 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "Philadelphia Phillies",
+        "betType": "MONEYLINE",
+        "odds": "-101",
+        "time": "9 10 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785337924287
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -8,7 +18,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1785337200,
+    "free": 1785339739,
     "starter": 1785337200,
     "metallica": 1785337200,
     "gold": 1785337200,
