@@ -9,10 +9,48 @@
         "note": "",
         "result": "loss",
         "id": 1785337924287
+      },
+      {
+        "team": "Dallas Wings",
+        "betType": "SPREAD",
+        "odds": "-1.5 -110",
+        "time": "5 00 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785363609809
       }
     ],
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "Atlanta Dream",
+        "betType": "OVER/UNDER",
+        "odds": "O/179",
+        "time": "5 00 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785363683253
+      }
+    ],
+    "metallica": [
+      {
+        "team": "Dallas wings",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "5 pm PT",
+        "note": "WNBA",
+        "result": "",
+        "id": 1785363736302
+      },
+      {
+        "team": "Seattle Mariners",
+        "betType": "SPREAD",
+        "odds": "+1.5 -130",
+        "time": "7 pm pt",
+        "note": "MLB",
+        "result": "",
+        "id": 1785363854080
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
