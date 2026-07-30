@@ -8,11 +8,11 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1880118000,
-    "starter": 1880118000,
-    "metallica": 1785386187,
-    "gold": 1880118000,
-    "purple": 1880118000,
-    "allaccess": 1880118000
+    "free": 0,
+    "starter": 0,
+    "metallica": 0,
+    "gold": 0,
+    "purple": 0,
+    "allaccess": 0
   }
 }
