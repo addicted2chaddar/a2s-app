@@ -1,7 +1,27 @@
 {
   "picks": {
-    "free": [],
-    "starter": [],
+    "free": [
+      {
+        "team": "Tampa Bay Rays",
+        "betType": "OVER/UNDER",
+        "odds": "over (7) -110",
+        "time": "9 10 am pt",
+        "note": "MLB",
+        "result": "",
+        "id": 1785420423439
+      }
+    ],
+    "starter": [
+      {
+        "team": "Texas rangers",
+        "betType": "MONEYLINE",
+        "odds": "-110",
+        "time": "9 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785420529318
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
