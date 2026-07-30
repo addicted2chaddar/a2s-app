@@ -51,8 +51,55 @@
         "id": 1785440312160
       }
     ],
-    "gold": [],
-    "purple": [],
+    "gold": [
+      {
+        "team": "RED SOX",
+        "betType": "MONEYLINE",
+        "odds": "-186",
+        "time": "6 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785440490706
+      },
+      {
+        "team": "LYNX",
+        "betType": "MONEYLINE",
+        "odds": "-700",
+        "time": "5 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785440541612
+      }
+    ],
+    "purple": [
+      {
+        "team": "SKY",
+        "betType": "MONEYLINE",
+        "odds": "-215",
+        "time": "5 PM  PT",
+        "note": "WNBA",
+        "result": "",
+        "id": 1785440601399
+      },
+      {
+        "team": "ACES",
+        "betType": "MONEYLINE",
+        "odds": "-220",
+        "time": "7 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785440651422
+      },
+      {
+        "team": "DODGERS",
+        "betType": "MONEYLINE",
+        "odds": "-158",
+        "time": "7 10 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785440709108
+      }
+    ],
     "allaccess": []
   },
   "drop": {
