@@ -1,56 +1,8 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Philadelphia Phillies",
-        "betType": "MONEYLINE",
-        "odds": "-101",
-        "time": "9 10 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785337924287
-      },
-      {
-        "team": "Dallas Wings",
-        "betType": "SPREAD",
-        "odds": "-1.5 -110",
-        "time": "5 00 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1785363609809
-      }
-    ],
-    "starter": [
-      {
-        "team": "Atlanta Dream",
-        "betType": "OVER/UNDER",
-        "odds": "O/179",
-        "time": "5 00 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785363683253
-      }
-    ],
-    "metallica": [
-      {
-        "team": "Dallas wings",
-        "betType": "MONEYLINE",
-        "odds": "-120",
-        "time": "5 pm PT",
-        "note": "WNBA",
-        "result": "loss",
-        "id": 1785363736302
-      },
-      {
-        "team": "Seattle Mariners",
-        "betType": "SPREAD",
-        "odds": "+1.5 -130",
-        "time": "7 pm pt",
-        "note": "MLB",
-        "result": "",
-        "id": 1785363854080
-      }
-    ],
+    "free": [],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
@@ -58,7 +10,7 @@
   "drop": {
     "free": 1785367116,
     "starter": 1785337200,
-    "metallica": 1785337200,
+    "metallica": 1880118000,
     "gold": 1785337200,
     "purple": 1785337200,
     "allaccess": 1785337200
