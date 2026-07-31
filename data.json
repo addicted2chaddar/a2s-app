@@ -1,111 +1,16 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Tampa Bay Rays",
-        "betType": "OVER/UNDER",
-        "odds": "over (7) -110",
-        "time": "9 10 am pt",
-        "note": "MLB",
-        "result": "loss",
-        "id": 1785420423439
-      },
-      {
-        "team": "braves",
-        "betType": "MONEYLINE",
-        "odds": "-143",
-        "time": "4 15  pm pt",
-        "note": "mlb",
-        "result": "win",
-        "id": 1785440159925
-      }
-    ],
-    "starter": [
-      {
-        "team": "Texas rangers",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "9 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785420529318
-      },
-      {
-        "team": "red sox",
-        "betType": "MONEYLINE",
-        "odds": "-186",
-        "time": "6 40 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1785440237635
-      }
-    ],
-    "metallica": [
-      {
-        "team": "padres",
-        "betType": "MONEYLINE",
-        "odds": "-143",
-        "time": "6 40 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785440312160
-      }
-    ],
-    "gold": [
-      {
-        "team": "RED SOX",
-        "betType": "MONEYLINE",
-        "odds": "-186",
-        "time": "6 40 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785440490706
-      },
-      {
-        "team": "LYNX",
-        "betType": "MONEYLINE",
-        "odds": "-700",
-        "time": "5 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785440541612
-      }
-    ],
-    "purple": [
-      {
-        "team": "SKY",
-        "betType": "MONEYLINE",
-        "odds": "-215",
-        "time": "5 PM  PT",
-        "note": "WNBA",
-        "result": "win",
-        "id": 1785440601399
-      },
-      {
-        "team": "ACES",
-        "betType": "MONEYLINE",
-        "odds": "-220",
-        "time": "7 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785440651422
-      },
-      {
-        "team": "DODGERS",
-        "betType": "MONEYLINE",
-        "odds": "-158",
-        "time": "7 10 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785440709108
-      }
-    ],
+    "free": [],
+    "starter": [],
+    "metallica": [],
+    "gold": [],
+    "purple": [],
     "allaccess": []
   },
   "drop": {
     "free": 1785518400,
     "starter": 1785518400,
-    "metallica": 1785518400,
+    "metallica": 1785523337,
     "gold": 1785518400,
     "purple": 1785518400,
     "allaccess": 1785518400
