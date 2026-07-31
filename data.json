@@ -1,6 +1,16 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "RAYS",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "4 PM",
+        "note": "",
+        "result": "",
+        "id": 1785535460668
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
