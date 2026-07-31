@@ -11,8 +11,55 @@
         "id": 1785535460668
       }
     ],
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "RANGERS",
+        "betType": "SPREAD",
+        "odds": "+1.5 -185",
+        "time": "5 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785535529313
+      },
+      {
+        "team": "TIGERS",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "6 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785535574420
+      },
+      {
+        "team": "CARDINALS",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "4 00 PM",
+        "note": "",
+        "result": "",
+        "id": 1785535628373
+      }
+    ],
+    "metallica": [
+      {
+        "team": "DIAMONDBACKS",
+        "betType": "MONEYLINE",
+        "odds": "+122",
+        "time": "4 00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785535694821
+      },
+      {
+        "team": "BREWERS",
+        "betType": "MONEYLINE",
+        "odds": "-156",
+        "time": "6 38 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785535741963
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
