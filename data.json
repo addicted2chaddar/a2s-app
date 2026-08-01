@@ -13,15 +13,6 @@
     ],
     "starter": [
       {
-        "team": "RANGERS",
-        "betType": "SPREAD",
-        "odds": "+1.5 -185",
-        "time": "5 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1785535529313
-      },
-      {
         "team": "TIGERS",
         "betType": "MONEYLINE",
         "odds": "-140",
@@ -65,7 +56,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1785537219,
+    "free": 1785600000,
     "starter": 1785518400,
     "metallica": 1785523337,
     "gold": 1785518400,
