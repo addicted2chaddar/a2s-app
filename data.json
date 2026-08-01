@@ -11,8 +11,28 @@
         "id": 1785593402952
       }
     ],
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "LAS VEGAS ACES",
+        "betType": "OVER/UNDER",
+        "odds": "180 OVER",
+        "time": "10 AM PT",
+        "note": "",
+        "result": "",
+        "id": 1785593541020
+      }
+    ],
+    "metallica": [
+      {
+        "team": "Chicago Cubs",
+        "betType": "MONEYLINE",
+        "odds": "-150",
+        "time": "4 15 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785593659209
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
