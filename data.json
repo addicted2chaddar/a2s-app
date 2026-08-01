@@ -2,55 +2,17 @@
   "picks": {
     "free": [
       {
-        "team": "RAYS",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "4 PM",
-        "note": "",
-        "result": "loss",
-        "id": 1785535460668
-      }
-    ],
-    "starter": [
-      {
-        "team": "TIGERS",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "6 40 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785535574420
-      },
-      {
-        "team": "CARDINALS",
+        "team": "St. Louis Cardinals",
         "betType": "SPREAD",
         "odds": "+1.5",
-        "time": "4 00 PM",
+        "time": "12 07 pm pt",
         "note": "",
         "result": "",
-        "id": 1785535628373
+        "id": 1785593402952
       }
     ],
-    "metallica": [
-      {
-        "team": "DIAMONDBACKS",
-        "betType": "MONEYLINE",
-        "odds": "+122",
-        "time": "4 00 PM PT",
-        "note": "",
-        "result": "",
-        "id": 1785535694821
-      },
-      {
-        "team": "BREWERS",
-        "betType": "MONEYLINE",
-        "odds": "-156",
-        "time": "6 38 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785535741963
-      }
-    ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
