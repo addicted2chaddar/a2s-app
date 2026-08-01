@@ -9,6 +9,15 @@
         "note": "",
         "result": "loss",
         "id": 1785593402952
+      },
+      {
+        "team": "Las Vegas  Athletics",
+        "betType": "SPREAD",
+        "odds": "+1.5  (+1.0)",
+        "time": "6 38 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1785624955093
       }
     ],
     "starter": [
@@ -38,7 +47,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1785600000,
+    "free": 1785628584,
     "starter": 1785600000,
     "metallica": 1785600000,
     "gold": 1785600000,
