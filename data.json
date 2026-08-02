@@ -2,55 +2,27 @@
   "picks": {
     "free": [
       {
-        "team": "St. Louis Cardinals",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "12 07 pm pt",
+        "team": "Chicago white Sox",
+        "betType": "MONEYLINE",
+        "odds": "+129",
+        "time": "10 40 am pt",
         "note": "",
-        "result": "loss",
-        "id": 1785593402952
-      },
-      {
-        "team": "Las Vegas  Athletics",
-        "betType": "SPREAD",
-        "odds": "+1.5  (+1.0)",
-        "time": "6 38 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785624955093
+        "result": "",
+        "id": 1785682186157
       }
     ],
     "starter": [
       {
-        "team": "LAS VEGAS ACES",
+        "team": "Chicago whites Sox vs Rays",
         "betType": "OVER/UNDER",
-        "odds": "180 OVER",
-        "time": "10 AM PT",
+        "odds": "over 7.5",
+        "time": "10v 40 pm pt",
         "note": "",
-        "result": "loss",
-        "id": 1785593541020
-      },
-      {
-        "team": "Las Vegas  Athletic",
-        "betType": "MONEYLINE",
-        "odds": "+155",
-        "time": "6 38 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1785625048112
+        "result": "",
+        "id": 1785682284231
       }
     ],
-    "metallica": [
-      {
-        "team": "Chicago Cubs",
-        "betType": "MONEYLINE",
-        "odds": "-150",
-        "time": "4 15 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1785593659209
-      }
-    ],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
