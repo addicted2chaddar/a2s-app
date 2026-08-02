@@ -22,7 +22,26 @@
         "id": 1785682284231
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "st Louis cardinals",
+        "betType": "OVER/UNDER",
+        "odds": "+140",
+        "time": "10 37 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785682432095
+      },
+      {
+        "team": "Minnesota lynx",
+        "betType": "OVER/UNDER",
+        "odds": "+130",
+        "time": "10 00 am pt",
+        "note": "",
+        "result": "",
+        "id": 1785682546343
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
