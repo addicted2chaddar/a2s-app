@@ -22,7 +22,17 @@
         "id": 1785872528150
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "Cleveland Guardians",
+        "betType": "MONEYLINE",
+        "odds": "-135",
+        "time": "3 40 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1785872658884
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
