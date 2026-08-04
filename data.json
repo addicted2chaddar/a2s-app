@@ -2,46 +2,27 @@
   "picks": {
     "free": [
       {
-        "team": "Colorado rockies",
-        "betType": "SPREAD",
-        "odds": "+1.5 -110",
-        "time": "5:40 PM PT",
+        "team": "San Francisco Giants @ Texas Rangers",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 8",
+        "time": "5 05 PM PT",
         "note": "",
-        "result": "loss",
-        "id": 1785788974165
+        "result": "",
+        "id": 1785872449909
       }
     ],
     "starter": [
       {
-        "team": "Washington Nationals",
+        "team": "San Francisco Giants",
         "betType": "MONEYLINE",
-        "odds": "+128",
-        "time": "3:40 pm pt",
+        "odds": "-124",
+        "time": "5 05 PM PT",
         "note": "",
-        "result": "win",
-        "id": 1785789156983
-      },
-      {
-        "team": "Nats vs Phill",
-        "betType": "OVER/UNDER",
-        "odds": "Under 9",
-        "time": "3:40 pm pt",
-        "note": "",
-        "result": "push",
-        "id": 1785789220725
+        "result": "",
+        "id": 1785872528150
       }
     ],
-    "metallica": [
-      {
-        "team": "Pittsburgh pirates",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "4 40.pm.pt",
-        "note": "",
-        "result": "win",
-        "id": 1785789381552
-      }
-    ],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
