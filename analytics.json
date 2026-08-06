@@ -1233,6 +1233,13 @@
       "ts": 1785980946977,
       "tier": "free",
       "claimNumber": 2
+    },
+    {
+      "type": "pageview",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1785988292500
     }
   ]
 }
