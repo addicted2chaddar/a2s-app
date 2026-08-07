@@ -9,10 +9,48 @@
         "note": "",
         "result": "win",
         "id": 1786031489595
+      },
+      {
+        "team": "Phoenix mercury",
+        "betType": "SPREAD",
+        "odds": "-6.5",
+        "time": "4 30 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786131096143
       }
     ],
-    "starter": [],
-    "metallica": [],
+    "starter": [
+      {
+        "team": "Los Angeles Dodgers",
+        "betType": "MONEYLINE",
+        "odds": "-174",
+        "time": "6 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786131188270
+      },
+      {
+        "team": "ATLANTA Braves",
+        "betType": "MONEYLINE",
+        "odds": "÷120",
+        "time": "4 05 pm.pt",
+        "note": "",
+        "result": "",
+        "id": 1786131250450
+      }
+    ],
+    "metallica": [
+      {
+        "team": "Toronto Blue Jay's",
+        "betType": "SPREAD",
+        "odds": "+1.5 - 115",
+        "time": "3 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786131336253
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
