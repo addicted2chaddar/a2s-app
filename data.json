@@ -11,7 +11,17 @@
         "id": 1786203173212
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "las vegas aces",
+        "betType": "MONEYLINE",
+        "odds": "+170",
+        "time": "10 am pt",
+        "note": "",
+        "result": "",
+        "id": 1786203259538
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
