@@ -2,55 +2,17 @@
   "picks": {
     "free": [
       {
-        "team": "Cincinnati reds",
-        "betType": "MONEYLINE",
-        "odds": "-170",
-        "time": "9 40 am pt",
-        "note": "",
-        "result": "win",
-        "id": 1786031489595
-      },
-      {
-        "team": "Phoenix mercury",
+        "team": "las vegas aces",
         "betType": "SPREAD",
-        "odds": "-6.5",
-        "time": "4 30 pm pt",
+        "odds": "+5",
+        "time": "10 am pt",
         "note": "",
         "result": "",
-        "id": 1786131096143
+        "id": 1786203173212
       }
     ],
-    "starter": [
-      {
-        "team": "Los Angeles Dodgers",
-        "betType": "MONEYLINE",
-        "odds": "-174",
-        "time": "6 40 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1786131188270
-      },
-      {
-        "team": "ATLANTA Braves",
-        "betType": "MONEYLINE",
-        "odds": "÷120",
-        "time": "4 05 pm.pt",
-        "note": "",
-        "result": "",
-        "id": 1786131250450
-      }
-    ],
-    "metallica": [
-      {
-        "team": "Toronto Blue Jay's",
-        "betType": "SPREAD",
-        "odds": "+1.5 - 115",
-        "time": "3 40 pm pt",
-        "note": "",
-        "result": "",
-        "id": 1786131336253
-      }
-    ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
