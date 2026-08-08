@@ -1389,6 +1389,14 @@
       "utm_medium": "paid",
       "utm_campaign": "120248101463280784",
       "ts": 1786227789683
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "ig",
+      "utm_medium": "paid",
+      "utm_campaign": "120248101463280784",
+      "ts": 1786227871572,
+      "tier": "purple"
     }
   ]
 }
