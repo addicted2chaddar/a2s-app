@@ -2,13 +2,22 @@
   "picks": {
     "free": [
       {
-        "team": "las vegas aces",
-        "betType": "SPREAD",
-        "odds": "+5",
-        "time": "10 am pt",
+        "team": "san Diego  Padres",
+        "betType": "MONEYLINE",
+        "odds": "-118",
+        "time": "4 15 pm pt",
         "note": "",
-        "result": "loss",
-        "id": 1786203173212
+        "result": "",
+        "id": 1786227163902
+      },
+      {
+        "team": "los angles dodger",
+        "betType": "MONEYLINE",
+        "odds": "-190",
+        "time": "5 10 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786227217433
       }
     ],
     "starter": [
