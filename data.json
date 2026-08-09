@@ -2,15 +2,6 @@
   "picks": {
     "free": [
       {
-        "team": "Boston  Red Sox",
-        "betType": "SPREAD",
-        "odds": "-1.5  -130",
-        "time": "10 35 am pt",
-        "note": "MLB",
-        "result": "loss",
-        "id": 1786287294087
-      },
-      {
         "team": "Golden state Valkyries",
         "betType": "MONEYLINE",
         "odds": "-220",
