@@ -1483,6 +1483,13 @@
       "utm_medium": "paid",
       "utm_campaign": "120248101463280784",
       "ts": 1786248806017
+    },
+    {
+      "type": "pageview",
+      "utm_source": "ig",
+      "utm_medium": "paid",
+      "utm_campaign": "120248101463280784",
+      "ts": 1786254529947
     }
   ]
 }
