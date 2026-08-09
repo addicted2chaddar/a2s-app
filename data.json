@@ -2,35 +2,16 @@
   "picks": {
     "free": [
       {
-        "team": "san Diego  Padres",
-        "betType": "MONEYLINE",
-        "odds": "-118",
-        "time": "4 15 pm pt",
-        "note": "",
-        "result": "win",
-        "id": 1786227163902
-      },
-      {
-        "team": "los angles dodger",
-        "betType": "MONEYLINE",
-        "odds": "-190",
-        "time": "5 10 pm pt",
-        "note": "",
+        "team": "Boston  Red Sox",
+        "betType": "SPREAD",
+        "odds": "-1.5  -130",
+        "time": "10 35 am pt",
+        "note": "MLB",
         "result": "",
-        "id": 1786227217433
+        "id": 1786287294087
       }
     ],
-    "starter": [
-      {
-        "team": "las vegas aces",
-        "betType": "MONEYLINE",
-        "odds": "+170",
-        "time": "10 am pt",
-        "note": "",
-        "result": "loss",
-        "id": 1786203259538
-      }
-    ],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
