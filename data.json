@@ -9,6 +9,15 @@
         "note": "MLB",
         "result": "loss",
         "id": 1786287294087
+      },
+      {
+        "team": "Golden state Valkyries",
+        "betType": "MONEYLINE",
+        "odds": "-220",
+        "time": "4 00 pm pt",
+        "note": "MNBA",
+        "result": "",
+        "id": 1786307797947
       }
     ],
     "starter": [
