@@ -7,7 +7,7 @@
         "odds": "-118",
         "time": "4 15 pm pt",
         "note": "",
-        "result": "",
+        "result": "win",
         "id": 1786227163902
       },
       {
@@ -43,8 +43,5 @@
     "gold": 1786138740,
     "purple": 1786138740,
     "allaccess": 1786138740
-  },
-  "freeClaims": {
-    "fp_oi5kjs_7186": 1
   }
 }
