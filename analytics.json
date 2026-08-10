@@ -2017,6 +2017,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1786393254143
+    },
+    {
+      "type": "pageview",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1786401148542
     }
   ]
 }
