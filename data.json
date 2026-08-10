@@ -2,26 +2,16 @@
   "picks": {
     "free": [
       {
-        "team": "Golden state Valkyries",
+        "team": "Boston  Red Sox",
         "betType": "MONEYLINE",
-        "odds": "-220",
-        "time": "4 00 pm pt",
-        "note": "MNBA",
-        "result": "win",
-        "id": 1786307797947
+        "odds": "-148",
+        "time": "4 07 pm PT",
+        "note": "MlB",
+        "result": "",
+        "id": 1786393155873
       }
     ],
-    "starter": [
-      {
-        "team": "New york mets game",
-        "betType": "OVER/UNDER",
-        "odds": "Over 8.5",
-        "time": "10 35 am pt",
-        "note": "MLB",
-        "result": "win",
-        "id": 1786288019428
-      }
-    ],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
