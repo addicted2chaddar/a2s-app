@@ -1356,21 +1356,17 @@ async function callVictoria(userMsg){
     vicHideTyping();
     const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
     if(data?.content?.[0]?.text) hist.push({role:'assistant',content:reply});
-    vicAddMsg(reply,'bot');
-  }catch(e){
-    vicHideTyping();
-    vicHideTyping();
+    
+vicAddMsg(reply,'bot');
+      victoriaTTS.speak(reply);
+    }catch(e){
+      vicHideTyping();
       const fb = fallbackVictoria(userMsg);
       vicAddMsg(fb,'bot');
       victoriaTTS.speak(fb);
-}
+    }
+  }
 
-function fallbackVictoria(msg){
-  const greets=["Welcome to Addiicted2Sports™. You already know why you're here. Are you eating with us today, or still out here guessing alone? What's your budget?","Welcome to the sharpest picks in Las Vegas. We don't miss. Question is — are you in? Tell me what you're working with.","Welcome to Addiicted2Sports™. The vault is open today. You trying to eat or nah? Drop your budget and I'll plug you in right now."];
-  if(!msg||msg==='NEW_VISITOR') return greets[Math.floor(Math.random()*greets.length)];
-  const closes=["Say less. Hop on paypal.me/addiicted2sports and let's get it. Gold tier is calling your name. Soon as you pay, upload your screenshot right here in the chat and I'll lock in your receipt number instantly.","That's what I'm talking about. Purple tier is perfect for you — $175 for 72 hours of elite picks. paypal.me/addiicted2sports right now. Upload your payment screenshot right here and your picks unlock immediately.","All-Access is the move. $275 and you get everything we drop. paypal.me/addiicted2sports — don't sleep on it. Upload your PayPal screenshot in this chat and I'll get you your receipt number on the spot."];
-  return closes[Math.floor(Math.random()*closes.length)];
-}
 
 async function victoriaGreet(){ await callVictoria('NEW_VISITOR'); }
 
