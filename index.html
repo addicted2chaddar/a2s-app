@@ -2485,8 +2485,43 @@ init();
     }
   });
 })();
+  // ===== Victoria TTS (Web Speech API) =====
+const victoriaTTS = {
+  enabled: JSON.parse(localStorage.getItem('victoria_tts_enabled') || 'true'),
+  voice: null,
+
+  init() {
+    const setVoice = () => {
+      const voices = speechSynthesis.getVoices();
+      this.voice = voices.find(v => /Female|Samantha|Google US English/i.test(v.name)) || voices[0];
+    };
+    setVoice();
+    speechSynthesis.onvoiceschanged = setVoice;
+  },
+
+  speak(text) {
+    if (!this.enabled || !text) return;
+    speechSynthesis.cancel();
+    const clean = text.replace(/\*\*/g, '').replace(/[#_~`]/g, '');
+    const utter = new SpeechSynthesisUtterance(clean);
+    if (this.voice) utter.voice = this.voice;
+    utter.rate = 1.02;
+    utter.pitch = 1.05;
+    speechSynthesis.speak(utter);
+  },
+
+  toggle() {
+    this.enabled = !this.enabled;
+    localStorage.setItem('victoria_tts_enabled', JSON.stringify(this.enabled));
+    if (!this.enabled) speechSynthesis.cancel();
+    const btn = document.getElementById('victoriaTTSBtn');
+    if (btn) btn.textContent = this.enabled ? '🔊' : '🔇';
+  }
+};
+victoriaTTS.init();
 </script>
 
 </body>
 </html>
+
 
