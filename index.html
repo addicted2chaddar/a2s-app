@@ -1352,14 +1352,23 @@ async function callVictoria(userMsg){
         messages: messages.length ? messages : [{role:'user',content:msgToSend}]
       })
     });
-    const data = await res.json();
+   const data = await res.json();
     vicHideTyping();
     const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
     if(data?.content?.[0]?.text) hist.push({role:'assistant',content:reply});
-    
-vicAddMsg(reply,'bot');
-      victoriaTTS.speak(reply);
-    }catch(e){
+    vicAddMsg(reply,'bot');
+    victoriaTTS.speak(reply);
+  }catch(e){
+    vicHideTyping();
+    const fb = fallbackVictoria(userMsg);
+    vicAddMsg(fb,'bot');
+    victoriaTTS.speak(fb);
+  }
+}
+      vicAddMsg(fb,'bot');
+      victoriaTTS.speak(fb);
+    }
+  }
       vicHideTyping();
       const fb = fallbackVictoria(userMsg);
       vicAddMsg(fb,'bot');
