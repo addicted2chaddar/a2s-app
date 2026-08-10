@@ -989,16 +989,30 @@ function vicAddMsg(text, role){
   const msgs = document.getElementById('victoriaMessages');
   const div  = document.createElement('div');
   div.className = 'vic-msg ' + (role==='bot' ? 'vic-msg-bot' : 'vic-msg-user');
-  div.textContent = text;
+
+  if(role==='bot'){
+    const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const linked = escaped.replace(
+      /(https?:\/\/[^\s]+|addicted2chaddar\.github\.io\/a2s-app[^\s]*)/gi,
+      (match) => {
+        const href = match.startsWith('http') ? match : 'https://' + match;
+        return `<a href="${href}" target="_blank" style="color:var(--gold-bright);text-decoration:underline;font-weight:600;">${match}</a>`;
+      }
+    );
+    div.innerHTML = linked;
+  } else {
+    div.textContent = text;
+  }
+
   msgs.appendChild(div);
 
   if(role==='bot') vicMaybeAddUploadBox(text);
+  if(role==='bot') victoriaTTS.speak(text);
 
   msgs.scrollTop = msgs.scrollHeight;
   if(role==='bot') agentHistory[currentAgent].push({role:'assistant',content:text});
   else agentHistory[currentAgent].push({role:'user',content:text});
 }
-
 async function handleVicScreenshot(input){
   if(!input.files || !input.files[0]) return;
   const file = input.files[0];
