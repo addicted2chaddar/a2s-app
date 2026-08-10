@@ -2520,7 +2520,8 @@ init() {
  speak(text) {
     if (!this.enabled || !text) return;
     speechSynthesis.cancel();
-    const clean = text.replace(/\*\*/g, '').replace(/[#_~`]/g, '');
+    let clean = text.replace(/\*\*/g, '').replace(/[#_~`]/g, '');
+    clean = clean.replace(/Addiicted2Sports™?/gi, 'Addicted to Sports');
     const utter = new SpeechSynthesisUtterance(clean);
     if (this.voice) utter.voice = this.voice;
     utter.rate = 1.02;
