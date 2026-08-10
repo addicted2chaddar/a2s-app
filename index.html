@@ -1365,17 +1365,6 @@ async function callVictoria(userMsg){
     victoriaTTS.speak(fb);
   }
 }
-      vicAddMsg(fb,'bot');
-      victoriaTTS.speak(fb);
-    }
-  }
-      vicHideTyping();
-      const fb = fallbackVictoria(userMsg);
-      vicAddMsg(fb,'bot');
-      victoriaTTS.speak(fb);
-    }
-  }
-
 
 async function victoriaGreet(){ await callVictoria('NEW_VISITOR'); }
 
