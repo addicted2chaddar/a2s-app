@@ -1359,8 +1359,10 @@ async function callVictoria(userMsg){
     vicAddMsg(reply,'bot');
   }catch(e){
     vicHideTyping();
-    vicAddMsg(fallbackVictoria(userMsg),'bot');
-  }
+    vicHideTyping();
+      const fb = fallbackVictoria(userMsg);
+      vicAddMsg(fb,'bot');
+      victoriaTTS.speak(fb);
 }
 
 function fallbackVictoria(msg){
