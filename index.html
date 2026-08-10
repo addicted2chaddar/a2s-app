@@ -2489,19 +2489,21 @@ init();
 const victoriaTTS = {
   enabled: JSON.parse(localStorage.getItem('victoria_tts_enabled') || 'true'),
   voice: null,
-
-  init() {
+init() {
     const setVoice = () => {
       const voices = speechSynthesis.getVoices();
-      this.voice = voices.find(v => /Female|Samantha|Google US English/i.test(v.name)) || voices[0];
+      this.voice =
+        voices.find(v => /female/i.test(v.name) && /en/i.test(v.lang)) ||
+        voices.find(v => /Samantha|Victoria|Karen|Moira|Tessa|Zira|Google US English/i.test(v.name)) ||
+        voices.find(v => /en/i.test(v.lang) && !/male/i.test(v.name)) ||
+        voices[0];
     };
     setVoice();
     speechSynthesis.onvoiceschanged = setVoice;
     const btn = document.getElementById('victoriaTTSBtn');
     if (btn) btn.textContent = this.enabled ? '🔊' : '🔇';
   },
-
-  speak(text) {
+ speak(text) {
     if (!this.enabled || !text) return;
     speechSynthesis.cancel();
     const clean = text.replace(/\*\*/g, '').replace(/[#_~`]/g, '');
