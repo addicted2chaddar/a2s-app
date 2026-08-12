@@ -2,13 +2,13 @@
   "picks": {
     "free": [
       {
-        "team": "Boston  Red Sox",
+        "team": "Minnesota Twins",
         "betType": "MONEYLINE",
-        "odds": "-148",
-        "time": "4 07 pm PT",
-        "note": "MlB",
-        "result": "loss",
-        "id": 1786393155873
+        "odds": "-140",
+        "time": "10 40 am PT",
+        "note": "MLB",
+        "result": "",
+        "id": 1786547460476
       }
     ],
     "starter": [],
@@ -18,7 +18,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1786484400,
+    "free": 1786551069,
     "starter": 1786484400,
     "metallica": 1786484400,
     "gold": 1786484400,
