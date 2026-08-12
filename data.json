@@ -11,7 +11,17 @@
         "id": 1786547460476
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "Minnesota twins",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER 8.5",
+        "time": "10 40 am pt",
+        "note": "MLB",
+        "result": "",
+        "id": 1786547519466
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
