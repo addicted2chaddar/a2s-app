@@ -9,6 +9,15 @@
         "note": "MLB",
         "result": "win",
         "id": 1786547460476
+      },
+      {
+        "team": "Las Vegas Raiders",
+        "betType": "MONEYLINE",
+        "odds": "-148",
+        "time": "5 00 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786623185901
       }
     ],
     "starter": [
