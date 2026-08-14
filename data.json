@@ -2,38 +2,38 @@
   "picks": {
     "free": [
       {
-        "team": "Minnesota Twins",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "10 40 am PT",
-        "note": "MLB",
-        "result": "win",
-        "id": 1786547460476
+        "team": "Baltimore Orioles @ Tampa Bay Rays",
+        "betType": "OVER/UNDER",
+        "odds": "OVER ( 8)",
+        "time": "4 00 PM PT",
+        "note": "",
+        "result": "",
+        "id": 1786722648527
       },
       {
-        "team": "Las Vegas Raiders",
-        "betType": "MONEYLINE",
-        "odds": "-148",
-        "time": "5 00 pm pt",
+        "team": "St. Louis Cardinals",
+        "betType": "SPREAD",
+        "odds": "+1.5 -110",
+        "time": "11 20 AM PT",
         "note": "",
-        "result": "loss",
-        "id": 1786623185901
-      }
-    ],
-    "starter": [
-      {
-        "team": "Minnesota twins",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 8.5",
-        "time": "10 40 am pt",
-        "note": "MLB",
         "result": "",
-        "id": 1786547519466
+        "id": 1786722794596
       }
     ],
+    "starter": [],
     "metallica": [],
     "gold": [],
-    "purple": [],
+    "purple": [
+      {
+        "team": "St. Louis Cardinals",
+        "betType": "SPREAD",
+        "odds": "+ 1.5 -110",
+        "time": "11:20 AM PT",
+        "note": "",
+        "result": "",
+        "id": 1786722713878
+      }
+    ],
     "allaccess": []
   },
   "drop": {
