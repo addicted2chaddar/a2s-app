@@ -1,25 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Baltimore Orioles @ Tampa Bay Rays",
-        "betType": "OVER/UNDER",
-        "odds": "OVER ( 8)",
-        "time": "4 00 PM PT",
-        "note": "",
-        "result": "win",
-        "id": 1786722648527
-      },
-      {
-        "team": "St. Louis Cardinals",
-        "betType": "SPREAD",
-        "odds": "+1.5 -110",
-        "time": "11 20 AM PT",
-        "note": "",
-        "result": "",
-        "id": 1786722794596
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -37,7 +18,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1786722508,
+    "free": 1786809054,
     "starter": 1786551151,
     "metallica": 1786722988,
     "gold": 1786484400,
