@@ -1,20 +1,59 @@
 {
   "picks": {
-    "free": [],
-    "starter": [],
-    "metallica": [],
-    "gold": [],
-    "purple": [
+    "free": [
       {
-        "team": "St. Louis Cardinals",
-        "betType": "SPREAD",
-        "odds": "+ 1.5 -110",
-        "time": "11:20 AM PT",
-        "note": "",
+        "team": "Carolina Panthers @ Buffalo Bills",
+        "betType": "OVER/UNDER",
+        "odds": "UINDER 39",
+        "time": "10 AM PT",
+        "note": "NFL",
         "result": "",
-        "id": 1786722713878
+        "id": 1786801899082
       }
     ],
+    "starter": [
+      {
+        "team": "Carolina Panthers",
+        "betType": "SPREAD",
+        "odds": "+3 -115",
+        "time": "10 AM PT",
+        "note": "NFL",
+        "result": "",
+        "id": 1786802014674
+      }
+    ],
+    "metallica": [
+      {
+        "team": "Minnesota Lynx",
+        "betType": "SPREAD",
+        "odds": "-1.5",
+        "time": "5 PM PT",
+        "note": "4 — Major",
+        "result": "",
+        "id": 1786802295802
+      }
+    ],
+    "gold": [
+      {
+        "team": "Washington Mystics",
+        "betType": "SPREAD",
+        "odds": "-5.5",
+        "time": "4 30 PM PT",
+        "note": "5 hits same direction\n   Total   : 39.2 cents moved\n   Richter : 6 — EXTREME",
+        "result": "",
+        "id": 1786802418554
+      },
+      {
+        "team": "Boston Red Sox @ Pittsburgh Pirates",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER (7) -105",
+        "time": "4 15 PM PT",
+        "note": "Boston Red Sox @ Pittsburgh Pirates — 7.5 (O -116 3-Moderate / U -105 --)***",
+        "result": "",
+        "id": 1786802616980
+      }
+    ],
+    "purple": [],
     "allaccess": []
   },
   "drop": {
