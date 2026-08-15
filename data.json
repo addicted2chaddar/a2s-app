@@ -51,9 +51,28 @@
         "note": "Boston Red Sox @ Pittsburgh Pirates — 7.5 (O -116 3-Moderate / U -105 --)***",
         "result": "",
         "id": 1786802616980
+      },
+      {
+        "team": "Arizona Diamondbacks @ Atlanta Braves",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 9 -110",
+        "time": "4 15 PM PT",
+        "note": "Arizona Diamondbacks @ Atlanta Braves — 9.0 (O -113***** -- / U -107 4-Major)",
+        "result": "",
+        "id": 1786802894941
       }
     ],
-    "purple": [],
+    "purple": [
+      {
+        "team": "Baltimore Orioles @ Tampa Bay Rays",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 7.5",
+        "time": "3 10 PM PT",
+        "note": "Baltimore Orioles @ Tampa Bay Rays — 7.5 (O +100 -- / U -121 5-CRITICAL)",
+        "result": "",
+        "id": 1786803001808
+      }
+    ],
     "allaccess": []
   },
   "drop": {
