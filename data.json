@@ -2,13 +2,13 @@
   "picks": {
     "free": [
       {
-        "team": "Carolina Panthers @ Buffalo Bills",
-        "betType": "OVER/UNDER",
-        "odds": "UINDER 39",
-        "time": "10 AM PT",
-        "note": "NFL",
-        "result": "loss",
-        "id": 1786801899082
+        "team": "Seattle Seahawks",
+        "betType": "MONEYLINE",
+        "odds": "-155",
+        "time": "5 00 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786827423646
       }
     ],
     "starter": [
