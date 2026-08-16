@@ -58,21 +58,11 @@
         "odds": "OVER 9 -110",
         "time": "4 15 PM PT",
         "note": "Arizona Diamondbacks @ Atlanta Braves — 9.0 (O -113***** -- / U -107 4-Major)",
-        "result": "",
+        "result": "win",
         "id": 1786802894941
       }
     ],
-    "purple": [
-      {
-        "team": "Baltimore Orioles @ Tampa Bay Rays",
-        "betType": "OVER/UNDER",
-        "odds": "OVER 7.5",
-        "time": "3 10 PM PT",
-        "note": "Baltimore Orioles @ Tampa Bay Rays — 7.5 (O +100 -- / U -121 5-CRITICAL)",
-        "result": "",
-        "id": 1786803001808
-      }
-    ],
+    "purple": [],
     "allaccess": []
   },
   "drop": {
