@@ -9,6 +9,15 @@
         "note": "",
         "result": "loss",
         "id": 1786827423646
+      },
+      {
+        "team": "Chicago Cubs",
+        "betType": "MONEYLINE",
+        "odds": "-128",
+        "time": "12 pm pt",
+        "note": "14.300000000000011 cents",
+        "result": "",
+        "id": 1786888760512
       }
     ],
     "starter": [
@@ -20,6 +29,15 @@
         "note": "NFL",
         "result": "loss",
         "id": 1786802014674
+      },
+      {
+        "team": "Chicago Cubs",
+        "betType": "MONEYLINE",
+        "odds": "-129",
+        "time": "12 pm pt",
+        "note": "18.600000000000023 cents",
+        "result": "",
+        "id": 1786888831669
       }
     ],
     "metallica": [
