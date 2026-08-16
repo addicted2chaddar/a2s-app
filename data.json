@@ -2,15 +2,6 @@
   "picks": {
     "free": [
       {
-        "team": "Seattle Seahawks",
-        "betType": "MONEYLINE",
-        "odds": "-155",
-        "time": "5 00 pm pt",
-        "note": "",
-        "result": "loss",
-        "id": 1786827423646
-      },
-      {
         "team": "Chicago Cubs",
         "betType": "MONEYLINE",
         "odds": "-128",
