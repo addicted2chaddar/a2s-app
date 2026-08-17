@@ -1,6 +1,16 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "Cinnanatti reds",
+        "betType": "MONEYLINE",
+        "odds": "-120",
+        "time": "10 40 pm pt",
+        "note": "",
+        "result": "",
+        "id": 1786981341360
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
