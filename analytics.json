@@ -2445,6 +2445,13 @@
       "utm_medium": "paid",
       "utm_campaign": "120248101463280784",
       "ts": 1787323327094
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1787323550792
     }
   ]
 }
