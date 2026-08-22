@@ -225,6 +225,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .pick-card-v2-bettype{letter-spacing:0.3px;}
 .pick-card-v2-odds{color:var(--gold-bright);font-weight:700;font-size:14px;}
 .record-strip{display:flex;justify-content:center;gap:16px;margin:10px 0 20px;padding:14px;background:var(--panel);border-radius:12px;border:1px solid var(--hair-strong);}
+.pick-tag-chip{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:8px;}
+.pick-tag-chip.lock{background:rgba(212,175,55,0.12);border:1px solid var(--gold);color:var(--gold);}
+.pick-tag-chip.ailean{background:rgba(90,150,255,0.12);border:1px solid #5a96ff;color:#5a96ff;}
+.pick-tag-chip.highstakes{background:rgba(255,150,60,0.12);border:1px solid #ff963c;color:#ff963c;}
+.pick-tag-chip.hotstreak{background:rgba(212,69,63,0.12);border:1px solid var(--red);color:var(--red);}
+.pick-card-v2-star{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:2px 4px;color:var(--slate);transition:color 0.15s,transform 0.15s;}
+.pick-card-v2-star.saved{color:var(--gold);transform:scale(1.1);}
+.my-picks-toggle{display:flex;justify-content:center;margin:0 0 14px;}
+.my-picks-toggle button{background:var(--panel);border:1px solid var(--hair-strong);color:var(--slate);font-size:11px;font-weight:600;padding:8px 16px;border-radius:20px;cursor:pointer;letter-spacing:0.3px;}
+.my-picks-toggle button.active{background:rgba(212,175,55,0.1);border-color:var(--gold);color:var(--gold);}
 .record-item{text-align:center;}
 .record-num{font-size:22px;font-weight:700;}
 .record-lbl{font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;}
@@ -418,6 +428,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <input type="text" class="form-input" id="pickTime" placeholder="7:00 PM ET">
     </div>
     <div class="form-group">
+      <label class="form-label">Confidence tag (shown to fans, optional)</label>
+      <select class="form-select" id="pickTag">
+        <option value="">None</option>
+        <option value="lock">🔒 Lock of the Day</option>
+        <option value="ailean">📈 AI Lean</option>
+        <option value="highstakes">💎 High Stakes</option>
+        <option value="hotstreak">🔥 Hot Streak</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label class="form-label">Internal notes (never shown to fans)</label>
       <textarea class="form-textarea" id="pickNote" placeholder="Sharp money on this side... (admin eyes only)"></textarea>
     </div>
@@ -608,6 +628,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div class="record-item"><div class="record-num record-num-l" id="recL">0</div><div class="record-lbl">Losses</div></div>
       <div class="record-item"><div class="record-num record-num-p" id="recP">0</div><div class="record-lbl">Push</div></div>
     </div>
+    <div class="my-picks-toggle"><button id="myPicksToggleBtn" onclick="toggleMyPicksFilter()">☆ My Saved Picks</button></div>
     <div class="picks-section" id="fanPicksSection"></div>
     <div id="brandFooterTagSection"></div>
   </div>
@@ -1706,8 +1727,9 @@ async function addPick(){
   const team=document.getElementById('pickTeam').value.trim();
   const odds=document.getElementById('pickOdds').value.trim();
   if(!team||!odds){alert('Team and odds required');return;}
-  picks[currentTier].push({team,betType:document.getElementById('pickBetType').value,odds,time:document.getElementById('pickTime').value.trim(),note:document.getElementById('pickNote').value.trim(),result:'',id:Date.now()});
+  picks[currentTier].push({team,betType:document.getElementById('pickBetType').value,odds,time:document.getElementById('pickTime').value.trim(),note:document.getElementById('pickNote').value.trim(),tag:document.getElementById('pickTag').value,result:'',id:Date.now()});
   ['pickTeam','pickOdds','pickTime','pickNote'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pickTag').value='';
   renderPicksList();
   alert('Pick added.\nClick "Push all picks to fans" when ready.');
 }
@@ -1738,9 +1760,35 @@ function renderPicksList(){
   ['free','starter','metallica','gold','purple','allaccess'].forEach(tier=>{
     const el=document.getElementById('picksList-'+tier);if(!el)return;
     el.innerHTML=picks[tier].length
-      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div><div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:600;font-size:12px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'WIN':p.result==='loss'?'LOSS':'PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">Win</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">Loss</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">Push</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">Remove</button></div>`).join('')
+      ?picks[tier].map((p,i)=>`<div class="pick-item"><div class="pick-header"><div class="pick-team"><img class="team-logo-sm" src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'">${p.team}</div><div class="pick-tier-badge">${p.betType}</div></div>${p.tag&&TAG_META[p.tag]?`<div class="pick-tag-chip ${TAG_META[p.tag].cls}" style="display:inline-block;margin-top:6px;">${TAG_META[p.tag].label}</div>`:''}<div class="pick-details"><strong>${p.odds}</strong>${p.time?' • '+p.time:''}</div><div class="pick-notes">${p.note||'No notes'}</div>${p.result?`<div style="margin-top:8px;font-weight:600;font-size:12px;color:${p.result==='win'?'var(--green)':p.result==='loss'?'var(--red)':'var(--slate)'};">${p.result==='win'?'WIN':p.result==='loss'?'LOSS':'PUSH'}<button class="result-btn result-btn-push" style="margin-left:8px;padding:4px 8px;font-size:10px;" onclick="setResult('${tier}',${i},'')">Reset</button></div>`:`<div class="result-btns"><button class="result-btn result-btn-win" onclick="setResult('${tier}',${i},'win')">Win</button><button class="result-btn result-btn-loss" onclick="setResult('${tier}',${i},'loss')">Loss</button><button class="result-btn result-btn-push" onclick="setResult('${tier}',${i},'push')">Push</button></div>`}<button class="btn btn-sm btn-secondary" onclick="deletePick('${tier}',${i})" style="margin-top:8px;">Remove</button></div>`).join('')
       :'<div style="color:var(--slate);font-size:12px;padding:8px;">No picks yet</div>';
   });
+}
+
+const TAG_META = {
+  lock:{cls:'lock',label:'🔒 Lock of the Day'},
+  ailean:{cls:'ailean',label:'📈 AI Lean'},
+  highstakes:{cls:'highstakes',label:'💎 High Stakes'},
+  hotstreak:{cls:'hotstreak',label:'🔥 Hot Streak'}
+};
+
+function getSavedPicks(){
+  try{ return JSON.parse(localStorage.getItem('a2s_saved_picks')||'[]'); }catch(e){ return []; }
+}
+function toggleSavedPick(id){
+  let saved = getSavedPicks();
+  if(saved.includes(id)) saved = saved.filter(x=>x!==id);
+  else saved.push(id);
+  localStorage.setItem('a2s_saved_picks', JSON.stringify(saved));
+  const btn = document.getElementById('star-'+id);
+  if(btn) btn.classList.toggle('saved', saved.includes(id));
+  if(myPicksFilterActive) renderFanView();
+}
+
+let myPicksFilterActive = false;
+function toggleMyPicksFilter(){
+  myPicksFilterActive = !myPicksFilterActive;
+  renderFanView();
 }
 
 function renderPickCardV2(p,tier){
@@ -1753,17 +1801,22 @@ function renderPickCardV2(p,tier){
   const brandTile = tier==='free' ? '<div class="pick-card-v2-brand-tile"></div>' : '';
   const brandMark = tier==='free' ? '<img class="pick-card-v2-brand-mark" src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="Addiicted2Sports">' : '';
   const brandTag = tier==='free' ? '<div class="pick-card-v2-brand-tag">ADDIICTED2SPORTS™</div>' : '';
+  const tagMeta = p.tag && TAG_META[p.tag];
+  const tagChip = tagMeta ? `<div class="pick-tag-chip ${tagMeta.cls}">${tagMeta.label}</div>` : '';
+  const isSaved = getSavedPicks().includes(p.id);
+  const starBtn = `<button class="pick-card-v2-star${isSaved?' saved':''}" id="star-${p.id}" onclick="toggleSavedPick(${p.id})" title="Save to My Picks">${isSaved?'★':'☆'}</button>`;
   return `
     <div class="pick-card-v2 ${resultClass}${brandedClass}">
       ${brandTile}
       <div class="pick-card-v2-accent"></div>
+      ${tagChip}
       <div class="pick-card-v2-top">
         <div class="pick-card-v2-team">
           <img src="${getTeamLogoUrl(p.team)}" onerror="this.src='${FALLBACK_LOGO}'" alt="${p.team}">
           ${brandMark}
           <div class="pick-card-v2-name">${p.team}</div>
         </div>
-        ${badgeHtml}
+        <div style="display:flex;align-items:center;gap:6px;">${badgeHtml}${starBtn}</div>
       </div>
       <div class="pick-card-v2-bet">
         <span class="pick-card-v2-bettype">${p.betType}${p.time?' · '+p.time:''}</span>
@@ -1811,19 +1864,38 @@ function renderFanView(){
     const flagWrap=document.getElementById('winFlagWrap');const recordStrip=document.getElementById('recordStrip');
     if(flagWrap) flagWrap.classList.remove('active');
     if(recordStrip) recordStrip.style.display='none';
+    const myPicksToggleWrap=document.querySelector('.my-picks-toggle');
+    if(myPicksToggleWrap) myPicksToggleWrap.style.display='none';
     return;
   }
+  const myPicksToggleWrap=document.querySelector('.my-picks-toggle');
+  if(myPicksToggleWrap) myPicksToggleWrap.style.display='flex';
 
   localStorage.setItem('a2s_has_seen_drop', 'true');
+  const myPicksBtn = document.getElementById('myPicksToggleBtn');
+  if(myPicksBtn){
+    myPicksBtn.classList.toggle('active', myPicksFilterActive);
+    myPicksBtn.textContent = myPicksFilterActive ? '★ Showing My Saved Picks' : '☆ My Saved Picks';
+  }
+  const savedIds = getSavedPicks();
   let html='';let totalW=0,totalL=0,totalP=0,hasResults=false;
   if(userTier && userTier!=='starter' && userTier!=='free'){
     html+='<div style="text-align:center;margin-bottom:16px;padding:8px 14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:20px;display:inline-block;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.5px;">VIP ACCESS — PRIORITY PICKS & CHAT</div><div style="text-align:center;"></div>';
   }
+  let anyShown=false;
   (access[userTier]||[]).forEach(tier=>{
     if(!picks[tier]||!picks[tier].length)return;
-    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${picks[tier].slice(0,pickLimits[tier]).map(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;return renderPickCardV2(p,tier);}).join('')}</div>`;
+    const tierPicks = picks[tier].slice(0,pickLimits[tier]);
+    tierPicks.forEach(p=>{if(p.result==='win')totalW++;else if(p.result==='loss')totalL++;else if(p.result==='push')totalP++;if(p.result)hasResults=true;});
+    const visiblePicks = myPicksFilterActive ? tierPicks.filter(p=>savedIds.includes(p.id)) : tierPicks;
+    if(!visiblePicks.length)return;
+    anyShown=true;
+    html+=`<div class="tier-section"><div class="tier-header">${names[tier]} — ${Math.min(picks[tier].length,pickLimits[tier])} Pick${Math.min(picks[tier].length,pickLimits[tier])>1?'s':''}</div>${visiblePicks.map(p=>renderPickCardV2(p,tier)).join('')}</div>`;
   });
-  if(userTier==='free'){
+  if(myPicksFilterActive && !anyShown){
+    html+='<div style="text-align:center;color:var(--slate);padding:30px 20px;font-size:12px;">No saved picks yet — tap the ☆ on any pick card to save it here.</div>';
+  }
+  if(userTier==='free' && !myPicksFilterActive){
     html+='<div style="text-align:center;margin-top:18px;padding:14px;background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:12px;"><div style="color:var(--gold);font-weight:700;font-size:13px;margin-bottom:6px;">Liked what you saw?</div><div style="color:var(--slate);font-size:12px;margin-bottom:10px;">Starter gets you 2 picks for $15, or go straight to Metallica for 3 picks + VIP access.</div><button class="btn btn-primary" onclick="userVerified=false;document.getElementById(\'fanView\').classList.remove(\'active\');document.getElementById(\'paymentWall\').classList.remove(\'hidden\');goToPaymentWall();">See upgrade options</button></div>';
   }
   document.getElementById('fanPicksSection').innerHTML=html||'<div style="text-align:center;color:var(--slate);padding:40px 20px;">Picks coming soon...</div>';
@@ -2558,6 +2630,3 @@ victoriaTTS.init();
 
 </body>
 </html>
-
-
-
