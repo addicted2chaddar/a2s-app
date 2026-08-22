@@ -2,13 +2,13 @@
   "picks": {
     "free": [
       {
-        "team": "Miami Marlins",
-        "betType": "MONEYLINE",
-        "odds": "-145",
-        "time": "4 10 pm",
-        "note": "Over 8 .5 too",
-        "result": "win",
-        "id": 1787341263620
+        "team": "Baltimore Ravens",
+        "betType": "SPREAD",
+        "odds": "+3",
+        "time": "10 AM PT",
+        "note": "12.5",
+        "result": "",
+        "id": 1787413544757
       }
     ],
     "starter": [],
