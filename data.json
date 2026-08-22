@@ -11,9 +11,57 @@
         "id": 1787413544757
       }
     ],
-    "starter": [],
-    "metallica": [],
-    "gold": [],
+    "starter": [
+      {
+        "team": "Atlanta Falcons",
+        "betType": "SPREAD",
+        "odds": "+3.5",
+        "time": "10 AM PT",
+        "note": "12.5 VS 16.5",
+        "result": "",
+        "id": 1787413652088
+      }
+    ],
+    "metallica": [
+      {
+        "team": "Toronto Blue Jays",
+        "betType": "MONEYLINE",
+        "odds": "-105",
+        "time": "10 35 PM PT",
+        "note": "0.0 VS 12,C",
+        "result": "",
+        "id": 1787413779371
+      },
+      {
+        "team": "Buffalo Bills VS BROWNS",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 37",
+        "time": "10 AM PT",
+        "note": "0.7 OVER VS 2.0 C /UNDER",
+        "result": "",
+        "id": 1787413926669
+      }
+    ],
+    "gold": [
+      {
+        "team": "Milwaukee Brewers",
+        "betType": "MONEYLINE",
+        "odds": "-181",
+        "time": "11 10 AM PT",
+        "note": "14.8 VS 1.2",
+        "result": "",
+        "id": 1787414055070
+      },
+      {
+        "team": "Atlanta Falcons",
+        "betType": "SPREAD",
+        "odds": "+3",
+        "time": "10 AM PT",
+        "note": "0.0 C VS 1.8",
+        "result": "",
+        "id": 1787414224566
+      }
+    ],
     "purple": [],
     "allaccess": []
   },
