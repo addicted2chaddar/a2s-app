@@ -30,6 +30,16 @@
         "note": "12.5 VS 16.5",
         "result": "loss",
         "id": 1787413652088
+      },
+      {
+        "team": "Toronto blue Jays",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "10:35 am pt",
+        "note": "",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1787500835915
       }
     ],
     "metallica": [
