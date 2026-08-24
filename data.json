@@ -12,7 +12,18 @@
         "id": 1787611507400
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "Cincinnati ML",
+        "betType": "MONEYLINE",
+        "odds": "-165",
+        "time": "6 45 pm pt",
+        "note": "",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1787611654230
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
