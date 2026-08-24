@@ -2,28 +2,17 @@
   "picks": {
     "free": [
       {
-        "team": "Philadelphia Phillies VS Cardinals",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER 8.5",
-        "time": "10 35 AM PT",
-        "note": "St. Louis Cardinals: open +164 -> now +184 ▲  Richter 5-CRITICAL (19.3c)\n  Philadelphia Phillies: open -192 -> now -218 ▼  Richter 5-CRITICAL (26.2c)\n  O/U: 8.0\n    Over  : +103 ▼  Richter 1-Micro (1.5c)\n    Under : -124 ▲  Richter 1-Micro (1.8c)",
-        "tag": "",
-        "result": "loss",
-        "id": 1787494842079
-      }
-    ],
-    "starter": [
-      {
-        "team": "Toronto blue Jays",
+        "team": "Minnesota lynx",
         "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "10:35 am pt",
+        "odds": "Minnesota -5.5",
+        "time": "5 00 pm pt",
         "note": "",
-        "tag": "hotstreak",
+        "tag": "lock",
         "result": "",
-        "id": 1787500835915
+        "id": 1787611507400
       }
     ],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
