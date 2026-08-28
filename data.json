@@ -12,7 +12,18 @@
         "id": 1787935964251
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "Detroit tigers",
+        "betType": "MONEYLINE",
+        "odds": "-140",
+        "time": "3 40 am pt",
+        "note": "",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1787936086694
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
@@ -21,7 +32,7 @@
   "drop": {
     "free": 1787939522,
     "starter": 1787932800,
-    "metallica": 1787938941,
+    "metallica": 1787939706,
     "gold": 1787932800,
     "purple": 1787932800,
     "allaccess": 1787932800
