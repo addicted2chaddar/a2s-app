@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "Chicago cubs",
+        "betType": "MONEYLINE",
+        "odds": "-155",
+        "time": "11:20 am",
+        "note": "",
+        "tag": "lock",
+        "result": "",
+        "id": 1787935872002
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
