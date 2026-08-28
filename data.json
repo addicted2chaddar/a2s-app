@@ -1,36 +1,14 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Minnesota lynx",
-        "betType": "SPREAD",
-        "odds": "Minnesota -5.5",
-        "time": "5 00 pm pt",
-        "note": "",
-        "tag": "lock",
-        "result": "",
-        "id": 1787611507400
-      }
-    ],
-    "starter": [
-      {
-        "team": "Cincinnati ML",
-        "betType": "MONEYLINE",
-        "odds": "-165",
-        "time": "6 45 pm pt",
-        "note": "",
-        "tag": "highstakes",
-        "result": "",
-        "id": 1787611654230
-      }
-    ],
+    "free": [],
+    "starter": [],
     "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
   "drop": {
-    "free": 1787614954,
+    "free": 1787932800,
     "starter": 1787615151,
     "metallica": 1787512133,
     "gold": 1787512153,
