@@ -1,17 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Chicago cubs",
-        "betType": "MONEYLINE",
-        "odds": "-155",
-        "time": "11:20 am",
-        "note": "",
-        "tag": "lock",
-        "result": "",
-        "id": 1787935872002
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -19,9 +8,9 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1787932800,
+    "free": 1787939522,
     "starter": 1787932800,
-    "metallica": 1787939429,
+    "metallica": 1787938941,
     "gold": 1787932800,
     "purple": 1787932800,
     "allaccess": 1787932800
