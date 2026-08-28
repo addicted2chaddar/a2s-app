@@ -24,7 +24,18 @@
         "id": 1787936086694
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "Washington  commanders",
+        "betType": "SPREAD",
+        "odds": "+3.5",
+        "time": "3 00 pm pt",
+        "note": "La Formula says at 12:24 am edt\nover 34.5",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1787936243264
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
