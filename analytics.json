@@ -3056,6 +3056,13 @@
       "utm_medium": "none",
       "utm_campaign": "none",
       "ts": 1788063451680
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1788111771132
     }
   ]
 }
