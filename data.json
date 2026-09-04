@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "Chicago cubs",
-        "betType": "MONEYLINE",
-        "odds": "-155",
-        "time": "11:20 am pt",
+        "team": "St louis Cardinals",
+        "betType": "SPREAD",
+        "odds": "+1.5",
+        "time": "7:10 PM",
         "note": "",
-        "tag": "lock",
-        "result": "win",
-        "id": 1787935964251
+        "tag": "highstakes",
+        "result": "",
+        "id": 1788483794843
       }
     ],
     "starter": [],
