@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "St louis Cardinals",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "7:10 PM",
+        "team": "Cleveland guardians",
+        "betType": "MONEYLINE",
+        "odds": "-132",
+        "time": "11:10 am PT",
         "note": "",
-        "tag": "highstakes",
-        "result": "win",
-        "id": 1788483794843
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1788535812975
       }
     ],
     "starter": [],
