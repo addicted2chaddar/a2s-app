@@ -10,48 +10,16 @@
         "tag": "lock",
         "result": "win",
         "id": 1787935964251
-      },
-      {
-        "team": "St louis Cardinals",
-        "betType": "SPREAD",
-        "odds": "+1.5",
-        "time": "7:10 PM",
-        "note": "",
-        "tag": "highstakes",
-        "result": "",
-        "id": 1788473977356
       }
     ],
-    "starter": [
-      {
-        "team": "Detroit tigers",
-        "betType": "MONEYLINE",
-        "odds": "-140",
-        "time": "3 40 am pt",
-        "note": "",
-        "tag": "highstakes",
-        "result": "win",
-        "id": 1787936086694
-      }
-    ],
-    "metallica": [
-      {
-        "team": "Washington  commanders",
-        "betType": "SPREAD",
-        "odds": "+3.5",
-        "time": "3 00 pm pt",
-        "note": "La Formula says at 12:24 am edt\nover 34.5",
-        "tag": "hotstreak",
-        "result": "win",
-        "id": 1787936243264
-      }
-    ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
   },
   "drop": {
-    "free": 1788480397,
+    "free": 1788485533,
     "starter": 1787932800,
     "metallica": 1787939706,
     "gold": 1787932800,
