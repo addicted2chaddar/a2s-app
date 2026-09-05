@@ -1,17 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Cleveland guardians",
-        "betType": "MONEYLINE",
-        "odds": "-132",
-        "time": "11:10 am PT",
-        "note": "",
-        "tag": "hotstreak",
-        "result": "win",
-        "id": 1788535812975
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -19,7 +8,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1788538260,
+    "free": 1788619049,
     "starter": 1788538260,
     "metallica": 1788538260,
     "gold": 1788538260,
