@@ -2,7 +2,18 @@
   "picks": {
     "free": [],
     "starter": [],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "Indiana",
+        "betType": "SPREAD",
+        "odds": "-23.5",
+        "time": "9 00 am pt",
+        "note": "",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1788621344384
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
