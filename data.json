@@ -1,19 +1,19 @@
 {
   "picks": {
-    "free": [],
-    "starter": [],
-    "metallica": [
+    "free": [
       {
-        "team": "Indiana",
-        "betType": "SPREAD",
-        "odds": "-23.5",
-        "time": "9 00 am pt",
-        "note": "",
+        "team": "MILWAUKEE BREWERS",
+        "betType": "MONEYLINE",
+        "odds": "-125",
+        "time": "9:10 am PT",
+        "note": "58%",
         "tag": "hotstreak",
-        "result": "win",
-        "id": 1788621344384
+        "result": "",
+        "id": 1788704210543
       }
     ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
