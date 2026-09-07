@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "MILWAUKEE BREWERS",
+        "team": "Philadelphia Phillies",
         "betType": "MONEYLINE",
-        "odds": "-125",
-        "time": "9:10 am PT",
-        "note": "58%",
-        "tag": "hotstreak",
-        "result": "loss",
-        "id": 1788704210543
+        "odds": "-170",
+        "time": "10 05 am PT",
+        "note": "62%ML  -1.5 -125 odds 44%\nBRAVE 41.67% +1.5 -150 60%",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1788790295045
       }
     ],
     "starter": [],
@@ -19,7 +19,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1788708600,
+    "free": 1788793908,
     "starter": 1788619071,
     "metallica": 1788622682,
     "gold": 1788637088,
