@@ -1,17 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Philadelphia Phillies",
-        "betType": "MONEYLINE",
-        "odds": "-170",
-        "time": "10 05 am PT",
-        "note": "62%ML  -1.5 -125 odds 44%\nBRAVE 41.67% +1.5 -150 60%",
-        "tag": "highstakes",
-        "result": "win",
-        "id": 1788790295045
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -19,7 +8,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1788901200,
+    "free": 1789164763,
     "starter": 1788901200,
     "metallica": 1788901200,
     "gold": 1788901200,
