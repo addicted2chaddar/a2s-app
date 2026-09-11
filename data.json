@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "YANKEES VS METS",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 8 -110",
+        "time": "4 05 PM PT",
+        "note": "(4.2 cents)  2-Minor",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1789164650310
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -8,7 +19,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1789168066,
+    "free": 1789166474,
     "starter": 1788901200,
     "metallica": 1788901200,
     "gold": 1788901200,
