@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "YANKEES VS METS",
-        "betType": "OVER/UNDER",
-        "odds": "OVER 8 -110",
-        "time": "4 05 PM PT",
-        "note": "(4.2 cents)  2-Minor",
+        "team": "Oregon",
+        "betType": "SPREAD",
+        "odds": "-21",
+        "time": "9 00 am PT",
+        "note": "",
         "tag": "hotstreak",
-        "result": "win",
-        "id": 1789164650310
+        "result": "",
+        "id": 1789217781849
       }
     ],
     "starter": [],
