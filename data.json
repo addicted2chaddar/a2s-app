@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "Oregon",
-        "betType": "SPREAD",
-        "odds": "-21",
-        "time": "9 00 am PT",
-        "note": "",
-        "tag": "hotstreak",
-        "result": "loss",
-        "id": 1789217781849
+        "team": "Dallas Cowboys",
+        "betType": "MONEYLINE",
+        "odds": "-150",
+        "time": "5 20 pm pt",
+        "note": "68k vs 13k",
+        "tag": "lock",
+        "result": "",
+        "id": 1789334216737
       }
     ],
     "starter": [],
