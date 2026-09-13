@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "Oregon",
+        "betType": "SPREAD",
+        "odds": "-21",
+        "time": "9 00 am PT",
+        "note": "",
+        "tag": "hotstreak",
+        "result": "loss",
+        "id": 1789217781849
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
