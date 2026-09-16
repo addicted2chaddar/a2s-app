@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "seattle mariners",
+        "betType": "MONEYLINE",
+        "odds": "-131",
+        "time": "6 38 pm pt",
+        "note": "",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1789600814686
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
