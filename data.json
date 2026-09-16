@@ -1,17 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "Dallas Cowboys",
-        "betType": "MONEYLINE",
-        "odds": "-150",
-        "time": "5 20 pm pt",
-        "note": "68k vs 13k",
-        "tag": "lock",
-        "result": "",
-        "id": 1789334216737
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -19,7 +8,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1789341600,
+    "free": 1789602478,
     "starter": 1788901200,
     "metallica": 1788901200,
     "gold": 1788901200,
