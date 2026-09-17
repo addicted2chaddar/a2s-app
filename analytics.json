@@ -3413,6 +3413,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1789600655496
+    },
+    {
+      "type": "pageview",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1789633800681
     }
   ]
 }
