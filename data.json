@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "Pittsburgh pirates ☠️",
-        "betType": "MONEYLINE",
-        "odds": "-125",
-        "time": "9:10",
-        "note": "",
+        "team": "Minnesota Lynx vs New York Libtery",
+        "betType": "OVER/UNDER",
+        "odds": "Over 176",
+        "time": "4 30 pm pt",
+        "note": "Everyone on under 177",
         "tag": "hotstreak",
-        "result": "win",
-        "id": 1789658554073
+        "result": "",
+        "id": 1789743780818
       }
     ],
     "starter": [],
