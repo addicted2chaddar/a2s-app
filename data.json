@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "Minnesota Lynx vs New York Libtery",
-        "betType": "OVER/UNDER",
-        "odds": "Over 176",
-        "time": "4 30 pm pt",
-        "note": "Everyone on under 177",
-        "tag": "hotstreak",
-        "result": "loss",
-        "id": 1789743780818
+        "team": "NEW YORK JETS",
+        "betType": "SPREAD",
+        "odds": "+8",
+        "time": "10:00 AM",
+        "note": "Sep 13 08:33 PM: Sharp line move detected against Green Bay Packers\nSep 19 10:12 AM: Sharp line move detected against Green Bay Packers",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1789913944944
       }
     ],
     "starter": [],
@@ -19,7 +19,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1789770600,
+    "free": 1789917566,
     "starter": 1789661400,
     "metallica": 1789661400,
     "gold": 1789661400,
