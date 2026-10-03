@@ -1,17 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "NEW YORK JETS",
-        "betType": "SPREAD",
-        "odds": "+8",
-        "time": "10:00 AM",
-        "note": "Sep 13 08:33 PM: Sharp line move detected against Green Bay Packers\nSep 19 10:12 AM: Sharp line move detected against Green Bay Packers",
-        "tag": "highstakes",
-        "result": "win",
-        "id": 1789913944944
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -19,7 +8,7 @@
     "allaccess": []
   },
   "drop": {
-    "free": 1790535900,
+    "free": 1791068340,
     "starter": 1789661400,
     "metallica": 1790535900,
     "gold": 1789661400,
