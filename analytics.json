@@ -3963,6 +3963,14 @@
       "utm_campaign": "none",
       "ts": 1791156762989,
       "tier": "gold"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791156779630,
+      "tier": "metallica"
     }
   ]
 }
