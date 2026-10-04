@@ -3971,6 +3971,14 @@
       "utm_campaign": "none",
       "ts": 1791156779630,
       "tier": "metallica"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791156805537,
+      "tier": "purple"
     }
   ]
 }
