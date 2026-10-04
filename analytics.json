@@ -3879,6 +3879,13 @@
       "utm_campaign": "none",
       "ts": 1791152905460,
       "tier": "allaccess"
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791152925296
     }
   ]
 }
