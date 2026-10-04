@@ -3979,6 +3979,15 @@
       "utm_campaign": "none",
       "ts": 1791156805537,
       "tier": "purple"
+    },
+    {
+      "type": "free_claim",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791156816180,
+      "tier": "free",
+      "claimNumber": 2
     }
   ]
 }
