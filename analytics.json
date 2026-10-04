@@ -3856,6 +3856,14 @@
       "utm_medium": "none",
       "utm_campaign": "none",
       "ts": 1791152848482
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791152867212,
+      "tier": "purple"
     }
   ]
 }
