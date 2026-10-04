@@ -3955,6 +3955,14 @@
       "utm_campaign": "none",
       "ts": 1791156736311,
       "tier": "allaccess"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791156762989,
+      "tier": "gold"
     }
   ]
 }
