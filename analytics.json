@@ -3988,6 +3988,15 @@
       "ts": 1791156816180,
       "tier": "free",
       "claimNumber": 2
+    },
+    {
+      "type": "free_claim",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791156835069,
+      "tier": "free",
+      "claimNumber": 3
     }
   ]
 }
