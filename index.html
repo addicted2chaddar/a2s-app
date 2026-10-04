@@ -589,7 +589,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
         <div class="howto-title">How to unlock — Card</div>
         <div><span class="howto-num">1</span>Select your tier below, then tap "Pay with Card — Stripe"</div>
         <div><span class="howto-num">2</span>Complete checkout on Stripe's secure page</div>
-        <div><span class="howto-num">3</span>Screenshot your Stripe confirmation and message us to unlock — or use your PayPal receipt field once your unlock code is sent</div>
+        <div><span class="howto-num">3</span>Screenshot your Stripe receipt and DM it to @addiicted2sports on Instagram — we'll send you an unlock code to enter in the receipt box below</div>
       </div>
     </div>
   </div>
@@ -2059,7 +2059,9 @@ async function claimFreePickGlobally(fp){
       body: JSON.stringify({fingerprint: fp})
     });
     if(workerR.ok){
-      return await workerR.json();
+      const wj = await workerR.json();
+      if(wj && typeof wj.ok === 'boolean') return wj;
+      // unexpected worker reply shape - fall through to data.json check
     }
     // fall through to data.json check below if the worker route isn't live yet / errors
   }catch(e){ /* fall through */ }
@@ -2539,6 +2541,7 @@ init();
   <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/Screenshot_20260516_052151_Google.jpg" alt="Victoria">
   Talk to Victoria
 </button>
+<a id="a2sIgFab" href="https://www.instagram.com/addiicted2sports/" target="_blank" rel="noopener" aria-label="Follow @addiicted2sports on Instagram" style="position:fixed;left:18px;bottom:18px;z-index:400;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f2c94c,#d4a017);box-shadow:0 6px 18px rgba(0,0,0,0.45);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#111"/></svg></a>
 
 <script>
 (function(){
