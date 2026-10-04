@@ -3902,6 +3902,13 @@
       "ts": 1791152951512,
       "tier": "free",
       "claimNumber": 1
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791152975276
     }
   ]
 }
