@@ -3834,6 +3834,13 @@
       "utm_campaign": "none",
       "ts": 1791152785598,
       "tier": "starter"
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791152808343
     }
   ]
 }
