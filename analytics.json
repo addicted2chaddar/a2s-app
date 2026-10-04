@@ -3893,6 +3893,15 @@
       "utm_medium": "none",
       "utm_campaign": "none",
       "ts": 1791152941861
+    },
+    {
+      "type": "free_claim",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791152951512,
+      "tier": "free",
+      "claimNumber": 1
     }
   ]
 }
