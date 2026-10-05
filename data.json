@@ -34,7 +34,18 @@
         "id": 1791224704063
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "San Jose Sharks",
+        "betType": "SPREAD",
+        "odds": "+1.5 -110",
+        "time": "8:10 PM ET  /  5:10 PM PT",
+        "note": "-  -  -  -  -  -  -  -  -  -  -  -\n SOURCE    (SIM)\n BETS      San Jose Sharks: 480 (31%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Dallas Stars: 1023 (68%)\n DOLLARS   San Jose Sharks: $7,112 (20%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Dallas Stars: $26,757 (79%)\n MONEY     San Jose Sharks: $7,112 avg$14  Dallas Stars: $26,757 avg$26  Total: $33,869 (1503 bets)\n WHALE     San Jose Sharks:  -  WHALE    Dallas Stars:  -\n SHARP     San Jose Sharks:  - FADE -     Dallas Stars:  -\n AI LEAN    -  Dallas Stars (64.5/100)  Park: 1.10x  EV: -4.08  STAKE: $0.00 (no edge)",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1791224838320
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
