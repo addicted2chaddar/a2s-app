@@ -51,6 +51,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .countdown-timer.is-live{color:var(--green);font-size:26px;letter-spacing:4px;}
 .countdown-timer.is-live::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:10px;vertical-align:middle;animation:liveDotPulse 1.4s ease-in-out infinite;}
 @keyframes liveDotPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.45;transform:scale(0.8);}}
+#tierCountdowns[hidden]{display:none !important;}
 .countdown-status{font-size:11px;color:var(--slate);margin-top:8px;font-weight:500;}
 .sync-badge{font-size:9px;color:var(--gold-dim);margin-top:4px;}
 .header-info{background:var(--panel);border-radius:10px;padding:9px 14px;display:flex;justify-content:center;gap:20px;font-size:12px;border:1px solid var(--hair);margin-top:10px;}
@@ -347,12 +348,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="countdown-timer" id="countdownTimer">--:--:--</div>
     <div class="countdown-status" id="countdownStatus">Loading...</div>
     <div class="sync-badge" id="syncBadge">Connecting...</div>
-    <div id="tierCountdowns" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;"></div>
+    <button type="button" id="tierCdToggle" onclick="const g=document.getElementById('tierCountdowns');g.hidden=!g.hidden;this.textContent=g.hidden?'See every package\'s timer ▾':'Hide package timers ▴';" style="margin-top:10px;background:none;border:1px solid var(--hair-strong);border-radius:20px;color:var(--gold);font-size:11px;font-weight:600;padding:6px 14px;cursor:pointer;font-family:inherit;">See every package's timer ▾</button>
+    <div id="tierCountdowns" hidden style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;"></div>
     <div style="font-size:10.5px;color:var(--slate);margin-top:8px;line-height:1.5;">Picks drop 1 hour before game start — no matter where you are in the world 🌎</div>
   </div>
   <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.3px;">🏈🏒🏀⚾🥊 LIVE NOW: NFL, College Football, NHL, WNBA Playoffs, MLB Playoffs, Boxing & UFC</div>
   <div style="background:rgba(47,174,101,0.08);border:1px solid var(--green);border-radius:10px;padding:12px 14px;margin:10px 0 6px;text-align:center;">
-    <div style="color:var(--green);font-weight:800;font-size:13px;letter-spacing:0.3px;" id="heroStreakLine">PICKS ARE LIVE RIGHT NOW 🔥</div>
+    <div style="color:var(--green);font-weight:800;font-size:13px;letter-spacing:0.3px;" id="heroStreakLine">NEW PICKS EVERY DAY 🔥</div>
     <div style="color:var(--white);font-size:11.5px;margin-top:4px;line-height:1.5;" id="heroSubLine">Every pick verified. Every result public. No cherry-picking.</div>
     <div style="color:var(--slate);font-size:11px;margin-top:4px;">Today's play drops in <b style="color:var(--gold);">1hr before game start</b> — miss it, miss the number.</div>
   </div>
@@ -2344,12 +2346,10 @@ function buildFanTickerHtml(){
       if(pk.result==='win') wins.push(`🔥 ${tierLabel(t)} tier hit — ${pk.team}${pk.betType?' '+pk.betType:''}`);
     });
   });
-  const items = wins.length>0 ? wins.slice(-8) : [
-    'New fans joining the Victory Triangle daily',
-    'Free picks going out right now',
-    'Starter → Metallica upgrades happening today',
-    'All-Access fans locked in for the week'
-  ];
+  const strip=document.getElementById('fanTickerStrip');
+  if(strip) strip.style.display = wins.length ? '' : 'none';
+  if(!wins.length) return '';
+  const items = wins.slice(-8);
   const doubled=[...items,...items];
   return doubled.map(i=>`<span class="fan-ticker-item">${i}</span>`).join('');
 }
@@ -2407,6 +2407,7 @@ function initProofStrip(){
   if(wEl) wEl.textContent = wins>0?wins:'—';
   if(pEl) pEl.textContent = pct;
   if(sEl) sEl.textContent = streak>0?streak+'W':'—';
+  const ps=document.getElementById('proofStrip'); if(ps) ps.style.display = total>0 ? '' : 'none';
 
   const heroStreakEl = document.getElementById('heroStreakLine');
   const heroSubEl = document.getElementById('heroSubLine');
@@ -2414,7 +2415,7 @@ function initProofStrip(){
     if(streak>=2) heroStreakEl.textContent = `WE'RE ON A ${streak}-GAME WIN STREAK 🔥`;
     else if(wins>losses && wins>0) heroStreakEl.textContent = `WE'RE ${wins}-${losses} THIS WEEK 🔥`;
     else if(total>0) heroStreakEl.textContent = `${wins}-${losses}${pushes>0?'-'+pushes:''} — PICKS ARE LIVE 🔥`;
-    else heroStreakEl.textContent = 'PICKS ARE LIVE RIGHT NOW 🔥';
+    else heroStreakEl.textContent = 'NEW PICKS EVERY DAY 🔥';
   }
   if(heroSubEl){
     heroSubEl.textContent = total>0
@@ -2437,7 +2438,7 @@ function initGOTM(){
     if(pickEl) pickEl.textContent = userVerified ? gotmData.pick : 'LOCKED — subscribers only';
     if(descEl && gotmData.note) descEl.textContent = gotmData.note;
   } else {
-    card.style.display='block';
+    card.style.display='none';
     const saveEl=document.getElementById('gotmSave');
     if(saveEl) saveEl.style.display='inline';
   }
