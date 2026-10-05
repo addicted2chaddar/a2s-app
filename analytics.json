@@ -4278,6 +4278,14 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1791225079172
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1791225087625,
+      "tier": "starter"
     }
   ]
 }
