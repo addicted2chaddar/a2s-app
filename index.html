@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-<title>Addiicted2Sports™ — Expert Sports Picks | 67% Hit Rate</title>
-<meta name="description" content="Verified 138% ROI, 67% hit rate, 11-win streak. Expert sports picks across MLB, WNBA, Boxing, UFC & NFL — 3rd party tracked. Get in now."/>
+<title>Addiicted2Sports™ — Expert Sports Picks | Every Result Public</title>
+<meta name="description" content="Every pick graded and posted publicly. Expert sports picks across MLB, WNBA, Boxing, UFC & NFL — 3rd party tracked. Get in now."/>
 <meta name="theme-color" content="#08090c"/>
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Addiicted2Sports™"/>
-<meta property="og:title" content="Addiicted2Sports™ — 67% Hit Rate, 138% ROI Verified"/>
-<meta property="og:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Currently on an 11-win streak. Entertainment purposes only, 21+."/>
+<meta property="og:title" content="Addiicted2Sports™ — Expert Picks, Every Result Public"/>
+<meta property="og:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Every result posted publicly. Entertainment purposes only, 21+."/>
 <meta property="og:image" content="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <meta property="og:url" content="https://addicted2chaddar.github.io/a2s-app/"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Addiicted2Sports™ — 67% Hit Rate, 138% ROI Verified"/>
-<meta name="twitter:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Currently on an 11-win streak."/>
+<meta name="twitter:title" content="Addiicted2Sports™ — Expert Picks, Every Result Public"/>
+<meta name="twitter:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Every result posted publicly."/>
 <meta name="twitter:image" content="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -309,7 +309,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 
 <div class="header-hero">
   <div style="margin-bottom:6px;">
-    <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="ADDICTED2SPORTS" class="logo-image">
+    <img src="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg" alt="Addiicted2Sports™" class="logo-image">
   </div>
   <div class="bar-divider"><span></span><span></span><span></span><span></span><span></span></div>
   <div class="brand-tagline">Victory Triangle · Expert Picks</div>
@@ -608,8 +608,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div class="tier-explainer" id="tierExplainer"></div>
       <div id="paypalBtnWrap" style="margin-bottom:12px;"></div>
       <div id="stripeCardBtnWrap" style="margin-bottom:16px;"></div>
-      <label class="form-label">PayPal receipt #</label>
-      <input type="text" class="form-input" id="paypalReceipt" placeholder="e.g., TXN123ABC456">
+      <label class="form-label">PayPal receipt # or card unlock code</label>
+      <div style="font-size:11px;color:var(--slate);margin:-2px 0 8px;line-height:1.5;">Paid by card? Screenshot your Stripe receipt and DM it to <a href="https://www.instagram.com/addiicted2sports/" target="_blank" rel="noopener" style="color:var(--gold);">@addiicted2sports</a> — we'll send you an unlock code to enter here.</div>
+      <input type="text" class="form-input" id="paypalReceipt" placeholder="PayPal receipt # or Stripe unlock code">
       <button class="btn btn-primary" id="verifyBtn" onclick="verifyAndUnlock()" style="margin-top:16px;">Unlock picks</button>
       <div class="success-message" id="successMessage">Payment verified — picks unlocked.</div>
       <div style="margin-top:14px;padding:10px 14px;background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;font-size:11px;color:var(--slate);line-height:1.7;text-align:left;">
@@ -658,6 +659,7 @@ const ANALYTICS_FILE = 'analytics.json';
 const ANALYTICS_RAW_URL = `https://raw.githubusercontent.com/${GH_REPO}/main/${ANALYTICS_FILE}`;
 const ANALYTICS_API_URL = `https://api.github.com/repos/${GH_REPO}/contents/${ANALYTICS_FILE}`;
 
+const VICTORIA_PROXY = 'https://a2s-victoria.2forex9919.workers.dev';
 const PAYPAL_LINKS = {
   starter: 'https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E',
   metallica: 'https://www.paypal.com/ncp/payment/PBXLKVS2W6PSS'
@@ -853,6 +855,7 @@ const CFB_TEAM_LOGOS = {
   'new mexico':'167','lobos':'167',
   'akron':'2006','zips':'2006',
   'ball state':'2050','cardinals ball st':'2050',
+  'arkansas state':'2032','red wolves':'2032',
   'arkansas':'8','razorbacks':'8',
   'ohio bobcats':'195','bobcats ohio':'195',
   'buffalo':'2084','bulls buffalo':'2084',
@@ -1060,7 +1063,7 @@ async function handleVicScreenshot(input){
   setTimeout(()=>{ const b=document.getElementById('vicScanBar'); if(b) b.style.width='90%'; }, 100);
 
   try {
-    const verifyRes = await fetch('https://api.anthropic.com/v1/messages', {
+    const verifyRes = await fetch(VICTORIA_PROXY, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -1373,15 +1376,9 @@ async function callVictoria(userMsg){
     messages.push({role:'user',content:msgToSend});
   }
   try{
-    const VKEY=['sk-ant-api03-Ye9ML2JfwniO','H6xMg0UygR3Qjy2ZkaAsYXP2mUy6_63XrXrR8X0l78TWcEN6Fw6p7w85EVVDtYUyaBJIiWN','BdA-iNwRrQAA'].join('');
-    const res = await fetch('https://api.anthropic.com/v1/messages',{
+    const res = await fetch(VICTORIA_PROXY,{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':VKEY,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'claude-haiku-4-5',
         max_tokens:250,
@@ -1403,7 +1400,21 @@ async function callVictoria(userMsg){
   }
 }
 
-async function victoriaGreet(){ await callVictoria('NEW_VISITOR'); }
+async function victoriaGreet(){
+  vicAddMsg("Hey! I'm here to get you in. Already paid? Paste your PayPal receipt # in the Verify Payment box below. Paid by card? DM your Stripe receipt to @addiicted2sports for an unlock code. Or tap a question:", 'bot');
+  const msgs = document.getElementById('victoriaMessages');
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;';
+  ['I paid — how do I unlock?','Which tier is right for me?','When do picks drop?'].forEach(q=>{
+    const b = document.createElement('button');
+    b.textContent = q;
+    b.style.cssText = 'background:rgba(212,175,55,0.08);border:1px solid var(--hair-strong);color:var(--gold);border-radius:16px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit;';
+    b.onclick = ()=>{ wrap.remove(); document.getElementById('victoriaInput').value = q; sendToVictoria(); };
+    wrap.appendChild(b);
+  });
+  msgs.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+}
 
 async function sendToVictoria(){
   victoriaTTS.unlock();
@@ -1934,7 +1945,7 @@ function renderPaypalBtn(tier){
   if(link){
     el.innerHTML = `<a href="${link}" target="_blank" class="paypal-button">Pay with PayPal — ${tier==='starter'?'$15':'$125'}</a>`;
   } else {
-    el.innerHTML = `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">Direct payment link for this tier is being finalized — check back shortly</div>`;
+    el.innerHTML = STRIPE_LINKS[tier] ? '' : `<div style="text-align:center;font-size:11px;color:var(--slate);padding:10px;border:1px dashed var(--hair-strong);border-radius:8px;">Direct payment link for this tier is being finalized — check back shortly</div>`;
   }
 }
 function renderStripeCardBtn(tier){
@@ -1960,10 +1971,10 @@ async function verifyAndUnlock(){
     return;
   }
   const receipt=document.getElementById('paypalReceipt').value.trim().toUpperCase();
-  if(!receipt){alert('Enter PayPal receipt #');return;}
+  if(!receipt){alert('Enter your PayPal receipt # or the card unlock code we sent you');return;}
   const looksReal = /^[A-Z0-9]{10,20}$/.test(receipt) && !/^(.)\1+$/.test(receipt);
   if(!looksReal){
-    alert('That does not look like a real PayPal transaction ID. Copy it exactly from your PayPal confirmation (usually 11-17 letters and numbers, like 3AB12345CD678901E). If you are having trouble, use the screenshot upload in the Victoria chat instead for instant verification.');
+    alert('That does not look like a real PayPal receipt # or unlock code. PayPal: copy the transaction ID exactly from your confirmation (usually 11-17 letters and numbers, like 3AB12345CD678901E). Card/Stripe: enter the unlock code we DMed you. If you are having trouble, use the screenshot upload in the Victoria chat instead for instant verification.');
     return;
   }
   const usedKey='a2s_used_receipts';
@@ -2130,7 +2141,11 @@ function refreshFreeCardUI(){
   const btn = document.getElementById('freeCardBtn');
   if(!btn) return;
   if(freeCapReached()){
-    btn.outerHTML = '<div style="text-align:center;font-size:12px;color:var(--gold);font-weight:600;padding:12px;border:1px dashed var(--gold);border-radius:10px;">You have used all '+FREE_MAX_USES+' free picks. Ready for more? Grab Starter or Metallica below.</div>';
+    const body = btn.closest('.gotm-body');
+    const head = btn.closest('.gotm-card') && btn.closest('.gotm-card').querySelector('.gotm-header-text');
+    if(head) head.textContent = 'Free Picks Used';
+    const html = '<div class="gotm-title">READY FOR <span>MORE?</span></div><div class="gotm-sub">You\'ve used all '+FREE_MAX_USES+' free picks on this device. Starter gets you 2 picks for $15.</div><a href="https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E" target="_blank" class="paypal-button">Get Starter — $15</a>';
+    if(body) body.innerHTML = html; else btn.outerHTML = html;
   }
 }
 function showFanView(){
