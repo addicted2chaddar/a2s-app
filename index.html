@@ -1388,18 +1388,20 @@ async function callVictoria(userMsg){
     });
    const data = await res.json();
     vicHideTyping();
+    if(!data?.content?.[0]?.text) console.warn('Victoria proxy error:', res.status, data?.error || data);
     const reply = data?.content?.[0]?.text || fallbackVictoria(userMsg);
     if(data?.content?.[0]?.text) hist.push({role:'assistant',content:reply});
     vicAddMsg(reply,'bot');
-    victoriaTTS.speak(reply);
   }catch(e){
     vicHideTyping();
     const fb = fallbackVictoria(userMsg);
     vicAddMsg(fb,'bot');
-    victoriaTTS.speak(fb);
   }
 }
 
+function fallbackVictoria(){
+  return "I'm having trouble connecting right now. Already paid? Paste your PayPal receipt # in the Verify Payment box below. Paid by card? DM your Stripe receipt to @addiicted2sports for an unlock code. Picks drop 1 hour before game time.";
+}
 async function victoriaGreet(){
   vicAddMsg("Hey! I'm here to get you in. Already paid? Paste your PayPal receipt # in the Verify Payment box below. Paid by card? DM your Stripe receipt to @addiicted2sports for an unlock code. Or tap a question:", 'bot');
   const msgs = document.getElementById('victoriaMessages');
@@ -2582,7 +2584,7 @@ init();
 
   fab.addEventListener('click', function(){
     playPop();
-    if (window.victoriaTTS) victoriaTTS.unlock();
+    if (typeof victoriaTTS !== 'undefined') victoriaTTS.unlock();
     var target = document.getElementById('victoriaSection');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2593,7 +2595,10 @@ init();
 const victoriaTTS = {
   enabled: JSON.parse(localStorage.getItem('victoria_tts_enabled') || 'true'),
   voice: null,
+supported: typeof window !== 'undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined',
 init() {
+    const btn0 = document.getElementById('victoriaTTSBtn');
+    if (!this.supported) { if (btn0) btn0.style.display = 'none'; return; }
     const setVoice = () => {
       const voices = speechSynthesis.getVoices();
       this.voice =
@@ -2608,7 +2613,8 @@ init() {
     if (btn) btn.textContent = this.enabled ? '🔊' : '🔇';
   },
 speak(text) {
-    if (!this.enabled || !text) return;
+    if (!this.supported || !this.enabled || !text) return;
+    try {
     speechSynthesis.cancel();
     let clean = text
       .replace(/\*\*/g, '')
@@ -2622,10 +2628,11 @@ speak(text) {
     utter.rate = 1.02;
     utter.pitch = 1.05;
     speechSynthesis.speak(utter);
+    } catch(e) {}
   },
 
   unlock() {
-    if (this.unlocked) return;
+    if (!this.supported || this.unlocked) return;
     this.unlocked = true;
     try {
       speechSynthesis.cancel();
@@ -2638,7 +2645,8 @@ speak(text) {
   toggle() {
     this.enabled = !this.enabled;
     localStorage.setItem('victoria_tts_enabled', JSON.stringify(this.enabled));
-    if (this.enabled) { this.unlock(); } else { speechSynthesis.cancel(); }
+    if (!this.supported) return;
+    if (this.enabled) { this.unlock(); } else { try { speechSynthesis.cancel(); } catch(e) {} }
     const btn = document.getElementById('victoriaTTSBtn');
     if (btn) btn.textContent = this.enabled ? '🔊' : '🔇';
   }
