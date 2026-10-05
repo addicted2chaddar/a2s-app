@@ -4019,6 +4019,14 @@
       "utm_campaign": "none",
       "ts": 1791203125020,
       "tier": "starter"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791203144367,
+      "tier": "gold"
     }
   ]
 }
