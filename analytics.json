@@ -4035,6 +4035,14 @@
       "utm_campaign": "none",
       "ts": 1791203159915,
       "tier": "purple"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791203176982,
+      "tier": "allaccess"
     }
   ]
 }
