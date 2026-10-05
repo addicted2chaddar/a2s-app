@@ -1089,7 +1089,7 @@ function vicAddMsg(text, role){
         return `<a href="${href}" target="_blank" style="color:var(--gold-bright);text-decoration:underline;font-weight:600;">${match}</a>`;
       }
     );
-    div.innerHTML = linked;
+    div.innerHTML = linked.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*/g,'');
   } else {
     div.textContent = text;
   }
@@ -1376,7 +1376,15 @@ RULES:
 - If they ask about a specific sport, show you know it
 - If they seem hesitant, give them one specific recent win as social proof
 - Lead with PayPal only — only mention Stripe/card if the fan brings it up first, and redirect back to PayPal as the reliable option
-- Never reveal methodology, signals, or how picks are made — that's the product`;
+- Never reveal methodology, signals, or how picks are made — that's the product
+
+HOW YOU WRITE (your replies are also read out loud, and many fans are older):
+- Plain text only. Never use ** or * or # or bullet symbols.
+- Short, clear sentences. One idea per sentence. Keep most replies to 2-4 sentences.
+- Easy everyday words. Explain betting terms the first time (for example: "moneyline means you just pick who wins").
+- At most one emoji, and only at the very end.
+- Say prices and times plainly: "125 dollars", "7 days", "1 PM Pacific".
+- If a fan seems confused, unsure, or older, slow down, be patient and warm, and walk them through one step at a time. Never rush or pressure them.`;
 
 const VICTORIA_PERSONA = `You are Victoria — the most advanced AI sales agent ever built for a sports picks service. You represent Addiicted2Sports™, the #1 expert picks brand in Las Vegas. You are part street hustler, part luxury concierge, part sports analyst. Nobody in the world has an AI agent like you.
 
@@ -2727,12 +2735,21 @@ init() {
     const btn0 = document.getElementById('victoriaTTSBtn');
     if (!this.supported) { if (btn0) btn0.style.display = 'none'; return; }
     const setVoice = () => {
-      const voices = speechSynthesis.getVoices();
-      this.voice =
-        voices.find(v => /female/i.test(v.name) && /en/i.test(v.lang)) ||
-        voices.find(v => /Samantha|Victoria|Karen|Moira|Tessa|Zira|Google US English/i.test(v.name)) ||
-        voices.find(v => /en/i.test(v.lang) && !/male/i.test(v.name)) ||
-        voices[0];
+      const voices = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
+      if (!voices.length) return;
+      // Best-sounding female English voices first: neural "Natural/Online" voices (Edge, Windows),
+      // Apple's Siri-quality voices, then Google's, then anything English that isn't male.
+      const rank = v => {
+        const n = v.name;
+        if (/(Aria|Jenny|Ava|Emma|Michelle|Sonia|Libby).*(Natural|Online)/i.test(n)) return 0;
+        if (/(Natural|Online|Neural|Premium|Enhanced)/i.test(n) && !/\b(Guy|Davis|Andrew|Brian|Christopher|Eric|Roger|Steffan|Ryan|Male)\b/i.test(n)) return 1;
+        if (/Samantha|Ava|Allison|Susan|Zoe|Nicky/i.test(n)) return 2;
+        if (/Google US English|Google UK English Female/i.test(n)) return 3;
+        if (/en-US/i.test(v.lang) && /female|Karen|Moira|Tessa|Zira|Victoria/i.test(n)) return 4;
+        if (!/male|Daniel|Fred|Alex|David|Mark|George|Rishi/i.test(n)) return 5;
+        return 9;
+      };
+      this.voice = voices.slice().sort((a,b) => rank(a) - rank(b) || (/en-US/i.test(b.lang) - /en-US/i.test(a.lang)))[0];
     };
     setVoice();
     speechSynthesis.onvoiceschanged = setVoice;
@@ -2743,18 +2760,37 @@ speak(text) {
     if (!this.supported || !this.enabled || !text) return;
     try {
     speechSynthesis.cancel();
-    let clean = text
-      .replace(/\*\*/g, '')
-      .replace(/[#_~`]/g, '')
-      .replace(/^\s*-\s+/gm, '. ')
+    let clean = String(text)
+      .replace(/@addiicted2sports/gi, 'at Addicted to Sports on Instagram')
+      .replace(/https?:\/\/\S+/g, 'the link on screen. ')
+      .replace(/addicted2chaddar\.github\.io\S*/gi, 'our website')
+      .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, '')
+      .replace(/\*+/g, '')
+      .replace(/[#_~`|<>]/g, ' ')
+      .replace(/^\s*[-•]\s+/gm, '')
+      .replace(/Addiicted2Sports™?|Addicted2Sports™?|A2S\b/gi, 'Addicted to Sports')
+      .replace(/\b([A-Z]{4,})\b/g, w => w.charAt(0) + w.slice(1).toLowerCase())
+      .replace(/(\d+)\s*hrs?\b/gi, '$1 hours').replace(/\b24h\b/gi, '24 hours')
+      .replace(/\bvs\.?\b/gi, 'versus')
+      .replace(/\bML\b/g, 'moneyline').replace(/\bO\/U\b/gi, 'over under')
+      .replace(/\s*—\s*/g, ', ')
+      .replace(/™|®/g, '')
       .replace(/\n+/g, '. ')
-      .replace(/\.\s*\./g, '.');
-    clean = clean.replace(/Addiicted2Sports™?/gi, 'Addicted to Sports');
-    const utter = new SpeechSynthesisUtterance(clean);
-    if (this.voice) utter.voice = this.voice;
-    utter.rate = 1.02;
-    utter.pitch = 1.05;
-    speechSynthesis.speak(utter);
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+([.,!?])/g, '$1')
+      .replace(/([.,!?]){2,}/g, '$1')
+      .trim();
+    if (!clean) return;
+    // Speak sentence by sentence: smoother pauses, and avoids phones cutting off long speech
+    const parts = clean.match(/[^.!?]+[.!?]*/g) || [clean];
+    parts.map(s => s.trim()).filter(Boolean).forEach(s => {
+      const utter = new SpeechSynthesisUtterance(s);
+      if (this.voice) { utter.voice = this.voice; utter.lang = this.voice.lang; } else { utter.lang = 'en-US'; }
+      utter.rate = 0.94;
+      utter.pitch = 1.0;
+      utter.volume = 1;
+      speechSynthesis.speak(utter);
+    });
     } catch(e) {}
   },
 
