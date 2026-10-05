@@ -4043,6 +4043,13 @@
       "utm_campaign": "none",
       "ts": 1791203176982,
       "tier": "allaccess"
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791203204413
     }
   ]
 }
