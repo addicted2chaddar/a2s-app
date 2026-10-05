@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "Atlanta Falcons",
+        "betType": "SPREAD",
+        "odds": "+2.5 -110",
+        "time": "8:15 PM ET  /  5:15 PM PT",
+        "note": "BETS      Atlanta Falcons: 643 (65%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   New Orleans Saints: 332 (34%)\n DOLLARS   Atlanta Falcons: $10,958 (37%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   New Orleans Saints: $17,880 (62%)\n MONEY     Atlanta Falcons: $10,958 avg$17  New Orleans Saints: $17,880 avg$53  Total: $28,838 (975 bets)\n WHALE     Atlanta Falcons:  -  WHALE    New Orleans Saints:  -\n SHARP     Atlanta Falcons:  - FADE -     New Orleans Saints:  -\n AI LEAN    -  New Orleans Saints (52.6/100)  Park: 1.03x  EV: -4.27  STAKE: $0.00 (no edge)\n -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1791223296910
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
