@@ -22,6 +22,16 @@
         "tag": "highstakes",
         "result": "",
         "id": 1791224436150
+      },
+      {
+        "team": "New York Yankees",
+        "betType": "MONEYLINE",
+        "odds": "-124",
+        "time": "8:00 PM ET  /  5:00 PM PT",
+        "note": "SOURCE    (SIM)\n BETS      New York Yankees: 841 (45%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Tampa Bay Rays: 989 (54%)\n DOLLARS   New York Yankees: $7,284 (26%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Tampa Bay Rays: $19,695 (73%)\n MONEY     New York Yankees: $7,284 avg$8  Tampa Bay Rays: $19,695 avg$19  Total: $26,979 (1830 bets)\n WHALE     New York Yankees:  -  WHALE    Tampa Bay Rays:  -\n SHARP     New York Yankees:  - FADE -     Tampa Bay Rays:  -\n AI LEAN    -  New York Yankees (46.9/100)  Park: 1.04x  EV: -3.34  STAKE: $0.00 (no edge)\n UMPIRE    [D] Angel Hernandez  HomeW: 50.1%  O/U: NEUTRAL 48%  K/G: 16.2",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1791224704063
       }
     ],
     "metallica": [],
