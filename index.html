@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <title>Addiicted2Sports™ — Expert Sports Picks | Every Result Public</title>
-<meta name="description" content="Every pick graded and posted publicly. Expert sports picks across MLB, WNBA, Boxing, UFC & NFL — 3rd party tracked. Get in now."/>
+<meta name="description" content="Every pick graded and posted publicly. Expert sports picks across NFL, College Football, NHL, WNBA & MLB Playoffs, Boxing & UFC — 3rd party tracked. Get in now."/>
 <meta name="theme-color" content="#08090c"/>
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
@@ -12,13 +12,13 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Addiicted2Sports™"/>
 <meta property="og:title" content="Addiicted2Sports™ — Expert Picks, Every Result Public"/>
-<meta property="og:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Every result posted publicly. Entertainment purposes only, 21+."/>
+<meta property="og:description" content="3rd-party tracked picks across NFL, College Football, NHL, WNBA & MLB Playoffs, Boxing & UFC. Every result posted publicly. Entertainment purposes only, 21+."/>
 <meta property="og:image" content="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <meta property="og:url" content="https://addicted2chaddar.github.io/a2s-app/"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Addiicted2Sports™ — Expert Picks, Every Result Public"/>
-<meta name="twitter:description" content="3rd-party tracked picks across MLB, WNBA, Boxing, UFC & NFL. Every result posted publicly."/>
+<meta name="twitter:description" content="3rd-party tracked picks across NFL, College Football, NHL, WNBA & MLB Playoffs, Boxing & UFC. Every result posted publicly."/>
 <meta name="twitter:image" content="https://raw.githubusercontent.com/addicted2chaddar/a2s-app/main/80cd1e15-54cf-442b-8f70-d954e86bef1b.jpg"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -343,13 +343,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
   </div>
 
   <div class="countdown-display">
-    <div class="countdown-label">Picks drop in</div>
+    <div class="countdown-label" id="countdownLabel">Picks drop in</div>
     <div class="countdown-timer" id="countdownTimer">--:--:--</div>
     <div class="countdown-status" id="countdownStatus">Loading...</div>
     <div class="sync-badge" id="syncBadge">Connecting...</div>
+    <div id="tierCountdowns" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;"></div>
     <div style="font-size:10.5px;color:var(--slate);margin-top:8px;line-height:1.5;">Picks drop 1 hour before game start — no matter where you are in the world 🌎</div>
   </div>
-  <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.3px;">🏀⚾🥊 TODAY: MLB, WNBA, Boxing, UFC & NFL picks are live</div>
+  <div style="background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;text-align:center;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.3px;">🏈🏒🏀⚾🥊 LIVE NOW: NFL, College Football, NHL, WNBA Playoffs, MLB Playoffs, Boxing & UFC</div>
   <div style="background:rgba(47,174,101,0.08);border:1px solid var(--green);border-radius:10px;padding:12px 14px;margin:10px 0 6px;text-align:center;">
     <div style="color:var(--green);font-weight:800;font-size:13px;letter-spacing:0.3px;" id="heroStreakLine">PICKS ARE LIVE RIGHT NOW 🔥</div>
     <div style="color:var(--white);font-size:11.5px;margin-top:4px;line-height:1.5;" id="heroSubLine">Every pick verified. Every result public. No cherry-picking.</div>
@@ -382,8 +383,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       </div>
     </div>
     <div class="timer-controls">
-      <div class="timer-label">Drop timer for: <span id="timerTierLabel" style="color:var(--gold);">Metallica</span> <span style="font-weight:400;color:var(--slate);">— pick tier below first, each tier drops independently</span></div>
+      <div class="timer-label">Drop timer — now editing: <span id="timerTierLabel" style="color:var(--gold);">Metallica</span></div>
+      <div style="font-size:11px;color:var(--slate);margin:-4px 0 8px;line-height:1.5;">Tap a package below to choose it. Each package has its own timer.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 52px;gap:6px;font-size:9px;color:var(--slate);letter-spacing:0.8px;text-transform:uppercase;padding:0 10px 4px;"><span>Package</span><span>What fans see</span><span style="text-align:right;">Picks</span></div>
       <div style="background:var(--vault-2);border:1px solid var(--hair-strong);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-size:11px;" id="timerStatusList"></div>
+      <div id="timerBtnsLabel" style="font-size:11px;font-weight:600;color:var(--gold);margin:4px 0 8px;text-transform:uppercase;letter-spacing:0.5px;">Hold Metallica picks — drop in:</div>
       <div class="timer-buttons">
         <button class="timer-btn" onclick="setTimerMins(5)">5 min</button>
         <button class="timer-btn" onclick="setTimerMins(15)">15 min</button>
@@ -396,7 +400,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
         <input type="datetime-local" class="custom-time-input" id="customTime">
         <button class="custom-time-btn" onclick="setCustomTime()">Set exact time</button>
       </div>
-      <button class="timer-btn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(212,69,63,0.08);border-color:rgba(212,69,63,0.35);color:var(--red);">Clear timer / show live now</button>
+      <button class="timer-btn" id="clearTimerBtn" onclick="clearDropTimer()" style="margin-top:8px;width:100%;background:rgba(212,69,63,0.08);border-color:rgba(212,69,63,0.35);color:var(--red);">Show Metallica picks now (clear timer)</button>
     </div>
     <div class="form-group">
       <label class="form-label">Tier</label>
@@ -735,6 +739,40 @@ const WNBA_TEAM_LOGOS = {
   'mystics':'wsh','washington mystics':'wsh',
   'valkyries':'gs','golden state valkyries':'gs',
 };
+const NHL_TEAM_LOGOS = {
+  'anaheim ducks':'ana',
+  'boston bruins':'bos',
+  'sabres':'buf','buffalo sabres':'buf',
+  'calgary flames':'cgy','flames':'cgy',
+  'carolina hurricanes':'car',
+  'blackhawks':'chi','chicago blackhawks':'chi',
+  'avalanche':'col','colorado avalanche':'col',
+  'blue jackets':'cbj','columbus blue jackets':'cbj',
+  'dallas stars':'dal',
+  'red wings':'det','detroit red wings':'det',
+  'oilers':'edm','edmonton oilers':'edm',
+  'florida panthers':'fla',
+  'los angeles kings':'la','la kings':'la',
+  'minnesota wild':'min',
+  'canadiens':'mtl','montreal canadiens':'mtl',
+  'predators':'nsh','nashville predators':'nsh',
+  'new jersey devils':'nj','nj devils':'nj',
+  'islanders':'nyi','new york islanders':'nyi',
+  'new york rangers':'nyr','ny rangers':'nyr',
+  'senators':'ott','ottawa senators':'ott',
+  'flyers':'phi','philadelphia flyers':'phi',
+  'penguins':'pit','pittsburgh penguins':'pit',
+  'san jose sharks':'sj','sharks':'sj',
+  'kraken':'sea','seattle kraken':'sea',
+  'st. louis blues':'stl','st louis blues':'stl','blues':'stl',
+  'lightning':'tb','tampa bay lightning':'tb',
+  'maple leafs':'tor','toronto maple leafs':'tor',
+  'utah mammoth':'utah','mammoth':'utah','utah hockey club':'utah',
+  'canucks':'van','vancouver canucks':'van',
+  'golden knights':'vgk','vegas golden knights':'vgk','vegas':'vgk',
+  'capitals':'wsh','washington capitals':'wsh',
+  'winnipeg jets':'wpg',
+};
 const NFL_TEAM_LOGOS = {
   'cardinals':'ari','arizona cardinals':'ari',
   'falcons':'atl','atlanta falcons':'atl',
@@ -859,7 +897,7 @@ const CFB_TEAM_LOGOS = {
   'east carolina':'151','pirates ecu':'151',
   'temple':'218','owls temple':'218',
   'charlotte':'2429','49ers charlotte':'2429',
-  'liberty':'2335','flames liberty':'2335',
+  'liberty':'2335','flames liberty':'2335','liberty flames':'2335',
   'coastal carolina':'324','chanticleers':'324',
   'james madison':'256','dukes jmu':'256',
   'troy':'2653','trojans troy':'2653',
@@ -913,6 +951,7 @@ const TEAM_LOGO_ENTRIES = [
   ...Object.keys(MLB_TEAM_LOGOS).map(k=>({key:k, abbrev:MLB_TEAM_LOGOS[k], league:'mlb'})),
   ...Object.keys(WNBA_TEAM_LOGOS).map(k=>({key:k, abbrev:WNBA_TEAM_LOGOS[k], league:'wnba'})),
   ...Object.keys(NFL_TEAM_LOGOS).map(k=>({key:k, abbrev:NFL_TEAM_LOGOS[k], league:'nfl'})),
+  ...Object.keys(NHL_TEAM_LOGOS).map(k=>({key:k, abbrev:NHL_TEAM_LOGOS[k], league:'nhl'})),
   ...Object.keys(CFB_TEAM_LOGOS).map(k=>({key:k, abbrev:CFB_TEAM_LOGOS[k], league:'ncaa'})),
 ].sort((a,b)=>b.key.length-a.key.length);
 function getTeamLogoUrl(teamText){
@@ -926,7 +965,16 @@ function getTeamLogoUrl(teamText){
 
 let picks = {free:[],starter:[],metallica:[],gold:[],purple:[],allaccess:[]};
 let dropTargets = {free:0,starter:0,metallica:0,gold:0,purple:0,allaccess:0};
-function activeDropTier(){ return userTier || selectedTier || 'metallica'; }
+let tierPickedByFan = false;
+function activeDropTier(){
+  if(userTier) return userTier;
+  if(!tierPickedByFan){
+    const now=Math.floor(Date.now()/1000);
+    const next=Object.keys(dropTargets).filter(t=>dropTargets[t]>now).sort((a,b)=>dropTargets[a]-dropTargets[b])[0];
+    if(next) return next;
+  }
+  return selectedTier || 'metallica';
+}
 function activeDropTarget(){ return dropTargets[activeDropTier()] || 0; }
 let currentTier = 'metallica';
 let selectedTier = 'metallica';
@@ -1275,8 +1323,10 @@ TIER STACKING RULE — CRITICAL:
 - Always explain this stacking when selling — it makes higher tiers sound like MORE value
 
 TODAY'S SPORT LINEUP — MEMORIZE THIS:
-- Today, MLB, WNBA, Boxing, UFC, and NFL picks are all available. College Football is coming up soon.
-- If a fan asks about today's sports lineup, tell them clearly: MLB, WNBA, Boxing, UFC, and NFL picks are live today, with College Football coming soon.
+- CURRENT SEASON (October): NFL and College Football are in full swing every week. The NHL season just started. The WNBA is in PLAYOFF mode. MLB is in the PLAYOFFS (postseason). Boxing and UFC cards are live too.
+- Sports we cover right now: NFL, College Football, NHL, WNBA Playoffs, MLB Playoffs, Boxing, and UFC. Nothing is "coming soon" — College Football is LIVE.
+- If a fan asks about the sports lineup, tell them clearly: NFL, College Football, NHL hockey, WNBA Playoffs, MLB Playoffs, Boxing, and UFC are all live. Talk playoff energy for WNBA and MLB — every game matters, that's where sharp money shows up.
+- Never say a sport is coming soon or out of season unless the Boss updates this list.
 
 PICKS DROP TIMING & SALES POLICY — MEMORIZE THIS:
 - Picks drop 1 hour before game start, no matter what time zone the fan is in. This is universal — it does not change based on their location.
@@ -1642,6 +1692,7 @@ function setSaveStatus(s){
   else{el.textContent='Error — retry';el.style.color='var(--red)';}
 }
 
+function selectAdminTier(t){ const b=document.querySelector('.tier-btn[data-tier="'+t+'"]'); if(b) b.click(); }
 function tierLabel(t){return {free:'Free',starter:'Starter',metallica:'Metallica',gold:'Gold',purple:'Purple',allaccess:'All-Access'}[t]||t;}
 async function setTimerMins(m){dropTargets[currentTier]=Math.floor(Date.now()/1000)+m*60;const ok=await ghWrite({picks,drop:dropTargets});renderTimerStatus();if(ok)alert(`${tierLabel(currentTier)} timer set: ${m} min\nSynced to all fans.`);}
 async function setTimerHrs(h){dropTargets[currentTier]=Math.floor(Date.now()/1000)+h*3600;const ok=await ghWrite({picks,drop:dropTargets});renderTimerStatus();if(ok)alert(`${tierLabel(currentTier)} timer set: ${h} hr\nSynced to all fans.`);}
@@ -1653,9 +1704,20 @@ function renderTimerStatus(){
   const now=Math.floor(Date.now()/1000);
   el.innerHTML=Object.keys(dropTargets).map(t=>{
     const ts=dropTargets[t];
-    const state = !ts ? '<span style="color:var(--green);">live</span>' : ts>now ? `<span style="color:var(--gold);">${new Date(ts*1000).toLocaleString('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true})}</span>` : '<span style="color:var(--green);">live</span>';
-    return `<div style="display:flex;justify-content:space-between;padding:3px 0;${t===currentTier?'font-weight:700;color:var(--white);':'color:var(--slate);'}">${tierLabel(t)}${t===currentTier?' ◂':''}<span>${state}</span></div>`;
+    const n=(picks[t]||[]).length;
+    let state;
+    if(ts && ts>now){
+      const mins=Math.round((ts-now)/60), left = mins>=60 ? Math.floor(mins/60)+'h '+(mins%60)+'m' : mins+'m';
+      state=`<span style="color:var(--gold);">⏳ Countdown · drops ${new Date(ts*1000).toLocaleString('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true})} (in ${left})</span>`;
+    } else {
+      state = n ? '<span style="color:var(--green);">● LIVE — fans see picks</span>' : '<span style="color:var(--slate);">● Live — no picks posted</span>';
+    }
+    const sel=t===currentTier;
+    return `<div onclick="selectAdminTier('${t}')" style="display:grid;grid-template-columns:1fr 1fr 52px;gap:6px;align-items:center;padding:7px 10px;margin:2px 0;border-radius:6px;cursor:pointer;${sel?'background:rgba(212,175,55,0.12);border-left:3px solid var(--gold);font-weight:700;color:var(--white);':'border-left:3px solid transparent;color:var(--slate);'}"><span>${tierLabel(t)}${sel?' ◂ editing':''}</span>${state}<span style="text-align:right;color:${n?'var(--white)':'var(--slate)'};">${n}</span></div>`;
   }).join('');
+  const nm=tierLabel(currentTier);
+  const bl=document.getElementById('timerBtnsLabel'); if(bl) bl.textContent='Hold '+nm+' picks — drop in:';
+  const cb=document.getElementById('clearTimerBtn'); if(cb) cb.textContent='Show '+nm+' picks now (clear timer)';
 }
 
 function attemptSilentAudioPrime(){
@@ -1720,6 +1782,26 @@ function triggerDropCelebration(){
   setTimeout(()=>container.remove(), 7000);
 }
 
+function fmtCountdown(diff){const h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+function renderTierCountdowns(){
+  const el=document.getElementById('tierCountdowns'); if(!el) return;
+  const now=Math.floor(Date.now()/1000), active=activeDropTier();
+  el.innerHTML=['free','starter','metallica','gold','purple','allaccess'].map(t=>{
+    const ts=dropTargets[t]||0, n=(picks[t]||[]).length, diff=ts-now;
+    let val, color;
+    if(ts && diff>0){ val=fmtCountdown(diff); color='var(--gold-bright)'; }
+    else if(n){ val='LIVE'; color='var(--green)'; }
+    else { val='Soon'; color='var(--slate)'; }
+    const on=t===active;
+    return `<button type="button" onclick="pickCountdownTier('${t}')" style="background:${on?'rgba(212,175,55,0.14)':'var(--vault-2)'};border:1px solid ${on?'var(--gold)':'var(--hair)'};border-radius:8px;padding:6px 4px;cursor:pointer;font-family:inherit;"><div style="font-size:9px;letter-spacing:0.6px;text-transform:uppercase;color:var(--slate);">${tierLabel(t)}</div><div style="font-size:13px;font-weight:700;color:${color};font-family:'Courier New',monospace;">${val}</div></button>`;
+  }).join('');
+}
+function pickCountdownTier(t){
+  if(userTier) return; // unlocked fans stay on their own package
+  const card=[...document.querySelectorAll('.tier-card')].find(c=>(c.getAttribute('onclick')||'').includes("'"+t+"'"));
+  tierPickedByFan=true;
+  if(card) selectTier(t,card); else selectedTier=t;
+}
 let hasPlayedDropSound = false;
 let lastSeenDropTarget = 0;
 setInterval(()=>{
@@ -1728,7 +1810,11 @@ setInterval(()=>{
     lastSeenDropTarget = dropTarget;
     hasPlayedDropSound = false;
   }
+  renderTierCountdowns();
+  const cl=document.getElementById('countdownLabel'); if(cl) cl.textContent = tierLabel(activeDropTier()) + ' picks drop in';
   const timerEl=document.getElementById('countdownTimer');
+  const activeHasPicks=(picks[activeDropTier()]||[]).length>0;
+  if((!dropTarget || dropTarget<=Math.floor(Date.now()/1000)) && !activeHasPicks){timerEl.textContent='SOON';timerEl.classList.remove('is-live');document.getElementById('countdownStatus').textContent='No picks posted yet for this package — check back';return;}
   if(!dropTarget){timerEl.textContent='LIVE NOW';timerEl.classList.add('is-live');document.getElementById('countdownStatus').textContent='Picks are live';return;}
   const diff=dropTarget-Math.floor(Date.now()/1000);
   if(diff<=0){
@@ -1863,7 +1949,7 @@ function renderBrandFooterTag(){
   el.innerHTML = `
     <div class="brand-footer-tag">
       <div class="brand-footer-tag-main">One brand. Every sport.</div>
-      <div class="brand-footer-tag-sub">MLB · WNBA · Boxing · UFC · NFL</div>
+      <div class="brand-footer-tag-sub">NFL · College Football · NHL · WNBA · MLB · Boxing · UFC</div>
       <div style="font-size:8px;color:var(--slate);opacity:0.55;margin-top:10px;letter-spacing:0.2px;">All sales final after 1 hour.</div>
     </div>
   `;
@@ -1991,7 +2077,7 @@ function renderStripeCardBtn(tier){
   }
 }
 
-function selectTier(tier,el){selectedTier=tier;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);logEvent('tier_view',{tier});}
+function selectTier(tier,el){selectedTier=tier;tierPickedByFan=true;document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('active'));if(el)el.classList.add('active');renderTierExplainer(tier);renderPaypalBtn(tier);renderStripeCardBtn(tier);logEvent('tier_view',{tier});}
 const STARTER_MAX_USES = 5;
 function getStarterCount(){ return parseInt(localStorage.getItem('a2s_starter_count')||'0',10); }
 function starterCapReached(){ return getStarterCount() >= STARTER_MAX_USES; }
