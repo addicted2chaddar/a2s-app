@@ -539,7 +539,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="gotm-body">
       <div class="gotm-badge" style="border-color:var(--green);color:var(--green);">New here? Start here</div>
       <div class="gotm-title">TRY IT FOR <span>$15</span></div>
-      <div class="gotm-sub">2 picks · 7-day access — low risk way to see what we do before going all in.</div>
+      <div class="gotm-sub">2 picks · 2-day access — low risk way to see what we do before going all in.</div>
       <div class="gotm-price-row">
         <span class="gotm-price-new">$15</span>
       </div>
@@ -552,7 +552,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div><span class="howto-num" style="background:var(--green);color:#06210f;">1</span>Tap "Get Starter Pick" and pay $15 on PayPal</div>
     <div><span class="howto-num" style="background:var(--green);color:#06210f;">2</span>Copy your PayPal receipt #</div>
     <div><span class="howto-num" style="background:var(--green);color:#06210f;">3</span>Scroll down to Verify Payment, select Starter, and enter your receipt # to unlock</div>
-    <div><span class="howto-num" style="background:var(--green);color:#06210f;">4</span>You'll see 2 picks, live for 7 days from unlock</div>
+    <div><span class="howto-num" style="background:var(--green);color:#06210f;">4</span>You'll see 2 picks, live for 2 days from unlock</div>
     <div><span class="howto-num" style="background:var(--green);color:#06210f;">5</span>If picks aren't posted yet, watch the countdown timer at the top — new picks drop the instant it hits 00:00:00</div>
     <div style="margin-top:10px;color:var(--slate);font-size:11px;">Like what you see? Upgrade anytime to Metallica, Gold, Purple, or All-Access for more picks and longer access.</div>
   </div>
@@ -599,7 +599,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
       <div class="payment-title">Verify payment</div>
       <label class="form-label">Select your tier</label>
       <div class="tier-choice">
-        <div class="tier-card" onclick="selectTier('starter',this)"><div class="tier-name">Starter</div><div class="tier-price">$15 · 7 days</div></div>
+        <div class="tier-card" onclick="selectTier('starter',this)"><div class="tier-name">Starter</div><div class="tier-price">$15 · 2 days</div></div>
         <div class="tier-card active" onclick="selectTier('metallica',this)"><div class="tier-name">Metallica</div><div class="tier-price">$125 · 7 days</div></div>
         <div class="tier-card" onclick="selectTier('gold',this)"><div class="tier-name">Gold</div><div class="tier-price">$150 · 7 days</div></div>
         <div class="tier-card" onclick="selectTier('purple',this)"><div class="tier-name">Purple</div><div class="tier-price">$175 · 7 days</div></div>
@@ -660,8 +660,8 @@ const ANALYTICS_RAW_URL = `https://raw.githubusercontent.com/${GH_REPO}/main/${A
 const ANALYTICS_API_URL = `https://api.github.com/repos/${GH_REPO}/contents/${ANALYTICS_FILE}`;
 
 const VICTORIA_PROXY = 'https://a2s-victoria.2forex9919.workers.dev';
-// How long each unlock lasts. Free = 24h; every paid package = a full week.
-const ACCESS_HOURS = {free:24, starter:168, metallica:168, gold:168, purple:168, allaccess:168};
+// How long each unlock lasts. Free = 24h; Starter = 2 days; every other paid package = a full week.
+const ACCESS_HOURS = {free:24, starter:48, metallica:168, gold:168, purple:168, allaccess:168};
 // PayPal hosted buttons (render inside the page instead of linking out)
 const PAYPAL_HOSTED = { purple: '6CF25JTSSFZSN' };
 const PAYPAL_SDK_URL = 'https://www.paypal.com/sdk/js?client-id=BAASd2-ZAK3obrT3NSpwxQBXWBevw9v_uruMjXvvH3_bmCfX2iDGb8Ky4-ZMB7lupGXNPfTX4U8ED7tMVI&components=hosted-buttons&enable-funding=venmo&currency=USD';
@@ -1234,8 +1234,8 @@ FREE — $0 / 24 hours
 - If a fan is on their 2nd or 3rd free claim, start planting the upsell early: "you've got one free pick left after this — ready to lock in Starter or Metallica when it's gone?"
 - STAY ALERT FOR SCAMMERS AND FREELOADERS: watch for fans who ask how to reset, clear, or get around the free pick limit (new device, incognito mode, clearing browser data, using a friend's phone, multiple accounts, etc.), who push back hard or get pushy/aggressive when told the free picks are used up, or who are clearly just cycling through free picks with no intent to ever buy. Never explain how the device limit works technically or confirm any workaround. Stay firm, polite, and redirect to paid tiers every time — do not make exceptions, give bonus free picks, or bend the 3-claim limit for anyone, no matter what story they give.
 
-STARTER — $15 / 7 days
-- Gets 2 picks, 7-day access
+STARTER — $15 / 2 days (48 hours)
+- Gets 2 picks, 2-day access
 - Entry point for fans who are skeptical or trying us for the first time
 - Only gets Starter picks — no stacking with other tiers
 - Use this to close hesitant fans who won't commit to $125+ yet — "no pressure, just try us"
@@ -1945,7 +1945,7 @@ function renderFanView(){
 
 const TIER_RULES = {
   free: 'Free Pick — <b>1 pick</b>, locked for <b>24 hours</b>. Up to 3 per device, zero payment — just to show you what we do before you upgrade.',
-  starter: 'Starter Pick — <b>2 picks</b>, unlocked for <b>7 days</b>. Perfect way to test us out before going all in.',
+  starter: 'Starter Pick — <b>2 picks</b>, unlocked for <b>2 days</b>. Perfect way to test us out before going all in.',
   metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), unlocked for <b>7 days</b>. Anytime a pick drops in this tier during your 7 days, you get it.',
   gold: 'Gold — <b>up to 5 picks</b> (includes 1 loyalty bonus pick), unlocked for <b>7 days</b>. Everything dropped in Gold for 7 days — plus everything Metallica gets.',
   purple: 'Purple — <b>up to 6 picks</b> per drop (includes 1 loyalty bonus pick), unlocked for <b>7 days</b> — plus everything Gold and Metallica get, bonus picks included.',
@@ -2415,7 +2415,7 @@ async function init(){
     } else {
       localStorage.removeItem('a2s_user_verified');
       const pw=document.getElementById('paymentWall');
-      if(pw && u){ const n=document.createElement('div'); n.style.cssText='background:rgba(212,175,55,0.1);border:1px solid var(--gold);border-radius:10px;padding:12px;margin:12px 0;text-align:center;color:var(--gold);font-weight:600;font-size:13px;'; n.textContent = (u.tier==='free' ? 'Your free pick access has ended.' : 'Your '+u.tier.charAt(0).toUpperCase()+u.tier.slice(1)+' week has ended.') + ' Grab a package below to get back in.'; pw.prepend(n); }
+      if(pw && u){ const n=document.createElement('div'); n.style.cssText='background:rgba(212,175,55,0.1);border:1px solid var(--gold);border-radius:10px;padding:12px;margin:12px 0;text-align:center;color:var(--gold);font-weight:600;font-size:13px;'; n.textContent = (u.tier==='free' ? 'Your free pick access has ended.' : 'Your '+u.tier.charAt(0).toUpperCase()+u.tier.slice(1)+(hrs>=168?' week':' access')+' has ended.') + ' Grab a package below to get back in.'; pw.prepend(n); }
     }
   }
 }
