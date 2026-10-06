@@ -1,6 +1,17 @@
 {
   "picks": {
-    "free": [],
+    "free": [
+      {
+        "team": "DODGERS VS BRAVES",
+        "betType": "OVER/UNDER",
+        "odds": "UNDER  6.5",
+        "time": "3 PM PT",
+        "note": "",
+        "tag": "",
+        "result": "",
+        "id": 1791322689234
+      }
+    ],
     "starter": [],
     "metallica": [],
     "gold": [],
