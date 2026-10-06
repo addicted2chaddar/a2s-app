@@ -251,7 +251,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
 .brand-footer-tag{text-align:center;padding:14px;}
 .brand-footer-tag-main{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:3px;}
 .brand-footer-tag-sub{font-size:10px;color:var(--slate);letter-spacing:0.3px;}
-#toggleBtn[hidden]{display:none !important;}
 .footer-btn{position:fixed;bottom:20px;right:20px;width:54px;height:54px;border-radius:50%;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));border:none;color:#1a1400;font-size:22px;cursor:pointer;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.5);}
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
 .modal.active{display:flex;}
@@ -642,8 +641,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
   </div>
 </div>
 
-<button class="footer-btn" id="toggleBtn" hidden>ADM</button>
-<script>if(location.hash==='#admin'){document.getElementById('toggleBtn').hidden=false;}window.addEventListener('hashchange',()=>{document.getElementById('toggleBtn').hidden=(location.hash!=='#admin');});</script>
+<button class="footer-btn" id="toggleBtn">ADM</button>
 
 <div class="modal" id="loginModal">
   <div class="modal-content">
