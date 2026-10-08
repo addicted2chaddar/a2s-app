@@ -12,7 +12,28 @@
         "id": 1791495174502
       }
     ],
-    "starter": [],
+    "starter": [
+      {
+        "team": "DALLAS COWBOYS",
+        "betType": "MONEYLINE",
+        "odds": "-7 -110",
+        "time": "5 :15 PM PT",
+        "note": "COBOYS vsBUCCANEERS\nMoneyline\nLean\nCOWBOYS\n1.5xbigger avg ticket\nCrowd agrees\n% money\n89%\n% tickets\n84%\nCOWBOYS\n$60,180 · avg $34 · ~1,770 tix\nBUCANNERS\n$7,593 · avg $23 · ~330 tix",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1791495364672
+      },
+      {
+        "team": "LIBERTY",
+        "betType": "MONEYLINE",
+        "odds": "-550",
+        "time": "4 00 PM PT",
+        "note": "SHSU VS LIBERTY\nSpread\nSharp\nLIBERTY\n2.5xbigger avg ticket\nCrowd agrees\n% money\n99%\n% tickets\n96%\nLIBERTY\n$23,468 · avg $47 · ~499 tix\nSHSU\n$353 · avg $19 · ~19 tix",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1791495528737
+      }
+    ],
     "metallica": [],
     "gold": [],
     "purple": [],
@@ -20,7 +41,7 @@
   },
   "drop": {
     "free": 1791498538,
-    "starter": 1791237600,
+    "starter": 1791499154,
     "metallica": 1791498533,
     "gold": 1791051490,
     "purple": 1789661400,
