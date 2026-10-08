@@ -4571,6 +4571,13 @@
       "utm_campaign": "none",
       "ts": 1791429370541,
       "tier": "starter"
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791483661634
     }
   ]
 }
