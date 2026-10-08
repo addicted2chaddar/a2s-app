@@ -2,14 +2,14 @@
   "picks": {
     "free": [
       {
-        "team": "DODGERS VS BRAVES",
-        "betType": "OVER/UNDER",
-        "odds": "UNDER  6.5",
-        "time": "3 PM PT",
-        "note": "",
-        "tag": "",
-        "result": "win",
-        "id": 1791322689234
+        "team": "MISSOURI STATE",
+        "betType": "SPREAD",
+        "odds": "-1 (-110)",
+        "time": "4 PM PT",
+        "note": "MISSOURI STATE VS W. KENTUCKY\nMoneyline\nSharp\nMISSOURI ST\n3.2xbigger avg ticket\nCrowd agrees\n% money\n76%\n% tickets\n49%\nMISSOURI ST\n$25,122 · avg $132 · ~190 tix\nW, KENTUCKY\n$8,069 · avg $41 · ~197 tix",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1791495174502
       }
     ],
     "starter": [],
