@@ -34,7 +34,30 @@
         "id": 1791495528737
       }
     ],
-    "metallica": [],
+    "metallica": [
+      {
+        "team": "DALLAS  COWBOYS",
+        "league": "",
+        "betType": "OVER/UNDER",
+        "odds": "OVER 48 -110",
+        "time": "5 00 PM PT",
+        "note": "COBOYS vsBUCCANEERS UNDER/OVER\nSpread\nLean\nOVERS\n1.5xbigger avg ticket\nCrowd agrees\n% money\n79%\n% tickets\n72%\nOVERS\n$45,121 · avg $68 · ~664 tix\nUNDER\n$12,118 · avg $46 · ~263 tix",
+        "tag": "highstakes",
+        "result": "",
+        "id": 1791497604413
+      },
+      {
+        "team": "VEGAS KNIGHTS",
+        "league": "nhl",
+        "betType": "MONEYLINE",
+        "odds": "-170",
+        "time": "7 PM PT",
+        "note": "",
+        "tag": "hotstreak",
+        "result": "",
+        "id": 1791498062969
+      }
+    ],
     "gold": [],
     "purple": [],
     "allaccess": []
@@ -42,7 +65,7 @@
   "drop": {
     "free": 1791498538,
     "starter": 1791499154,
-    "metallica": 1791498533,
+    "metallica": 1791500088,
     "gold": 1791051490,
     "purple": 1789661400,
     "allaccess": 0
