@@ -2,73 +2,19 @@
   "picks": {
     "free": [
       {
-        "team": "MISSOURI STATE",
-        "betType": "SPREAD",
-        "odds": "-1 (-110)",
-        "time": "4 PM PT",
-        "note": "MISSOURI STATE VS W. KENTUCKY\nMoneyline\nSharp\nMISSOURI ST\n3.2xbigger avg ticket\nCrowd agrees\n% money\n76%\n% tickets\n49%\nMISSOURI ST\n$25,122 · avg $132 · ~190 tix\nW, KENTUCKY\n$8,069 · avg $41 · ~197 tix",
-        "tag": "hotstreak",
-        "result": "loss",
-        "id": 1791495174502
-      }
-    ],
-    "starter": [
-      {
-        "team": "DALLAS COWBOYS",
-        "betType": "MONEYLINE",
-        "odds": "-7 -110",
-        "time": "5 :15 PM PT",
-        "note": "COBOYS vsBUCCANEERS\nMoneyline\nLean\nCOWBOYS\n1.5xbigger avg ticket\nCrowd agrees\n% money\n89%\n% tickets\n84%\nCOWBOYS\n$60,180 · avg $34 · ~1,770 tix\nBUCANNERS\n$7,593 · avg $23 · ~330 tix",
-        "tag": "hotstreak",
-        "result": "",
-        "id": 1791495364672
-      },
-      {
-        "team": "LIBERTY",
-        "betType": "MONEYLINE",
-        "odds": "-550",
-        "time": "4 00 PM PT",
-        "note": "SHSU VS LIBERTY\nSpread\nSharp\nLIBERTY\n2.5xbigger avg ticket\nCrowd agrees\n% money\n99%\n% tickets\n96%\nLIBERTY\n$23,468 · avg $47 · ~499 tix\nSHSU\n$353 · avg $19 · ~19 tix",
-        "tag": "highstakes",
-        "result": "win",
-        "id": 1791495528737
-      }
-    ],
-    "metallica": [
-      {
-        "team": "DALLAS  COWBOYS",
-        "league": "",
-        "betType": "OVER/UNDER",
-        "odds": "OVER 48 -110",
-        "time": "5 00 PM PT",
-        "note": "COBOYS vsBUCCANEERS UNDER/OVER\nSpread\nLean\nOVERS\n1.5xbigger avg ticket\nCrowd agrees\n% money\n79%\n% tickets\n72%\nOVERS\n$45,121 · avg $68 · ~664 tix\nUNDER\n$12,118 · avg $46 · ~263 tix",
-        "tag": "highstakes",
-        "result": "loss",
-        "id": 1791497604413
-      },
-      {
-        "team": "VEGAS KNIGHTS",
+        "team": "New York Rangers",
         "league": "nhl",
         "betType": "MONEYLINE",
-        "odds": "-170",
-        "time": "7 PM PT",
-        "note": "",
-        "tag": "hotstreak",
+        "odds": "-110",
+        "time": "7:10 PM ET  /  4:10 PM PT",
+        "note": "-  New York Rangers@  Washington Capitals  Book: DraftKings\n     -  7:10 PM ET  /  4:10 PM PT   Park factor: Washington Capitals 1.02\n  Odds: New York Rangers +120 (45.5%)  |  Washington Capitals -142 (58.7%)\n -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -\n SOURCE    (SIM)\n BETS      New York Rangers: 956 (55%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Washington Capitals: 752 (44%)\n DOLLARS   New York Rangers: $5,508 (19%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Washington Capitals: $22,033 (80%)\n MONEY     New York Rangers: $5,508 avg$5  Washington Capitals: $22,033 avg$29  Total: $27,541 (1708 bets)\n WHALE     New York Rangers:  -  WHALE    Washington Capitals:  -\n SHARP     New York Rangers:  -     Washington Capitals:  - SHARP -\n AI LEAN    -  Washington Capitals (63.6/100)  Park: 1.02x  EV: +8.42  STAKE: $0.00 (no edge)",
+        "tag": "highstakes",
         "result": "",
-        "id": 1791498062969
-      },
-      {
-        "team": "LIBERTY FLAMES",
-        "league": "ncaa",
-        "betType": "OVER/UNDER",
-        "odds": "50 -112",
-        "time": "4 00 PM PT",
-        "note": "SHSU VS LIBERTY\nSpread\nSharp\nLIBERTY\n2.5xbigger avg ticket\nCrowd agrees\n% money\n99%\n% tickets\n96%\nLIBERTY\n$23,468 · avg $47 · ~499 tix\nSHSU\n$353 · avg $19 · ~19 tix",
-        "tag": "",
-        "result": "win",
-        "id": 1791498302634
+        "id": 1791582582238
       }
     ],
+    "starter": [],
+    "metallica": [],
     "gold": [],
     "purple": [],
     "allaccess": []
