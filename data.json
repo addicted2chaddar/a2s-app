@@ -1,18 +1,6 @@
 {
   "picks": {
-    "free": [
-      {
-        "team": "New York Rangers",
-        "league": "nhl",
-        "betType": "MONEYLINE",
-        "odds": "-110",
-        "time": "7:10 PM ET  /  4:10 PM PT",
-        "note": "-  New York Rangers@  Washington Capitals  Book: DraftKings\n     -  7:10 PM ET  /  4:10 PM PT   Park factor: Washington Capitals 1.02\n  Odds: New York Rangers +120 (45.5%)  |  Washington Capitals -142 (58.7%)\n -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -\n SOURCE    (SIM)\n BETS      New York Rangers: 956 (55%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Washington Capitals: 752 (44%)\n DOLLARS   New York Rangers: $5,508 (19%)   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   Washington Capitals: $22,033 (80%)\n MONEY     New York Rangers: $5,508 avg$5  Washington Capitals: $22,033 avg$29  Total: $27,541 (1708 bets)\n WHALE     New York Rangers:  -  WHALE    Washington Capitals:  -\n SHARP     New York Rangers:  -     Washington Capitals:  - SHARP -\n AI LEAN    -  Washington Capitals (63.6/100)  Park: 1.02x  EV: +8.42  STAKE: $0.00 (no edge)",
-        "tag": "highstakes",
-        "result": "",
-        "id": 1791582582238
-      }
-    ],
+    "free": [],
     "starter": [],
     "metallica": [],
     "gold": [],
@@ -26,5 +14,6 @@
     "gold": 1791586059,
     "purple": 1791582468,
     "allaccess": 1791582477
-  }
+  },
+  "_note": "Picks are served by a2s-picks-gateway after verified payment. Do not put picks in this file."
 }
