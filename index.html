@@ -677,6 +677,39 @@ const ANALYTICS_RAW_URL = `https://raw.githubusercontent.com/${GH_REPO}/main/${A
 const ANALYTICS_API_URL = `https://api.github.com/repos/${GH_REPO}/contents/${ANALYTICS_FILE}`;
 
 const VICTORIA_PROXY = 'https://a2s-victoria.2forex9919.workers.dev';
+// Picks gateway: picks live ONLY here. Fans get them after the Worker confirms payment.
+const GATEWAY = 'https://a2s-picks-gateway.2forex9919.workers.dev';
+function getFanToken(){ try{ return localStorage.getItem('a2s_token')||''; }catch(e){ return ''; } }
+function setFanAccess(r){
+  // r = {tier, exp, token} from the Worker. purchaseTime is back-calculated so the existing expiry check keeps working.
+  localStorage.setItem('a2s_token', r.token);
+  const hrs = ACCESS_HOURS[r.tier] || 168;
+  localStorage.setItem('a2s_user_verified', JSON.stringify({tier:r.tier, receipt:r.receipt||'', purchaseTime: r.exp - hrs*3600*1000}));
+}
+async function serverUnlock(payload){
+  try{
+    const r = await fetch(GATEWAY+'/unlock', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({...payload, fp:getDeviceFingerprint()})});
+    return await r.json();
+  }catch(e){ return {ok:false, reason:'network'}; }
+}
+let adminStateLoaded = false;
+function getAdminSecret(forcePrompt){
+  let s = localStorage.getItem('a2s_admin_secret')||'';
+  if(!s || forcePrompt){ s = (prompt('Enter your ADMIN_SECRET (the one saved in the Cloudflare Worker). Asked once per device.')||'').trim(); if(s) localStorage.setItem('a2s_admin_secret', s); }
+  return s;
+}
+async function loadAdminState(forcePrompt){
+  const s = getAdminSecret(forcePrompt);
+  if(!s){ adminStateLoaded=false; return false; }
+  try{
+    const r = await fetch(GATEWAY+'/admin/state', {headers:{'X-Admin-Secret':s}});
+    if(r.status===401){ localStorage.removeItem('a2s_admin_secret'); alert('Admin secret rejected. Re-open admin and try again.'); adminStateLoaded=false; return false; }
+    const d = await r.json();
+    if(!d.ok) throw new Error(d.reason||'load');
+    picks = d.picks; dropTargets = d.drop; adminStateLoaded = true;
+    return true;
+  }catch(e){ adminStateLoaded=false; alert('Could not load picks from the gateway: '+e.message); return false; }
+}
 // How long each unlock lasts. Free = 24h; Starter = 2 days; every other paid package = a full week.
 const ACCESS_HOURS = {free:24, starter:48, metallica:168, gold:168, purple:168, allaccess:168};
 // PayPal hosted buttons (render inside the page instead of linking out)
@@ -1210,10 +1243,22 @@ SUSPICIOUS if:
     const receipt = 'A2S-' + Date.now().toString(36).toUpperCase().slice(-6) + Math.random().toString(36).substring(2,5).toUpperCase();
     const pending = JSON.parse(localStorage.getItem('a2s_pending_receipts')||'[]');
 
+    // A screenshot alone can be faked — only unlock if the Worker confirms the transaction ID with PayPal.
+    let serverOk = null;
     if(result.verdict === 'APPROVED'){
+      const txn = String(result.transaction_id||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+      serverOk = txn ? await serverUnlock({receipt: txn, tier: result.tier}) : {ok:false, reason:'invalid'};
+      if(!serverOk.ok){
+        result.verdict = 'SUSPICIOUS';
+        result.reason = serverOk.reason==='duplicate' ? 'That payment was already used to unlock picks on another device.' : 'We could not confirm that transaction with PayPal yet. DM us your receipt and we will send you an unlock code.';
+      }
+    }
+    if(result.verdict === 'APPROVED'){
+      result.tier = serverOk.tier;
       pending.push({receipt, tier: result.tier, amount: result.amount_detected, txn: result.transaction_id, timestamp: Date.now(), status:'approved', fraud_flags:[]});
       localStorage.setItem('a2s_pending_receipts', JSON.stringify(pending));
-      localStorage.setItem('a2s_user_verified', JSON.stringify({tier: result.tier || 'allaccess', receipt, purchaseTime: Date.now()}));
+      setFanAccess({tier: serverOk.tier, exp: serverOk.exp, token: serverOk.token, receipt});
+      ghRead();
       resultDiv.innerHTML = `
         <div style="background:rgba(47,174,101,0.12);border:1px solid var(--green);border-radius:10px;padding:12px;">
           <div style="color:var(--green);font-weight:700;font-size:13px;">Payment verified</div>
@@ -1523,10 +1568,20 @@ async function sendToVictoria(){
 
 async function ghRead(){
   try{
-    const r = await fetch(RAW_URL + '?t=' + Date.now());
+    adminStateLoaded = false; // public data replaces picks below; admin must reload real picks before saving
+    const r = await fetch(GATEWAY + '/public?t=' + Date.now());
     if(!r.ok) throw new Error('read fail');
     const data = await r.json();
     const loadedPicks = data.picks || {};
+    // Paid fans: swap in their real picks using the token the Worker issued after payment
+    const tok = getFanToken();
+    if(tok){
+      try{
+        const pr = await fetch(GATEWAY + '/picks?t=' + Date.now(), {headers:{'Authorization':'Bearer '+tok}});
+        if(pr.ok){ const pd = await pr.json(); Object.keys(pd.picks||{}).forEach(t=>{ loadedPicks[t] = pd.picks[t]; }); }
+        else if(pr.status===401){ localStorage.removeItem('a2s_token'); }
+      }catch(e){}
+    }
     picks = {
       free: loadedPicks.free || [],
       starter: loadedPicks.starter || [],
@@ -1550,69 +1605,25 @@ async function ghRead(){
 }
 
 async function claimReceiptGlobally(receipt){
-  // Cross-device check: prevents the same PayPal receipt from being used to
-  // unlock picks on multiple different phones (e.g. 3 friends splitting one payment).
-  for(let attempt=0; attempt<3; attempt++){
-    try{
-      const metaR = await fetch(API_URL+'?t='+Date.now(), {
-        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
-      });
-      if(!metaR.ok) return {ok:false, reason:'network'};
-      const meta = await metaR.json();
-      const current = JSON.parse(atob(meta.content));
-      current.usedReceipts = current.usedReceipts || [];
-      if(current.usedReceipts.includes(receipt)){
-        return {ok:false, reason:'duplicate'};
-      }
-      current.usedReceipts.push(receipt);
-      const json = JSON.stringify(current, null, 2);
-      const bytes = new TextEncoder().encode(json);
-      let binary=''; bytes.forEach(b=>binary+=String.fromCharCode(b));
-      const encoded = btoa(binary);
-      const putR = await fetch(API_URL, {
-        method:'PUT',
-        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
-        body: JSON.stringify({message:'claim receipt '+receipt, content:encoded, sha:meta.sha})
-      });
-      if(putR.ok) return {ok:true};
-      if(putR.status===409){ continue; } // another device wrote first, retry from top
-      return {ok:false, reason:'network'};
-    }catch(e){
-      if(attempt===2) return {ok:false, reason:'network'};
-    }
-  }
-  return {ok:false, reason:'duplicate'};
+  // The Worker looks the receipt up with PayPal (or checks a code you issued),
+  // confirms the amount, and binds it to this one device. Made-up numbers fail.
+  const r = await serverUnlock({receipt, tier:selectedTier});
+  if(r.ok) return {ok:true, tier:r.tier, exp:r.exp, token:r.token};
+  return {ok:false, reason: r.reason||'network'};
 }
 
 async function ghWrite(data){
   setSaveStatus('saving');
   try{
-    let sha='';
-    for(let i=0;i<3;i++){
-      const metaR = await fetch(API_URL+'?t='+Date.now(), {
-        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
-      });
-      if(!metaR.ok) throw new Error('meta fail');
-      const meta = await metaR.json();
-      if(meta.sha){sha=meta.sha;break;}
-      await new Promise(r=>setTimeout(r,1000));
-    }
-    if(!sha) throw new Error('no sha');
-    const json = JSON.stringify(data, null, 2);
-    const bytes = new TextEncoder().encode(json);
-    let binary='';
-    bytes.forEach(b=>binary+=String.fromCharCode(b));
-    const encoded = btoa(binary);
-    const r = await fetch(API_URL, {
+    if(!adminStateLoaded){ loadAdminState().then(ok=>{ if(ok){ renderPicksList(); renderTimerStatus(); } }); throw new Error('admin picks were not loaded yet — they are loading now, try again in a few seconds'); }
+    const r = await fetch(GATEWAY+'/admin/state', {
       method:'PUT',
-      headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
-      body: JSON.stringify({message:'a2s picks update',content:encoded,sha})
+      headers:{'Content-Type':'application/json','X-Admin-Secret':getAdminSecret()},
+      body: JSON.stringify({picks:data.picks, drop:data.drop})
     });
-    if(!r.ok){
-      let msg = 'write fail (HTTP '+r.status+')';
-      try{ const err = await r.json(); if(err && err.message) msg = err.message; }catch(parseErr){ /* body wasn't JSON — keep the status-based message */ }
-      throw new Error(msg);
-    }
+    const d = await r.json().catch(()=>({}));
+    if(r.status===401){ localStorage.removeItem('a2s_admin_secret'); throw new Error('admin secret rejected'); }
+    if(!r.ok || !d.ok) throw new Error('write fail ('+(d.reason||('HTTP '+r.status))+')');
     setSaveStatus('ok');
     return true;
   }catch(e){
@@ -2125,10 +2136,7 @@ async function verifyAndUnlock(){
   }
   const usedKey='a2s_used_receipts';
   const used=JSON.parse(localStorage.getItem(usedKey)||'[]');
-  if(used.includes(receipt)){
-    alert('This receipt number was already used to unlock picks on this device. If this is a mistake, use the screenshot upload in the Victoria chat for manual verification.');
-    return;
-  }
+  // (Re-entering your own receipt on the same device is fine now — the Worker gives your access back.)
   const btn=document.getElementById('verifyBtn');
   const originalBtnText = btn ? btn.textContent : '';
   if(btn){ btn.textContent='Checking...'; btn.disabled=true; }
@@ -2137,6 +2145,12 @@ async function verifyAndUnlock(){
   if(!claim.ok){
     if(claim.reason==='duplicate'){
       alert('This receipt number has already been used to unlock picks — on this device or another one. Each PayPal payment unlocks picks for ONE person only. If you believe this is a mistake, use the screenshot upload in the Victoria chat for manual verification.');
+    }else if(claim.reason==='invalid'){
+      alert('We could not find that payment. PayPal: copy the Transaction ID exactly from your PayPal receipt email. Card/Stripe: use the unlock code we sent you. Still stuck? Upload your receipt screenshot in the Victoria chat.');
+    }else if(claim.reason==='amount'){
+      alert('That payment amount does not match a package. Upload your receipt screenshot in the Victoria chat and we will sort it out.');
+    }else if(claim.reason==='expired'){
+      alert('That payment\'s access window has already ended. Grab a package below to get back in.');
     }else{
       alert('Could not verify right now — check your connection and try again in a moment.');
     }
@@ -2147,9 +2161,10 @@ async function verifyAndUnlock(){
   if(selectedTier==='starter'){
     localStorage.setItem('a2s_starter_count', String(getStarterCount()+1));
   }
-  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:selectedTier,receipt,purchaseTime:Date.now()}));
-  userVerified=true;userTier=selectedTier;
-  logEvent('unlock',{tier:selectedTier});
+  setFanAccess({tier:claim.tier, exp:claim.exp, token:claim.token, receipt});
+  userVerified=true;userTier=claim.tier;
+  logEvent('unlock',{tier:claim.tier});
+  await ghRead();
   document.getElementById('successMessage').classList.add('show');
   setTimeout(showFanView,1000);
   refreshStarterCardUI();
@@ -2215,45 +2230,10 @@ async function claimFreePickGlobally(fp){
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({fingerprint: fp})
     });
-    if(workerR.ok){
-      const wj = await workerR.json();
-      if(wj && typeof wj.ok === 'boolean') return wj;
-      // unexpected worker reply shape - fall through to data.json check
-    }
-    // fall through to data.json check below if the worker route isn't live yet / errors
-  }catch(e){ /* fall through */ }
-
-  for(let attempt=0; attempt<3; attempt++){
-    try{
-      const metaR = await fetch(API_URL+'?t='+Date.now(), {
-        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json'}
-      });
-      if(!metaR.ok) return {ok:false, reason:'network'};
-      const meta = await metaR.json();
-      const current = JSON.parse(atob(meta.content));
-      current.freeClaims = current.freeClaims || {};
-      const count = current.freeClaims[fp] || 0;
-      if(count >= FREE_MAX_USES){
-        return {ok:false, reason:'cap', count};
-      }
-      current.freeClaims[fp] = count+1;
-      const json = JSON.stringify(current, null, 2);
-      const bytes = new TextEncoder().encode(json);
-      let binary=''; bytes.forEach(b=>binary+=String.fromCharCode(b));
-      const encoded = btoa(binary);
-      const putR = await fetch(API_URL, {
-        method:'PUT',
-        headers:{'Authorization':'token '+GH_TOKEN,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
-        body: JSON.stringify({message:'free claim', content:encoded, sha:meta.sha})
-      });
-      if(putR.ok) return {ok:true, count:count+1};
-      if(putR.status===409){ continue; } // another device wrote first, retry from top
-      return {ok:false, reason:'network'};
-    }catch(e){
-      if(attempt===2) return {ok:false, reason:'network'};
-    }
-  }
-  return {ok:false, reason:'network'};
+    const wj = await workerR.json();
+    if(wj && typeof wj.ok === 'boolean') return wj;
+    return {ok:false, reason:'network'};
+  }catch(e){ return {ok:false, reason:'network'}; }
 }
 
 async function claimFreePick(){
@@ -2277,8 +2257,9 @@ async function claimFreePick(){
     return;
   }
   localStorage.setItem('a2s_free_count', String(result.count));
-  localStorage.setItem('a2s_user_verified',JSON.stringify({tier:'free',receipt:'FREE',purchaseTime:Date.now()}));
+  setFanAccess({tier:'free', exp:result.exp, token:result.token, receipt:'FREE'});
   userVerified=true;userTier='free';
+  await ghRead();
   logEvent('free_claim',{tier:'free',claimNumber:result.count});
   refreshFreeCardUI();
   setTimeout(showFanView,300);
@@ -2315,6 +2296,7 @@ function checkPin(){
     document.getElementById('paymentWall').classList.add('hidden');
     document.getElementById('toggleBtn').textContent='VIEW';
     renderPicksList();
+    loadAdminState().then(ok=>{ if(ok){ renderPicksList(); renderTimerStatus(); } });
   }else{alert('Wrong PIN');}
 }
 document.getElementById('toggleBtn').addEventListener('click',()=>{
@@ -2518,6 +2500,20 @@ async function init(){
     setTimeout(()=>{ const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='flex'; },800);
   } else {
     const ov=document.getElementById('onboardOverlay'); if(ov) ov.style.display='none';
+  }
+  // Stripe Payment Links redirect back with ?stripe_session={CHECKOUT_SESSION_ID} — the Worker confirms it with Stripe
+  const stripeSess = new URLSearchParams(location.search).get('stripe_session');
+  if(stripeSess){
+    history.replaceState(null,'',location.pathname);
+    const r = await serverUnlock({stripeSession: stripeSess});
+    if(r.ok){ setFanAccess(r); await ghRead(); logEvent('unlock',{tier:r.tier,via:'stripe'}); }
+    else alert(r.reason==='duplicate' ? 'That card payment was already used to unlock picks on another device.' : 'We could not confirm your card payment yet. Refresh in a minute, or message Victoria with your receipt.');
+  }
+  // Unlocks from before the security upgrade have no server token — they must re-enter their receipt once
+  if(localStorage.getItem('a2s_user_verified') && !getFanToken()){
+    localStorage.removeItem('a2s_user_verified');
+    const pw=document.getElementById('paymentWall');
+    if(pw){ const n=document.createElement('div'); n.style.cssText='background:rgba(212,175,55,0.1);border:1px solid var(--gold);border-radius:10px;padding:12px;margin:12px 0;text-align:center;color:var(--gold);font-weight:600;font-size:13px;'; n.textContent='Security upgrade: re-enter your PayPal receipt # (or unlock code) below to reopen your picks — your time left is kept.'; pw.prepend(n); }
   }
   const auth=localStorage.getItem('a2s_user_verified');
   if(auth){
