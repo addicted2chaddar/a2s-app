@@ -4720,6 +4720,13 @@
       "utm_campaign": "none",
       "ts": 1791498240169,
       "tier": "purple"
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791507430522
     }
   ]
 }
