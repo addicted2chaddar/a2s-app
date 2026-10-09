@@ -4748,6 +4748,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1791576218225
+    },
+    {
+      "type": "pageview",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1791578515948
     }
   ]
 }
