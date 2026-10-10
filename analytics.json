@@ -4860,6 +4860,14 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1791632230609
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "ig",
+      "utm_medium": "social",
+      "utm_campaign": "none",
+      "ts": 1791632241716,
+      "tier": "purple"
     }
   ]
 }
