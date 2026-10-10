@@ -4938,6 +4938,14 @@
       "utm_medium": "none",
       "utm_campaign": "none",
       "ts": 1791675441776
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791675529089,
+      "tier": "gold"
     }
   ]
 }
