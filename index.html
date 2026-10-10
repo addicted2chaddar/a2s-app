@@ -530,7 +530,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
         <span class="gotm-price-new" id="gotmPrice">$125</span>
         <span class="gotm-save" id="gotmSave" style="display:none;">Included</span>
       </div>
-      <a href="https://www.paypal.com/ncp/payment/NENWWFFU8PES8" target="_blank" class="paypal-button">Get on the heater</a>
+      <a href="https://www.paypal.com/ncp/payment/YN4K89H5EBVXW" target="_blank" class="paypal-button">Get on the heater</a>
     </div>
   </div>
 
@@ -595,11 +595,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url('https://raw
     <div class="cta-block">
       <div class="cta-block-title">Winners already inside</div>
       <div class="cta-block-sub">You're missing the play right now.<br>Every minute you wait costs you money.</div>
-      <a href="https://www.paypal.com/ncp/payment/NENWWFFU8PES8" target="_blank" class="paypal-button">Pay now — get picks</a>
+      <a href="https://www.paypal.com/ncp/payment/YN4K89H5EBVXW" target="_blank" class="paypal-button">Pay now — get picks</a>
     </div>
     <div class="howto">
       <div class="howto-title">How to unlock — PayPal</div>
-      <div><span class="howto-num">1</span>Pay via PayPal → https://www.paypal.com/ncp/payment/NENWWFFU8PES8</div>
+      <div><span class="howto-num">1</span>Pay via PayPal → https://www.paypal.com/ncp/payment/YN4K89H5EBVXW</div>
       <div><span class="howto-num">2</span>Copy your PayPal receipt #</div>
       <div><span class="howto-num">3</span>Enter it below — picks unlock instantly</div>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--hair);">
@@ -713,7 +713,7 @@ async function loadAdminState(forcePrompt){
 // How long each unlock lasts. Free = 24h; Starter = 2 days; every other paid package = a full week.
 const ACCESS_HOURS = {free:24, starter:48, metallica:168, gold:168, purple:168, allaccess:168};
 // PayPal hosted buttons (render inside the page instead of linking out)
-const PAYPAL_HOSTED = { metallica: 'NENWWFFU8PES8', purple: '6CF25JTSSFZSN' };
+const PAYPAL_HOSTED = { metallica: 'YN4K89H5EBVXW', purple: '6CF25JTSSFZSN' };
 const PAYPAL_SDK_URL = 'https://www.paypal.com/sdk/js?client-id=BAASd2-ZAK3obrT3NSpwxQBXWBevw9v_uruMjXvvH3_bmCfX2iDGb8Ky4-ZMB7lupGXNPfTX4U8ED7tMVI&components=hosted-buttons&enable-funding=venmo&currency=USD';
 let paypalSdkPromise = null;
 function loadPaypalSdk(){
@@ -728,7 +728,7 @@ function loadPaypalSdk(){
 }
 const PAYPAL_LINKS = {
   starter: 'https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E',
-  metallica: 'https://www.paypal.com/ncp/payment/NENWWFFU8PES8'
+  metallica: 'https://www.paypal.com/ncp/payment/YN4K89H5EBVXW'
 };
 const STRIPE_LINKS = {
   metallica: 'https://buy.stripe.com/aFa00c2VEa2UaZOaV293y00',
@@ -1107,7 +1107,7 @@ function toggleVictoriaChat(){
 
 function vicMaybeAddUploadBox(text){
   const msgs = document.getElementById('victoriaMessages');
-  if(text.toLowerCase().includes('https://www.paypal.com/ncp/payment/NENWWFFU8PES8') || text.toLowerCase().includes('paypal.me/addicted2sports')){
+  if(text.toLowerCase().includes('https://www.paypal.com/ncp/payment/YN4K89H5EBVXW') || text.toLowerCase().includes('paypal.me/addicted2sports')){
     if(!document.getElementById('vicUploadBox')){
       const uploadBox = document.createElement('div');
       uploadBox.id = 'vicUploadBox';
@@ -1401,7 +1401,7 @@ PICKS DROP TIMING & SALES POLICY — MEMORIZE THIS:
 CLOSING INFO — PAYPAL IS PRIMARY RIGHT NOW:
 PayPal links are PER TIER — always give the link matching the tier you just sold:
 - Starter ($15): https://www.paypal.com/ncp/payment/W4ZWHS4GD9P8E
-- Metallica ($125): https://www.paypal.com/ncp/payment/NENWWFFU8PES8
+- Metallica ($125): https://www.paypal.com/ncp/payment/YN4K89H5EBVXW
 - Purple ($175): PayPal is live — tell them to scroll to Verify Payment, tap the Purple card, and use the PayPal button that appears there. Card works too.
 - Gold, All-Access: no direct PayPal link built yet — do NOT tell fans to DM us. Instead say something like "that tier's link is being finalized right now — Starter or Metallica are live and ready to go if you want in today, or check back shortly for the rest." Never invite DMs as a payment workaround.
 Instagram: @addiicted2sports
