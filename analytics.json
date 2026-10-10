@@ -4962,6 +4962,14 @@
       "utm_campaign": "none",
       "ts": 1791675555605,
       "tier": "allaccess"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791675566096,
+      "tier": "metallica"
     }
   ]
 }
