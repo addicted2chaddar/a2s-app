@@ -1354,7 +1354,7 @@ STARTER — $15 / 2 days (48 hours)
 - IMPORTANT: Starter can only be purchased 5 times total per fan (device-limited). If a fan mentions they've bought Starter multiple times already, or asks to buy Starter again after several rounds, tell them something like "you've been riding Starter for a minute — you already know it works, time to step up to Metallica and get real volume" and push Metallica hard. Do not encourage repeat Starter purchases as a long-term plan.
 
 METALLICA — $125 / 7 days (full week)
-- Gets 3 picks guaranteed (2 standard + 1 loyalty bonus pick — Starter buyers only get 2, no bonus), sometimes up to 4 if the Boss drops extra
+- Gets 3 picks EACH DAY for 7 days straight (2 standard + 1 loyalty bonus pick daily — Starter buyers only get 2 total, no bonus)
 - Entry level for real committed bettors — not just a taste test like Starter
 - Only gets Metallica picks
 - Metallica+ tiers also get VIP priority in this chat — treat these fans with extra attentiveness, answer them first if you are mid-conversation with multiple people, and mention the loyalty bonus pick if they ask why Metallica is worth it over Starter
@@ -1363,12 +1363,12 @@ GOLD — $150 / 7 days (full week)
 - Gets up to 5 picks per drop, including 1 loyalty bonus pick on top of the standard drop
 - INCLUDES everything the Boss drops in that package
 - ALSO GETS all Metallica picks (which now include Metallica's own bonus pick too) — because Gold is a higher package
-- So Gold fans get: Gold picks (up to 5, bonus included) + Metallica picks (3, bonus included) — real stacked volume, not just a slightly bigger Metallica
+- So Gold fans get: Gold picks (up to 5, bonus included) + Metallica picks (3 a day, bonus included) — real stacked volume, not just a slightly bigger Metallica
 - If a Gold fan compares themselves to Metallica, remind them Gold stacks on top of Metallica entirely — they are never getting less than a Metallica buyer, only more
 
 PURPLE — $175 / 7 days (full week)
 - Gets up to 6 Purple picks per drop, including 1 loyalty bonus pick, all week
-- ALSO GETS all Gold picks (up to 5, bonus included) AND all Metallica picks (3, bonus included)
+- ALSO GETS all Gold picks (up to 5, bonus included) AND all Metallica picks (3 a day, bonus included)
 - Because Purple is higher — you get all three packages, every bonus pick included, for 7 full days
 - So Purple fans get: Purple picks + Gold picks + Metallica picks — real stacked volume all week, never less than a Gold or Metallica buyer gets
 
@@ -2071,7 +2071,7 @@ function renderFanView(){
 const TIER_RULES = {
   free: 'Free Pick — <b>1 pick</b>, locked for <b>24 hours</b>. Up to 3 per device, zero payment — just to show you what we do before you upgrade.',
   starter: 'Starter Pick — <b>2 picks</b>, unlocked for <b>2 days</b>. Perfect way to test us out before going all in.',
-  metallica: 'Metallica — <b>3 picks</b> (includes 1 loyalty bonus pick), unlocked for <b>7 days</b>. Anytime a pick drops in this tier during your 7 days, you get it.',
+  metallica: 'Metallica — <b>3 picks every day</b> (includes 1 loyalty bonus pick daily) for <b>7 days straight</b>.',
   gold: 'Gold — <b>up to 5 picks</b> (includes 1 loyalty bonus pick), unlocked for <b>7 days</b>. Everything dropped in Gold for 7 days — plus everything Metallica gets.',
   purple: 'Purple — <b>up to 6 picks</b> per drop (includes 1 loyalty bonus pick), unlocked for <b>7 days</b> — plus everything Gold and Metallica get, bonus picks included.',
   allaccess: 'All-Access — <b>every pick, no cap</b>, unlocked for <b>7 days</b>. Every tier\'s picks, every bonus pick, nothing held back.'
@@ -2123,7 +2123,7 @@ function starterCapReached(){ return getStarterCount() >= STARTER_MAX_USES; }
 
 async function verifyAndUnlock(){
   if(selectedTier==='starter' && starterCapReached()){
-    alert("You've used all "+STARTER_MAX_USES+" Starter Pick trials on this device. Time to level up — grab Metallica for 3 real picks and VIP access instead.");
+    alert("You've used all "+STARTER_MAX_USES+" Starter Pick trials on this device. Time to level up — grab Metallica for 3 picks a day all week and VIP access instead.");
     selectTier('metallica', document.querySelector('.tier-card'));
     return;
   }
