@@ -5033,6 +5033,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1791747919002
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1791764520588
     }
   ]
 }
