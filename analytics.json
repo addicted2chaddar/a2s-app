@@ -5236,6 +5236,14 @@
       "utm_medium": "pwa",
       "utm_campaign": "none",
       "ts": 1792265310241
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "app",
+      "utm_medium": "pwa",
+      "utm_campaign": "none",
+      "ts": 1792265331117,
+      "tier": "starter"
     }
   ]
 }
