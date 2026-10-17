@@ -5252,6 +5252,14 @@
       "utm_campaign": "none",
       "ts": 1792265339679,
       "tier": "gold"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "app",
+      "utm_medium": "pwa",
+      "utm_campaign": "none",
+      "ts": 1792265340776,
+      "tier": "allaccess"
     }
   ]
 }
