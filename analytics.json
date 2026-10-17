@@ -5260,6 +5260,14 @@
       "utm_campaign": "none",
       "ts": 1792265340776,
       "tier": "allaccess"
+    },
+    {
+      "type": "tier_view",
+      "utm_source": "app",
+      "utm_medium": "pwa",
+      "utm_campaign": "none",
+      "ts": 1792265343881,
+      "tier": "metallica"
     }
   ]
 }
