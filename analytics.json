@@ -5304,6 +5304,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1792347662379
+    },
+    {
+      "type": "pageview",
+      "utm_source": "app",
+      "utm_medium": "pwa",
+      "utm_campaign": "none",
+      "ts": 1792369379143
     }
   ]
 }
