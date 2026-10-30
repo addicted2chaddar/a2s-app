@@ -5367,6 +5367,13 @@
       "utm_medium": "social",
       "utm_campaign": "none",
       "ts": 1792980401270
+    },
+    {
+      "type": "pageview",
+      "utm_source": "direct",
+      "utm_medium": "none",
+      "utm_campaign": "none",
+      "ts": 1793365008128
     }
   ]
 }
